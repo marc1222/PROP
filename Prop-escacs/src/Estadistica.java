@@ -2,20 +2,12 @@ import java.io.*;
 // Import the IOException class to handle errors
 // Import the FileWriter class
 
+import java.util.Map;
+import java.util.TreeMap;
+
 public class Estadistica {
     // Fitxer ons es guarden les estadistiques
     static String file = "./files/estadistiques.txt";
-
-    /*
-    public static void main(String[] args) {
-        input_output IO = new input_output();
-        Estadistica est = new Estadistica();
-
-        est.guardarTiempo("1", "2", "4:10");
-        est.estadistiquesProblema("p1");
-        est.estadistiquesUsuari("u2");
-    }
-    */
 
     // pre: problema i usuari existeix
     // psot: es guarda una la linea al fitxer (problema usuari temps)
@@ -28,19 +20,35 @@ public class Estadistica {
     // pre: problema existeix
     // post: retorna tots els usuaris que han resolt el problema amb el seu temps
     public void estadistiquesProblema(String problema) {
+        Map<Float, String> estProblema = new TreeMap<Float, String>();
+
         try (BufferedReader br = new BufferedReader(new FileReader(file))) {
             String line;
             System.out.println("Jugador Temps");
             while ((line = br.readLine()) != null) {
                 String[] dades = line.split("\\s+");
                 if(dades[0].equals(problema)) {
-                    System.out.println(dades[1] + "  " + dades[2]);
+                    float temps = 0;
+                    try {
+                        temps = Float.parseFloat(dades[2]);
+                    }
+                    catch (NumberFormatException e)
+                    {
+                        System.out.println(e);
+                    }
+                    estProblema.put(temps, dades[1]);
                 }
             }
         } catch (FileNotFoundException ex) {
             ex.printStackTrace();
         } catch (IOException ex) {
             ex.printStackTrace();
+        }
+
+        // Iteracio sobre els resultats ordenats
+        for (Map.Entry<Float, String> entry : estProblema.entrySet()) {
+            //String temps = convertirFloatATemps(entry.getKey());
+            System.out.println(entry.getValue() + " " + entry.getKey());
         }
     }
 
