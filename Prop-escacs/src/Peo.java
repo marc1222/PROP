@@ -66,9 +66,10 @@ public class Peo extends Peca {
     }
 
     public boolean rango(int iniI, int iniJ, int finI, int finJ) {
+        boolean rangj = finJ == iniJ + 1 || finJ == iniJ - 1 || finJ == iniJ;
         if (color == 'B') {
             if (finI == iniI + 1) {
-                return (finJ == iniJ + 1 || finJ == iniJ - 1 || finJ == iniJ);
+                return rangj;
             }
             if (primer_mov) {
                 if (finI == iniI + 2) {
@@ -79,7 +80,7 @@ public class Peo extends Peca {
         }
         else if (color == 'N') {
             if (finI == iniI - 1) {
-                return (finJ == iniJ + 1 || finJ == iniJ - 1 || finJ == iniJ);
+                return rangj;
             }
             if (primer_mov) {
                 if (finI == iniI - 2) {
