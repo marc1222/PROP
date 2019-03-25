@@ -5,12 +5,12 @@ public class define {
     public static final int BLACK = 1;
 
     //peça
-    public static final int ALFIL = 2;
-    public static final int TORRE = 3;
-    public static final int REI = 4;
-    public static final int REINA = 5;
-    public static final int PEO = 6;
-    public static final int PECA_NULA = 7;
+    public static final String ALFIL = "Alfil";
+    public static final String TORRE = "Torre";
+    public static final String REI = "Rei";
+    public static final String REINA = "Reina";
+    public static final String PEO = "Peo";
+    public static final String PECA_NULA = "Peca_nula";
 
     //si es necessiten mes, afegiu
 
