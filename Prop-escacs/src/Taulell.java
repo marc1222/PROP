@@ -1,9 +1,15 @@
+import java.lang.reflect.InvocationTargetException;
+import java.rmi.server.ExportException;
 import java.util.Arrays;
 
 public class Taulell {
-    private Peca T[][];
 
-    //creadora/s
+    private static final String TIPUS_PECA[] = {"Alfil","Rei","Reina","Peo","Torre","Cavall,Peca_null"};
+
+    private static final int NULA = 6;
+
+    private Peca T[][];
+        //creadora/s
 
     Taulell() {
         T = new Peca[8][8]; //que sera de peces
@@ -14,15 +20,19 @@ public class Taulell {
     //crea una peça
     //pre: x,y pertanyen a l'interval 0 <= valor <= 7, color = {'b','w','-'}, tipus = tots els tipus (null inclòs)
     //post: a la matriu de peces T en posició ( x, y ) s'hi troba una instancia de la peça creada
-    private void crea_peca_xy(int x, int y, char color, String tipus) {
-        Peca aux = new Peca(x,y,color,tipus);
-        T[x][y] = aux;
+    private void crea_peca_xy(int x, int y, char color, String tipus) throws ClassNotFoundException, NoSuchMethodException, IllegalAccessException, InvocationTargetException, InstantiationException {
+        Object aux = Class.forName(tipus).getConstructor(String.class).newInstance(x,y,color);
+        T[x][y] = (Peca)aux;
     }
     //borra una peça
     //pre: x,y pertanyen a l'interval 0 <= valor <= 7
     //post: a la matriu de peces T en posició ( x, y ) s'hi troba una instancia de peça nula
     private void borra_peca_xy(int x, int y) {
-        crea_peca_xy(x, y,'-',"null");
+        try{
+            crea_peca_xy(x, y,'-',TIPUS_PECA[NULA]);
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
     }
 
 
@@ -66,26 +76,30 @@ public class Taulell {
         }
     }
 
-    // instancia al tauler una nova peça que no sigui de tipus null
+    // instancia al tauler una nova peça
     //pre: true
-    //post: es comprova que x,y pertanyin a l'interval 0 <= valor <= 7, que color pertanyi a algun dels jugadors,
+    //post: es comprova que x,y pertanyin a l'interval 0 <= valor <= 7, que color pertanyi a algun dels jugadors, o be que "-" en cas de peca nula
     // que tipus pertanyi al array peces i es crea la peça amb els parametres instanciats
     public void crear_peça(int x, int y, char color, String tipus) {
         try {
             if (x < 0 || y < 0 || x > 7 || y > 7)
-                throw new IllegalArgumentException("X o Y valores inválidos");
+                throw new IllegalArgumentException("Taulell: X o Y valores inválidos");
 
-            if (color != 'w' || color != 'b')
-                throw new IllegalArgumentException("Color inválido");
+            if (color != 'w' || color != 'b' || color != '-')
+                throw new IllegalArgumentException("Taulell: Color inválido");
 
-            String [] peces = {"alfil","rei","reina","peo","torre","cavall"};
-            if(!Arrays.asList(peces).contains(tipus))
-                throw new IllegalArgumentException("Tipus de peça invàlid");
+            if(!Arrays.asList(TIPUS_PECA).contains(tipus)) {
+                throw new IllegalArgumentException("Taulell: Tipus de peça invàlid");
+            }
+            if ( (color == '-' && tipus != TIPUS_PECA[NULA]) || (tipus == TIPUS_PECA[NULA] && color != '-') )
+                throw new IllegalArgumentException(("Taulell: Peça NULL invalida"))
 
             crea_peca_xy(x,y,color,tipus);
 
         } catch(IllegalArgumentException ex) {
             System.out.println(ex.getMessage());
+        } catch (Exception ex) {
+            ex.printStackTrace();
         }
     }
     // instancia al tauler una nova peça que no sigui de tipus null
@@ -94,9 +108,9 @@ public class Taulell {
     public void destrueix_peça(int x, int y) {
         try {
             if (x < 0 || y < 0 || x > 7 || y > 7)
-                throw new IllegalArgumentException("X o Y valores inválidos");
+                throw new IllegalArgumentException("Taulell: X o Y valores inválidos");
             Peca p = T[x][y];
-            if (p.getTipus() == "null")
+            if (p.getTipus() == TIPUS_PECA[NULA])
                 throw new ChessException("Taulell: No hay ninguna pieza que destruir en la posición: ["+x+"] ["+y+"]");
 
             borra_peca_xy(x,y);

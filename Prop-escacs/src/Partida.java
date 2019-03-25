@@ -32,7 +32,22 @@ public class Partida  {
     //post:
     public void empezar_partida()
     {
-        //iniciar el taulell -> crear totes les peces
+        try {
+            //iniciar el taulell -> crear totes les peces
+            int Peces[][] = Prob.getPeces();
+            for (int i = 0; i < Peces.lenght; ++i) {
+                int aux[] = Peces[i];
+                if (aux.lenght != 4)
+                    throw new ChessException("Error al crear la pieza");
+                Tauler.crear_peça(aux[0], aux[1], aux[2], aux[3]);
+            }
+            int x0,y0,x,y;
+            if (this.torn == 'W') W.tirar(x0,y0,x,y);
+            else B.tirar(x0,y0,x,y);
+            jugar_turno(x0,y0,x,y);
+        } catch( ChessException ex) {
+            System.out.println(ex.getMessage());
+        }
 
     }
 
@@ -42,6 +57,6 @@ public class Partida  {
     public void jugar_turno(int x0, int y0, int x, int y)
     {
         Tauler.mover_pieza(x0,y0,x,y,torn);
-        //
+        Tauler.torn = !Tauler.torn;
     }
 }
