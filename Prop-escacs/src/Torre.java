@@ -11,7 +11,7 @@ public class Torre extends Peca {
         color = '\0';
     }
 
-    Torre (int id, char color) {
+    Torre (int id, int color) {
         this.id = id;
         this.color = color;
     }

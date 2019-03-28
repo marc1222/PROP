@@ -3,15 +3,15 @@ public class Reina extends Peca {
 
     Reina () {
         id = -1;
-        color = '\0';
+        color = -1;
     }
 
     Reina (int id) {
         this.id = id;
-        color = '\0';
+        color = -1;
     }
 
-    Reina (int id, char color) {
+    Reina (int id, int color) {
         this.id = id;
         this.color = color;
     }

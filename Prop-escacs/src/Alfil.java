@@ -3,15 +3,15 @@ public class Alfil extends Peca {
 
     Alfil () {
         id = -1;
-        color = '\0';
+        color = -1;
     }
 
     Alfil (int id) {
         this.id = id;
-        color = '\0';
+        color = -1;
     }
 
-    Alfil (int id, char color) {
+    Alfil (int id, int color) {
         this.id = id;
         this.color = color;
     }

@@ -3,17 +3,17 @@ public class Peo extends Peca {
 
     Peo () {
         id = -1;
-        color = '\0';
+        color = -1;
         primer_mov = false;
     }
 
     Peo (int id) {
         this.id = id;
-        color = '\0';
+        color = -1;
         primer_mov = false;
     }
 
-    Peo (int id, char color, boolean primer_mov) {
+    Peo (int id, int color, boolean primer_mov) {
         this.id = id;
         this.color = color;
         this.primer_mov = primer_mov;

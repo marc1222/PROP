@@ -7,6 +7,7 @@ public class define {
     //peça
     public static final String ALFIL = "Alfil";
     public static final String TORRE = "Torre";
+    public static final String CAVALL = "Cavall";
     public static final String REI = "Rei";
     public static final String REINA = "Reina";
     public static final String PEO = "Peo";

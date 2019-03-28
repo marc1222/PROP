@@ -1,8 +1,9 @@
 public abstract class Peca {
-    int id;
-    char color;
+    protected int id;
+    protected int color;
 
-    /** retorna una matriu de ints on cada fila son les coordenades x, y de la nova posició
+    /** retorna una matriu de ints on cada fila son les coordenades x, y de la nova posició, en el cas de peça nula
+     *  retorna un array buit
      */
     abstract public int[][] movimientos_validos(int posI, int posJ); //variable size?
 

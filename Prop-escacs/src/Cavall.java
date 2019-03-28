@@ -3,15 +3,15 @@ public class Cavall extends Peca {
 
     Cavall () {
         id = -1;
-        color = '\0';
+        color = -1;
     }
 
     Cavall (int id) {
         this.id = id;
-        color = '\0';
+        color = -1;
     }
 
-    Cavall (int id, char color) {
+    Cavall (int id, int color) {
         this.id = id;
         this.color = color;
     }
