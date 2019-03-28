@@ -1,6 +1,6 @@
 public class Partida  {
 
-    private char torn;
+    private int torn;
     private Taulell Tauler;
     private Problema Prob;
     private Usuari W;
@@ -14,7 +14,7 @@ public class Partida  {
     //post: instancia un problema, dos usuaris i un taulell;
     Partida(Problema P, Usuari w, Usuari b) {
         this.torn = P.torn;
-        this.Tauler = new Taulell();
+        this.Tauler = new Taulell(P.getPeces());
         this.Prob = P;
         this.W = w;
         this.B = b;
@@ -30,33 +30,29 @@ public class Partida  {
     //
     //pre: true
     //post:
-    public void empezar_partida()
-    {
-        try {
-            //iniciar el taulell -> crear totes les peces
-            int Peces[][] = Prob.getPeces();
-            for (int i = 0; i < Peces.lenght; ++i) {
-                int aux[] = Peces[i];
-                if (aux.lenght != 4)
-                    throw new ChessException("Error al crear la pieza");
-                Tauler.crear_peça(aux[0], aux[1], aux[2], aux[3]);
-            }
-            int x0,y0,x,y;
-            if (this.torn == 'W') W.tirar(x0,y0,x,y);
-            else B.tirar(x0,y0,x,y);
-            jugar_turno(x0,y0,x,y);
-        } catch( ChessException ex) {
-            System.out.println(ex.getMessage());
-        }
-
+    public void empezar_partida() {
+            Posicion inici = new Posicion();
+            Posicion fi = new Posicion();
+            jugar_torn(inici,fi);
     }
 
     //
     //pre:
     //post:
-    public void jugar_turno(int x0, int y0, int x, int y)
+    public void jugar_torn(Posicion inici, Posicion fi)
     {
-        Tauler.mover_pieza(x0,y0,x,y,torn);
-        Tauler.torn = !Tauler.torn;
+
+        if (this.torn == 'W') {
+            W.tirar(inici,fi);
+            System.out.println("El jugador BLANC vol moure la peça que es troba a ["+inici.x+"]["+inici.y+"] a la posició destí ["+fi.x+"]["+fi.y+"]");
+        }
+        else B.{
+            tirar(inici,fi);
+            System.out.println("El jugador NEGRE vol moure la peça que es troba a ["+inici.x+"]["+inici.y+"] a la posició destí ["+fi.x+"]["+fi.y+"]");
+        }
+        Tauler.mover_pieza(inici,fi,torn);
+
+        if (this.torn == define.WHITE) this.torn = define.BLACK;
+        else this.torn = define.WHITE;
     }
 }

@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="a9986b48-1538-4a05-b098-ee43f0cbf3cd" name="Default Changelist" comment="" />
+    <list default="true" id="a9986b48-1538-4a05-b098-ee43f0cbf3cd" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/ChessException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/define.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -29,6 +33,7 @@
           </provider>
         </entry>
       </file>
+
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Taulell.java">
           <provider selected="true" editor-type-id="text-editor">
@@ -61,16 +66,36 @@
                 <element signature="imports" expanded="true" />
                 <element signature="e#237#238#0" expanded="true" />
                 <element signature="e#327#328#0" expanded="true" />
+=======
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/ChessException.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="195">
+              <caret line="13" column="5" selection-start-line="13" selection-start-column="5" selection-end-line="13" selection-end-column="5" />
+              <folding>
+                <element signature="e#0#546#0" expanded="true" />
+                <element signature="e#76#77#0" expanded="true" />
+                <element signature="e#99#100#0" expanded="true" />
+                <element signature="e#137#138#0" expanded="true" />
+                <element signature="e#161#162#0" expanded="true" />
+>>>>>>> 5631c6939e5ab67595f994e52867f4847afbab70
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
+
         <entry file="file://$PROJECT_DIR$/src/ChessException.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="15">
               <caret line="1" selection-start-line="1" selection-end-line="6" selection-end-column="5" />
+=======
+        <entry file="file://$PROJECT_DIR$/src/define.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="210">
+              <caret line="14" column="34" lean-forward="true" selection-start-line="14" selection-start-column="34" selection-end-line="14" selection-end-column="34" />
+
             </state>
           </provider>
         </entry>
@@ -80,6 +105,7 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="Enum" />
         <option value="Class" />
       </list>
     </option>
@@ -102,10 +128,16 @@
         <option value="$PROJECT_DIR$/src/test_in_out.java" />
         <option value="$PROJECT_DIR$/src/maiun.java" />
         <option value="$PROJECT_DIR$/src/main.java" />
+
         <option value="$PROJECT_DIR$/src/ChessExceptions.java" />
         <option value="$PROJECT_DIR$/src/RetrybleException.java" />
         <option value="$PROJECT_DIR$/src/Taulell.java" />
         <option value="$PROJECT_DIR$/src/Partida.java" />
+
+        <option value="$PROJECT_DIR$/src/ChessExcpetion.java" />
+        <option value="$PROJECT_DIR$/src/define.java" />
+        <option value="$PROJECT_DIR$/src/ChessException.java" />
+
       </list>
     </option>
   </component>
@@ -123,6 +155,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="PackagesPane" />
       <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
@@ -140,11 +173,17 @@
           <select />
         </subPane>
       </pane>
+
       <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1553462617619" />
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1553551259575" />
+
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
@@ -204,7 +243,11 @@
     <frame x="67" y="25" width="1299" height="743" extended-state="6" />
     <editor active="true" />
     <layout>
+
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.3471668" />
+
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.15961692" />
+
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Learn" order="3" />
@@ -222,7 +265,11 @@
       <window_info anchor="bottom" id="Version Control" order="7" />
       <window_info anchor="bottom" id="Terminal" order="8" />
       <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
+
       <window_info active="true" anchor="bottom" id="Messages" order="10" visible="true" weight="0.32899022" />
+
+      <window_info anchor="bottom" id="Messages" order="10" weight="0.32899022" />
+
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.24940239" />
@@ -247,13 +294,17 @@
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/src/Peca.java" />
+
     <entry file="file://$PROJECT_DIR$/src/Rei.java" />
+
+
     <entry file="file://$PROJECT_DIR$/src/Reina.java" />
     <entry file="file://$PROJECT_DIR$/src/Alfil.java" />
     <entry file="file://$PROJECT_DIR$/src/Cavall.java" />
     <entry file="file://$PROJECT_DIR$/src/Torre.java" />
     <entry file="file://$PROJECT_DIR$/src/Peo.java" />
     <entry file="file://$PROJECT_DIR$/src/Problema.java" />
+
     <entry file="file://$PROJECT_DIR$/src/input_output.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="690">
@@ -295,10 +346,45 @@
             <element signature="imports" expanded="true" />
             <element signature="e#1576#1577#0" expanded="true" />
             <element signature="e#1606#1607#0" expanded="true" />
+
+    <entry file="file://$PROJECT_DIR$/src/Rei.java" />
+    <entry file="file://$PROJECT_DIR$/src/input_output.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="690">
+          <caret line="46" column="44" selection-start-line="46" selection-start-column="44" selection-end-line="46" selection-end-column="44" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test_in_out.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="15">
+          <caret line="1" column="24" selection-start-line="1" selection-start-column="24" selection-end-line="1" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/define.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="14" column="34" lean-forward="true" selection-start-line="14" selection-start-column="34" selection-end-line="14" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ChessException.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="195">
+          <caret line="13" column="5" selection-start-line="13" selection-start-column="5" selection-end-line="13" selection-end-column="5" />
+          <folding>
+            <element signature="e#0#546#0" expanded="true" />
+            <element signature="e#76#77#0" expanded="true" />
+            <element signature="e#99#100#0" expanded="true" />
+            <element signature="e#137#138#0" expanded="true" />
+            <element signature="e#161#162#0" expanded="true" />
+
           </folding>
         </state>
       </provider>
     </entry>
+
     <entry file="file://$PROJECT_DIR$/src/Partida.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="870">
