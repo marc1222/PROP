@@ -70,7 +70,7 @@ public class Taulell {
     // instancia al tauler una nova peça
     //pre: true
     //post: es comprova que x,y pertanyin a l'interval 0 <= valor <= 7, que color pertanyi a algun dels jugadors, o be que "-" en cas de peca nula
-    // que tipus pertanyi al array peces i es crea la peça amb els parametres instanciats
+    //i es crea la peça amb els parametres instanciats
     public void crear_peça(Posicion pos, char color, String tipus) {
         try {
             if (x < 0 || y < 0 || x > 7 || y > 7)
@@ -78,10 +78,6 @@ public class Taulell {
 
             if (color != define.BLACK || color != define.WHITE || color != define.NULL_COLOR)
                 throw new IllegalArgumentException("Taulell: Color inválido");
-
-            if(!Arrays.asList(TIPUS_PECA).contains(tipus)) {
-                throw new IllegalArgumentException("Taulell: Tipus de peça invàlid");
-            }
             if ( (color == define.NULL_COLOR && tipus != define.PECA_NULA) || (tipus == define.PECA_NULA && color != define.NULL_COLOR) )
                 throw new IllegalArgumentException(("Taulell: Peça NULL invalida"));
 
@@ -135,9 +131,53 @@ public class Taulell {
         }
 
     }
-
-    private boolean descartar_movimiento(Posicion inici, Posicion desti, int color) {
-        return true;
+	//pre: a pos inici hi ha un peça no nula del jugador color 
+    private boolean descartar_movimiento(Posicion inici, Posicion desti, int color) throws ChessException {
+		
+		//check posició destí
+		Peca dest = T[desti.x][desti.y];
+		if (dest.getTipus != define.PECA_NULA && dest.getColor == color) //peça teva  a destí -> pos invalida
+			return true;
+		//check cami fins destí
+		int dx = inici.x - desti.x;
+		int dy = inici.y -desti.y;
+		dx = Math.abs(dx);
+		dy = Math.abs(dy);
+		Peca aux;
+		int i,j;
+		Posicion pos = new Posicion(inici.x,inici.y);
+		if (dy == 0) { //mov. horitzontal
+			if (inici.x < desti.x) i = 1;
+			else i = -1;
+			for (int k = 0; k < dx-1; ++k) {
+				pos.x += i;
+				aux = T[pos.x][inici.y];
+				if (aux.getTipus != define.PECA_NULA) return true;
+			}
+		}
+		else if (dx == 0) { //mov. vertical
+			if (inici.y < desti.y) i = 1;
+			else i = -1;
+			for (int k = 0; k < dy-1; ++k) {
+				pos.y += i;
+				aux = T[inici.x][i];
+				if (aux.getTipus != define.PECA_NULA) return true;
+			}
+		
+		}
+		else if (dx == dy) { //dx && dy != 0 -> mov. diagonal
+			if (inici.x < desti.x) i = 1; j = 1;
+			else i = -1; j = -1;
+			for (int k = 0; k < dx-1; ++k) {
+				pos.x += i;
+				pos.y += j;
+				aux = T[i][j];
+				if (aux.getTipus != define.PECA_NULA) return true;
+			}
+		}
+		else
+			throw new ChessException("El moviment ha de ser vertical, horitzontal o diagonal");
+        return false;
     }
     public Posicion[] todos_movimientos(Posicion inici) {
         Posicion[] all_pos;
@@ -148,11 +188,15 @@ public class Taulell {
             String tipus = aux.getTipus();
             if (tipus == define.PECA_NULA)
                 throw new IllegalArgumentException("Taulell: No hi ha cap peça");
+            int color = aux.getColor();
+            if (color != define.WHITE || color != define.BLACK)
+                throw new IllegalArgumentException("Taulell: No és una peça del teu color");
+
             all_pos = aux.getMovimientos();
             if (tipus != define.CAVALL) {
                 ArrayList<Posicion> tmp = new ArrayList<>();;
                 for (int i = 0; i < all_pos.length; ++i) {
-                    if (!descartar_movimiento(inici,all_pos[i],aux.getColor())) tmp.add(all_pos[i]);
+                    if (!descartar_movimiento(inici,all_pos[i],)) tmp.add(all_pos[i]);
                 }
                 all_pos = new Posicion[tmp.size()];
                 all_pos = tmp.toArray(all_pos);
