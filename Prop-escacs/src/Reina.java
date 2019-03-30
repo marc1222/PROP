@@ -16,7 +16,7 @@ public class Reina extends Peca {
         this.color = color;
     }
 
-    public int[][] movimientos_validos(int posI, int posJ) {
+    /*public int[][] movimientos_validos(int posI, int posJ) {
         // i + (-7, 7)
         // j + (-7, 7)
         // i + x, j + x; x in (-7, 7);
@@ -42,6 +42,26 @@ public class Reina extends Peca {
             res[i + 48][1] = posJ + i;
         }
         return res;
+    }*/
+
+    public Posicion[] movimientos_validos(Posicion pos) {
+        // i + (-7, 7)
+        // j + (-7, 7)
+        // i + x, j + x; x in (-7, 7);
+        Posicion res[] = new Posicion[56];
+        for (int i = -7; i < 0; ++i) {
+            res[i + 7] = new Posicion(pos.x + i, pos.y + i);
+            res[i + 21] = new Posicion(pos.x + i, pos.y - i);
+            res[i + 35] = new Posicion(pos.x + i, pos.y);
+            res[i + 49] = new Posicion(pos.x, pos.y + i);
+        }
+        for (int i = 1; i < 8; ++i) {
+            res[i + 6] = new Posicion(pos.x + i, pos.y + i);
+            res[i + 20] = new Posicion(pos.x + i, pos.y - i);
+            res[i + 34] = new Posicion(pos.x + i, pos.y);
+            res[i + 48] = new Posicion(pos.x, pos.y + i);
+        }
+        return res;
     }
 
     public void validar_movimiento() {
@@ -50,7 +70,11 @@ public class Reina extends Peca {
         // if not out of bounds
     }
 
-    public boolean rango(int iniI, int iniJ, int finI, int finJ) {
+    /*public boolean rango(int iniI, int iniJ, int finI, int finJ) {
         return (((finI - iniI) == 0) || ((finJ - iniJ) == 0) || (Math.abs(finI - iniI) == Math.abs(finJ - iniJ)));
+    }*/
+
+    public boolean rango(Posicion ini, Posicion fin) {
+        return (((fin.x - ini.x) == 0) || ((fin.y - ini.y) == 0) || (Math.abs(fin.x - ini.x) == Math.abs(fin.y - ini.y)));
     }
 }

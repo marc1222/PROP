@@ -10,12 +10,20 @@ public class Peca_Nula extends Peca {
         color = -1;
     }
 
-    public int[][] movimientos_validos(int posI, int posJ) {
+    /*public int[][] movimientos_validos(int posI, int posJ) {
         int res[][] = new int[0][0];
         return res;
+    }*/
+
+    public Posicion[] movimientos_validos(Posicion pos) {
+        return null;
     }
 
-    public boolean rango(int iniI, int iniJ, int finI, int finJ) {
+    /*public boolean rango(int iniI, int iniJ, int finI, int finJ) {
+        return false;
+    }*/
+
+    public boolean rango(Posicion ini, Posicion fin) {
         return false;
     }
 }

@@ -310,9 +310,11 @@ public class Problema {
 
                         break;
                 }*/
-                int mov[][] = tau_mat[i][j].movimientos_validos(i, j);
+                Posicion mov[] = tau_mat[i][j].movimientos_validos(new Posicion(i, j));
                 for (int k = 0; i < tau_mat.length; ++k) {
                     //tau_mat[k].length
+
+                    //moure peça
                 }
             }
         }
