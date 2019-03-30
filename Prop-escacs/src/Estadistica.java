@@ -70,9 +70,10 @@ public class Estadistica {
             ex.printStackTrace();
         }
     }
+}
 
 
-    /*
+   /*
 
     int linea = 1;
     String[] z = IO.read(file, linea);
@@ -122,4 +123,3 @@ public class Estadistica {
         }
     }
     */
-}
