@@ -46,4 +46,8 @@ public class Rei extends Peca {
     public boolean rango(Posicion ini, Posicion fin) {
         return ((fin.x <= ini.x + 1) && (fin.x >= ini.x - 1) && (fin.y <= ini.y + 1) && (fin.y >= ini.y - 1));
     }
+
+    public String getTipus() {
+        return define.REI;
+    }
 }

@@ -63,5 +63,9 @@ public class Torre extends Peca {
     public boolean rango(Posicion ini, Posicion fin) {
         return (fin.x - ini.x == 0 || fin.y - ini.y == 0);
     }
+
+    public String getTipus() {
+        return define.TORRE;
+    }
 }
 

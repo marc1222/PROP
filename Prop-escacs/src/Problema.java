@@ -1,28 +1,30 @@
 import java.io.*;
+import java.util.ArrayList;
 
 public class Problema {
     private int id;
     private int jugades;
-    private char primer;
+    private int primer;
     private String ini_pos; // String?
+    //usuari creador
 
     static String fitxer = "./files/problemes.txt";
 
     Problema () {
         id = -1;
-        jugades = 0;
-        primer = '\0';
+        jugades = -1;
+        primer = -1;
         ini_pos = null;
     }
 
-    Problema (int id, int jugades, char primer) {
+    Problema (int id, int jugades, int primer) {
         this.id = id;
         this.jugades = jugades;
         this.primer = primer;
         ini_pos = null;
     }
 
-    Problema (int id, int jugades, char primer, String ini_pos) {
+    Problema (int id, int jugades, int primer, String ini_pos) {
         this.id = id;
         this.jugades = jugades;
         this.primer = primer;
@@ -32,9 +34,52 @@ public class Problema {
     Problema (int id, int jugades, String fen) {
         this.id = id;
         int i = fen.indexOf(' ');
-        this.primer = fen.charAt(i + 1);
+        char prim = fen.charAt(i + 1);
+        if (prim == 'w') {
+            this.primer = define.WHITE;
+        }
+        else if (prim == 'b') {
+            this.primer = define.BLACK;
+        }
+        else ; // invalid fen
         this.ini_pos = fen.substring(0, i);
         this.jugades = jugades;
+    }
+
+    public int getId() {
+        return this.id;
+    }
+
+    public int getNumJugades() {
+        return this.jugades;
+    }
+
+    public int getPrimer() {
+        return this.primer;
+    }
+
+    public String getPosIni() {
+        return ini_pos;
+    }
+
+    public void setId(int id) {
+        if (id >= 0) this.id = id;
+        else ; //
+    }
+
+    public void setNumJugades(int jugades) {
+        if (jugades > 0) this.jugades = jugades;
+        else ; //
+    }
+
+    public void setPrimer(int primer) {
+        if (primer == define.BLACK || primer == define.WHITE) this.primer = primer;
+        else ; //
+    }
+
+    public void setPosIni(String ini_pos) {
+        // if fen
+        this.ini_pos = ini_pos;
     }
 
     /** crea un problema a partir de un id de problema, l'string FEN complert i el nombre de jugades i el valida,
@@ -58,11 +103,13 @@ public class Problema {
                     String sprim = String.valueOf(this.primer);
                     if (camps[1].equals(snjug) && camps[2].equals(sprim) && camps[3].equals(this.ini_pos)) { //o nomes prob_id?
                         //problema ja existeix
+                        System.out.println("El problema ja existex");
                     }
                     else {
                         input_output in_out = new input_output();
                         String[] linia = {String.valueOf(this.id), snjug, sprim, this.ini_pos};
                         in_out.write(fitxer, linia);
+                        System.out.println("S'ha creat el problema");
                     }
                 }
             }
@@ -74,7 +121,7 @@ public class Problema {
             }
         }
         else {
-
+            System.out.println("Problema invàlid");
         }
 
 
@@ -89,7 +136,14 @@ public class Problema {
         this.jugades = njug;
 
         int i = fen.indexOf(' ');
-        this.primer = fen.charAt(i+1);
+        char prim = fen.charAt(i + 1);
+        if (prim == 'w') {
+            this.primer = define.WHITE;
+        }
+        else if (prim == 'b') {
+            this.primer = define.BLACK;
+        }
+        else ; // invalid fen
         this.ini_pos = fen.substring(0, i);
 
         if (this.validar_problema()) {
@@ -101,11 +155,13 @@ public class Problema {
                     String sprimer = String.valueOf(this.primer);
                     if (camps[1].equals(snjug) && camps[2].equals(sprimer) && camps[3].equals(this.ini_pos)) { //o nomes prob_id?
                         //problema ja existeix
+                        System.out.println("El nou problema ja existeix");
                     }
                     else {
                         input_output in_out = new input_output();
                         String[] linia = {String.valueOf(this.id), snjug, String.valueOf(this.primer), this.ini_pos};
                         in_out.write(fitxer, linia);
+                        System.out.println("S'ha clonat i modificat el problema");
                     }
                 }
             }
@@ -117,6 +173,7 @@ public class Problema {
             }
         }
         else {
+            System.out.println("El nou problema és invàlid");
 
         }
     }
@@ -154,9 +211,11 @@ public class Problema {
             if (trobat) {
                 inputfile.delete(); //needed?
                 tempfile.renameTo(inputfile); //successful?
+                System.out.println("El problema s'ha eliminat");
             }
             else {
                 // no existeix problema
+                System.out.println("El problema no existeix");
             }
 
 
@@ -232,6 +291,87 @@ public class Problema {
         }
         return mat;
     }
+
+    public static Problema[] consultarProblemes() {
+        try (BufferedReader br = new BufferedReader(new FileReader(fitxer))) {
+            ArrayList<Problema> probs = new ArrayList<Problema>();
+            String line;
+            while ((line = br.readLine()) != null) {
+                String[] camps = line.split("\\s+");
+                Problema prob = new Problema(Integer.parseInt(camps[0]), Integer.parseInt(camps[1]), Integer.parseInt(camps[2]), camps[3]);
+                //NumberFormatException
+                probs.add(prob);
+            }
+            Problema res[] = new Problema[probs.size()];
+            res = probs.toArray(res);
+            return res;
+        }
+        catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+        catch (IOException e) {
+            e.printStackTrace();
+        }
+        return null; //try return?
+    }
+
+    /*public static Problema getProblemaId(int id) {
+        try (BufferedReader br = new BufferedReader(new FileReader(fitxer))) {
+            String line;
+            boolean trobat = false;
+            while ((line = br.readLine()) != null) {
+                String[] camps = line.split("\\s+");
+                String sid = String.valueOf(id);
+                if (camps[0].equals(sid)) {
+                    trobat = true;
+                    //problema ja existeix
+                    Problema res = new Problema(Integer.parseInt(camps[0]), Integer.parseInt(camps[1]), Integer.parseInt(camps[2]), camps[3]);
+                    return res;
+                }
+            }
+            if (!trobat) {
+                Problema res = new Problema();
+                return res;
+            }
+        }
+        catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+        catch (IOException e) {
+            e.printStackTrace();
+        }
+        return null; //try return?
+    }*/
+
+    public static int getProblemaId(int id, Problema p) { //comprobar problema.id != id
+        try (BufferedReader br = new BufferedReader(new FileReader(fitxer))) {
+            String line;
+            boolean trobat = false;
+            while ((line = br.readLine()) != null) {
+                String[] camps = line.split("\\s+");
+                String sid = String.valueOf(id);
+                if (camps[0].equals(sid)) {
+                    trobat = true;
+                    p.id = id;
+                    p.jugades = Integer.parseInt(camps[1]);
+                    p.primer = Integer.parseInt(camps[2]);
+                    p.ini_pos = camps[3];
+                    return 0;
+                }
+            }
+            if (!trobat) {
+                return -1;
+            }
+        }
+        catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+        catch (IOException e) {
+            e.printStackTrace();
+        }
+        return -2; //try return?
+    }
+
 
     /** valida si un problema p es pot resoldre en un nombre de jugades p.njug
      */
@@ -318,7 +458,13 @@ public class Problema {
                 }
             }
         }
-        return false;
+        if (true) {
+            System.out.println("El problema és vàlid");
+            return true;
+        }
+        else {
+            return false;
+        }
     }
 
 }

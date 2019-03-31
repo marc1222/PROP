@@ -61,4 +61,8 @@ public class Alfil extends Peca {
     public boolean rango(Posicion ini, Posicion fin) {
         return (Math.abs(fin.x - ini.x) == Math.abs(fin.y - ini.y));
     }
+
+    public String getTipus() {
+        return define.ALFIL;
+    }
 }

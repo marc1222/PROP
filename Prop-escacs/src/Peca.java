@@ -12,4 +12,23 @@ public abstract class Peca {
      */
     abstract public boolean rango(Posicion ini, Posicion fin);
     //abstract public boolean rango(int iniI, int iniJ, int finI, int finJ);
+
+    public int getId() {
+        return this.id;
+    }
+    public int getColor() {
+        return this.color;
+    }
+
+    public void setId(int id) {
+        if (id >= 0) this.id = id;
+        else ; //
+    }
+
+    public void setColor(int color) {
+        if (color == define.BLACK || color == define.WHITE) this.color = color;
+        else ; //
+    }
+
+    abstract public String getTipus();
 }

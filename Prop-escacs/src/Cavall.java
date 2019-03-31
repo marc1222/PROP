@@ -58,4 +58,8 @@ public class Cavall extends Peca {
         }
         return false;
     }
+
+    public String getTipus() {
+        return define.CAVALL;
+    }
 }

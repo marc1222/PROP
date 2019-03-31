@@ -149,4 +149,8 @@ public class Peo extends Peca {
         }
         return false;
     }
+
+    public String getTipus() {
+        return define.PEO;
+    }
 }
