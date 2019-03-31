@@ -35,7 +35,9 @@ public class Taulell {
 
 
     //publiques
-
+    public Peca[][] getTauler() {
+        return T;
+    }
     //pre: x0,y0,x,y han de pertanyer a l'intèrval següent: 0 <= valor <= 7
     //post: es retorna la instancia de la peça en la posicio (x,y) de T
     public Peca getPecaPosició(Posicion pos) {
@@ -53,7 +55,7 @@ public class Taulell {
     {
             if (inici.x < 0 || inici.y < 0 || inici.x > 7 || inici.y > 7 || fi.x < 0 || fi.y < 0 || fi.x > 7 || fi.y > 7)
                 throw new IllegalArgumentException("Taulell: X o Y valores inválidos");
-            if (color != 'w' || color != 'b')
+            if (color != define.WHITE || color != define.BLACK)
                 throw new IllegalArgumentException("Taulell: Color inválido");
             Peca aux = T[fi.x][fi.y];
             if (aux.getColor() == color)
@@ -73,7 +75,7 @@ public class Taulell {
     //i es crea la peça amb els parametres instanciats
     public void crear_peça(Posicion pos, char color, String tipus) {
         try {
-            if (x < 0 || y < 0 || x > 7 || y > 7)
+            if (pos.x < 0 || pos.y < 0 || pos.x > 7 || pos.y > 7)
                 throw new IllegalArgumentException("Taulell: X o Y valores inválidos");
 
             if (color != define.BLACK || color != define.WHITE || color != define.NULL_COLOR)
@@ -131,13 +133,10 @@ public class Taulell {
         }
 
     }
-	//pre: a pos inici hi ha un peça no nula del jugador color 
+    //donada una posició inici i final es mira si les caselles que estan entre aquestes (forman vertical/diagonal/horitzontal)
+    //tenen alguna peça la cual impedeixi el moviment cap a la posicio desti
+	//pre: a pos inici hi ha un peça no nula del jugador color
     private boolean descartar_movimiento(Posicion inici, Posicion desti, int color) throws ChessException {
-		
-		//check posició destí
-		Peca dest = T[desti.x][desti.y];
-		if (dest.getTipus != define.PECA_NULA && dest.getColor == color) //peça teva  a destí -> pos invalida
-			return true;
 		//check cami fins destí
 		int dx = inici.x - desti.x;
 		int dy = inici.y -desti.y;
@@ -166,9 +165,9 @@ public class Taulell {
 		
 		}
 		else if (dx == dy) { //dx && dy != 0 -> mov. diagonal
-			if (inici.x < desti.x) i = 1; j = 1;
-			else i = -1; j = -1;
-			for (int k = 0; k < dx-1; ++k) {
+			if (inici.x < desti.x) {i = 1; j = 1;}
+			else {i = -1; j = -1;}
+			for (int k = 0; k < (dx - 1); ++k) {
 				pos.x += i;
 				pos.y += j;
 				aux = T[i][j];
@@ -186,6 +185,7 @@ public class Taulell {
                 throw new IllegalArgumentException("Taulell: X o Y valores inválidos");
             Peca aux = T[inici.x][inici.y];
             String tipus = aux.getTipus();
+            int color = aux.getColor();
             if (tipus == define.PECA_NULA)
                 throw new IllegalArgumentException("Taulell: No hi ha cap peça");
             int color = aux.getColor();
@@ -193,14 +193,21 @@ public class Taulell {
                 throw new IllegalArgumentException("Taulell: No és una peça del teu color");
 
             all_pos = aux.getMovimientos();
-            if (tipus != define.CAVALL) {
-                ArrayList<Posicion> tmp = new ArrayList<>();;
-                for (int i = 0; i < all_pos.length; ++i) {
-                    if (!descartar_movimiento(inici,all_pos[i],)) tmp.add(all_pos[i]);
+            ArrayList<Posicion> tmp = new ArrayList<>();
+            int act_color;
+            Posicion act_pos;
+            for (int i = 0; i < all_pos.length; ++i) {
+                act_pos = all_pos[i];
+                act_color = T[all_pos[i].x][all_pos[i].y].getColor();
+
+                if (act_pos.x >= 0 && act_pos.y >= 0 && act_pos.x < 8 && act_pos.y < 8  && act_color != color) {
+                    if (tipus == define.CAVALL) tmp.add(all_pos[i]);
+                    else if (!descartar_movimiento(inici, all_pos[i], act_color)) tmp.add(all_pos[i]);
                 }
-                all_pos = new Posicion[tmp.size()];
-                all_pos = tmp.toArray(all_pos);
             }
+            all_pos = new Posicion[tmp.size()];
+            all_pos = tmp.toArray(all_pos);
+
             return all_pos;
 
         } catch (Exception ex) {
