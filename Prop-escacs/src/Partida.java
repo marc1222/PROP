@@ -51,18 +51,31 @@ public class Partida  {
     //post: retorna el jugador guanyador si es produeix escac i mat, o be si s'excedeix el numero de rondes permeses, altrament retorna -1
     public int jugar_torn(Posicion inici, Posicion fi)
     {
+        int aux;
         if (this.ronda <= this.Prob.getJugades()) {
+            do {
+                if (this.torn == define.WHITE) {
+                    aux = W.tirar(inici, fi);
+                    if (Prob.getPrimer() == define.WHITE) this.clock += aux;
+                    System.out.println("MOV: El jugador BLANC vol moure la peça que es troba a [" + inici.x + "][" + inici.y + "] a la posició destí [" + fi.x + "][" + fi.y + "]");
+                } else {
+                    //tirem
+                    aux = B.tirar(inici, fi);
+                    //actualitzar rellotge
+                    if (Prob.getPrimer() == define.WHITE) this.clock += aux;
+                    System.out.println("MOV: El jugador NEGRE vol moure la peça que es troba a [" + inici.x + "][" + inici.y + "] a la posició destí [" + fi.x + "][" + fi.y + "]");
+                }
+            } while (!Tauler.mover_pieza(inici, fi, this.torn)); //mover pieza retorna true si s'ha pogut executar el moviment o fals altrament
 
-            if (this.torn == 'W') {
-                W.tirar(inici, fi);
-                System.out.println("MOV: El jugador BLANC vol moure la peça que es troba a [" + inici.x + "][" + inici.y + "] a la posició destí [" + fi.x + "][" + fi.y + "]");
-            } else {
-                B.tirar(inici, fi);
-                System.out.println("MOV: El jugador NEGRE vol moure la peça que es troba a [" + inici.x + "][" + inici.y + "] a la posició destí [" + fi.x + "][" + fi.y + "]");
+            aux = Tauler.escac_i_mat();
+            if (aux == 1) { //jaque mate
+                System.out.println("--- FI DE LA PARTIDA --- ESCAC I MAT ---");
+                return this.torn;
             }
-            Tauler.mover_pieza(inici, fi, torn);
+            else if (aux == 0) { //jaque
+                System.out.println("--- ATENCIÓ --- ESCAC ---");
 
-            if (Tauler.escac_i_mat() == true) return this.torn;
+            }
 
             if (this.torn == define.WHITE) this.torn = define.BLACK;
             else this.torn = define.WHITE;

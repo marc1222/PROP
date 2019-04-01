@@ -22,14 +22,14 @@ public class Taulell {
     //crea una peça
     //pre: x,y pertanyen a l'interval 0 <= valor <= 7, color = {'b','w','-'}, tipus = tots els tipus (null inclòs)
     //post: a la matriu de peces T en posició ( x, y ) s'hi troba una instancia de la peça creada
-    private void crea_peca_xy(Posicion Pos, int color, String tipus) throws ClassNotFoundException, NoSuchMethodException, IllegalAccessException, InvocationTargetException, InstantiationException {
+    private void crea_peca_xy(Posicion Pos, int color, String tipus) {
         Peca aux = Peca.forName(tipus).getConstructor(Posicion.class,Integer.class).newInstance(Pos,color);
         T[Pos.x][Pos.y] = aux;
     }
     //borra una peça
     //pre: x,y pertanyen a l'interval 0 <= valor <= 7
     //post: a la matriu de peces T en posició ( x, y ) s'hi troba una instancia de peça nula
-    private void borra_peca_xy(Posicion pos) throws ClassNotFoundException, NoSuchMethodException, IllegalAccessException, InvocationTargetException, InstantiationException {
+    private void borra_peca_xy(Posicion pos) {
             crea_peca_xy(pos,define.NULL_COLOR,define.PECA_NULA);
     }
 
@@ -51,24 +51,21 @@ public class Taulell {
     //    que a la posició desti (x,y) NO hi ha una peça del jugador que tira
     //        ---------------potser falta algo---------------
     //    i executa la validació del moviment que comprova les regles d'integritat del moviment de la peça
-    private void validar_moviment(Posicion inici, Posicion fi, int color) throws IllegalArgumentException, ChessException
-    {
-            if (inici.x < 0 || inici.y < 0 || inici.x > 7 || inici.y > 7 || fi.x < 0 || fi.y < 0 || fi.x > 7 || fi.y > 7)
-                throw new IllegalArgumentException("Taulell: X o Y valores inválidos");
-            if (color != define.WHITE || color != define.BLACK)
-                throw new IllegalArgumentException("Taulell: Color inválido");
-            Peca aux = T[fi.x][fi.y];
-            if (aux.getColor() == color)
-                throw new ChessException("Taulell: La casilla DESTINO no puede tener una pieza del mismo color");
-            aux = T[inici.x][inici.y];
-            if (aux.getTipus() == "null")
-                throw new ChessException("Taulell: La casilla INICIAL está vacia");
-            if (aux.getColor() != color)
-                throw new ChessException("Taulell: La casilla INICIAL no puede tener una pieza de otro color");
-
-            aux.rango(inici, fi);
+    private boolean validar_moviment(Posicion inici, Posicion fi, int color) throws IllegalArgumentException, ChessException {
+        //start checks
+        if (inici.x < 0 || inici.y < 0 || inici.x > 7 || inici.y > 7 || fi.x < 0 || fi.y < 0 || fi.x > 7 || fi.y > 7)
+            return false;
+        if (inici.x == fi.x && inici.y == fi.y) return false;
+        if (color != define.WHITE || color != define.BLACK) return false;
+        Peca aux = T[fi.x][fi.y];
+        if (aux.getColor() == color) return false;
+        aux = T[inici.x][inici.y];
+        if (aux.getTipus() == define.PECA_NULA) return false;
+        if (aux.getColor() != color) return false;
+        if (aux.getTipus() != define.CAVALL && descartar_movimiento(inici, fi)) return false;
+            //end checks call peça checker -> boolean
+        return aux.rango(inici, fi);
     }
-
     // instancia al tauler una nova peça
     //pre: true
     //post: es comprova que x,y pertanyin a l'interval 0 <= valor <= 7, que color pertanyi a algun dels jugadors, o be que "-" en cas de peca nula
@@ -118,7 +115,7 @@ public class Taulell {
     //post: invoca el metoda que valida totes les regles d'integritat del moviment indicat,
     // instancia una peça a la posició x,y
     // i borra la de x0,y0 es produeix una excpeció
-    public void mover_pieza(Posicion inici, Posicion fi, int color) {
+    public boolean mover_pieza(Posicion inici, Posicion fi, int color) {
         try {
             validar_moviment(inici,fi,color);
             Peca aux = T[inici.x][inici.y];
@@ -135,49 +132,61 @@ public class Taulell {
     }
     //donada una posició inici i final es mira si les caselles que estan entre aquestes (forman vertical/diagonal/horitzontal)
     //tenen alguna peça la cual impedeixi el moviment cap a la posicio desti
-	//pre: a pos inici hi ha un peça no nula del jugador color
-    private boolean descartar_movimiento(Posicion inici, Posicion desti, int color) throws ChessException {
+
+    //pre: a pos inici hi ha un peça no nula del jugador color, i posició inici && desti son posicions valides
+    //
+
+    //post: retorna true si el moviment proposat no es pot acomplir o be perquè no és un
+    // moviment horitzontal/diagonal/vertical o be perque s'hi interposa alguna
+    //peça entre totes les caselles que haura de recorrer per realitzar el desplaçament cap al destí
+    //retorna fals en cas que no s'hagi de descartar el moviment i per tant aquest es consideri
+    //un moviment valid dins les dinàmiques establertes per la funció
+    private boolean descartar_movimiento(Posicion inici, Posicion desti) {
 		//check cami fins destí
-		int dx = inici.x - desti.x;
-		int dy = inici.y -desti.y;
+		double dx = inici.x - desti.x;
+		double dy = inici.y -desti.y;
 		dx = Math.abs(dx);
 		dy = Math.abs(dy);
 		Peca aux;
 		int i,j;
 		Posicion pos = new Posicion(inici.x,inici.y);
+		boolean ret = true;
 		if (dy == 0) { //mov. horitzontal
 			if (inici.x < desti.x) i = 1;
 			else i = -1;
-			for (int k = 0; k < dx-1; ++k) {
+			for (int k = 0; k < (dx - 1); ++k) {
 				pos.x += i;
 				aux = T[pos.x][inici.y];
-				if (aux.getTipus != define.PECA_NULA) return true;
+				if (aux.getTipus() != define.PECA_NULA) return true;
 			}
+			return false;
 		}
 		else if (dx == 0) { //mov. vertical
 			if (inici.y < desti.y) i = 1;
 			else i = -1;
-			for (int k = 0; k < dy-1; ++k) {
+			for (int k = 0; k < (dy - 1); ++k) {
 				pos.y += i;
 				aux = T[inici.x][i];
-				if (aux.getTipus != define.PECA_NULA) return true;
+				if (aux.getTipus() != define.PECA_NULA) return true;
 			}
-		
+		    return false;
 		}
 		else if (dx == dy) { //dx && dy != 0 -> mov. diagonal
-			if (inici.x < desti.x) {i = 1; j = 1;}
-			else {i = -1; j = -1;}
-			for (int k = 0; k < (dx - 1); ++k) {
+			if (inici.x < desti.x && inici.y < desti.y) {i = 1; j = 1;}
+			else if (inici.x < desti.x && inici.y > desti.y) {i = 1; j = -1;}
+            else if (inici.x > desti.x && inici.y < desti.y) {i = -1; j = 1;}
+            else {i = -1; j = -1;}
+            for (int k = 0; k < (dx - 1); ++k) {
 				pos.x += i;
 				pos.y += j;
 				aux = T[i][j];
-				if (aux.getTipus != define.PECA_NULA) return true;
+				if (aux.getTipus() != define.PECA_NULA) return true;
 			}
+			return false;
 		}
-		else
-			throw new ChessException("El moviment ha de ser vertical, horitzontal o diagonal");
-        return false;
+		return true;
     }
+
     public Posicion[] todos_movimientos(Posicion inici) {
         Posicion[] all_pos;
         try {
@@ -188,9 +197,6 @@ public class Taulell {
             int color = aux.getColor();
             if (tipus == define.PECA_NULA)
                 throw new IllegalArgumentException("Taulell: No hi ha cap peça");
-            int color = aux.getColor();
-            if (color != define.WHITE || color != define.BLACK)
-                throw new IllegalArgumentException("Taulell: No és una peça del teu color");
 
             all_pos = aux.getMovimientos();
             ArrayList<Posicion> tmp = new ArrayList<>();
@@ -199,21 +205,103 @@ public class Taulell {
             for (int i = 0; i < all_pos.length; ++i) {
                 act_pos = all_pos[i];
                 act_color = T[all_pos[i].x][all_pos[i].y].getColor();
-
                 if (act_pos.x >= 0 && act_pos.y >= 0 && act_pos.x < 8 && act_pos.y < 8  && act_color != color) {
-                    if (tipus == define.CAVALL) tmp.add(all_pos[i]);
-                    else if (!descartar_movimiento(inici, all_pos[i], act_color)) tmp.add(all_pos[i]);
+                    if (tipus == define.CAVALL) tmp.add(act_pos);
+                    else if (!descartar_movimiento(inici, act_pos)) tmp.add(act_pos);
                 }
             }
-            all_pos = new Posicion[tmp.size()];
-            all_pos = tmp.toArray(all_pos);
-
+            all_pos = tmp.toArray(new Posicion[tmp.size()]);
             return all_pos;
 
-        } catch (Exception ex) {
+        } catch (IllegalArgumentException ex) {
             System.out.println(ex.getMessage());
             all_pos = null;
             return all_pos;
         }
     }
+    //sempre existira un rei amb un color
+    //get la posició del rei pel color indicat pel parametre
+    private Posicion getReiPos(int color) {
+        Peca aux;
+        for (int i= 0; i < 8; ++i) {
+            for (int j = 0; j < 8; ++j) {
+                aux = T[i][j];
+                if (aux.getTipus() == define.REI && aux.getColor() == color) {
+                    return new Posicion(i,j);
+                }
+            }
+        }
+        return new Posicion();
+    }
+    //get posicions de totes les peces d'un color
+    private Posicion[] getPosColor(int color) {
+        Peca aux;
+        ArrayList<Posicion> tmp = new ArrayList<>();
+
+        for (int i= 0; i < 8; ++i) {
+            for (int j = 0; j < 8; ++j) {
+                if (T[i][j].getColor() == color) {
+                    tmp.add(new Posicion(i,j));
+                }
+            }
+        }
+        return tmp.toArray(new Posicion[tmp.size()]);
+    }
+    //para un conjunto de piezas determinar si amenazan a la posicion Rei,
+    //si hay un camino valido entre cada una de ellas
+    //pre --> Rei: posición donde se debe simular el jaque
+    //      ReiIni: posición inicial donde se encuentra el rei en el tablero para tenerla
+    //              en cuenta como una casilla vacia (es la que el rei en la simulación abandonaria para desplazarse a la posicio Rei)
+
+    //post--> devuelve true si alguna de esas piezas amenaza la posición
+    private boolean escac(Posicion[] Peces, Posicion Rei, Posicion ReiIni) {
+        boolean aux;
+        aux = (Rei.x != ReiIni.x) || (Rei.y != ReiIni.y);
+        if (aux) {
+            crea_peca_xy(Rei,T[ReiIni.x][ReiIni.y].getColor(),define.REI);
+            borra_peca_xy(ReiIni);
+        }
+        boolean ret;
+        for (int i = 0; i < Peces.length; ++i) {
+            //hacer modificacion temporal al tablero
+            //ejecutar la consulta sobre el tablero "modificado temporalmente"
+            ret = descartar_movimiento(Peces[i],Rei);
+            if (!ret) { //si no se descarta el movimiento significa que hay un posible desplazamiento -> jaque
+                if (aux) {
+                    crea_peca_xy(ReiIni,T[Rei.x][Rei.y].getColor(),define.REI);
+                    borra_peca_xy(Rei);
+                }
+                return true;
+            }
+        }
+        //restablecer el tablero
+        if (aux) {
+            crea_peca_xy(ReiIni,T[Rei.x][Rei.y].getColor(),define.REI);
+            borra_peca_xy(Rei);
+        }
+        //no hay camino -> no hi ha escac
+        return false;
+    }
+    //pre -> color pertany define.WHITE || define.BLACK
+    //post --> retorna 1 si hi ha un escac i mat al rei del color indicat pel parametre color,
+    // 0 si nomes hi ha escac,
+    // -1 altrament
+    public boolean escac_i_mat(int color) {
+        //get posició del rei
+        Posicion Rei = getReiPos(color);
+        //get peces que ataquen
+        Posicion Peces_atacant[] = getPosColor((color==define.WHITE)?define.BLACK:define.WHITE);
+        //primeo validar el jaque a la posición inicial del Rei
+        if (escac(Peces_atacant,Rei,Rei)){
+            //comprovar si es escac i mat
+            //get all movimientos del rei xk en la posicio inicial no es pot quedar
+            Posicion Rei_moves[] = todos_movimientos(Rei);
+            for (int i = 0; i < Rei_moves.length; ++i) {
+                if (!escac(Peces_atacant, Rei_moves[i], Rei)) return false;
+            }
+            return true;
+        }
+        return false;
+    }
+
 }
