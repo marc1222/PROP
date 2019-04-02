@@ -51,6 +51,7 @@ public class Partida  {
     //post: retorna el jugador guanyador si es produeix escac i mat, o be si s'excedeix el numero de rondes permeses, altrament retorna -1
     public int jugar_torn(Posicion inici, Posicion fi)
     {
+        this.ronda++;
         int aux;
         if (this.ronda <= this.Prob.getJugades()) {
             do {
@@ -67,7 +68,7 @@ public class Partida  {
                 }
             } while (!Tauler.mover_pieza(inici, fi, this.torn)); //mover pieza retorna true si s'ha pogut executar el moviment o fals altrament
 
-            aux = Tauler.escac_i_mat();
+            aux = Tauler.escac_i_mat((this.torn == define.WHITE) ? define.BLACK : define.WHITE);
             if (aux == 1) { //jaque mate
                 System.out.println("--- FI DE LA PARTIDA --- ESCAC I MAT ---");
                 return this.torn;

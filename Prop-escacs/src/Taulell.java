@@ -1,9 +1,4 @@
-import javafx.geometry.Pos;
-
-import java.lang.reflect.InvocationTargetException;
-import java.rmi.server.ExportException;
 import java.util.ArrayList;
-import java.util.Arrays;
 
 public class Taulell {
 
@@ -23,8 +18,12 @@ public class Taulell {
     //pre: x,y pertanyen a l'interval 0 <= valor <= 7, color = {'b','w','-'}, tipus = tots els tipus (null inclòs)
     //post: a la matriu de peces T en posició ( x, y ) s'hi troba una instancia de la peça creada
     private void crea_peca_xy(Posicion Pos, int color, String tipus) {
-        Peca aux = Peca.forName(tipus).getConstructor(Posicion.class,Integer.class).newInstance(Pos,color);
-        T[Pos.x][Pos.y] = aux;
+        try {
+            Peca aux = Peca.forName(tipus).getConstructor(Posicion.class, Integer.class).newInstance(Pos, color);
+            T[Pos.x][Pos.y] = aux;
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
     }
     //borra una peça
     //pre: x,y pertanyen a l'interval 0 <= valor <= 7
@@ -65,70 +64,6 @@ public class Taulell {
         if (aux.getTipus() != define.CAVALL && descartar_movimiento(inici, fi)) return false;
             //end checks call peça checker -> boolean
         return aux.rango(inici, fi);
-    }
-    // instancia al tauler una nova peça
-    //pre: true
-    //post: es comprova que x,y pertanyin a l'interval 0 <= valor <= 7, que color pertanyi a algun dels jugadors, o be que "-" en cas de peca nula
-    //i es crea la peça amb els parametres instanciats
-    public void crear_peça(Posicion pos, char color, String tipus) {
-        try {
-            if (pos.x < 0 || pos.y < 0 || pos.x > 7 || pos.y > 7)
-                throw new IllegalArgumentException("Taulell: X o Y valores inválidos");
-
-            if (color != define.BLACK || color != define.WHITE || color != define.NULL_COLOR)
-                throw new IllegalArgumentException("Taulell: Color inválido");
-            if ( (color == define.NULL_COLOR && tipus != define.PECA_NULA) || (tipus == define.PECA_NULA && color != define.NULL_COLOR) )
-                throw new IllegalArgumentException(("Taulell: Peça NULL invalida"));
-
-            crea_peca_xy(pos,color,tipus);
-
-        } catch(IllegalArgumentException ex) {
-            System.out.println(ex.getMessage());
-        } catch (Exception ex) {
-            ex.printStackTrace();
-        }
-    }
-    // instancia al tauler una nova peça que no sigui de tipus null
-    //pre: true
-    //post: es comprova que sigui una posició valida, que hi hagi alguna instancia de peça diferent de null i es borra la peça
-    public void destrueix_peça(Posicion pos) {
-        try {
-            if (pos.x < 0 || pos.y < 0 || pos.x > 7 || pos.y > 7)
-                throw new IllegalArgumentException("Taulell: X o Y valores inválidos");
-            Peca p = T[pos.x][pos.y];
-            if (p.getTipus() == define.PECA_NULA)
-                throw new ChessException("Taulell: No hay ninguna pieza que destruir en la posición: ["+pos.x+"] ["+pos.y+"]");
-
-            borra_peca_xy(pos);
-
-        } catch(IllegalArgumentException ex) {
-            System.out.println(ex.getMessage());
-
-        } catch (ChessException ex) {
-            System.out.println(ex.getMessage());
-        } catch (Exception ex) {
-            ex.printStackTrace();
-        }
-    }
-    //encarregada de moure una peça de una posició a una altre
-    //pre: true -> rep parametres x0,y0 (pos inicial) i parametres x,y (pos desti) i  color (peces que es mouen)
-    //post: invoca el metoda que valida totes les regles d'integritat del moviment indicat,
-    // instancia una peça a la posició x,y
-    // i borra la de x0,y0 es produeix una excpeció
-    public boolean mover_pieza(Posicion inici, Posicion fi, int color) {
-        try {
-            validar_moviment(inici,fi,color);
-            Peca aux = T[inici.x][inici.y];
-            borra_peca_xy(inici);
-            //a.getClass().getSimpleName() --> class name
-            //getClass().getName() --> package + class name
-            crea_peca_xy(fi,color,aux.getTipus());
-        } catch (IllegalArgumentException ex) {
-            System.out.println(ex.getMessage());
-        } catch (Exception ex) {
-            ex.printStackTrace();
-        }
-
     }
     //donada una posició inici i final es mira si les caselles que estan entre aquestes (forman vertical/diagonal/horitzontal)
     //tenen alguna peça la cual impedeixi el moviment cap a la posicio desti
@@ -282,11 +217,20 @@ public class Taulell {
         //no hay camino -> no hi ha escac
         return false;
     }
+
+    private boolean matar_amenaça() {
+        return true;
+    }
+
+    private boolean protegir_rei() {
+        return true;
+    }
+
     //pre -> color pertany define.WHITE || define.BLACK
     //post --> retorna 1 si hi ha un escac i mat al rei del color indicat pel parametre color,
     // 0 si nomes hi ha escac,
     // -1 altrament
-    public boolean escac_i_mat(int color) {
+    public int escac_i_mat(int color) {
         //get posició del rei
         Posicion Rei = getReiPos(color);
         //get peces que ataquen
@@ -297,11 +241,80 @@ public class Taulell {
             //get all movimientos del rei xk en la posicio inicial no es pot quedar
             Posicion Rei_moves[] = todos_movimientos(Rei);
             for (int i = 0; i < Rei_moves.length; ++i) {
-                if (!escac(Peces_atacant, Rei_moves[i], Rei)) return false;
+                if (!escac(Peces_atacant, Rei_moves[i], Rei)) return 0;
             }
-            return true;
+            if (!matar_amenaça()) return 0;
+            if (!protegir_rei()) return 0;
+            return 1;
         }
-        return false;
+        return -1;
+    }
+    // instancia al tauler una nova peça
+    //pre: true
+    //post: es comprova que x,y pertanyin a l'interval 0 <= valor <= 7, que color pertanyi a algun dels jugadors, o be que "-" en cas de peca nula
+    //i es crea la peça amb els parametres instanciats
+    public void crear_peça(Posicion pos, char color, String tipus) {
+        try {
+            if (pos.x < 0 || pos.y < 0 || pos.x > 7 || pos.y > 7)
+                throw new IllegalArgumentException("Taulell: X o Y valores inválidos");
+
+            if (color != define.BLACK || color != define.WHITE || color != define.NULL_COLOR)
+                throw new IllegalArgumentException("Taulell: Color inválido");
+            if ( (color == define.NULL_COLOR && tipus != define.PECA_NULA) || (tipus == define.PECA_NULA && color != define.NULL_COLOR) )
+                throw new IllegalArgumentException(("Taulell: Peça NULL invalida"));
+
+            crea_peca_xy(pos,color,tipus);
+
+        } catch(IllegalArgumentException ex) {
+            System.out.println(ex.getMessage());
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+    }
+    // instancia al tauler una nova peça que no sigui de tipus null
+    //pre: true
+    //post: es comprova que sigui una posició valida, que hi hagi alguna instancia de peça diferent de null i es borra la peça
+    public void destrueix_peça(Posicion pos) {
+        try {
+            if (pos.x < 0 || pos.y < 0 || pos.x > 7 || pos.y > 7)
+                throw new IllegalArgumentException("Taulell: X o Y valores inválidos");
+            Peca p = T[pos.x][pos.y];
+            if (p.getTipus() == define.PECA_NULA)
+                throw new ChessException("Taulell: No hay ninguna pieza que destruir en la posición: ["+pos.x+"] ["+pos.y+"]");
+
+            borra_peca_xy(pos);
+
+        } catch(IllegalArgumentException ex) {
+            System.out.println(ex.getMessage());
+
+        } catch (ChessException ex) {
+            System.out.println(ex.getMessage());
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+    }
+    //encarregada de moure una peça de una posició a una altre
+    //pre: true -> rep parametres x0,y0 (pos inicial) i parametres x,y (pos desti) i  color (peces que es mouen)
+    //post: invoca el metoda que valida totes les regles d'integritat del moviment indicat,
+    // instancia una peça a la posició x,y
+    // i borra la de x0,y0 es produeix una excpeció
+    public boolean mover_pieza(Posicion inici, Posicion fi, int color) {
+        boolean ret = false;
+        try {
+            if (!validar_moviment(inici,fi,color)) ret = false;
+            else {
+                Peca aux = T[inici.x][inici.y];
+                borra_peca_xy(inici);
+                crea_peca_xy(fi,color,aux.getTipus());
+                ret = true;
+            }
+            //a.getClass().getSimpleName() --> class name
+            //getClass().getName() --> package + class name
+        } catch (ChessException ex) {
+            System.out.println(ex.getMessage());
+        } finally {
+            return ret;
+        }
     }
 
 }
