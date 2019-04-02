@@ -2,7 +2,7 @@ public class Peo extends Peca {
     boolean primer_mov;
 
     Peo () {
-        id = -1;
+        id = getNextId();
         color = -1;
         primer_mov = false;
     }

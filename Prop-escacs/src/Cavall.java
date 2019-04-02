@@ -2,7 +2,7 @@ public class Cavall extends Peca {
     //int id;
 
     Cavall () {
-        id = -1;
+        id = getNextId();
         color = -1;
     }
 

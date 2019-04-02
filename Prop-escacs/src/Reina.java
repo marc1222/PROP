@@ -2,7 +2,7 @@ public class Reina extends Peca {
     //int id;
 
     Reina () {
-        id = -1;
+        id = getNextId();
         color = -1;
     }
 

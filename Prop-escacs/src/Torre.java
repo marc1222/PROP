@@ -2,13 +2,13 @@ public class Torre extends Peca {
     //int id;
 
     Torre () {
-        id = -1;
-        color = '\0';
+        id = getNextId();
+        color = -1;
     }
 
     Torre (int id) {
         this.id = id;
-        color = '\0';
+        color = -1;
     }
 
     Torre (int id, int color) {

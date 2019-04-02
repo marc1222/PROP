@@ -9,9 +9,15 @@ public class Problema {
     //usuari creador
 
     static String fitxer = "./files/problemes.txt";
+    static String fitxerId = "./files/indexId.txt";
+    private static int index = 0;
+
+    private static int getNextId() {
+        return ++index;
+    }
 
     Problema () {
-        id = -1;
+        id = getNextId();
         jugades = -1;
         primer = -1;
         ini_pos = null;
@@ -22,7 +28,7 @@ public class Problema {
         this.jugades = jugades;
         this.primer = primer;
         ini_pos = null;
-    }
+    } //?
 
     Problema (int id, int jugades, int primer, String ini_pos) {
         this.id = id;
@@ -49,6 +55,8 @@ public class Problema {
     public int getId() {
         return this.id;
     }
+
+
 
     public int getNumJugades() {
         return this.jugades;
@@ -121,7 +129,7 @@ public class Problema {
             }
         }
         else {
-            System.out.println("Problema invàlid");
+            System.out.println("Problema sense solució");
         }
 
 
@@ -143,7 +151,10 @@ public class Problema {
         else if (prim == 'b') {
             this.primer = define.BLACK;
         }
-        else ; // invalid fen
+        else {
+            //invalid fen
+            System.out.println("Problema o FEN invàlid");
+        }
         this.ini_pos = fen.substring(0, i);
 
         if (this.validar_problema()) {
@@ -173,7 +184,7 @@ public class Problema {
             }
         }
         else {
-            System.out.println("El nou problema és invàlid");
+            System.out.println("El nou problema no té solució");
 
         }
     }
@@ -292,6 +303,8 @@ public class Problema {
         return mat;
     }
 
+    /** retorna un array de tots els problemes del fitxer
+     */
     public static Problema[] consultarProblemes() {
         try (BufferedReader br = new BufferedReader(new FileReader(fitxer))) {
             ArrayList<Problema> probs = new ArrayList<Problema>();
@@ -342,7 +355,9 @@ public class Problema {
         }
         return null; //try return?
     }*/
-
+    /** retorna el problema amb el id passat per paràmetre pel paràmetre p i 0 o -1 si s'ha trobat o no
+     *  i un -2 si unexpected error
+     */
     public static int getProblemaId(int id, Problema p) { //comprobar problema.id != id
         try (BufferedReader br = new BufferedReader(new FileReader(fitxer))) {
             String line;
@@ -360,6 +375,7 @@ public class Problema {
                 }
             }
             if (!trobat) {
+                //no existeix el problema amb aquest id
                 return -1;
             }
         }
@@ -458,7 +474,7 @@ public class Problema {
                 }
             }
         }
-        if (true) {
+        if (true) { //
             System.out.println("El problema és vàlid");
             return true;
         }

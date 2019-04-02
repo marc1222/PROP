@@ -2,7 +2,7 @@ public class Alfil extends Peca {
     //int id;
 
     Alfil () {
-        id = -1;
+        id = getNextId();
         color = -1;
     }
 

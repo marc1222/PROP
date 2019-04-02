@@ -2,6 +2,12 @@ public abstract class Peca {
     protected int id;
     protected int color;
 
+    protected static int index = 0;
+
+    protected static int getNextId() {
+        return ++index;
+    }
+
     /** retorna una matriu de ints on cada fila son les coordenades x, y de la nova posició, en el cas de peça nula
      *  retorna un array buit
      */
@@ -30,5 +36,7 @@ public abstract class Peca {
         else ; //
     }
 
+    /** retorna el define del tipus de peça del paràmetre implícit
+     */
     abstract public String getTipus();
 }

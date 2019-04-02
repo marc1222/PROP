@@ -26,4 +26,8 @@ public class Peca_Nula extends Peca {
     public boolean rango(Posicion ini, Posicion fin) {
         return false;
     }
+
+    public String getTipus() {
+        return define.PECA_NULA;
+    }
 }

@@ -2,7 +2,7 @@ public class Rei extends Peca {
     //int id;
 
     Rei () {
-        id = -1;
+        id = getNextId();
         color = -1;
     }
 
