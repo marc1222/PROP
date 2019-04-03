@@ -20,8 +20,9 @@ public class Main {
             val = sc.nextInt();
         } while ((val > 3 || val < 1));
 
-//        Jugador master = new Jugador();
-//        Jugador second = new Jugador();
+//        Jugador master = new Usuari();
+//        Jugador second;
+        //Jugador tmp = new Maquina();
         String[] Users;
         switch (val) {
             case 1: {
@@ -29,7 +30,7 @@ public class Main {
                 System.out.println("\n---Iniciar Sessió---\n");
                 //test
                 Users = new String[]{"Pedro","Peponcio","Pepita","Grillo"};
-                //Users = master.getAllUsers();
+                //Users = totsUsuaris();
                 first = true;
                 do {
                     if (!first) {
@@ -44,14 +45,14 @@ public class Main {
                 } while ((val > Users.length || val < 1));
 
                 //fer login de l'user master
-                //          master.login(master.getUserById(val));
+                // master.login(Users[val-1]);
                 break;
             }
             case 2: {
                 //register al master
                 System.out.println("\n---Registrarte---\n");
-                //        String name = master.register();
-                //         master.login(name);
+                //String name = master.register();
+                //master.login(name);
                 break;
             }
             case 3: {
@@ -60,7 +61,7 @@ public class Main {
             }
         }
         //aqui master es un usuari valid, li mostrem els problemes
-
+        //Problema p;
         int ret = 0;
         while (ret != 5) {
             first = true;
@@ -72,32 +73,67 @@ public class Main {
                 System.out.println("\nBenvnvingut al teu menú d'usuari/a\n");
                 System.out.println("Què desitja realitzar?");
                 System.out.println("    1 - Jugar un problema");
-                System.out.println("    2 - Afegir/modificar un problema");
-                System.out.println("    3 - Borrar un problema");
-                System.out.println("    4 - Mirar les estadístiques");
-                System.out.println("    5 - Sortir de la app\n");
+                System.out.println("    2 - Afegir un problema");
+                System.out.println("    3 - Modificar un problema");
+                System.out.println("    4 - Borrar un problema");
+                System.out.println("    5 - Mirar les estadístiques");
+                System.out.println("    6 - Sortir de la app\n");
 
                 Scanner sc = new Scanner(System.in);
                 val = sc.nextInt();
             } while ((val > 5 || val < 1));
             switch (val) {
                 case 1: {
+                    //String[][] problemes = consultarProblemes();
+
+                    // fer bucles per mostar problemes
+
+                    //p = new Problema();
+                    //getProblemaId(problemes[val-1][0], p);
+
+
+                    // seleccionar oponent: maquina o usuari
+
+                    // seleccionar atacar o defendre
+
+                    // Partida pa = new Partida(p, atacant, defenent);
                     //jugar partida
+                    // pa.jugarPartida();
                     break;
                 }
                 case 2: {
-                    //afegir / modificar problema
+                    // p = new Problema();
+                    //scanejar jugades i fen
+                    // p.crearProblema(jugades, fen)
+                    // cancelar
+                    //afegir
                     break;
                 }
                 case 3: {
-
+                    // consultar problemes
+                    // seleccionar problema
+                    // p = getProblemaId
+                    // modificar problema
+                    // p.modificarProblema(jugades, fen);
                     break;
                 }
                 case 4: {
-                    //mirar stats stats
+                    // consultar problemes
+                    // p = getProblemaId
+                    // p.eliminarProblema()
                     break;
                 }
                 case 5: {
+                    //Opcions probl o usrPropi
+
+                    //String[][] problemes = consultarProblemes();
+                    //consultarEstadisticaProblema(String idProblema);
+
+                    //consultarEstadisticaUsuari(master.getName());
+                    //mirar stats stats
+                    break;
+                }
+                case 6: {
                     System.out.println("Sortint...");
                     return;
                 }
