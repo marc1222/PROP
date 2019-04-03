@@ -1,19 +1,29 @@
 //import com.sun.java.swing.plaf.windows.TMSchema;
-import
 
 import java.util.ArrayList;
 
+/**
+ * Esta clase da movientos en la partida de ajedrez, etc
+ * @author Marian Dumitru Danci
+ */
 public class Naive extends Maquina {
     char tauler[][] = new char[8][8];
     static int depth = 4;
     static int colorJugador;
     static int importanciaMobilitat = 10;
 
+    public Naive() {};
     public Naive(int color) {
         colorJugador = color;
     }
 
-    /* Minimax */
+    /**
+     * Método que da el mejor movimiento según unos datos para que gane la maquina.
+     * @param tau
+     * @param depth
+     * @return devuelve si el cierto sie el movimiento se ha hecho
+     */
+    /*
     public boolean mejorMovimiento(Taulell tau, int depth) {
         //hay que hacer deep copy de Taullel, solo se ha de copiar matriz
         // se da por hecho que se quiere maximizar colorJugador, colorJugador = colorActual
@@ -48,6 +58,7 @@ public class Naive extends Maquina {
         return true;
     }
 
+    //
     private static int minimax(Taulell tau, int depth, int colorActual) {
         //or si es mate del algun jugador
         if (depth == 0) {
@@ -86,18 +97,33 @@ public class Naive extends Maquina {
         return  min;
     }
 
+    //
     private static int evaluar(Taulell tau) {
-        int captura, mobilitatPropia, mobilitatOponent, total, puntPropia, puntOponent;
-        captura = mobilitatPropia = mobilitatOponent = total = puntPropia = puntOponent = 0;
+        int amenazaPropia, amenazaOponent, mobilitatPropia, mobilitatOponent, total, puntPropia, puntOponent;
+        amenazaPropia = amenazaOponent = mobilitatPropia = mobilitatOponent = total = puntPropia = puntOponent = 0;
         for (int i = 0; i < tau.length; i++) {
             for (int j = 0; j < tau[0].length; j++) {
                 if (tau[i][j].getColor() == colorJugador) {
                     mobilitatPropia++;
                     puntPropia += puntuacioPeca(tau[i][j].getTipus());
+
+                    Posicion ini = new Posicion(i, j);
+                    for (Posicion desti : tau.todos_movimientos(ini)) {
+                        if(tau[desti.x][desti.y].getColor() != colorJugador) {
+                            amenazaPropia++;
+                        }
+                    }
                 }
                 else if (tau[i][j].getColor() == (colorJugador ^ 1)) {
                     mobilitatOponent++;
                     puntOponent += puntuacioPeca(tau[i][j].getTipus());
+
+                    Posicion ini = new Posicion(i, j);
+                    for (Posicion desti : tau.todos_movimientos(ini)) {
+                        if(tau[desti.x][desti.y].getColor() == colorJugador) {
+                            amenazaOponent++;
+                        }
+                    }
                 }
             }
         }
@@ -105,6 +131,7 @@ public class Naive extends Maquina {
         return total;
     }
 
+    //
     private static int puntuacioPeca(String tipus) {
         int puntuacio = 0;
         switch (tipus) {
@@ -126,4 +153,5 @@ public class Naive extends Maquina {
         }
         return puntuacio;
     }
+    */
 }

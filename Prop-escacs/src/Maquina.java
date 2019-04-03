@@ -1,4 +1,7 @@
-public class Maquina {
+/**
+ * @author Marian Dumitru Danci
+ */
+public abstract class Maquina {
 
 
 }
