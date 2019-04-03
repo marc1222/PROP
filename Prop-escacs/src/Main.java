@@ -1,109 +1,108 @@
-import java.util.Scanner; // import the Scanner class
+import java.util.Scanner;
 
-public class Main{
-    static Scanner sc = new Scanner(System.in);
-    static Jugador jug = new Jugador();
+public class Main {
+    public static void main(String args[]) {
 
-    public static void main(String[] args) {
-        /*
-        inici();
-        */
+        //pantalla 1
+        System.out.println("Benvingut/da (menu principal)");
+        int val;
+        boolean first = true;
+        do {
+            if (!first) {
+                System.out.println("!!!!!!Error!!!!!!!");
+            } else first = false;
+            System.out.println("\nQuè desitja realitzar?");
+            System.out.println("    1 - Iniciar sessió");
+            System.out.println("    2 - Registrar-se");
+            System.out.println("    3 - Sortir de la app\n");
 
-        /*
-        String[] x = jug.totsUsuaris();
-        for (String s : x) {
-            System.out.println(s);
-        }
-        */
+            Scanner sc = new Scanner(System.in);
+            val = sc.nextInt();
+        } while ((val > 3 || val < 1));
 
-        /*
-        Estadistica est = new Estadistica();
-        //est.eliminatStatsUsuari("u2");
-        //est.estadistiquesProblema("p1");
-        //est.estadistiquesUsuari("u2");
-        */
+//        Jugador master = new Jugador();
+//        Jugador second = new Jugador();
+        String[] Users;
+        switch (val) {
+            case 1: {
+                //ensenyar usuaris disponibles
+                System.out.println("\n---Iniciar Sessió---\n");
+                //test
+                Users = new String[]{"Pedro","Peponcio","Pepita","Grillo"};
+                //Users = master.getAllUsers();
+                first = true;
+                do {
+                    if (!first) {
+                        System.out.println("!!!!!!Error!!!!!!!");
+                    } else first = false;
+                    System.out.println("Selecciona un usuari");
+                    for (int i = 0; i < Users.length; ++i) {
+                        System.out.println("   " + (i + 1) + " - " + Users[i]);
+                    }
+                    Scanner sc = new Scanner(System.in);
+                    val = sc.nextInt();
+                } while ((val > Users.length || val < 1));
 
-        Usuari usr = new Usuari();
-        usr.eliminarUsuari("usr2");
-
-    }
-
-    public static void inici() {
-        while (!opcionsEntrada());
-        System.out.println("Benvingut!\n");
-        while (opcionsSessio());
-    }
-
-    public static boolean opcionsEntrada() {
-        // Opcions dentrada
-        System.out.println("Entrar (1)\n" +
-                "Registrarse(2)");
-        String opcio = sc.nextLine();
-
-        if (opcio.equals("1")) {
-            String nomUsuari, contrasenya;
-
-            System.out.println("Nom usuari:");
-            nomUsuari = sc.nextLine();
-
-            System.out.println("Contrasenya:");
-            contrasenya = sc.nextLine();
-
-            if (jug.entrar(nomUsuari, contrasenya)) {
-                return true;
+                //fer login de l'user master
+                //          master.login(master.getUserById(val));
+                break;
+            }
+            case 2: {
+                //register al master
+                System.out.println("\n---Registrarte---\n");
+                //        String name = master.register();
+                //         master.login(name);
+                break;
+            }
+            case 3: {
+                System.out.println("Sortint...");
+                return;
             }
         }
-        else if (opcio.equals("2")) {
-            String nomUsuari, contrasenya1, contrasenya2;
-            System.out.println("Usuari:");
-            nomUsuari = sc.nextLine();
+        //aqui master es un usuari valid, li mostrem els problemes
 
-            System.out.println("Contrasenya:");
-            contrasenya1 = sc.nextLine();
+        int ret = 0;
+        while (ret != 5) {
+            first = true;
+            do {
+                if (!first) {
+                    System.out.println("!!!!!!Error!!!!!!!");
+                } else first = false;
 
-            System.out.println("Repeteix contrasenya:");
-            contrasenya2 = sc.nextLine();
-            if(jug.resigstrar(nomUsuari, contrasenya1, contrasenya2)) {
-                return true;
+                System.out.println("\nBenvnvingut al teu menú d'usuari/a\n");
+                System.out.println("Què desitja realitzar?");
+                System.out.println("    1 - Jugar un problema");
+                System.out.println("    2 - Afegir/modificar un problema");
+                System.out.println("    3 - Borrar un problema");
+                System.out.println("    4 - Mirar les estadístiques");
+                System.out.println("    5 - Sortir de la app\n");
+
+                Scanner sc = new Scanner(System.in);
+                val = sc.nextInt();
+            } while ((val > 5 || val < 1));
+            switch (val) {
+                case 1: {
+                    //jugar partida
+                    break;
+                }
+                case 2: {
+                    //afegir / modificar problema
+                    break;
+                }
+                case 3: {
+
+                    break;
+                }
+                case 4: {
+                    //mirar stats stats
+                    break;
+                }
+                case 5: {
+                    System.out.println("Sortint...");
+                    return;
+                }
             }
+            ret = val;
         }
-        else {
-            System.out.println("Opció no vàlida.\n");
-        }
-        return false;
-    }
-
-    public static boolean opcionsSessio() {
-        Scanner sc = new Scanner(System.in);
-
-        // Opcions sessio
-        System.out.println("Opcions de joc:\n" +
-                "Jugar (1)\n" +
-                "Veure solució (2)\n" +
-                "Donar de baixa (3)\n" +
-                "Tancar sessió(4)\n" +
-                "Sortir del joc (5)\n");
-        String opcio = sc.nextLine();
-
-        if (opcio.equals("1")) {
-            System.out.println("Usuari vs Usuari\n" +
-                    "Usuari vs Naive\n" +
-                    "Naive vs Usuari\n" +
-                    "Naive vs Naive\n");
-        }
-        else if(opcio.equals("2")) {
-            System.out.println("Veure solució...\n");
-        }
-        else if(opcio.equals("3")) {
-            System.out.println("Donar de baix usuari\n");
-        }
-        else if(opcio.equals("4")) {
-            System.out.println("La sessió s'ha tancat.\n");
-            inici();
-        }
-        else if(opcio.equals("5")) {
-            return false;
-        }
-        return true;
     }
 }
