@@ -6,14 +6,43 @@ public class Problema {
     private int jugades;
     private int primer;
     private String ini_pos; // String?
-    //usuari creador
+    private int dificultat;
+    //usuari creador pels permissos
 
     static String fitxer = "./files/problemes.txt";
-    static String fitxerId = "./files/indexId.txt";
-    private static int index = 0;
+    static String fitxerId = "./files/index.txt";
+    private static int index = -1;
 
     private static int getNextId() {
-        return ++index;
+        if (index == -1) {
+            index = llegirId();
+        }
+        ++index;
+        guardarId(); // fi de programa?
+        return index;
+    }
+
+    private static void guardarId() {
+        try (FileWriter fileWriter = new FileWriter(fitxerId, false); PrintWriter pw = new PrintWriter(fileWriter)) {
+            pw.println(String.valueOf(index));
+        } catch (IOException e1) {
+            e1.printStackTrace();
+        }
+    }
+
+    private static int llegirId() {
+        try (BufferedReader br = new BufferedReader(new FileReader(fitxer))) {
+            String line;
+            if ((line = br.readLine()) != null) {
+                return Integer.parseInt(line);
+            }
+            else return -1;
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return -1; // try return
     }
 
     Problema () {
@@ -21,6 +50,7 @@ public class Problema {
         jugades = -1;
         primer = -1;
         ini_pos = null;
+        dificultat = -1;
     }
 
     Problema (int id, int jugades, int primer) {
@@ -50,6 +80,12 @@ public class Problema {
         else ; // invalid fen
         this.ini_pos = fen.substring(0, i);
         this.jugades = jugades;
+        int count = 0;
+        for (int j = 0; j < this.ini_pos.length(); ++j) {
+            if (this.ini_pos.charAt(j) < '0' || this.ini_pos.charAt(j) > '8') ++count;
+        }
+        this.dificultat = count * this.jugades / 10;
+        if (this.dificultat > 10) this.dificultat = 10;
     }
 
     public int getId() {
@@ -67,7 +103,11 @@ public class Problema {
     }
 
     public String getPosIni() {
-        return ini_pos;
+        return this.ini_pos;
+    }
+
+    public int getDificultat() {
+        return this.dificultat;
     }
 
     public void setId(int id) {
@@ -93,16 +133,27 @@ public class Problema {
     /** crea un problema a partir de un id de problema, l'string FEN complert i el nombre de jugades i el valida,
      *  si es valid l'escriu al fitxer
      */
-    public void crear_problema() { // public void? //if not validar return codi error?  //creadora abans especifica o no?
+    public void crear_problema(int njug, String fen) { // public void? //if not validar return codi error?  //creadora abans especifica o no?
         //prob_id? //int prob_id, String fen, int njug
+        this.jugades = njug;
 
-        /*int i = fen.indexOf(' ');
+        int i = fen.indexOf(' ');
         char prim = fen.charAt(i + 1);
-        String pos = fen.substring(0, i);*/
+        if (prim == 'w') {
+            this.primer = define.WHITE;
+        }
+        else if (prim == 'b') {
+            this.primer = define.BLACK;
+        }
+        else {
+            //invalid fen
+            System.out.println("FEN invàlid");
+        }
+        this.ini_pos = fen.substring(0, i);
 
         //Problema p = new Problema(prob_id, njug, prim, pos);
 
-        if (this.validar_problema()) {
+        if (this.validar_problema(this.primer, new Taullel(this.getPeces()), this.jugades, true)) {
             try (BufferedReader br = new BufferedReader(new FileReader(fitxer))) {
                 String line;
                 while ((line = br.readLine()) != null) {
@@ -157,7 +208,7 @@ public class Problema {
         }
         this.ini_pos = fen.substring(0, i);
 
-        if (this.validar_problema()) {
+        if (this.validar_problema(this.primer, new Taullel(this.getPeces()), this.jugades, true)) {
             try (BufferedReader br = new BufferedReader(new FileReader(fitxer))) {
                 String line;
                 while ((line = br.readLine()) != null) {
@@ -303,19 +354,41 @@ public class Problema {
         return mat;
     }
 
-    /** retorna un array de tots els problemes del fitxer
-     */
-    public static Problema[] consultarProblemes() {
+    /*public static Problema[] consultarProblemes() {
         try (BufferedReader br = new BufferedReader(new FileReader(fitxer))) {
             ArrayList<Problema> probs = new ArrayList<Problema>();
             String line;
             while ((line = br.readLine()) != null) {
                 String[] camps = line.split("\\s+");
                 Problema prob = new Problema(Integer.parseInt(camps[0]), Integer.parseInt(camps[1]), Integer.parseInt(camps[2]), camps[3]);
-                //NumberFormatException
+                //NumberFormatException0
                 probs.add(prob);
             }
             Problema res[] = new Problema[probs.size()];
+            res = probs.toArray(res);
+            return res;
+        }
+        catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+        catch (IOException e) {
+            e.printStackTrace();
+        }
+        return null; //try return?
+    }*/
+
+    /** retorna un array de tots els problemes del fitxer
+     */
+    public static String[][] consultarProblemes() {
+        try (BufferedReader br = new BufferedReader(new FileReader(fitxer))) {
+            ArrayList<String[]> probs = new ArrayList<String[]>();
+            String line;
+            while ((line = br.readLine()) != null) {
+                String[] camps = line.split("\\s+");
+                //NumberFormatException0
+                probs.add(camps);
+            }
+            String res[][] = new String[probs.size()][4];
             res = probs.toArray(res);
             return res;
         }
@@ -388,11 +461,7 @@ public class Problema {
         return -2; //try return?
     }
 
-
-    /** valida si un problema p es pot resoldre en un nombre de jugades p.njug
-     */
-    public boolean validar_problema() { //private?
-        /*char tau_mat[][] = new char[8][8]; // list?
+ /*char tau_mat[][] = new char[8][8]; // list?
         //String tau_mat[][] = new String[8][8];
         int k = 0;
         for (int i = 0; i < 8; ++i) {
@@ -437,50 +506,48 @@ public class Problema {
             }
             ++k;
         }*/
-        Peca tau_mat[][] = this.getPeces();
-        for (int i = 0; i < 8; ++i) {
-            for (int j = 0; j < 8; ++j) {
-                //char act = tau_mat[i][j];
-                //if (Character.isUpperCase(act)) act = Character.toLowerCase(act);
-                /*switch(act) {
-                    case 'r':
-                        //movimientos_validos
 
-                        break;
-                    case 'n':
-
-                        break;
-                    case 'b':
-
-                        break;
-                    case 'q':
-
-                        break;
-                    case 'k':
-
-                        break;
-                    case 'p':
-
-                        break;
-                    default:
-
-                        break;
-                }*/
-                Posicion mov[] = tau_mat[i][j].movimientos_validos(new Posicion(i, j));
-                for (int k = 0; i < tau_mat.length; ++k) {
-                    //tau_mat[k].length
-
-                    //moure peça
+    /** valida si un problema p es pot resoldre en un nombre de jugades p.njug
+     */
+    public boolean validar_problema(int color_act, Taulell tau, int njug, boolean atk) { //private?
+        //Peca pec_mat[][] = this.getPeces();
+        //Taulell tau = new Taulell(pec_mat);
+        if (njug == 0) return false;
+        int color_cont;
+        if (color_act == define.WHITE) color_cont = define.BLACK;
+        else color_cont = define.WHITE;
+        //for (int i = 0; i < 8; ++i) {
+            //for (int j = 0; j < 8; ++j) {
+        Posicion pec_pos[] = tau.getPosColor(color_act);
+        for (int i = 0; i < pec_pos.length; ++i) {
+            // if peça nula
+            //Posicion mov[] = pec_mat[i][j].movimientos_validos(new Posicion(i, j));
+            //Posicion pos_act = new Posicion(i, j);
+            Posicion mov[] = tau.todos_movimientos(pec_pos[i]);
+            for (int k = 0; i < mov.length; ++k) {
+                boolean ret;
+                tau.mover_pieza(pec_pos[i], mov[k], color_act);
+                if (atk && tau.escac_i_mat(color_cont) == 1) return true;
+                if (atk) {
+                    ret = this.validar_problema(color_cont, tau, njug, false);
                 }
+                else {
+                    if (njug != 1) ret = this.validar_problema(color_cont, tau, njug - 1, true); // if njug == 1 false
+                    else ret = false;
+                }
+                if (ret) return true;
+                tau.mover_pieza(mov[k], pec_pos[i], color_act); // o new tau?
             }
+                    //moure peça
         }
-        if (true) { //
+        return false;
+        /*if (true) { //
             System.out.println("El problema és vàlid");
             return true;
         }
         else {
             return false;
-        }
+        }*/
     }
 
 }

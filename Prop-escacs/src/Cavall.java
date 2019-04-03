@@ -4,16 +4,29 @@ public class Cavall extends Peca {
     Cavall () {
         id = getNextId();
         color = -1;
+        amenacades = null;
+        amenaces = null;
     }
 
     Cavall (int id) {
         this.id = id;
         color = -1;
+        amenacades = null;
+        amenaces = null;
     }
 
     Cavall (int id, int color) {
         this.id = id;
         this.color = color;
+        amenacades = null;
+        amenaces = null;
+    }
+
+    Cavall (int id, int color, Posicion[] amenacades, Posicion[] amenaces) {
+        this.id = id;
+        this.color = color;
+        this.amenacades = amenacades;
+        this.amenaces = amenaces;
     }
 
     /*public int[][] movimientos_validos(int posI, int posJ) {

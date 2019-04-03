@@ -5,18 +5,32 @@ public class Peo extends Peca {
         id = getNextId();
         color = -1;
         primer_mov = false;
+        amenacades = null;
+        amenaces = null;
     }
 
     Peo (int id) {
         this.id = id;
         color = -1;
         primer_mov = false;
+        amenacades = null;
+        amenaces = null;
     }
 
     Peo (int id, int color, boolean primer_mov) {
         this.id = id;
         this.color = color;
         this.primer_mov = primer_mov;
+        amenacades = null;
+        amenaces = null;
+    }
+
+    Peo (int id, int color, boolean primer_mov, Posicion[] amenacades, Posicion[] amenaces) {
+        this.id = id;
+        this.color = color;
+        this.primer_mov = primer_mov;
+        this.amenacades = amenacades;
+        this.amenaces = amenaces;
     }
 
     /*public int[][] movimientos_validos(int posI, int posJ) {

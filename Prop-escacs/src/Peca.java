@@ -1,6 +1,8 @@
 public abstract class Peca {
     protected int id;
     protected int color;
+    protected Posicion[] amenacades; // quines posicions amenacço
+    protected Posicion[] amenaces;   // quines posicions m'estan amenaçant
 
     protected static int index = 0;
 

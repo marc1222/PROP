@@ -4,16 +4,29 @@ public class Rei extends Peca {
     Rei () {
         id = getNextId();
         color = -1;
+        amenacades = null;
+        amenaces = null;
     }
 
     Rei (int id) {
         this.id = id;
         color = -1;
+        amenacades = null;
+        amenaces = null;
     }
 
     Rei (int id, int color) {
         this.id = id;
         this.color = color;
+        amenacades = null;
+        amenaces = null;
+    }
+
+    Rei (int id, int color, Posicion[] amenacades, Posicion[] amenaces) {
+        this.id = id;
+        this.color = color;
+        this.amenacades = amenacades;
+        this.amenaces = amenaces;
     }
 
     /*public int[][] movimientos_validos(int posI, int posJ) {
