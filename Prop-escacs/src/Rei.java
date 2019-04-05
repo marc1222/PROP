@@ -8,15 +8,15 @@ public class Rei extends Peca {
         amenaces = null;
     }
 
-    Rei (int id) {
+    /*Rei (int id) {
         this.id = id;
         color = -1;
         amenacades = null;
         amenaces = null;
-    }
+    }*/
 
-    Rei (int id, int color) {
-        this.id = id;
+    Rei (int color) {
+        this.id = getNextId();
         this.color = color;
         amenacades = null;
         amenaces = null;
@@ -37,7 +37,7 @@ public class Rei extends Peca {
         return res;
     }*/
 
-    public Posicion[] movimientos_validos(Posicion pos) {
+    public Posicion[] movimientos_validos(Posicion pos) { //i,j => x,y no arreglat
         // i + (-1, 1), j + (-1, 1)
         // new posicion res[] ?
         Posicion res[] = {new Posicion(pos.x - 1, pos.y - 1), new Posicion(pos.x - 1, pos.y),

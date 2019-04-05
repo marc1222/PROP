@@ -8,15 +8,15 @@ public class Cavall extends Peca {
         amenaces = null;
     }
 
-    Cavall (int id) {
+    /*Cavall (int id) {
         this.id = id;
         color = -1;
         amenacades = null;
         amenaces = null;
-    }
+    }*/
 
-    Cavall (int id, int color) {
-        this.id = id;
+    Cavall (int color) {
+        this.id = getNextId();
         this.color = color;
         amenacades = null;
         amenaces = null;
@@ -43,7 +43,7 @@ public class Cavall extends Peca {
         Posicion res[] = {new Posicion(pos.x - 2, pos.y - 1), new Posicion(pos.x - 2, pos.y + 1),
                 new Posicion(pos.x - 1, pos.y - 2), new Posicion(pos.x - 1, pos.y + 2),
                 new Posicion(pos.x + 1, pos.y - 2), new Posicion(pos.x + 1, pos.y + 2),
-                new Posicion(pos.x + 2, pos.y - 1), new Posicion(pos.x + 2, pos.y + 1)};
+                new Posicion(pos.x + 2, pos.y - 1), new Posicion(pos.x + 2, pos.y + 1)}; //i,j => x,y no arreglat
         return res;
     }
 

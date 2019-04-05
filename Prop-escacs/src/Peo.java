@@ -17,8 +17,8 @@ public class Peo extends Peca {
         amenaces = null;
     }
 
-    Peo (int id, int color, boolean primer_mov) {
-        this.id = id;
+    Peo (int color, boolean primer_mov) {
+        this.id = getNextId();
         this.color = color;
         this.primer_mov = primer_mov;
         amenacades = null;
@@ -79,27 +79,27 @@ public class Peo extends Peca {
         // i + 1, j + 1 if i + 1, j + 1 ocuppied and color != own_color; i - 1, j + 1
         // i + 1, j - 1; i - 1; j - 1    "                "               "
         Posicion res[] = new Posicion[4];
-        if (color == 'B') {
-            res[0] = new Posicion(pos.x + 1, pos.y);
-            if (primer_mov) {
-                res[1] = new Posicion(pos.x + 2, pos.y);
+        if (this.color == define.WHITE) {
+            res[0] = new Posicion(pos.x, pos.y + 1);
+            if (this.primer_mov) {
+                res[1] = new Posicion(pos.x, pos.y + 2);
             }
             else {
                 res[1] = new Posicion(-1, -1);
             }
-            res[2] = new Posicion(pos.x + 1, pos.y - 1);
+            res[2] = new Posicion(pos.x - 1, pos.y + 1);
             res[3] = new Posicion(pos.x + 1, pos.y + 1);
         }
-        else if (color == 'N') {
-            res[0] = new Posicion(pos.x - 1, pos.y);
-            if (primer_mov) {
-                res[1] = new Posicion(pos.x - 2, pos.y);
+        else if (this.color == define.BLACK) {
+            res[0] = new Posicion(pos.x, pos.y - 1);
+            if (this.primer_mov) {
+                res[1] = new Posicion(pos.x, pos.y - 2);
             }
             else {
                 res[1] = new Posicion(-1, -1);
             }
             res[2] = new Posicion(pos.x - 1, pos.y - 1);
-            res[3] = new Posicion(pos.x - 1, pos.y + 1);
+            res[3] = new Posicion(pos.x + 1, pos.y - 1);
         }
         return res;
     }
@@ -138,25 +138,25 @@ public class Peo extends Peca {
     }*/
 
     public boolean rango(Posicion ini, Posicion fin) {
-        boolean rangj = fin.y == ini.y + 1 || fin.y == ini.y - 1 || fin.y == ini.y;
-        if (color == 'B') {
-            if (fin.x == ini.x + 1) {
+        boolean rangj = fin.x == ini.x + 1 || fin.x == ini.x - 1 || fin.x == ini.x;
+        if (color == define.WHITE) {
+            if (fin.y == ini.y + 1) {
                 return rangj;
             }
             if (primer_mov) {
-                if (fin.x == ini.x + 2) {
-                    return (fin.y == ini.y);
+                if (fin.y == ini.y + 2) {
+                    return (fin.x == ini.x);
                 }
             }
             return false;
         }
-        else if (color == 'N') {
-            if (fin.x == ini.x - 1) {
+        else if (color == define.BLACK) {
+            if (fin.y == ini.y - 1) {
                 return rangj;
             }
             if (primer_mov) {
-                if (fin.x == ini.x - 2) {
-                    return (fin.y == ini.y);
+                if (fin.y == ini.y - 2) {
+                    return (fin.x == ini.x);
                 }
             }
             return false;

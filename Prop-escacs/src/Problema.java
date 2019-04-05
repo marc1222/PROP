@@ -153,7 +153,7 @@ public class Problema {
 
         //Problema p = new Problema(prob_id, njug, prim, pos);
 
-        if (this.validar_problema(this.primer, new Taullel(this.getPeces()), this.jugades, true)) {
+        /*******if (this.validar_problema(this.primer, new Taullel(this.getPeces()), this.jugades, true)) {
             try (BufferedReader br = new BufferedReader(new FileReader(fitxer))) {
                 String line;
                 while ((line = br.readLine()) != null) {
@@ -181,7 +181,7 @@ public class Problema {
         }
         else {
             System.out.println("Problema sense solució");
-        }
+        }*/
 
 
 
@@ -208,7 +208,7 @@ public class Problema {
         }
         this.ini_pos = fen.substring(0, i);
 
-        if (this.validar_problema(this.primer, new Taullel(this.getPeces()), this.jugades, true)) {
+        /******if (this.validar_problema(this.primer, new Taullel(this.getPeces()), this.jugades, true)) {
             try (BufferedReader br = new BufferedReader(new FileReader(fitxer))) {
                 String line;
                 while ((line = br.readLine()) != null) {
@@ -237,7 +237,7 @@ public class Problema {
         else {
             System.out.println("El nou problema no té solució");
 
-        }
+        }*/
     }
 
     /*
@@ -299,40 +299,40 @@ public class Problema {
                 if ((act >= 'a' && act <= 'z') || (act >= 'A' && act <= 'Z')) { //class character method
                     switch(act) {
                         case 'r':
-                            mat[i][j] = new Torre(k, define.BLACK);
+                            mat[i][j] = new Torre(define.BLACK);
                             break;
                         case 'n':
-                            mat[i][j] = new Cavall(k, define.BLACK);
+                            mat[i][j] = new Cavall(define.BLACK);
                             break;
                         case 'b':
-                            mat[i][j] = new Alfil(k, define.BLACK);
+                            mat[i][j] = new Alfil(define.BLACK);
                             break;
                         case 'q':
-                            mat[i][j] = new Reina(k, define.BLACK);
+                            mat[i][j] = new Reina(define.BLACK);
                             break;
                         case 'k':
-                            mat[i][j] = new Rei(k, define.BLACK);
+                            mat[i][j] = new Rei(define.BLACK);
                             break;
                         case 'p':
-                            mat[i][j] = new Peo(k, define.BLACK, true);
+                            mat[i][j] = new Peo(define.BLACK, true);
                             break;
                         case 'R':
-                            mat[i][j] = new Torre(k, define.WHITE);
+                            mat[i][j] = new Torre(define.WHITE);
                             break;
                         case 'N':
-                            mat[i][j] = new Cavall(k, define.WHITE);
+                            mat[i][j] = new Cavall(define.WHITE);
                             break;
                         case 'B':
-                            mat[i][j] = new Alfil(k, define.WHITE);
+                            mat[i][j] = new Alfil(define.WHITE);
                             break;
                         case 'Q':
-                            mat[i][j] = new Reina(k, define.WHITE);
+                            mat[i][j] = new Reina(define.WHITE);
                             break;
                         case 'K':
-                            mat[i][j] = new Rei(k, define.WHITE);
+                            mat[i][j] = new Rei(define.WHITE);
                             break;
                         case 'P':
-                            mat[i][j] = new Peo(k, define.WHITE, true);
+                            mat[i][j] = new Peo(define.WHITE, true);
                             break;
                         default:
                             //
@@ -341,7 +341,7 @@ public class Problema {
                 }
                 else if (act >= '0' && act <= '8'){                             //class character method
                     for (int z = 0; z < Character.getNumericValue(act); ++z) {
-                        mat[i][j] = new Peca_Nula(k);
+                        mat[i][j] = new Peca_Nula();
                         //tau_mat[i][j] = define.PECA_NULA;
                         ++j;
                     }
@@ -509,7 +509,7 @@ public class Problema {
 
     /** valida si un problema p es pot resoldre en un nombre de jugades p.njug
      */
-    public boolean validar_problema(int color_act, Taulell tau, int njug, boolean atk) { //private?
+    /*****public boolean validar_problema(int color_act, Taulell tau, int njug, boolean atk) { //private?
         //Peca pec_mat[][] = this.getPeces();
         //Taulell tau = new Taulell(pec_mat);
         if (njug == 0) return false;
@@ -548,6 +548,6 @@ public class Problema {
         else {
             return false;
         }*/
-    }
+    //}
 
 }

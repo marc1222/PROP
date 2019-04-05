@@ -8,15 +8,15 @@ public class Alfil extends Peca {
         amenaces = null;
     }
 
-    Alfil (int id) {
+    /*Alfil (int id) {
         this.id = id;
         color = -1;
         amenacades = null;
         amenaces = null;
-    }
+    }*/
 
-    Alfil (int id, int color) {
-        this.id = id;
+    Alfil (int color) {
+        this.id = getNextId();
         this.color = color;
         amenacades = null;
         amenaces = null;
@@ -51,7 +51,7 @@ public class Alfil extends Peca {
         // i + x, j + x; x in (-7,7)
         Posicion res[] = new Posicion[28];
         for (int i = -7; i < 0; ++i) {
-            res[i + 7] = new Posicion(pos.x + i, pos.y + i);
+            res[i + 7] = new Posicion(pos.x + i, pos.y + i); //i,j => x,y mo arreglat
             res[i + 21] = new Posicion(pos.x + i, pos.y - i);
         }
         for (int i = 1; i < 8; ++i) {

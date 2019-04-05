@@ -8,15 +8,15 @@ public class Torre extends Peca {
         amenaces = null;
     }
 
-    Torre (int id) {
+    /*Torre (int id) {
         this.id = id;
         color = -1;
         amenacades = null;
         amenaces = null;
-    }
+    }*/
 
-    Torre (int id, int color) {
-        this.id = id;
+    Torre (int color) {
+        this.id = getNextId();
         this.color = color;
         amenacades = null;
         amenaces = null;
@@ -48,7 +48,7 @@ public class Torre extends Peca {
         return res;
     }*/
 
-    public Posicion[] movimientos_validos(Posicion pos) {
+    public Posicion[] movimientos_validos(Posicion pos) { //i,j => x,y no arreglat
         // i + (-7, 7)
         // j + (-7, 7)
         Posicion res[] = new Posicion[28];

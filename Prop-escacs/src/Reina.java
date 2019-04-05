@@ -8,15 +8,15 @@ public class Reina extends Peca {
         amenaces = null;
     }
 
-    Reina (int id) {
+    /*Reina (int id) {
         this.id = id;
         color = -1;
         amenacades = null;
         amenaces = null;
-    }
+    }*/
 
-    Reina (int id, int color) {
-        this.id = id;
+    Reina (int color) {
+        this.id = getNextId();
         this.color = color;
         amenacades = null;
         amenaces = null;
@@ -57,7 +57,7 @@ public class Reina extends Peca {
         return res;
     }*/
 
-    public Posicion[] movimientos_validos(Posicion pos) {
+    public Posicion[] movimientos_validos(Posicion pos) { //i,j => x,y no arreglat
         // i + (-7, 7)
         // j + (-7, 7)
         // i + x, j + x; x in (-7, 7);
