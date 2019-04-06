@@ -16,12 +16,12 @@ public class Peca_Nula extends Peca {
 
 
 
-    /*public int[][] movimientos_validos(int posI, int posJ) {
+    /*public int[][] movimientos_posibles(int posI, int posJ) {
         int res[][] = new int[0][0];
         return res;
     }*/
 
-    public Posicion[] movimientos_validos(Posicion pos) {
+    public Posicion[] movimientos_posibles(Posicion pos) {
         return null;
     }
 

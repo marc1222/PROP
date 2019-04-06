@@ -29,7 +29,7 @@ public class Torre extends Peca {
         this.amenaces = amenaces;
     }
 
-    /*public int[][] movimientos_validos(int posI, int posJ) {
+    /*public int[][] movimientos_posibles(int posI, int posJ) {
         // i + (-7, 7)
         // j + (-7, 7)
         int res[][] = new int[28][2];
@@ -48,7 +48,7 @@ public class Torre extends Peca {
         return res;
     }*/
 
-    public Posicion[] movimientos_validos(Posicion pos) { //i,j => x,y no arreglat
+    public Posicion[] movimientos_posibles(Posicion pos) { //i,j => x,y no arreglat
         // i + (-7, 7)
         // j + (-7, 7)
         Posicion res[] = new Posicion[28];

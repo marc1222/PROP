@@ -3,6 +3,7 @@ public class define {
     //juegador
     public static final int WHITE = 0;
     public static final int BLACK = 1;
+    public static final int NULL_COLOR = 2;
 
     //peça
     public static final String ALFIL = "Alfil";

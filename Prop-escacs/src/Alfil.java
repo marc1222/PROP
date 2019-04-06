@@ -29,7 +29,7 @@ public class Alfil extends Peca {
         this.amenaces = amenaces;
     }
 
-    /*public int[][] movimientos_validos(int posI, int posJ) {
+    /*public int[][] movimientos_posibles(int posI, int posJ) {
         // i + x, j + x; x in (-7,7)
         int res[][] = new int[28][2];
         for (int i = -7; i < 0; ++i) {
@@ -47,7 +47,7 @@ public class Alfil extends Peca {
         return res;
     }*/
 
-    public Posicion[] movimientos_validos(Posicion pos) {
+    public Posicion[] movimientos_posibles(Posicion pos) {
         // i + x, j + x; x in (-7,7)
         Posicion res[] = new Posicion[28];
         for (int i = -7; i < 0; ++i) {

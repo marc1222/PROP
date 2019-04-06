@@ -33,7 +33,7 @@ public class Peo extends Peca {
         this.amenaces = amenaces;
     }
 
-    /*public int[][] movimientos_validos(int posI, int posJ) {
+    /*public int[][] movimientos_posibles(int posI, int posJ) {
         // i - 1 negras;; i + 1 blancas
         // i - 2 if first_move; i + 2
         // i + 1, j + 1 if i + 1, j + 1 ocuppied and color != own_color; i - 1, j + 1
@@ -73,7 +73,7 @@ public class Peo extends Peca {
         return res;
     }*/
 
-    public Posicion[] movimientos_validos(Posicion pos) {
+    public Posicion[] movimientos_posibles(Posicion pos) {
         // i - 1 negras;; i + 1 blancas
         // i - 2 if first_move; i + 2
         // i + 1, j + 1 if i + 1, j + 1 ocuppied and color != own_color; i - 1, j + 1

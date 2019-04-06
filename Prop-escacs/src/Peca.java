@@ -13,8 +13,8 @@ public abstract class Peca {
     /** retorna una matriu de ints on cada fila son les coordenades x, y de la nova posició, en el cas de peça nula
      *  retorna un array buit
      */
-    abstract public Posicion[] movimientos_validos(Posicion pos); //variable size?
-    //abstract public int[][] movimientos_validos(int posI, int posJ);
+    abstract public Posicion[] movimientos_posibles(Posicion pos); //variable size?
+    //abstract public int[][] movimientos_posibles(int posI, int posJ);
 
     /** retorna true si el moviment està dins del rang de la peça
      */

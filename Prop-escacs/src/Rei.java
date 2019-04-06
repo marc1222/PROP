@@ -29,7 +29,7 @@ public class Rei extends Peca {
         this.amenaces = amenaces;
     }
 
-    /*public int[][] movimientos_validos(int posI, int posJ) {
+    /*public int[][] movimientos_posibles(int posI, int posJ) {
         // i + (-1, 1), j + (-1, 1)
         int res[][] = {{posI - 1, posJ - 1}, {posI - 1, posJ}, {posI - 1, posJ + 1},
                        {posI, posJ - 1}, {posI, posJ + 1},
@@ -37,7 +37,7 @@ public class Rei extends Peca {
         return res;
     }*/
 
-    public Posicion[] movimientos_validos(Posicion pos) { //i,j => x,y no arreglat
+    public Posicion[] movimientos_posibles(Posicion pos) { //i,j => x,y no arreglat
         // i + (-1, 1), j + (-1, 1)
         // new posicion res[] ?
         Posicion res[] = {new Posicion(pos.x - 1, pos.y - 1), new Posicion(pos.x - 1, pos.y),
