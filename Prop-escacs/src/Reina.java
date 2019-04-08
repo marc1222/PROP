@@ -1,7 +1,7 @@
 public class Reina extends Peca {
     //int id;
 
-    Reina () {
+    public Reina () {
         id = getNextId();
         color = -1;
         amenacades = null;
@@ -15,14 +15,14 @@ public class Reina extends Peca {
         amenaces = null;
     }*/
 
-    Reina (int color) {
+    public Reina (int color) {
         this.id = getNextId();
         this.color = color;
         amenacades = null;
         amenaces = null;
     }
 
-    Reina (int id, int color, Posicion[] amenacades, Posicion[] amenaces) {
+    public Reina (int id, int color, Posicion[] amenacades, Posicion[] amenaces) {
         this.id = id;
         this.color = color;
         this.amenacades = amenacades;

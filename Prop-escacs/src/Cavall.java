@@ -1,7 +1,7 @@
 public class Cavall extends Peca {
     //int id;
 
-    Cavall () {
+    public Cavall () {
         id = getNextId();
         color = -1;
         amenacades = null;
@@ -15,14 +15,14 @@ public class Cavall extends Peca {
         amenaces = null;
     }*/
 
-    Cavall (int color) {
+    public Cavall (int color) {
         this.id = getNextId();
         this.color = color;
         amenacades = null;
         amenaces = null;
     }
 
-    Cavall (int id, int color, Posicion[] amenacades, Posicion[] amenaces) {
+    public Cavall (int id, int color, Posicion[] amenacades, Posicion[] amenaces) {
         this.id = id;
         this.color = color;
         this.amenacades = amenacades;

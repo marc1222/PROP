@@ -1,7 +1,7 @@
 public class Rei extends Peca {
     //int id;
 
-    Rei () {
+    public Rei () {
         id = getNextId();
         color = -1;
         amenacades = null;
@@ -15,14 +15,14 @@ public class Rei extends Peca {
         amenaces = null;
     }*/
 
-    Rei (int color) {
+    public Rei (int color) {
         this.id = getNextId();
         this.color = color;
         amenacades = null;
         amenaces = null;
     }
 
-    Rei (int id, int color, Posicion[] amenacades, Posicion[] amenaces) {
+    public Rei (int id, int color, Posicion[] amenacades, Posicion[] amenaces) {
         this.id = id;
         this.color = color;
         this.amenacades = amenacades;

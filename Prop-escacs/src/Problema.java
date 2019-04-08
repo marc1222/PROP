@@ -9,8 +9,8 @@ public class Problema {
     private int dificultat;
     //usuari creador pels permissos
 
-    static String fitxer = "./files/problemes.txt";
-    static String fitxerId = "./files/index.txt";
+    static private String fitxer = "/home/narcis/PROP/Prop-escacs/files/problemes.txt";
+    static private String fitxerId = "/home/narcis/PROP/Prop-escacs/files/index.txt";
     private static int index = -1;
 
     private static int getNextId() {
@@ -31,7 +31,7 @@ public class Problema {
     }
 
     private static int llegirId() {
-        try (BufferedReader br = new BufferedReader(new FileReader(fitxer))) {
+        try (BufferedReader br = new BufferedReader(new FileReader(fitxerId))) {
             String line;
             if ((line = br.readLine()) != null) {
                 return Integer.parseInt(line);
@@ -115,6 +115,7 @@ public class Problema {
     public int setNumJugades(int jugades) {
         if (jugades > 0) {
             this.jugades = jugades;
+            this.dificultat = calculaDif(this.ini_pos, jugades);
             return 0;
         }
         else return -1;
@@ -135,6 +136,7 @@ public class Problema {
         }
         if (count == 7) {
             this.ini_pos = ini_pos;
+            this.dificultat = calculaDif(ini_pos, this.jugades);
             return 0;
         }
         else return -1;
@@ -142,11 +144,15 @@ public class Problema {
 
     private static int calculaDif(String pos_ini, int njug) {
         int count = 0;
-        for (int j = 0; j < pos_ini.length(); ++j) {
-            if (pos_ini.charAt(j) < '0' || pos_ini.charAt(j) > '8') ++count;
+        int res = 0;
+        if (pos_ini != null) {
+            for (int j = 0; j < pos_ini.length(); ++j) {
+                if (pos_ini.charAt(j) < '0' || pos_ini.charAt(j) > '8') ++count;
+            }
+            res = ((count - 7) * njug) / 10;
+            if (res > 10) res = 10;
+            if (res < 0) res = 0;
         }
-        int res = ((count - 7) * njug) / 10;
-        if (res > 10) res = 10;
         return res;
     }
 
@@ -178,23 +184,21 @@ public class Problema {
         if (this.validar_problema(this.primer, new Taulell(this.getPeces()), this.jugades, true)) {
             try (BufferedReader br = new BufferedReader(new FileReader(fitxer))) {
                 String line;
+                String snjug = String.valueOf(this.jugades);
+                String sprim = String.valueOf(this.primer);
+                String sdif = String.valueOf(this.dificultat);
                 while ((line = br.readLine()) != null) {
                     String[] camps = line.split("\\s+");
-                    String snjug = String.valueOf(this.jugades);
-                    String sprim = String.valueOf(this.primer);
-                    String sdif = String.valueOf(this.dificultat);
                     if (camps[1].equals(snjug) && camps[2].equals(sprim) && camps[3].equals(this.ini_pos)) { //o nomes prob_id?
                         //problema ja existeix
                         System.out.println("El problema ja existex");
                         return -3;
                     }
-                    else {
-                        input_output in_out = new input_output();
-                        String[] linia = {String.valueOf(this.id), snjug, sprim, this.ini_pos, sdif};
-                        in_out.write(fitxer, linia);
-                        System.out.println("S'ha creat el problema");
-                    }
                 }
+                input_output in_out = new input_output();
+                String[] linia = {String.valueOf(this.id), snjug, sprim, this.ini_pos, sdif};
+                in_out.write(fitxer, linia);
+                System.out.println("S'ha creat el problema");
             }
             catch (FileNotFoundException e) {
                 e.printStackTrace();
@@ -236,23 +240,21 @@ public class Problema {
         if (this.validar_problema(this.primer, new Taulell(this.getPeces()), this.jugades, true)) {
             try (BufferedReader br = new BufferedReader(new FileReader(fitxer))) {
                 String line;
+                String snjug = String.valueOf(njug);
+                String sprimer = String.valueOf(this.primer);
+                String sdif = String.valueOf(this.dificultat);
                 while ((line = br.readLine()) != null) {
                     String[] camps = line.split("\\s+");
-                    String snjug = String.valueOf(njug);
-                    String sprimer = String.valueOf(this.primer);
-                    String sdif = String.valueOf(this.dificultat);
                     if (camps[1].equals(snjug) && camps[2].equals(sprimer) && camps[3].equals(this.ini_pos)) { //o nomes prob_id?
                         //problema ja existeix
                         System.out.println("El nou problema ja existeix");
                         return -3;
                     }
-                    else {
-                        input_output in_out = new input_output();
-                        String[] linia = {String.valueOf(this.id), snjug, sprimer, this.ini_pos, sdif};
-                        in_out.write(fitxer, linia);
-                        System.out.println("S'ha clonat i modificat el problema");
-                    }
                 }
+                input_output in_out = new input_output();
+                String[] linia = {String.valueOf(this.id), snjug, sprimer, this.ini_pos, sdif};
+                in_out.write(fitxer, linia);
+                System.out.println("S'ha clonat i modificat el problema");
             }
             catch (FileNotFoundException e) {
                 e.printStackTrace();
@@ -281,7 +283,7 @@ public class Problema {
         //permissos?
         String borra_linia = String.valueOf(this.id) + " " + String.valueOf(this.jugades) + " " +
                              String.valueOf(this.primer) + " " + this.ini_pos + " " + this.dificultat;
-        File tempfile = new File ("./files/mytemp.txt");
+        File tempfile = new File ("/home/narcis/PROP/Prop-escacs/files/mytemp.txt");
         File inputfile = new File (fitxer);
         boolean trobat = false;
         try (BufferedReader reader = new BufferedReader(new FileReader(fitxer));
@@ -289,7 +291,7 @@ public class Problema {
             String line;
             while ((line = reader.readLine()) != null) {
                 if (!line.equals(borra_linia)) {
-                    writer.write(line + System.getProperty("line.separator"));
+                    writer.write(line + System.lineSeparator());
                 }
                 else {
                     trobat = true;
@@ -341,7 +343,7 @@ public class Problema {
                             mat[j][i] = new Rei(define.BLACK);
                             break;
                         case 'p':
-                            mat[j][i] = new Peo(define.BLACK, true);
+                            mat[j][i] = new Peo(define.BLACK);
                             break;
                         case 'R':
                             mat[j][i] = new Torre(define.WHITE);
@@ -359,7 +361,7 @@ public class Problema {
                             mat[j][i] = new Rei(define.WHITE);
                             break;
                         case 'P':
-                            mat[j][i] = new Peo(define.WHITE, true);
+                            mat[j][i] = new Peo(define.WHITE);
                             break;
                         default:
                             //
@@ -541,6 +543,7 @@ public class Problema {
     public boolean validar_problema(int color_act, Taulell tau, int njug, boolean atk) { //private?
         //Peca pec_mat[][] = this.getPeces();
         //Taulell tau = new Taulell(pec_mat);
+        //System.out.println("Color " + String.valueOf(color_act) + " jugades " + String.valueOf(njug) + " torn " + String.valueOf(atk));
         if (njug == 0) return false;
         int color_cont;
         if (color_act == define.WHITE) color_cont = define.BLACK;
@@ -549,23 +552,33 @@ public class Problema {
             //for (int j = 0; j < 8; ++j) {
         Posicion pec_pos[] = tau.getPosColor(color_act);
         for (int i = 0; i < pec_pos.length; ++i) {
+            //System.out.println("Peça " + String.valueOf(i) + " pos " + String.valueOf(pec_pos[i].x) + " " + String.valueOf(pec_pos[i].y));
             // if peça nula
             //Posicion mov[] = pec_mat[i][j].movimientos_posibles(new Posicion(i, j));
             //Posicion pos_act = new Posicion(i, j);
             Posicion mov[] = tau.todos_movimientos(pec_pos[i]);
-            for (int k = 0; i < mov.length; ++k) {
-                boolean ret;
-                tau.mover_pieza(pec_pos[i], mov[k], color_act);
-                if (atk && tau.escac_i_mat(color_cont) == 1) return true;
-                if (atk) {
-                    ret = this.validar_problema(color_cont, tau, njug, false);
+            if (mov != null) {
+                for (int k = 0; k < mov.length; ++k) {
+                    //System.out.println("Moviment " + String.valueOf(k) + " de " + String.valueOf(mov.length) + " color " + String.valueOf(color_act));
+                    //System.out.println("mov " + String.valueOf(mov[k].x) + " " + String.valueOf(mov[k].y));
+                    boolean ret;
+                    //System.out.println("Actual");
+                    //tau.printTauler();
+                    tau.mover_pieza(pec_pos[i], mov[k], color_act);
+                    //System.out.println("Nou");
+                    //tau.printTauler();
+                    if (atk && tau.escac_i_mat(color_cont) == 1) return true;
+                    if (atk) {
+                        ret = this.validar_problema(color_cont, new Taulell(tau), njug, false);
+                    } else {
+                        if (njug != 1)
+                            ret = this.validar_problema(color_cont, new Taulell(tau), njug - 1, true); // if njug == 1 false
+                        else ret = false;
+                    }
+                    if (ret) return true;
+                    tau.mover_pieza(mov[k], pec_pos[i], color_act); // o new tau?
+                    //System.out.println("desf " + String.valueOf(pec_pos[i].x) + " " + String.valueOf(pec_pos[i].y));
                 }
-                else {
-                    if (njug != 1) ret = this.validar_problema(color_cont, tau, njug - 1, true); // if njug == 1 false
-                    else ret = false;
-                }
-                if (ret) return true;
-                tau.mover_pieza(mov[k], pec_pos[i], color_act); // o new tau?
             }
                     //moure peça
         }

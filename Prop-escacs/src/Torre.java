@@ -1,7 +1,7 @@
 public class Torre extends Peca {
     //int id;
 
-    Torre () {
+    public Torre () {
         id = getNextId();
         color = -1;
         amenacades = null;
@@ -15,14 +15,14 @@ public class Torre extends Peca {
         amenaces = null;
     }*/
 
-    Torre (int color) {
+    public Torre (int color) {
         this.id = getNextId();
         this.color = color;
         amenacades = null;
         amenaces = null;
     }
 
-    Torre (int id, int color, Posicion[] amenacades, Posicion[] amenaces) {
+    public Torre (int id, int color, Posicion[] amenacades, Posicion[] amenaces) {
         this.id = id;
         this.color = color;
         this.amenacades = amenacades;

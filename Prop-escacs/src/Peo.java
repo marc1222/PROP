@@ -1,7 +1,7 @@
 public class Peo extends Peca {
     boolean primer_mov;
 
-    Peo () {
+    public Peo () {
         id = getNextId();
         color = -1;
         primer_mov = false;
@@ -9,15 +9,15 @@ public class Peo extends Peca {
         amenaces = null;
     }
 
-    Peo (int id) {
-        this.id = id;
-        color = -1;
+    public Peo (int color) {
+        this.id = getNextId();
+        this.color = color;
         primer_mov = false;
         amenacades = null;
         amenaces = null;
     }
 
-    Peo (int color, boolean primer_mov) {
+    public Peo (int color, boolean primer_mov) {
         this.id = getNextId();
         this.color = color;
         this.primer_mov = primer_mov;
@@ -25,12 +25,16 @@ public class Peo extends Peca {
         amenaces = null;
     }
 
-    Peo (int id, int color, boolean primer_mov, Posicion[] amenacades, Posicion[] amenaces) {
+    public Peo (int id, int color, boolean primer_mov, Posicion[] amenacades, Posicion[] amenaces) {
         this.id = id;
         this.color = color;
         this.primer_mov = primer_mov;
         this.amenacades = amenacades;
         this.amenaces = amenaces;
+    }
+
+    public void setPeoPrimer(boolean a) {
+        this.primer_mov = a;
     }
 
     /*public int[][] movimientos_posibles(int posI, int posJ) {

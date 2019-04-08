@@ -1,7 +1,7 @@
 public class Alfil extends Peca {
     //int id;
 
-    Alfil () {
+    public Alfil () {
         id = getNextId();
         color = -1;
         amenacades = null;
@@ -15,14 +15,14 @@ public class Alfil extends Peca {
         amenaces = null;
     }*/
 
-    Alfil (int color) {
+    public Alfil (int color) {
         this.id = getNextId();
         this.color = color;
         amenacades = null;
         amenaces = null;
     }
 
-    Alfil (int id, int color, Posicion[] amenacades, Posicion[] amenaces) {
+    public Alfil (int id, int color, Posicion[] amenacades, Posicion[] amenaces) {
         this.id = id;
         this.color = color;
         this.amenacades = amenacades;

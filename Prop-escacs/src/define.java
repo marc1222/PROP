@@ -12,7 +12,7 @@ public class define {
     public static final String REI = "Rei";
     public static final String REINA = "Reina";
     public static final String PEO = "Peo";
-    public static final String PECA_NULA = "Peca_nula";
+    public static final String PECA_NULA = "Peca_Nula";
 
     //si es necessiten mes, afegiu
 
