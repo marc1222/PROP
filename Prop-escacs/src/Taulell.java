@@ -169,13 +169,13 @@ public class Taulell {
         return new Posicion();
     }
     //get posicions de totes les peces d'un color
-    private Posicion[] getPosColor(int color) {
+    public Posicion[] getPosColor(int color) {
         Peca aux;
         ArrayList<Posicion> tmp = new ArrayList<>();
 
         for (int i= 0; i < 8; ++i) {
             for (int j = 0; j < 8; ++j) {
-                if (T[i][j].getColor() == color) {
+                if (T[i][j]. == color) {
                     tmp.add(new Posicion(i,j));
                 }
             }
@@ -249,7 +249,7 @@ public class Taulell {
         }
         return -1;
     }
-    // instancia al tauler una nova peça
+    //instancia al tauler una nova peça
     //pre: true
     //post: es comprova que x,y pertanyin a l'interval 0 <= valor <= 7, que color pertanyi a algun dels jugadors, o be que "-" en cas de peca nula
     //i es crea la peça amb els parametres instanciats
@@ -257,7 +257,6 @@ public class Taulell {
         try {
             if (pos.x < 0 || pos.y < 0 || pos.x > 7 || pos.y > 7)
                 throw new IllegalArgumentException("Taulell: X o Y valores inválidos");
-
             if (color != define.BLACK || color != define.WHITE || color != define.NULL_COLOR)
                 throw new IllegalArgumentException("Taulell: Color inválido");
             if ( (color == define.NULL_COLOR && tipus != define.PECA_NULA) || (tipus == define.PECA_NULA && color != define.NULL_COLOR) )
