@@ -57,7 +57,7 @@ public class StubProblema {
             for (int j = 0; j < 8; ++j) {
                 if (i == 0 && j == 0) mat[i][j] = new Rei(define.WHITE);
                 else if (i == 7 && j == 7) mat[i][j] = new Rei(define.BLACK);
-                else new Peca_Nula();
+                else mat[i][j] = new Peca_Nula();
             }
         }
         return mat;
