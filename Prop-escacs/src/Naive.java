@@ -13,18 +13,21 @@ public class Naive extends Maquina {
         colorJugador = color;
     }
 
-    public void moviment(Posicion inici, Posicion fi) {
+    public long moviment(Posicion inici, Posicion fi) {
         Peca pecesTau[][] = Tauler.getTauler();
         //hay que hacer deep copy de Taullel, solo se ha de copiar matriz
         // se da por hecho que se quiere maximizar colorJugador, colorJugador = colorActual
-        Posicion mejorIni, mejorDesti;
+        Posicion mejorIni = new Posicion(0, 0);
+        Posicion mejorDesti = new Posicion(0, 0);
         int actual, max, colorActual;
         max = Integer.MIN_VALUE;
         colorActual = colorJugador;
 
         for (int i = 0; i < pecesTau.length; i++) {
             for (int j = 0; j < pecesTau[0].length; j++) {
-                if (pecesTau[i][j].getColor() == colorJugador) {
+                //if (pecesTau[i][j].getColor() == colorJugador) {
+                if ((pecesTau[i][j].getColor() == colorJugador) && !pecesTau[i][j].getTipus().equals("Peca_nula")) {
+                    //System.out.println("TIPUS " + i + " "+ j + + pecesTau[i][j].getColor() + " " + pecesTau[i][j].getTipus());
                     Posicion ini = new Posicion(i, j);
                     for (Posicion desti : Tauler.todos_movimientos(ini)) {
                         Tauler.mover_pieza(ini, desti, colorJugador);
@@ -43,9 +46,10 @@ public class Naive extends Maquina {
         //caso de que se pierde seguro hacer movimiento random
         inici = mejorIni;
         fi = mejorDesti;
+
+        return 0;
     }
 
-    //
     private int minimax(int depth, int colorActual) {
         //or si es mate del algun jugador
         if (depth == 0) {
@@ -60,7 +64,8 @@ public class Naive extends Maquina {
 
         for (int i = 0; i < pecesTau.length; i++) {
             for (int j = 0; j < pecesTau[0].length; j++) {
-                if (maximitzar && (pecesTau[i][j].getColor() == colorJugador)) {
+                //if (maximitzar && (pecesTau[i][j].getColor() == colorJugador)) {
+                if (maximitzar && (pecesTau[i][j].getColor() == colorJugador) && !pecesTau[i][j].getTipus().equals("Peca_nula")) {
                     Posicion ini = new Posicion(i, j);
                     for (Posicion desti : Tauler.todos_movimientos(ini)) {
                         Tauler.mover_pieza(ini, desti, colorJugador);
@@ -84,7 +89,6 @@ public class Naive extends Maquina {
         return  min;
     }
 
-    //
     private int evaluar() {
         int amenazaPropia, amenazaOponent, mobilitatPropia, mobilitatOponent,
                 puntPropia, puntOponent;
@@ -94,7 +98,7 @@ public class Naive extends Maquina {
         Peca pecesTau[][] = Tauler.getTauler();
         for (int i = 0; i < pecesTau.length; i++) {
             for (int j = 0; j < pecesTau[0].length; j++) {
-                if (pecesTau[i][j].getColor() == colorJugador) {
+                if ((pecesTau[i][j].getColor() == colorJugador) && !pecesTau[i][j].getTipus().equals("Peca_nula")) {
                     mobilitatPropia++;
                     puntPropia += puntuacioPeca(pecesTau[i][j].getTipus());
 

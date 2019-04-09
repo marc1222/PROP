@@ -8,20 +8,32 @@ import java.util.HashMap; // import the HashMap class
  */
 public class Usuari extends Jugador{
     String idUsuari;
-    long time;
+    boolean ataca;
 
     // Fitxer ons es guarden els usuaris
     static String fitxerUsuaris = "./files/usuaris.txt";
 
     Scanner sc = new Scanner(System.in);
 
-    public Usuari () {
+    public Usuari (boolean atacant) {
         idUsuari = "Anònim";
-        time = 0;
+        ataca = atacant;
     }
 
     public String getNom() {
         return idUsuari;
+    }
+
+    public void setNom(String nom) {
+        idUsuari = nom;
+    }
+
+    public boolean getAtaca() {
+        return ataca;
+    }
+
+    public void setAtaca(boolean ataca) {
+        this.ataca = ataca;
     }
 
     public boolean iniciarSessio() {
@@ -137,7 +149,7 @@ public class Usuari extends Jugador{
         return false;
     }
 
-    public void eliminarUsuari(String usuari) {
+    private void eliminarUsuari(String usuari) {
         try {
             File tempFile = File.createTempFile("./files/tmpUsuaris.txt", "");
 
@@ -187,17 +199,12 @@ public class Usuari extends Jugador{
         return totsUsuaris;
     }
 
-    public void juagr() {
-        // Opcions sessio
-        System.out.println("Modes de joc:" +
-                "\nUsuari 1 vs Usuari 2 (1)\nUsuari 1 vs Maquina (2)" +
-                "\nMaquina vs Usuari 1 (3)\nMaquina 1 vs Maquina1(4)");
-        String mode = sc.nextLine();
-        System.out.println("Mode: " + mode + ".\n");
-    }
+    public long moviment(Posicion ini, Posicion fi) {
+        long iniCrono = 0;
+        if(ataca) {
+             iniCrono = System.currentTimeMillis();
+        }
 
-    public void moviment(Posicion ini, Posicion fi) {
-        long iniCrono = System.currentTimeMillis();
         String posPeca, destiPeca;
 
 
@@ -213,7 +220,26 @@ public class Usuari extends Jugador{
         fi.x = Integer.parseInt(posDesti[0]);
         fi.y = Integer.parseInt(posDesti[1]);
 
-        long tempsCrono = System.currentTimeMillis() - iniCrono;
-        time += tempsCrono;
+        long time = 0;
+        if (ataca) {
+            long tempsCrono = System.currentTimeMillis() - iniCrono;
+            time += tempsCrono;
+        }
+        return time;
     }
+
+    /*
+    private boolean movimentCorrecte() {
+
+    }
+
+    public void juagr() {
+        // Opcions sessio
+        System.out.println("Modes de joc:" +
+                "\nUsuari 1 vs Usuari 2 (1)\nUsuari 1 vs Maquina (2)" +
+                "\nMaquina vs Usuari 1 (3)\nMaquina 1 vs Maquina1(4)");
+        String mode = sc.nextLine();
+        System.out.println("Mode: " + mode + ".\n");
+    }
+    */
 }

@@ -2,7 +2,7 @@ import java.util.Scanner;
 
 public class Main2{
     private static Scanner sc = new Scanner(System.in);
-    private static Usuari usr = new Usuari();
+    private static Usuari usr = new Usuari(true);
 
 
     public static void main(String[] args) {
