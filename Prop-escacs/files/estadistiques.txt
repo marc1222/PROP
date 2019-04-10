@@ -3,3 +3,6 @@ p2 Anònim 5 81010
 p1 u3 5 870110
 p3 Anònim 5 527210
 p1 u1 5 123410
+0 Pepito 3 28808
+5 Pepito 2 20542
+5 Pepito 2 14991

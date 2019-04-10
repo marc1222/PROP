@@ -1,22 +1,35 @@
 public class Torre extends Peca {
     //int id;
 
-    Torre () {
+    public Torre () {
         id = getNextId();
         color = -1;
+        amenacades = null;
+        amenaces = null;
     }
 
-    Torre (int id) {
+    /*Torre (int id) {
         this.id = id;
         color = -1;
+        amenacades = null;
+        amenaces = null;
+    }*/
+
+    public Torre (int color) {
+        this.id = getNextId();
+        this.color = color;
+        amenacades = null;
+        amenaces = null;
     }
 
-    Torre (int id, int color) {
+    public Torre (int id, int color, Posicion[] amenacades, Posicion[] amenaces) {
         this.id = id;
         this.color = color;
+        this.amenacades = amenacades;
+        this.amenaces = amenaces;
     }
 
-    /*public int[][] movimientos_validos(int posI, int posJ) {
+    /*public int[][] movimientos_posibles(int posI, int posJ) {
         // i + (-7, 7)
         // j + (-7, 7)
         int res[][] = new int[28][2];
@@ -35,7 +48,7 @@ public class Torre extends Peca {
         return res;
     }*/
 
-    public Posicion[] movimientos_validos(Posicion pos) {
+    public Posicion[] movimientos_posibles(Posicion pos) { //i,j => x,y no arreglat
         // i + (-7, 7)
         // j + (-7, 7)
         Posicion res[] = new Posicion[28];

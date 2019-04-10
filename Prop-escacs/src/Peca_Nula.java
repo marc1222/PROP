@@ -1,21 +1,27 @@
 public class Peca_Nula extends Peca {
 
-    Peca_Nula() {
-        id = -1;
+    public Peca_Nula() {
+        id = getNextId();
         color = -1;
+        amenacades = null;
+        amenaces = null;
     }
 
-    Peca_Nula(int id) {
-        this.id = id;
-        color = -1;
+    public Peca_Nula(int color) {
+        this.id = getNextId();
+        this.color = define.NULL_COLOR;
+        amenacades = null;
+        amenaces = null;
     }
 
-    /*public int[][] movimientos_validos(int posI, int posJ) {
+
+
+    /*public int[][] movimientos_posibles(int posI, int posJ) {
         int res[][] = new int[0][0];
         return res;
     }*/
 
-    public Posicion[] movimientos_validos(Posicion pos) {
+    public Posicion[] movimientos_posibles(Posicion pos) {
         return null;
     }
 

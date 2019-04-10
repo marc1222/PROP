@@ -1,22 +1,35 @@
 public class Cavall extends Peca {
     //int id;
 
-    Cavall () {
+    public Cavall () {
         id = getNextId();
         color = -1;
+        amenacades = null;
+        amenaces = null;
     }
 
-    Cavall (int id) {
+    /*Cavall (int id) {
         this.id = id;
         color = -1;
+        amenacades = null;
+        amenaces = null;
+    }*/
+
+    public Cavall (int color) {
+        this.id = getNextId();
+        this.color = color;
+        amenacades = null;
+        amenaces = null;
     }
 
-    Cavall (int id, int color) {
+    public Cavall (int id, int color, Posicion[] amenacades, Posicion[] amenaces) {
         this.id = id;
         this.color = color;
+        this.amenacades = amenacades;
+        this.amenaces = amenaces;
     }
 
-    /*public int[][] movimientos_validos(int posI, int posJ) {
+    /*public int[][] movimientos_posibles(int posI, int posJ) {
         // i + 1, j + 2;  i + 1, j - 2;  i + 2, j + 1;  i + 2, j - 1;
         // i - 1, j + 2;  i - 1, i - 2;  i - 2, j + 1;  i - 2, j - 1;
         int res[][] = {{posI - 2, posJ - 1}, {posI - 2, posJ + 1}, {posI - 1, posJ - 2}, {posI - 1, posJ + 2},
@@ -24,13 +37,13 @@ public class Cavall extends Peca {
         return res;
     }*/
 
-    public Posicion[] movimientos_validos(Posicion pos) {
+    public Posicion[] movimientos_posibles(Posicion pos) {
         // i + 1, j + 2;  i + 1, j - 2;  i + 2, j + 1;  i + 2, j - 1;
         // i - 1, j + 2;  i - 1, i - 2;  i - 2, j + 1;  i - 2, j - 1;
         Posicion res[] = {new Posicion(pos.x - 2, pos.y - 1), new Posicion(pos.x - 2, pos.y + 1),
                 new Posicion(pos.x - 1, pos.y - 2), new Posicion(pos.x - 1, pos.y + 2),
                 new Posicion(pos.x + 1, pos.y - 2), new Posicion(pos.x + 1, pos.y + 2),
-                new Posicion(pos.x + 2, pos.y - 1), new Posicion(pos.x + 2, pos.y + 1)};
+                new Posicion(pos.x + 2, pos.y - 1), new Posicion(pos.x + 2, pos.y + 1)}; //i,j => x,y no arreglat
         return res;
     }
 

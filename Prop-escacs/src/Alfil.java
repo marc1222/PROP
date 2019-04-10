@@ -1,22 +1,35 @@
 public class Alfil extends Peca {
     //int id;
 
-    Alfil () {
+    public Alfil () {
         id = getNextId();
         color = -1;
+        amenacades = null;
+        amenaces = null;
     }
 
-    Alfil (int id) {
+    /*Alfil (int id) {
         this.id = id;
         color = -1;
+        amenacades = null;
+        amenaces = null;
+    }*/
+
+    public Alfil (int color) {
+        this.id = getNextId();
+        this.color = color;
+        amenacades = null;
+        amenaces = null;
     }
 
-    Alfil (int id, int color) {
+    public Alfil (int id, int color, Posicion[] amenacades, Posicion[] amenaces) {
         this.id = id;
         this.color = color;
+        this.amenacades = amenacades;
+        this.amenaces = amenaces;
     }
 
-    /*public int[][] movimientos_validos(int posI, int posJ) {
+    /*public int[][] movimientos_posibles(int posI, int posJ) {
         // i + x, j + x; x in (-7,7)
         int res[][] = new int[28][2];
         for (int i = -7; i < 0; ++i) {
@@ -34,11 +47,11 @@ public class Alfil extends Peca {
         return res;
     }*/
 
-    public Posicion[] movimientos_validos(Posicion pos) {
+    public Posicion[] movimientos_posibles(Posicion pos) {
         // i + x, j + x; x in (-7,7)
         Posicion res[] = new Posicion[28];
         for (int i = -7; i < 0; ++i) {
-            res[i + 7] = new Posicion(pos.x + i, pos.y + i);
+            res[i + 7] = new Posicion(pos.x + i, pos.y + i); //i,j => x,y mo arreglat
             res[i + 21] = new Posicion(pos.x + i, pos.y - i);
         }
         for (int i = 1; i < 8; ++i) {
