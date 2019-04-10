@@ -2,78 +2,85 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String args[]) {
-
         //pantalla 1
         System.out.println("Benvingut/da (menu principal)");
         int val;
-        boolean first = true;
+
+        Usuari master = new Usuari();
+        Jugador second;
+
+        boolean sessioIniciada = false;
         do {
-            if (!first) {
-                System.out.println("!!!!!!Error!!!!!!!");
-            } else first = false;
-            System.out.println("\nQuè desitja realitzar?");
+            System.out.println("Què desitja realitzar?");
             System.out.println("    1 - Iniciar sessió");
             System.out.println("    2 - Registrar-se");
             System.out.println("    3 - Sortir de la app\n");
 
             Scanner sc = new Scanner(System.in);
             val = sc.nextInt();
-        } while ((val > 3 || val < 1));
 
-        Usuari master = new Usuari();
-        Jugador second;
-        //Jugador tmp = new Maquina();
-        String[] Users;
-        switch (val) {
-            case 1: {
-                //ensenyar usuaris disponibles
-                System.out.println("\n---Iniciar Sessió---\n");
-                //test
-                //Users = new String[]{"Pedro","Peponcio","Pepita","Grillo"};
-                Users = Usuari.totsUsuaris();
-                first = true;
+            switch (val) {
+                case 1: {
+                    //ensenyar usuaris disponibles
+                    System.out.println("\n---Iniciar Sessió---\n");
+                    String[] Users = Usuari.totsUsuaris();
 
-                System.out.println("Selecciona un usuari");
-                for (int i = 0; i < Users.length; ++i) {
-                    System.out.println("   - " + Users[i]);
+
+                        System.out.println("Selecciona un usuari");
+                        for (int i = 0; i < Users.length; ++i) {
+                            System.out.println(i + " - " + Users[i]);
+                        }
+                        int usrSeleccionat = sc.nextInt();
+                        if(usrSeleccionat >= 0 && usrSeleccionat < Users.length) {
+                            sessioIniciada = master.iniciarSessio(Users[usrSeleccionat]);
+                        }
+                        else {
+                            System.out.println("Usuari seleccionat no vàlid");
+                        }
+
+
+                    break;
                 }
-                //fer login de l'user master
-              //  while(!master.entrar(Users[val-1]));
-                master.iniciarSessio();
-                break;
+                case 2: {
+                    //register al master
+                    System.out.println("\n---Registrarte---\n");
+                    sessioIniciada = master.registrar();
+                    break;
+                }
+                case 3: {
+                    System.out.println("Sortint...");
+                    return;
+                }
+                default: {
+                    System.out.println("Opció no vàlida.");
+                    break;
+                }
             }
-            case 2: {
-                //register al master
-                System.out.println("\n---Registrarte---\n");
-                master.registrar();
-                break;
-            }
-            case 3: {
-                System.out.println("Sortint...");
-                return;
-            }
-        }
+        } while (!sessioIniciada);
+
+        boolean first;
         //aqui master es un usuari valid, li mostrem els problemes
         int ret = 0;
-        while (ret != 5) {
+        while (ret != 7) {
             first = true;
             do {
                 if (!first) {
                     System.out.println("!!!!!!Error!!!!!!!");
                 } else first = false;
 
-                System.out.println("\nBenvnvingut al teu menú d'usuari/a\n");
+                System.out.println("\nBenvnvingut al teu menú d'usuari/a " + master.getNom() + "\n");
                 System.out.println("Què desitja realitzar?");
                 System.out.println("    1 - Jugar un problema");
                 System.out.println("    2 - Afegir un problema");
                 System.out.println("    3 - Modificar un problema");
                 System.out.println("    4 - Borrar un problema");
                 System.out.println("    5 - Mirar les estadístiques");
-                System.out.println("    6 - Sortir de la app\n");
+                System.out.println("    6 - Donar-se de baixa");
+                System.out.println("    7 - Sortir de la app\n");
 
                 Scanner sc = new Scanner(System.in);
                 val = sc.nextInt();
-            } while ((val > 5 || val < 1));
+            } while ((val > 7 || val < 1));
             switch (val) {
                 case 1: {
                     String[][] problemes = Problema.consultarProblemes();
@@ -160,7 +167,6 @@ public class Main {
 
 
                     // seleccionar oponent: maquina o usuari
-
                     // seleccionar atacar o defendre
 
                     // Partida pa = new Partida(p, atacant, defenent);
@@ -275,18 +281,68 @@ public class Main {
                     break;
                 }
                 case 5: {
-                    //Opcions probl o usrPropi
-
-                    //String[][] problemes = consultarProblemes();
-                    Estadistica.estadistiquesUsuari("Pepito");//consultarEstadisticaProblema(String idProblema);
-
-                    //consultarEstadisticaUsuari(master.getName());
-                    //mirar stats stats
+                    Scanner sc = new Scanner(System.in);
+                    int opcio;
+                    do {
+                        System.out.println("\n" +
+                                "    1 - Consultar estadistiques problema\n" +
+                                "    2 - Consultar estadistiques usuari\n" +
+                                "    3 - Tornar al menu d'usuari");
+                        opcio = sc.nextInt();
+                        switch (opcio) {
+                            case 1: {
+                                System.out.println("Selecciona un problema:");
+                                String[][] problemes = Problema.consultarProblemes();
+                                for (int i = 0; i < problemes.length; ++i) {
+                                    System.out.println(i + " - " + problemes[i][1] + " " + problemes[i][2] + " "
+                                            + problemes[i][3] + " " + problemes[i][4]);
+                                }
+                                int opcio1 = sc.nextInt();;
+                                if (opcio1 >= 0 && opcio1 < problemes.length) {
+                                    Estadistica.estadistiquesProblema(String.valueOf(opcio1));
+                                }
+                                else {
+                                    System.out.println("Problema no vàlid");
+                                }
+                                break;
+                            }
+                            case 2: {
+                                String[] Usuaris = Usuari.totsUsuaris();
+                                System.out.println("Selecciona un usuari:");
+                                for (int i = 0; i < Usuaris.length; ++i) {
+                                    System.out.println(i + " - " + Usuaris[i]);
+                                }
+                                int opcio2 = sc.nextInt();
+                                if (opcio2 >= 0 && opcio2 < Usuaris.length) {
+                                    Estadistica.estadistiquesUsuari(Usuaris[opcio2]);
+                                }
+                                else {
+                                    System.out.println("Usuari no vàlid");
+                                }
+                                break;
+                            }
+                            case 3: {
+                                System.out.println("Sortint menú estadistiques");
+                                break;
+                            }
+                            default: {
+                                System.out.println("Opció no vàlida");
+                                break;
+                            }
+                        }
+                    } while (opcio != 3);
                     break;
                 }
                 case 6: {
+                    String aux = master.getNom();
+                    if (master.baixa()) {
+                        Estadistica.eliminatStatsUsuari(aux);
+                    }
+                    break;
+                }
+                case 7: {
                     System.out.println("Sortint...");
-                    return;
+                    break;
                 }
             }
             ret = val;
