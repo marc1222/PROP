@@ -270,7 +270,7 @@ public class Taulell {
 
         for (int i= 0; i < 8; ++i) {
             for (int j = 0; j < 8; ++j) {
-                if (T[i][j].getColor() == color) {
+                if (T[i][j]. == color) {
                     tmp.add(new Posicion(i,j));
                 }
             }
@@ -365,7 +365,11 @@ public class Taulell {
         try {
             if (pos.x < 0 || pos.y < 0 || pos.x > 7 || pos.y > 7)
                 throw new IllegalArgumentException("Taulell: X o Y valores inválidos");
+<<<<<<< HEAD
             if (color != define.BLACK && color != define.WHITE && color != define.NULL_COLOR)
+=======
+            if (color != define.BLACK || color != define.WHITE || color != define.NULL_COLOR)
+>>>>>>> 1a1a648fe941a0ad481f227bbb1789229b419869
                 throw new IllegalArgumentException("Taulell: Color inválido");
             if ( (color == define.NULL_COLOR && tipus != define.PECA_NULA) || (tipus == define.PECA_NULA && color != define.NULL_COLOR) )
                 throw new IllegalArgumentException(("Taulell: Peça NULL invalida"));

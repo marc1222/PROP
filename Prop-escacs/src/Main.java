@@ -20,9 +20,15 @@ public class Main {
             val = sc.nextInt();
         } while ((val > 3 || val < 1));
 
+<<<<<<< HEAD
         Usuari master = new Usuari();
         Jugador second;
         //Jugador tmp = new Maquina();
+=======
+        Jugador master = new Usuari();
+        Jugador second = new Jugador();
+        Jugador tmp = new Maquina();
+>>>>>>> 1a1a648fe941a0ad481f227bbb1789229b419869
         String[] Users;
         switch (val) {
             case 1: {
@@ -30,7 +36,11 @@ public class Main {
                 System.out.println("\n---Iniciar Sessió---\n");
                 //test
                 //Users = new String[]{"Pedro","Peponcio","Pepita","Grillo"};
+<<<<<<< HEAD
                 Users = Usuari.totsUsuaris();
+=======
+                Users = totsUsuaris();
+>>>>>>> 1a1a648fe941a0ad481f227bbb1789229b419869
                 first = true;
 
                 System.out.println("Selecciona un usuari");
@@ -38,14 +48,23 @@ public class Main {
                     System.out.println("   - " + Users[i]);
                 }
                 //fer login de l'user master
+<<<<<<< HEAD
               //  while(!master.entrar(Users[val-1]));
                 master.iniciarSessio();
+=======
+                master.login(Users[val-1]);
+>>>>>>> 1a1a648fe941a0ad481f227bbb1789229b419869
                 break;
             }
             case 2: {
                 //register al master
                 System.out.println("\n---Registrarte---\n");
+<<<<<<< HEAD
                 master.registrar();
+=======
+                //String name = master.register();
+                //master.login(name);
+>>>>>>> 1a1a648fe941a0ad481f227bbb1789229b419869
                 break;
             }
             case 3: {
@@ -54,7 +73,12 @@ public class Main {
             }
         }
         //aqui master es un usuari valid, li mostrem els problemes
+<<<<<<< HEAD
+=======
+        Problema p;
+>>>>>>> 1a1a648fe941a0ad481f227bbb1789229b419869
         int ret = 0;
+
         while (ret != 5) {
             first = true;
             do {
@@ -76,6 +100,7 @@ public class Main {
             } while ((val > 5 || val < 1));
             switch (val) {
                 case 1: {
+<<<<<<< HEAD
                     String[][] problemes = Problema.consultarProblemes();
                     for (int i = 0; i < problemes.length; ++i) {
                         System.out.println(i + " - " + problemes[i][1] + " " + problemes[i][2] + " "
@@ -96,6 +121,27 @@ public class Main {
                     Problema p = new Problema();
                     int res = Problema.getProblemaId(Integer.parseInt(problemes[op][0]), p);
                     //if (res < 1) ; //
+=======
+                    String[][] problemes = consultarProblemes();
+
+                    // fer bucles per mostar problemes
+                    first = true;
+                    do {
+                        if (!first) {
+                            System.out.println("!!!!!!Error!!!!!!!");
+                        } else first = false;
+                        System.out.println("\nSelecciona un problema");
+                        System.out.println("--------------------------\n");
+                        for (int i = 0; i < problemes.length; ++i) {
+                            System.out.println("   " + (i + 1) + " - " + problemes[i]);
+                        }
+                        Scanner sc = new Scanner(System.in);
+                        val = sc.nextInt();
+                    } while ((val > problemes.length || val < 1));
+                    p = new Problema();
+                    getProblemaId(problemes[val-1][0], p);
+
+>>>>>>> 1a1a648fe941a0ad481f227bbb1789229b419869
                     // seleccionar oponent: maquina o usuari
                     first = true;
                     do {
@@ -106,7 +152,11 @@ public class Main {
                         System.out.println("    1 - Invitado");
                         System.out.println("    2 - Maquina tontita");
                         System.out.println("    3 - Maquina smart");
+<<<<<<< HEAD
                         sc = new Scanner(System.in);
+=======
+                        Scanner sc = new Scanner(System.in);
+>>>>>>> 1a1a648fe941a0ad481f227bbb1789229b419869
                         val = sc.nextInt();
                     } while ((val > 3 || val < 1));
 
@@ -120,12 +170,20 @@ public class Main {
                         System.out.println("\nVols atacar o bé t'agradaria defensar?");
                         System.out.println("    1 - Atacar");
                         System.out.println("    2 - Defensar");
+<<<<<<< HEAD
                         sc = new Scanner(System.in);
+=======
+                        Scanner sc = new Scanner(System.in);
+>>>>>>> 1a1a648fe941a0ad481f227bbb1789229b419869
                         ataca = sc.nextInt();
                     } while ((ataca > 2 || ataca < 1));
 
                     if (ataca == 1 && val == 1) {
+<<<<<<< HEAD
                         //atacar  && //invitado
+=======
+                         //atacar  && //invitado
+>>>>>>> 1a1a648fe941a0ad481f227bbb1789229b419869
                         second = new Usuari((p.getPrimer()==define.WHITE)?define.BLACK:define.WHITE);
                         master.setColor(p.getPrimer());
                     }
@@ -139,12 +197,17 @@ public class Main {
                         second = new Naive((p.getPrimer()==define.WHITE)?define.BLACK:define.WHITE);
                         master.setColor(p.getPrimer());
                     }
+<<<<<<< HEAD
                     //else if(ataca == 2 && val == 2){
                     else {
+=======
+                    else if (ataca == 2 && val == 2){
+>>>>>>> 1a1a648fe941a0ad481f227bbb1789229b419869
                         //defender    &&   //naive
                         second = new Usuari(p.getPrimer());
                         master.setColor((p.getPrimer()==define.WHITE)?define.BLACK:define.WHITE);
                     }
+<<<<<<< HEAD
                     //else ;
                     System.out.println("\nCreant partida...");
                     Partida pa = new Partida(p, (master.getColor()==define.WHITE)?master:second, (master.getColor()==define.WHITE)?second:master,(ataca==1)?true:false);
@@ -156,6 +219,14 @@ public class Main {
                     }
                     System.out.println("\nComença la partida...  A JUGAR :D");
                     pa.jugar_partida();
+=======
+                    else ;
+                    System.out.println("\nCreant partida...");
+                     Partida pa = new Partida(p, (master.getColor()==define.WHITE)?master:second, (master.getColor()==define.WHITE)?second:master,(ataca==1)?true:false);
+                    //jugar partida
+                    System.out.println("\nComença la partida...  A JUGAR :D");
+                    pa.jugarPartida();
+>>>>>>> 1a1a648fe941a0ad481f227bbb1789229b419869
                     break;
 
 
@@ -168,6 +239,7 @@ public class Main {
                     // pa.jugarPartida();
                 }
                 case 2: {
+<<<<<<< HEAD
                     int res;
                     boolean primer = true;
                     do {
@@ -242,6 +314,16 @@ public class Main {
                         res = p.modificar_problema(fen, njug);
                     } while (res < 0);
 
+=======
+                    // p = new Problema();
+                    //scanejar jugades i fen
+                    // p.crearProblema(jugades, fen)
+                    // cancelar
+                    //afegir
+                    break;
+                }
+                case 3: {
+>>>>>>> 1a1a648fe941a0ad481f227bbb1789229b419869
                     // consultar problemes
                     // seleccionar problema
                     // p = getProblemaId
@@ -250,6 +332,7 @@ public class Main {
                     break;
                 }
                 case 4: {
+<<<<<<< HEAD
                     String[][] problemes = Problema.consultarProblemes();
                     for (int i = 0; i < problemes.length; ++i) {
                         System.out.println(problemes[i][0] + " " + problemes[i][1] + " " + problemes[i][2] + " "
@@ -269,6 +352,8 @@ public class Main {
                     int res = Problema.getProblemaId(Integer.parseInt(problemes[op][0]), p);
                     if (res < 1) ; //
                     p.eliminar_problema(); //errors?
+=======
+>>>>>>> 1a1a648fe941a0ad481f227bbb1789229b419869
                     // consultar problemes
                     // p = getProblemaId
                     // p.eliminarProblema()
@@ -278,7 +363,11 @@ public class Main {
                     //Opcions probl o usrPropi
 
                     //String[][] problemes = consultarProblemes();
+<<<<<<< HEAD
                     Estadistica.estadistiquesUsuari("Pepito");//consultarEstadisticaProblema(String idProblema);
+=======
+                    //consultarEstadisticaProblema(String idProblema);
+>>>>>>> 1a1a648fe941a0ad481f227bbb1789229b419869
 
                     //consultarEstadisticaUsuari(master.getName());
                     //mirar stats stats

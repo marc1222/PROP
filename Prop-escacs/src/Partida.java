@@ -6,17 +6,28 @@ public class Partida  {
     private int ronda;
     private Taulell Tauler;
     private Problema Prob;
+<<<<<<< HEAD
     private Jugador W;
     private Jugador B;
     private boolean save_stat;
     private long clock;
+=======
+    private Usuari W;
+    private Usuari B;
+    private boolean save_stat;
+    private int clock;
+>>>>>>> 1a1a648fe941a0ad481f227bbb1789229b419869
 
 
     //creadora
 
     //pre: true
     //post: instancia un problema, dos usuaris i un taulell;
+<<<<<<< HEAD
     Partida(Problema P, Jugador w, Jugador b,boolean save) {
+=======
+    Partida(Problema P, Usuari w, Usuari b,boolean save) {
+>>>>>>> 1a1a648fe941a0ad481f227bbb1789229b419869
         this.torn = P.getPrimer();
         this.ronda = 0;
         this.Tauler = new Taulell(P.getPeces());
@@ -37,6 +48,8 @@ public class Partida  {
     }
     //
     //pre: true
+    private Estadistica Stat;
+    private Estadistica Stat;
     //post:
     public void jugar_partida() {
         Posicion inici = new Posicion();
@@ -44,6 +57,7 @@ public class Partida  {
         int ret;
         String res = (this.torn == define.WHITE) ? "WHITE" : "BLACK";
         System.out.println("INICI: El jugador que ha de guanyar es el "+res);
+<<<<<<< HEAD
         Tauler.printTauler();
         while ( (ret = jugar_torn(inici,fi) ) == -1);
 
@@ -56,6 +70,15 @@ public class Partida  {
             String name = (Prob.getPrimer()==define.WHITE)?Wu.getNom():Bu.getNom();
             //se tendria que grabar estadistica si se pierde????->o deberia ser otro campo que guardar mas????
             Estadistica.guardarTemps(String.valueOf(Prob.getId()), name, String.valueOf(this.ronda),String.valueOf(this.clock));
+=======
+        while ( (ret = jugar_torn(inici,fi) ) == -1);
+        res = (define.WHITE == ret) ? "WHITE" : "BLACK";
+        System.out.println("FINAL: Ha guanyat el jugador: "+res);
+        if (this.save_stat) {
+            //guardar stat
+            String name = (Prob.getPrimer()==define.WHITE)?W.getId():B.getId();
+            guardarTiempo(String.valueOf(Prob.getId()), name, String.valueOf(this.ronda),String.valueOf(this.clock));
+>>>>>>> 1a1a648fe941a0ad481f227bbb1789229b419869
             System.out.println("Se han guardado las estadísticas");
         }
     }
