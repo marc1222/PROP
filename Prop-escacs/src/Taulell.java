@@ -39,7 +39,7 @@ public class Taulell {
         char p;
         for (int i = 0; i < 9; ++i) {
             if (i > 0) {
-                System.out.print((i-1) + " ");
+                System.out.print((8-i) + " ");
                 System.out.print("|");
             }
             else System.out.print("   ");
@@ -48,7 +48,7 @@ public class Taulell {
                 if (i == 0) System.out.print(j+ " ");
                 else if (j != 8) {
                     p = 'n';
-                    Peca a = T[i-1][j];
+                    Peca a = T[8-i][j];
                     type = a.getTipus();
                     switch (type) {
                         case define.ALFIL:
