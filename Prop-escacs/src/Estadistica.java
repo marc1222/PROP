@@ -96,7 +96,10 @@ public class Estadistica {
         List<Marca> marquesOrdenades = estadistiquesOrdenades(problema, 0);
         for(Marca m : marquesOrdenades) {
             String temps = milisATemps(m.getTemps());
-            System.out.println(m.getUsuari() + " " + m.getMat() + " " + temps);
+            System.out.println(m.getUsuari() + "  " + m.getMat() + "  " + temps);
+        }
+        if (marquesOrdenades.isEmpty()) {
+            System.out.println("No hi han registres del problema");
         }
     }
 
@@ -110,7 +113,10 @@ public class Estadistica {
         List<Marca> marquesOrdenades = estadistiquesOrdenades(usuari, 1);
         for(Marca m : marquesOrdenades) {
             String temps = milisATemps(m.getTemps());
-            System.out.println(m.getProblema() + " " + m.getMat() + " " + temps);
+            System.out.println(m.getProblema() + "         " + m.getMat() + "  " + temps);
+        }
+        if (marquesOrdenades.isEmpty()) {
+            System.out.println("No hi han registres de l'usuari");
         }
     }
 

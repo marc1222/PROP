@@ -3,8 +3,10 @@ public class define {
     //juegador
     public static final int WHITE = 0;
     public static final int BLACK = 1;
-    public static final int NULL_COLOR = 2;
 
+    public static final int NULL_COLOR = 2;
+    public static final int USER = 3;
+    public static final int MAQUINA = 4;
 
     //peça
     public static final String ALFIL = "Alfil";
@@ -13,10 +15,11 @@ public class define {
     public static final String CAVALL ="Cavall";
     public static final String REINA = "Reina";
     public static final String PEO = "Peo";
-    public static final String PECA_NULA = "Peca_nula";
+    public static final String PECA_NULA = "Peca_Nula";
+
+
 
     //si es necessiten mes, afegiu
-
 
 
 }

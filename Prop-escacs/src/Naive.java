@@ -7,10 +7,20 @@ public class Naive extends Maquina {
     private Taulell Tauler;
     private static int profunditat = 4;
     private int colorJugador;
+    private int tipus;
 
-    public Naive(Taulell Tauler, int color) {
-        this.Tauler = Tauler;
+    public Naive(int color) {
+        this.Tauler = null;
         colorJugador = color;
+        tipus = define.MAQUINA;
+    }
+
+    public int getTipus() {
+        return this.tipus;
+    }
+
+    public void setTauler(Taulell tauler) {
+        this.Tauler = tauler;
     }
 
     public long moviment(Posicion inici, Posicion fi) {
@@ -26,7 +36,7 @@ public class Naive extends Maquina {
         for (int i = 0; i < pecesTau.length; i++) {
             for (int j = 0; j < pecesTau[0].length; j++) {
                 //if (pecesTau[i][j].getColor() == colorJugador) {
-                if ((pecesTau[i][j].getColor() == colorJugador) && !pecesTau[i][j].getTipus().equals("Peca_nula")) {
+                if ((pecesTau[i][j].getColor() == colorJugador) && !pecesTau[i][j].getTipus().equals(define.PECA_NULA)) {
                     //System.out.println("TIPUS " + i + " "+ j + + pecesTau[i][j].getColor() + " " + pecesTau[i][j].getTipus());
                     Posicion ini = new Posicion(i, j);
                     for (Posicion desti : Tauler.todos_movimientos(ini)) {
@@ -65,7 +75,7 @@ public class Naive extends Maquina {
         for (int i = 0; i < pecesTau.length; i++) {
             for (int j = 0; j < pecesTau[0].length; j++) {
                 //if (maximitzar && (pecesTau[i][j].getColor() == colorJugador)) {
-                if (maximitzar && (pecesTau[i][j].getColor() == colorJugador) && !pecesTau[i][j].getTipus().equals("Peca_nula")) {
+                if (maximitzar && (pecesTau[i][j].getColor() == colorJugador) && !pecesTau[i][j].getTipus().equals(define.PECA_NULA)) {
                     Posicion ini = new Posicion(i, j);
                     for (Posicion desti : Tauler.todos_movimientos(ini)) {
                         Tauler.mover_pieza(ini, desti, colorJugador);
@@ -98,7 +108,7 @@ public class Naive extends Maquina {
         Peca pecesTau[][] = Tauler.getTauler();
         for (int i = 0; i < pecesTau.length; i++) {
             for (int j = 0; j < pecesTau[0].length; j++) {
-                if ((pecesTau[i][j].getColor() == colorJugador) && !pecesTau[i][j].getTipus().equals("Peca_nula")) {
+                if ((pecesTau[i][j].getColor() == colorJugador) && !pecesTau[i][j].getTipus().equals(define.PECA_NULA)) {
                     mobilitatPropia++;
                     puntPropia += puntuacioPeca(pecesTau[i][j].getTipus());
 

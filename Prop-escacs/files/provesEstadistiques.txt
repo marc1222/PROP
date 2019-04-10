@@ -1,5 +1,0 @@
-problema1 usuari2 2 7050750
-problema2 usuari1 6 750750
-problema1 usuari3 3 156416
-problema5 usuari4 2 727067
-problema4 usuari3 3 57070

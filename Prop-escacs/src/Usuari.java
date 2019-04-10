@@ -8,16 +8,28 @@ import java.util.HashMap; // import the HashMap class
  */
 public class Usuari extends Jugador{
     String idUsuari;
-    boolean ataca;
+    int color;
+    int tipus;
 
     // Fitxer ons es guarden els usuaris
     static String fitxerUsuaris = "./files/usuaris.txt";
 
     Scanner sc = new Scanner(System.in);
 
-    public Usuari (boolean atacant) {
+    public Usuari () {
         idUsuari = "Anònim";
-        ataca = atacant;
+        color = define.NULL_COLOR;
+        tipus = define.USER;
+    }
+
+    public Usuari (int color) {
+        idUsuari = "Anònim";
+        this.color = color;
+        tipus = define.USER;
+    }
+
+    public int getTipus() {
+        return this.tipus;
     }
 
     public String getNom() {
@@ -28,19 +40,16 @@ public class Usuari extends Jugador{
         idUsuari = nom;
     }
 
-    public boolean getAtaca() {
-        return ataca;
+    public int getColor() {
+        return this.color;
     }
 
-    public void setAtaca(boolean ataca) {
-        this.ataca = ataca;
+    public void setColor(int color) {
+        this.color = color;
     }
 
-    public boolean iniciarSessio() {
-        String nomUsuari, contrasenya;
-
-        System.out.println("Nom usuari:");
-        nomUsuari = sc.nextLine();
+    public boolean iniciarSessio(String nomUsuari) {
+        String contrasenya;
 
         System.out.println("Contrasenya:");
         contrasenya = sc.nextLine();
@@ -83,7 +92,7 @@ public class Usuari extends Jugador{
         return false;
     }
 
-    public boolean resigstrar() {
+    public boolean registrar() {
         String nomUsuari, contrasenya1, contrasenya2;
         System.out.println("Usuari:");
         nomUsuari = sc.nextLine();
@@ -201,9 +210,8 @@ public class Usuari extends Jugador{
 
     public long moviment(Posicion ini, Posicion fi) {
         long iniCrono = 0;
-        if(ataca) {
-             iniCrono = System.currentTimeMillis();
-        }
+
+        iniCrono = System.currentTimeMillis();
 
         String posPeca, destiPeca;
 
@@ -221,25 +229,8 @@ public class Usuari extends Jugador{
         fi.y = Integer.parseInt(posDesti[1]);
 
         long time = 0;
-        if (ataca) {
-            long tempsCrono = System.currentTimeMillis() - iniCrono;
-            time += tempsCrono;
-        }
+        long tempsCrono = System.currentTimeMillis() - iniCrono;
+        time += tempsCrono;
         return time;
     }
-
-    /*
-    private boolean movimentCorrecte() {
-
-    }
-
-    public void juagr() {
-        // Opcions sessio
-        System.out.println("Modes de joc:" +
-                "\nUsuari 1 vs Usuari 2 (1)\nUsuari 1 vs Maquina (2)" +
-                "\nMaquina vs Usuari 1 (3)\nMaquina 1 vs Maquina1(4)");
-        String mode = sc.nextLine();
-        System.out.println("Mode: " + mode + ".\n");
-    }
-    */
 }

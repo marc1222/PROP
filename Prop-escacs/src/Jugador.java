@@ -9,6 +9,8 @@ import java.io.*;
  */
 public abstract class Jugador {
     public abstract long moviment(Posicion inici, Posicion fi);
+
+    public abstract int getTipus();
     /*
     public abstract boolean iniciarSessio();
     public abstract public boolean resigstrar();

@@ -1,3 +1,4 @@
+import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 
 public class Taulell {
@@ -12,13 +13,33 @@ public class Taulell {
         T = new Peca[8][8];
         this.T = t; //que sera de peces
     }
+    public Taulell(Taulell tau) {
+        T = new Peca[8][8];
+        for (int i = 0; i < 8; ++i) {
+            for (int j = 0; j < 8; ++j) {
+                try {
+                    T[i][j] = (Peca) Class.forName(tau.T[i][j].getTipus()).getConstructor(int.class).newInstance(tau.T[i][j].getColor());
+                } catch (InstantiationException e) {
+                    e.printStackTrace();
+                } catch (IllegalAccessException e) {
+                    e.printStackTrace();
+                } catch (InvocationTargetException e) {
+                    e.printStackTrace();
+                } catch (NoSuchMethodException e) {
+                    e.printStackTrace();
+                } catch (ClassNotFoundException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+    }
     //operacions
     public void printTauler() {
         String type;
         char p;
         for (int i = 0; i < 9; ++i) {
             if (i > 0) {
-                System.out.print((i-1) + " ");
+                System.out.print((8-i) + " ");
                 System.out.print("|");
             }
             else System.out.print("   ");
@@ -27,7 +48,7 @@ public class Taulell {
                 if (i == 0) System.out.print(j+ " ");
                 else if (j != 8) {
                     p = 'n';
-                    Peca a = T[i-1][j];
+                    Peca a = T[8-i][j];
                     type = a.getTipus();
                     switch (type) {
                         case define.ALFIL:
@@ -75,7 +96,8 @@ public class Taulell {
             T[Pos.x][Pos.y] = aux;
             if (tipus == define.PEO) {
                 Peo p = (Peo)aux;
-                p.setPeoPrimer((Pos.y == 1 || Pos.y == 6));
+                if (color == define.WHITE) p.setPeoPrimer(Pos.y == 1);
+                else p.setPeoPrimer(Pos.y == 6);
             }
 
         } catch (Exception ex) {
@@ -109,7 +131,7 @@ public class Taulell {
     //    i executa la validació del moviment que comprova les regles d'integritat del moviment de la peça
     private boolean validar_moviment(Posicion inici, Posicion fi, int color) throws IllegalArgumentException, ChessException {
         //start checks
-        System.out.println(inici.x+"-"+inici.y+"----"+fi.x+"-"+fi.y);
+        //System.out.println(inici.x+"-"+inici.y+"----"+fi.x+"-"+fi.y);
         if (inici.x < 0 || inici.y < 0 || inici.x > 7 || inici.y > 7 || fi.x < 0 || fi.y < 0 || fi.x > 7 || fi.y > 7)
             return false;
         if (inici.x == fi.x && inici.y == fi.y) return false;
@@ -121,6 +143,10 @@ public class Taulell {
 
         if (aux.getColor() != color) return false;
         if (aux.getTipus() != define.CAVALL && descartar_movimiento(inici, fi)) return false;
+        if (aux.getTipus() == define.REI)  {
+            Posicion[] peces = getPosColor((color==define.WHITE)?define.BLACK:define.WHITE);
+            if (escac(peces,fi,inici)) return false;
+        }
         //end checks call peça checker -> booleanç
 
         return aux.rango(inici, fi);
@@ -171,7 +197,7 @@ public class Taulell {
             else if (inici.x < desti.x && inici.y > desti.y) {i = 1; j = -1;}
             else if (inici.x > desti.x && inici.y < desti.y) {i = -1; j = 1;}
             else {i = -1; j = -1;}
-            System.out.println(i+"   "+j);
+            //System.out.println(i+"   "+j);
             for (int k = 0; k < (dx - 1); ++k) {
                 pos.x += i;
                 pos.y += j;
@@ -204,7 +230,13 @@ public class Taulell {
                     act_color = T[all_pos[i].x][all_pos[i].y].getColor();
                     if (act_color != color) {
                         if (tipus == define.CAVALL) tmp.add(act_pos);
-                        else if (!descartar_movimiento(inici, act_pos)) tmp.add(act_pos);
+                        else if (!descartar_movimiento(inici, act_pos)) {
+                            if (tipus == define.REI) {
+                                Posicion[] peces = getPosColor((color==define.WHITE)?define.BLACK:define.WHITE);
+                                if (!escac(peces,act_pos,inici)) tmp.add(act_pos);
+                            }
+                            else tmp.add(act_pos);
+                        }
                     }
                 }
             }
@@ -303,7 +335,7 @@ public class Taulell {
     public int escac_i_mat(int color) {
         //get posició del rei
         Posicion Rei = getReiPos(color);
-        System.out.println(Rei.x+"-"+Rei.y);
+        //System.out.println(Rei.x+"-"+Rei.y);
         //get peces que ataquen
         Posicion Peces_atacant[] = getPosColor((color==define.WHITE)?define.BLACK:define.WHITE);
 //        for (int i = 0; i < Peces_atacant.length; ++i) {
@@ -314,8 +346,10 @@ public class Taulell {
             //comprovar si es escac i mat
             //get all movimientos del rei xk en la posicio inicial no es pot quedar
             Posicion Rei_moves[] = todos_movimientos(Rei);
-            for (int i = 0; i < Rei_moves.length; ++i) {
-                if (!escac(Peces_atacant, Rei_moves[i], Rei)) return 0;
+            if (Rei_moves != null) {
+                for (int i = 0; i < Rei_moves.length; ++i) {
+                    if (!escac(Peces_atacant, Rei_moves[i], Rei)) return 0;
+                }
             }
             if (!matar_amenaça()) return 0;
             if (!protegir_rei()) return 0;
