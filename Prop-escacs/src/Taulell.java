@@ -242,10 +242,10 @@ public class Taulell {
                                 if (!escac(peces,act_pos,inici)) tmp.add(act_pos);
                             }
                             else if (tipus == define.PEO) { //descartar mov peo que no tingui enemic
-                                Peca aux2 = T[act_pos.x][act_pos.y];
-                                if(!(aux2.getTipus() == define.PECA_NULA || aux2.getColor() == color)) {
-                                    //si no hi ha ningu o un aliat no entrem aqui
-                                    tmp.add(act_pos);
+                                if (Math.abs(inici.x - act_pos.x) == Math.abs(inici.y - act_pos.y)) {
+                                    //diagonal && hay un enemigo ->
+                                    if (T[act_pos.x][act_pos.y].getColor() == ((color == define.WHITE) ? define.BLACK : define.WHITE))
+                                        tmp.add(act_pos);
                                 }
                             }
                             else tmp.add(act_pos);
