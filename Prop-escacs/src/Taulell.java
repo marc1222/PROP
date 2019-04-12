@@ -37,18 +37,24 @@ public class Taulell {
     public void printTauler() {
         String type;
         char p;
+        System.out.println("Y ---------------------");
         for (int i = 0; i < 9; ++i) {
-            if (i > 0) {
-                System.out.print((8-i) + " ");
+            if (i < 8) {
+                System.out.print((7-i) + " ");
                 System.out.print("|");
             }
-            else System.out.print("   ");
-
             for (int j = 0; j < 8; ++j) {
-                if (i == 0) System.out.print(j+ " ");
-                else if (j != 8) {
+                if (i == 8) {
+                   if (j == 0) {
+                       System.out.println("-----------------------");
+                       System.out.print("X  ");
+                   }
+                    System.out.print(j+ " ");
+
+                }
+                else {
                     p = 'n';
-                    Peca a = T[8-i][j];
+                    Peca a = T[j][7-i];
                     type = a.getTipus();
                     switch (type) {
                         case define.ALFIL:
@@ -231,9 +237,16 @@ public class Taulell {
                     if (act_color != color) {
                         if (tipus == define.CAVALL) tmp.add(act_pos);
                         else if (!descartar_movimiento(inici, act_pos)) {
-                            if (tipus == define.REI) {
+                            if (tipus == define.REI) { //descartar mov de mat
                                 Posicion[] peces = getPosColor((color==define.WHITE)?define.BLACK:define.WHITE);
                                 if (!escac(peces,act_pos,inici)) tmp.add(act_pos);
+                            }
+                            else if (tipus == define.PEO) { //descartar mov peo que no tingui enemic
+                                Peca aux2 = T[act_pos.x][act_pos.y];
+                                if(!(aux2.getTipus() == define.PECA_NULA || aux2.getColor() == color)) {
+                                    //si no hi ha ningu o un aliat no entrem aqui
+                                    tmp.add(act_pos);
+                                }
                             }
                             else tmp.add(act_pos);
                         }
