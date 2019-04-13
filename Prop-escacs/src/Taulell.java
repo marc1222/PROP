@@ -37,18 +37,24 @@ public class Taulell {
     public void printTauler() {
         String type;
         char p;
+        System.out.println("Y ---------------------");
         for (int i = 0; i < 9; ++i) {
-            if (i > 0) {
-                System.out.print((8-i) + " ");
+            if (i < 8) {
+                System.out.print((7-i) + " ");
                 System.out.print("|");
             }
-            else System.out.print("   ");
-
             for (int j = 0; j < 8; ++j) {
-                if (i == 0) System.out.print(j+ " ");
-                else if (j != 8) {
+                if (i == 8) {
+                   if (j == 0) {
+                       System.out.println("-----------------------");
+                       System.out.print("X  ");
+                   }
+                    System.out.print(j+ " ");
+
+                }
+                else {
                     p = 'n';
-                    Peca a = T[8-i][j];
+                    Peca a = T[j][7-i];
                     type = a.getTipus();
                     switch (type) {
                         case define.ALFIL:
@@ -231,9 +237,16 @@ public class Taulell {
                     if (act_color != color) {
                         if (tipus == define.CAVALL) tmp.add(act_pos);
                         else if (!descartar_movimiento(inici, act_pos)) {
-                            if (tipus == define.REI) {
+                            if (tipus == define.REI) { //descartar mov de mat
                                 Posicion[] peces = getPosColor((color==define.WHITE)?define.BLACK:define.WHITE);
                                 if (!escac(peces,act_pos,inici)) tmp.add(act_pos);
+                            }
+                            else if (tipus == define.PEO) { //descartar mov peo que no tingui enemic
+                                if (Math.abs(inici.x - act_pos.x) == Math.abs(inici.y - act_pos.y)) {
+                                    //diagonal && hay un enemigo ->
+                                    if (T[act_pos.x][act_pos.y].getColor() == ((color == define.WHITE) ? define.BLACK : define.WHITE))
+                                        tmp.add(act_pos);
+                                }
                             }
                             else tmp.add(act_pos);
                         }
@@ -270,7 +283,7 @@ public class Taulell {
 
         for (int i= 0; i < 8; ++i) {
             for (int j = 0; j < 8; ++j) {
-                if (T[i][j]. == color) {
+                if (T[i][j].getColor() == color) {
                     tmp.add(new Posicion(i,j));
                 }
             }
@@ -287,6 +300,7 @@ public class Taulell {
     private boolean escac(Posicion[] Peces, Posicion Rei, Posicion ReiIni) {
         boolean aux;
         aux = (Rei.x != ReiIni.x) || (Rei.y != ReiIni.y);
+        Peca tmp = T[Rei.x][Rei.y];
         if (aux) {
             crea_peca_xy(Rei,T[ReiIni.x][ReiIni.y].getColor(),define.REI);
             borra_peca_xy(ReiIni);
@@ -302,7 +316,7 @@ public class Taulell {
                 if (ret) { //si no se descarta el movimiento significa que hay un posible desplazamiento -> jaque
                     if (aux) {
                         crea_peca_xy(ReiIni, T[Rei.x][Rei.y].getColor(), define.REI);
-                        borra_peca_xy(Rei);
+                        T[Rei.x][Rei.y] = tmp;
                     }
                     return true;
                 }
@@ -314,7 +328,7 @@ public class Taulell {
         //restablecer el tablero
         if (aux) {
             crea_peca_xy(ReiIni,T[Rei.x][Rei.y].getColor(),define.REI);
-            borra_peca_xy(Rei);
+            T[Rei.x][Rei.y] = tmp;
         }
         //no hay camino -> no hi ha escac
         return false;
@@ -365,11 +379,7 @@ public class Taulell {
         try {
             if (pos.x < 0 || pos.y < 0 || pos.x > 7 || pos.y > 7)
                 throw new IllegalArgumentException("Taulell: X o Y valores inválidos");
-<<<<<<< HEAD
             if (color != define.BLACK && color != define.WHITE && color != define.NULL_COLOR)
-=======
-            if (color != define.BLACK || color != define.WHITE || color != define.NULL_COLOR)
->>>>>>> 1a1a648fe941a0ad481f227bbb1789229b419869
                 throw new IllegalArgumentException("Taulell: Color inválido");
             if ( (color == define.NULL_COLOR && tipus != define.PECA_NULA) || (tipus == define.PECA_NULA && color != define.NULL_COLOR) )
                 throw new IllegalArgumentException(("Taulell: Peça NULL invalida"));

@@ -6,28 +6,18 @@ public class Partida  {
     private int ronda;
     private Taulell Tauler;
     private Problema Prob;
-<<<<<<< HEAD
     private Jugador W;
     private Jugador B;
     private boolean save_stat;
     private long clock;
-=======
-    private Usuari W;
-    private Usuari B;
-    private boolean save_stat;
-    private int clock;
->>>>>>> 1a1a648fe941a0ad481f227bbb1789229b419869
+    private int max_rondes;
 
 
     //creadora
 
     //pre: true
     //post: instancia un problema, dos usuaris i un taulell;
-<<<<<<< HEAD
     Partida(Problema P, Jugador w, Jugador b,boolean save) {
-=======
-    Partida(Problema P, Usuari w, Usuari b,boolean save) {
->>>>>>> 1a1a648fe941a0ad481f227bbb1789229b419869
         this.torn = P.getPrimer();
         this.ronda = 0;
         this.Tauler = new Taulell(P.getPeces());
@@ -36,6 +26,7 @@ public class Partida  {
         this.B = b;
         this.clock =  0;
         this.save_stat = save;
+        this.max_rondes = (P.getNumJugades()*2)-1;
     }
 
     //private
@@ -48,8 +39,6 @@ public class Partida  {
     }
     //
     //pre: true
-    private Estadistica Stat;
-    private Estadistica Stat;
     //post:
     public void jugar_partida() {
         Posicion inici = new Posicion();
@@ -57,7 +46,6 @@ public class Partida  {
         int ret;
         String res = (this.torn == define.WHITE) ? "WHITE" : "BLACK";
         System.out.println("INICI: El jugador que ha de guanyar es el "+res);
-<<<<<<< HEAD
         Tauler.printTauler();
         while ( (ret = jugar_torn(inici,fi) ) == -1);
 
@@ -70,15 +58,6 @@ public class Partida  {
             String name = (Prob.getPrimer()==define.WHITE)?Wu.getNom():Bu.getNom();
             //se tendria que grabar estadistica si se pierde????->o deberia ser otro campo que guardar mas????
             Estadistica.guardarTemps(String.valueOf(Prob.getId()), name, String.valueOf(this.ronda),String.valueOf(this.clock));
-=======
-        while ( (ret = jugar_torn(inici,fi) ) == -1);
-        res = (define.WHITE == ret) ? "WHITE" : "BLACK";
-        System.out.println("FINAL: Ha guanyat el jugador: "+res);
-        if (this.save_stat) {
-            //guardar stat
-            String name = (Prob.getPrimer()==define.WHITE)?W.getId():B.getId();
-            guardarTiempo(String.valueOf(Prob.getId()), name, String.valueOf(this.ronda),String.valueOf(this.clock));
->>>>>>> 1a1a648fe941a0ad481f227bbb1789229b419869
             System.out.println("Se han guardado las estadísticas");
         }
     }
@@ -88,9 +67,9 @@ public class Partida  {
     //post: retorna el jugador guanyador si es produeix escac i mat, o be si s'excedeix el numero de rondes permeses, altrament retorna -1
     public int jugar_torn(Posicion inici, Posicion fi)
     {
-        if (this.torn == Prob.getPrimer()) this.ronda++;
+        this.ronda++;
         long aux;
-        if (this.ronda <= this.Prob.getNumJugades()) {
+        if (this.ronda <= this.max_rondes) {
             boolean jugada = false;
             do {
                 if (this.torn == define.WHITE) {

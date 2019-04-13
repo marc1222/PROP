@@ -11,7 +11,6 @@ public class Usuari extends Jugador{
     int color;
     int tipus;
 
-
     // Fitxer ons es guarden els usuaris
     static String fitxerUsuaris = "./files/usuaris.txt";
 
@@ -48,12 +47,9 @@ public class Usuari extends Jugador{
     public void setColor(int color) {
         this.color = color;
     }
-
-    public boolean iniciarSessio() {
-        String nomUsuari, contrasenya;
-
-        System.out.println("Nom usuari:");
-        nomUsuari = sc.nextLine();
+    
+    public boolean iniciarSessio(String nomUsuari) {
+        String contrasenya;
 
         System.out.println("Contrasenya:");
         contrasenya = sc.nextLine();
@@ -237,19 +233,4 @@ public class Usuari extends Jugador{
         time += tempsCrono;
         return time;
     }
-
-    /*
-    private boolean movimentCorrecte() {
-
-    }
-
-    public void juagr() {
-        // Opcions sessio
-        System.out.println("Modes de joc:" +
-                "\nUsuari 1 vs Usuari 2 (1)\nUsuari 1 vs Maquina (2)" +
-                "\nMaquina vs Usuari 1 (3)\nMaquina 1 vs Maquina1(4)");
-        String mode = sc.nextLine();
-        System.out.println("Mode: " + mode + ".\n");
-    }
-    */
 }
