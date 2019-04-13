@@ -300,6 +300,7 @@ public class Taulell {
     private boolean escac(Posicion[] Peces, Posicion Rei, Posicion ReiIni) {
         boolean aux;
         aux = (Rei.x != ReiIni.x) || (Rei.y != ReiIni.y);
+        Peca tmp = T[Rei.x][Rei.y];;
         if (aux) {
             crea_peca_xy(Rei,T[ReiIni.x][ReiIni.y].getColor(),define.REI);
             borra_peca_xy(ReiIni);
@@ -315,7 +316,7 @@ public class Taulell {
                 if (ret) { //si no se descarta el movimiento significa que hay un posible desplazamiento -> jaque
                     if (aux) {
                         crea_peca_xy(ReiIni, T[Rei.x][Rei.y].getColor(), define.REI);
-                        borra_peca_xy(Rei);
+                        T[Rei.x][Rei.y] = tmp;
                     }
                     return true;
                 }
@@ -327,7 +328,7 @@ public class Taulell {
         //restablecer el tablero
         if (aux) {
             crea_peca_xy(ReiIni,T[Rei.x][Rei.y].getColor(),define.REI);
-            borra_peca_xy(Rei);
+            T[Rei.x][Rei.y] = tmp;
         }
         //no hay camino -> no hi ha escac
         return false;

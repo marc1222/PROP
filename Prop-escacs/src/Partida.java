@@ -10,6 +10,7 @@ public class Partida  {
     private Jugador B;
     private boolean save_stat;
     private long clock;
+    private int max_rondes;
 
 
     //creadora
@@ -25,6 +26,7 @@ public class Partida  {
         this.B = b;
         this.clock =  0;
         this.save_stat = save;
+        this.max_rondes = (P.getNumJugades()*2)-1;
     }
 
     //private
@@ -65,9 +67,9 @@ public class Partida  {
     //post: retorna el jugador guanyador si es produeix escac i mat, o be si s'excedeix el numero de rondes permeses, altrament retorna -1
     public int jugar_torn(Posicion inici, Posicion fi)
     {
-        if (this.torn == Prob.getPrimer()) this.ronda++;
+        this.ronda++;
         long aux;
-        if (this.ronda <= this.Prob.getNumJugades()) {
+        if (this.ronda <= this.max_rondes) {
             boolean jugada = false;
             do {
                 if (this.torn == define.WHITE) {
