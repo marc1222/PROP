@@ -2,14 +2,15 @@ public class Peca_Nula extends Peca {
 
     public Peca_Nula() {
         id = getNextId();
-        color = -1;
+        //color = -1;
+        color = define.NULL_COLOR;
         amenacades = null;
         amenaces = null;
     }
 
     public Peca_Nula(int color) {
         this.id = getNextId();
-        this.color = color;
+        this.color = define.NULL_COLOR;
         amenacades = null;
         amenaces = null;
     }

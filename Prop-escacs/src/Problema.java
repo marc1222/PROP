@@ -9,8 +9,10 @@ public class Problema {
     private int dificultat;
     //usuari creador pels permissos
 
-    static private String fitxer = "/home/narcis/PROP/Prop-escacs/files/problemes.txt";
-    static private String fitxerId = "/home/narcis/PROP/Prop-escacs/files/index.txt";
+    static private String fitxer = "./Prop-escacs/files/problemes.txt";
+    //static private String fitxer = "./files/problemes.txt";
+    static private String fitxerId = "./Prop-escacs/files/index.txt";
+    //static private String fitxerId = "./files/index.txt";
     private static int index = -1;
 
     private static int getNextId() {
@@ -180,8 +182,8 @@ public class Problema {
         this.dificultat = calculaDif(this.ini_pos, njug);
 
         //Problema p = new Problema(prob_id, njug, prim, pos);
-
-        if (this.validar_problema(this.primer, new Taulell(this.getPeces()), this.jugades, true)) {
+        System.out.println("Validant el problema...");
+        if (this.validar_problema2(this.primer, new Taulell(this.getPeces()), this.jugades, true)) {
             try (BufferedReader br = new BufferedReader(new FileReader(fitxer))) {
                 String line;
                 String snjug = String.valueOf(this.jugades);
@@ -237,7 +239,7 @@ public class Problema {
         this.ini_pos = fen.substring(0, i);
         this.dificultat = calculaDif(this.ini_pos, njug);
 
-        if (this.validar_problema(this.primer, new Taulell(this.getPeces()), this.jugades, true)) {
+        if (this.validar_problema2(this.primer, new Taulell(this.getPeces()), this.jugades, true)) {
             try (BufferedReader br = new BufferedReader(new FileReader(fitxer))) {
                 String line;
                 String snjug = String.valueOf(njug);
@@ -582,6 +584,99 @@ public class Problema {
             }
                     //moure peça
         }
+        return false;
+        /*if (true) { //
+            System.out.println("El problema és vàlid");
+            return true;
+        }
+        else {
+            return false;
+        }*/
+    }
+
+    public boolean validar_problema2(int color_act, Taulell tau, int njug, boolean atk) { //private?
+        //System.out.println("Taulell actual");
+        //tau.printTauler();
+        if (njug == 0) return false;
+        int color_cont;
+        if (color_act == define.WHITE) color_cont = define.BLACK;
+        else color_cont = define.WHITE;
+        Posicion pec_pos[] = tau.getPosColor(color_act);
+        for (int i = 0; i < pec_pos.length; ++i) {
+            Posicion mov[] = tau.todos_movimientos(pec_pos[i]);
+            for (int k = 0; k < mov.length; ++k) {
+                if (tau.getPecaPosició(mov[k]).getTipus() == define.REI) return true;
+                Taulell tau2 = new Taulell(tau);
+                ///if (njug != 0) {
+                    tau2.mover_pieza(pec_pos[i], mov[k], color_act);
+                    //System.out.println("Taulell moviment atac");
+                    //tau2.printTauler();
+                    if (tau2.escac_i_mat(color_cont) == 1) return true;
+                    boolean def = true;
+                    if (njug != 1) {
+                        Posicion pec_cont[] = tau2.getPosColor(color_cont);
+                        for (int j = 0; j < pec_cont.length && def; ++j) {
+                            Posicion mov_cont[] = tau2.todos_movimientos(pec_cont[j]);
+                            for (int l = 0; l < mov_cont.length && def; ++l) {
+                                Taulell tau3 = new Taulell(tau2);
+                                tau3.mover_pieza(pec_cont[j], mov_cont[l], color_cont);
+                                //System.out.println("Taulell moviment defensa");
+                                //tau3.printTauler();
+                                if (!validar_problema2(color_act, tau3, njug - 1, atk)) def = false;
+                            }
+                        }
+                    }
+                    else def = false;
+                    if (def) return true;
+                ///}
+            }
+        }
+        return false;
+    }
+
+    public boolean validar_problema3(int color_act, Taulell tau, int njug, boolean atk) { //private?
+        //Peca pec_mat[][] = this.getPeces();
+        //Taulell tau = new Taulell(pec_mat);
+        //System.out.println("Color " + String.valueOf(color_act) + " jugades " + String.valueOf(njug) + " torn " + String.valueOf(atk));
+        if (njug == 0) return false;
+        int color_cont;
+        if (color_act == define.WHITE) color_cont = define.BLACK;
+        else color_cont = define.WHITE;
+        Posicion pec_pos[] = tau.getPosColor(color_act);
+        for (int i = 0; i < pec_pos.length; ++i) {
+            //System.out.println("Peça " + String.valueOf(i) + " pos " + String.valueOf(pec_pos[i].x) + " " + String.valueOf(pec_pos[i].y));
+            // if peça nula
+            //Posicion mov[] = pec_mat[i][j].movimientos_posibles(new Posicion(i, j));
+            //Posicion pos_act = new Posicion(i, j);
+            Posicion mov[] = tau.todos_movimientos(pec_pos[i]);
+            if (mov != null) {
+                for (int k = 0; k < mov.length; ++k) {
+                    //System.out.println("Moviment " + String.valueOf(k) + " de " + String.valueOf(mov.length) + " color " + String.valueOf(color_act));
+                    //System.out.println("mov " + String.valueOf(mov[k].x) + " " + String.valueOf(mov[k].y));
+                    boolean ret;
+                    Taulell tau2 = new Taulell(tau);
+                    //System.out.println("Actual");
+                    //tau.printTauler();
+                    tau2.mover_pieza(pec_pos[i], mov[k], color_act);
+                    //System.out.println("Nou");
+                    //tau2.printTauler();
+                    if (atk && tau.escac_i_mat(color_cont) == 1) return true;
+                    if (atk) {
+                        ret = this.validar_problema3(color_cont, tau2, njug, false);
+                        if (ret) return true;
+                    } else {
+                        if (njug != 1)
+                            ret = this.validar_problema3(color_cont, tau2, njug - 1, true); // if njug == 1 false
+                        else ret = false;
+                        if (!ret) return false;
+                    }
+                    //tau.mover_pieza(mov[k], pec_pos[i], color_act); // o new tau?
+                    //System.out.println("desf " + String.valueOf(pec_pos[i].x) + " " + String.valueOf(pec_pos[i].y));
+                }
+            }
+            //moure peça
+        }
+        if (!atk) return true;
         return false;
         /*if (true) { //
             System.out.println("El problema és vàlid");

@@ -39,8 +39,7 @@ public class input_output {
        return aux;
    }
    //Se encara de escribir tot el array line en una nova linea de un fitxer ja existent
-   public void write(String filename, String[] line)
-   {
+   public void write(String filename, String[] line) {
        FileWriter fichero = null;
        PrintWriter pw = null;
        try {

@@ -37,18 +37,24 @@ public class Taulell {
     public void printTauler() {
         String type;
         char p;
+        System.out.println("Y ---------------------");
         for (int i = 0; i < 9; ++i) {
-            if (i > 0) {
-                System.out.print((i-1) + " ");
+            if (i < 8) {
+                System.out.print((7-i) + " ");
                 System.out.print("|");
             }
-            else System.out.print("   ");
-
             for (int j = 0; j < 8; ++j) {
-                if (i == 0) System.out.print(j+ " ");
-                else if (j != 8) {
+                if (i == 8) {
+                   if (j == 0) {
+                       System.out.println("-----------------------");
+                       System.out.print("X  ");
+                   }
+                    System.out.print(j+ " ");
+
+                }
+                else {
                     p = 'n';
-                    Peca a = T[i-1][j];
+                    Peca a = T[j][7-i];
                     type = a.getTipus();
                     switch (type) {
                         case define.ALFIL:
@@ -143,6 +149,10 @@ public class Taulell {
 
         if (aux.getColor() != color) return false;
         if (aux.getTipus() != define.CAVALL && descartar_movimiento(inici, fi)) return false;
+        if (aux.getTipus() == define.REI)  {
+            Posicion[] peces = getPosColor((color==define.WHITE)?define.BLACK:define.WHITE);
+            if (escac(peces,fi,inici)) return false;
+        }
         //end checks call peça checker -> booleanç
 
         return aux.rango(inici, fi);
@@ -226,7 +236,20 @@ public class Taulell {
                     act_color = T[all_pos[i].x][all_pos[i].y].getColor();
                     if (act_color != color) {
                         if (tipus == define.CAVALL) tmp.add(act_pos);
-                        else if (!descartar_movimiento(inici, act_pos)) tmp.add(act_pos);
+                        else if (!descartar_movimiento(inici, act_pos)) {
+                            if (tipus == define.REI) { //descartar mov de mat
+                                Posicion[] peces = getPosColor((color==define.WHITE)?define.BLACK:define.WHITE);
+                                if (!escac(peces,act_pos,inici)) tmp.add(act_pos);
+                            }
+                            else if (tipus == define.PEO) { //descartar mov peo que no tingui enemic
+                                if (Math.abs(inici.x - act_pos.x) == Math.abs(inici.y - act_pos.y)) {
+                                    //diagonal && hay un enemigo ->
+                                    if (T[act_pos.x][act_pos.y].getColor() == ((color == define.WHITE) ? define.BLACK : define.WHITE))
+                                        tmp.add(act_pos);
+                                }
+                            }
+                            else tmp.add(act_pos);
+                        }
                     }
                 }
             }
