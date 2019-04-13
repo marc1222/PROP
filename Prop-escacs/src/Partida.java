@@ -88,15 +88,19 @@ public class Partida  {
             } while (!jugada); //mover pieza retorna true si s'ha pogut executar el moviment o fals altrament
 
             aux = Tauler.escac_i_mat((this.torn == define.WHITE) ? define.BLACK : define.WHITE);
-            if (aux == 1) { //jaque mate
+            if (aux == 1) { //jaque mate del jugador que acaba de tirar
                 System.out.println("--- FI DE LA PARTIDA --- ESCAC I MAT ---");
                 return this.torn;
             }
-            else if (aux == 0) { //jaque
+            else if (aux == 0) { //jaque jugador que acaba de tirar fa escac
                 System.out.println("--- ATENCIÓ --- ESCAC ---");
 
             }
+            else if (aux == 2) { //ofegat, automaticament el jugador que acaba de tirar perd
+                System.out.println("--- FI DE LA PARTIDA --- REI OFEGAT ---");
+                return (this.torn == define.WHITE)?define.BLACK:define.WHITE;
 
+            }
             if (this.torn == define.WHITE) this.torn = define.BLACK;
             else this.torn = define.WHITE;
             Tauler.printTauler();

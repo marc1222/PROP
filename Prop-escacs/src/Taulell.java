@@ -149,10 +149,7 @@ public class Taulell {
 
         if (aux.getColor() != color) return false;
         if (aux.getTipus() != define.CAVALL && descartar_movimiento(inici, fi)) return false;
-        if (aux.getTipus() == define.REI)  {
-            Posicion[] peces = getPosColor((color==define.WHITE)?define.BLACK:define.WHITE);
-            if (escac(peces,fi,inici)) return false;
-        }
+
         //end checks call peça checker -> booleanç
 
         return aux.rango(inici, fi);
@@ -297,7 +294,7 @@ public class Taulell {
     //              en cuenta como una casilla vacia (es la que el rei en la simulación abandonaria para desplazarse a la posicio Rei)
 
     //post--> devuelve true si alguna de esas piezas amenaza la posición
-    private boolean escac(Posicion[] Peces, Posicion Rei, Posicion ReiIni) {
+    public boolean escac(Posicion[] Peces, Posicion Rei, Posicion ReiIni) {
         boolean aux;
         aux = (Rei.x != ReiIni.x) || (Rei.y != ReiIni.y);
         Peca tmp = T[Rei.x][Rei.y];
@@ -345,6 +342,7 @@ public class Taulell {
     //pre -> color pertany define.WHITE || define.BLACK
     //post --> retorna 1 si hi ha un escac i mat al rei del color indicat pel parametre color,
     // 0 si nomes hi ha escac,
+    //2 si el rei esta ofegat
     // -1 altrament
     public int escac_i_mat(int color) {
         //get posició del rei
@@ -352,14 +350,11 @@ public class Taulell {
         //System.out.println(Rei.x+"-"+Rei.y);
         //get peces que ataquen
         Posicion Peces_atacant[] = getPosColor((color==define.WHITE)?define.BLACK:define.WHITE);
-//        for (int i = 0; i < Peces_atacant.length; ++i) {
-//            System.out.print("Peça: "+Peces_atacant[i].x+"-"+Peces_atacant[i].y);
-//        }
+        //TODOS_MOVIMIENTOS RETURNS POS VALIDES REI ON NO ES TROBA EN ESCAC
+        Posicion Rei_moves[] = todos_movimientos(Rei);
         //primeo validar el jaque a la posición inicial del Rei
         if (escac(Peces_atacant,Rei,Rei)){
             //comprovar si es escac i mat
-            //get all movimientos del rei xk en la posicio inicial no es pot quedar
-            Posicion Rei_moves[] = todos_movimientos(Rei);
             if (Rei_moves != null) {
                 for (int i = 0; i < Rei_moves.length; ++i) {
                     if (!escac(Peces_atacant, Rei_moves[i], Rei)) return 0;
@@ -369,6 +364,7 @@ public class Taulell {
             if (!protegir_rei()) return 0;
             return 1;
         }
+        else if (Rei_moves.length == 0) return 2;
         return -1;
     }
     //instancia al tauler una nova peça
@@ -424,10 +420,17 @@ public class Taulell {
         try {
             if (!validar_moviment(inici,fi,color)) ret = false;
             else {
-                Peca aux = T[inici.x][inici.y];
-                borra_peca_xy(inici);
-                crea_peca_xy(fi,color,aux.getTipus());
                 ret = true;
+                Peca aux = T[inici.x][inici.y];
+                if (aux.getTipus() == define.REI)  {
+                    Posicion[] peces = getPosColor((color==define.WHITE)?define.BLACK:define.WHITE);
+                    if (escac(peces,fi,inici)) ret = false;
+                }
+
+                if (ret) {
+                    borra_peca_xy(inici);
+                    crea_peca_xy(fi, color, aux.getTipus());
+                }
             }
             //a.getClass().getSimpleName() --> class name
             //getClass().getName() --> package + class name
