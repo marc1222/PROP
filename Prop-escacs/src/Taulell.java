@@ -364,7 +364,20 @@ public class Taulell {
             if (!protegir_rei()) return 0;
             return 1;
         }
-        else if (Rei_moves.length == 0) return 2;
+        else if (Rei_moves.length == 0) {
+            //mirem si alguna peca te algun mov valid, sino jugador ofegat
+            Posicion[] aliats = getPosColor(color);
+            if (aliats.length > 1) { //si hi ha alguna peça mes que el rei
+                Posicion act;
+                for (int i = 0; i < aliats.length; ++i) {
+                    act = aliats[i];
+                    if (act != Rei) {//si la pos es diferent de la del rei, mirem si te algun mov valid
+                        if (todos_movimientos(act).length > 0) return -1; //te algun mov valid, return -1
+                    }
+                }
+            }
+            return 2;  //si arribem aqui no hi ha movs valids per cap peça o be solament hi ha el rei
+        }
         return -1;
     }
     //instancia al tauler una nova peça
@@ -410,11 +423,10 @@ public class Taulell {
             ex.printStackTrace();
         }
     }
-    //encarregada de moure una peça de una posició a una altre
+    //encarregada de moure una peça de una posició a una altre fent abans les seguents comprovacions:
+    //invoca a validar moviment i en cas que la peça sigui rei, comprova que no es trobi en escac (el destí)
     //pre: true -> rep parametres x0,y0 (pos inicial) i parametres x,y (pos desti) i  color (peces que es mouen)
-    //post: invoca el metoda que valida totes les regles d'integritat del moviment indicat,
-    // instancia una peça a la posició x,y
-    // i borra la de x0,y0 es produeix una excpeció
+    //post: retorna true si s'ha pogut moure la peça, false altrament
     public boolean mover_pieza(Posicion inici, Posicion fi, int color) {
         boolean ret = false;
         try {
@@ -432,8 +444,6 @@ public class Taulell {
                     crea_peca_xy(fi, color, aux.getTipus());
                 }
             }
-            //a.getClass().getSimpleName() --> class name
-            //getClass().getName() --> package + class name
         } catch (ChessException ex) {
             System.out.println(ex.getMessage());
         } finally {
