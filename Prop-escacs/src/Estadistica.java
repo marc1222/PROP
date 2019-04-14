@@ -44,21 +44,11 @@ public class Estadistica {
     }
 
     /**
-     * pre: problema i usuari existeix
-     * psot: es guarda una la linea al fitxer (problema usuari temps)
-     * @param problema
-     * @param usuari
-     * @param movimentsMat
-     * @param temps en milisegonds
-     */
-
-
-    /**
      * Es guarda a l'última line del fitxer les dades que es pasen
      * @param problema
      * @param usuari
      * @param movimentsMat
-     * @param temps
+     * @param temps en milisegonds
      */
     public static void guardarTemps(String problema, String usuari, String movimentsMat, String temps) {
         //input_output IO = new input_output();
@@ -129,7 +119,7 @@ public class Estadistica {
             BufferedReader file = new BufferedReader(new FileReader(fitxerStats));
             String line;
             StringBuffer inputBuffer = new StringBuffer();
-
+            usuari = usuari + " ";
             while ((line = file.readLine()) != null) {
                 inputBuffer.append(line);
                 inputBuffer.append('\n');
@@ -140,7 +130,7 @@ public class Estadistica {
 
             //System.out.println(inputStr);
 
-            inputStr = inputStr.replace(usuari, "Anònim");
+            inputStr = inputStr.replace(usuari, "Anònim ");
 
             //System.out.println("----------------------------------\n"  + inputStr);
 
@@ -175,11 +165,11 @@ public class Estadistica {
                 }
             }
         } catch (FileNotFoundException ex) {
-            ex.printStackTrace();
+            System.out.println("ERROR - El fitxer no existeix.");
         } catch (IOException ex) {
-            ex.printStackTrace();
+            System.out.println("ERROR - En la entrada i sortida da dades.");
         } catch (NumberFormatException e) {
-            System.out.println(e);
+            System.out.println("ERROR - En el format de nombres.");
         }
 
         Comparator<Marca> comparador = Comparator.comparing(m -> m.getMat());

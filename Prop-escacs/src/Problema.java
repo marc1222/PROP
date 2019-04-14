@@ -10,7 +10,9 @@ public class Problema {
     //usuari creador pels permissos
 
     static private String fitxer = "./files/problemes.txt";
+    //static private String fitxer = "./files/problemes.txt";
     static private String fitxerId = "./files/index.txt";
+    //static private String fitxerId = "./files/index.txt";
     private static int index = -1;
 
     private static int getNextId() {
@@ -180,7 +182,7 @@ public class Problema {
         this.dificultat = calculaDif(this.ini_pos, njug);
 
         //Problema p = new Problema(prob_id, njug, prim, pos);
-
+        System.out.println("Validant el problema...");
         if (this.validar_problema2(this.primer, new Taulell(this.getPeces()), this.jugades, true)) {
             try (BufferedReader br = new BufferedReader(new FileReader(fitxer))) {
                 String line;
@@ -237,7 +239,7 @@ public class Problema {
         this.ini_pos = fen.substring(0, i);
         this.dificultat = calculaDif(this.ini_pos, njug);
 
-        if (this.validar_problema3(this.primer, new Taulell(this.getPeces()), this.jugades, true)) {
+        if (this.validar_problema2(this.primer, new Taulell(this.getPeces()), this.jugades, true)) {
             try (BufferedReader br = new BufferedReader(new FileReader(fitxer))) {
                 String line;
                 String snjug = String.valueOf(njug);
@@ -282,12 +284,12 @@ public class Problema {
     public int eliminar_problema() { //prob_id? //borrar objecte?
         //permissos?
         String borra_linia = String.valueOf(this.id) + " " + String.valueOf(this.jugades) + " " +
-                             String.valueOf(this.primer) + " " + this.ini_pos + " " + this.dificultat;
+                String.valueOf(this.primer) + " " + this.ini_pos + " " + this.dificultat;
         File tempfile = new File ("/home/narcis/PROP/Prop-escacs/files/mytemp.txt");
         File inputfile = new File (fitxer);
         boolean trobat = false;
         try (BufferedReader reader = new BufferedReader(new FileReader(fitxer));
-         BufferedWriter writer = new BufferedWriter(new FileWriter(tempfile))) {
+             BufferedWriter writer = new BufferedWriter(new FileWriter(tempfile))) {
             String line;
             while ((line = reader.readLine()) != null) {
                 if (!line.equals(borra_linia)) {
@@ -549,7 +551,7 @@ public class Problema {
         if (color_act == define.WHITE) color_cont = define.BLACK;
         else color_cont = define.WHITE;
         //for (int i = 0; i < 8; ++i) {
-            //for (int j = 0; j < 8; ++j) {
+        //for (int j = 0; j < 8; ++j) {
         Posicion pec_pos[] = tau.getPosColor(color_act);
         for (int i = 0; i < pec_pos.length; ++i) {
             //System.out.println("Peça " + String.valueOf(i) + " pos " + String.valueOf(pec_pos[i].x) + " " + String.valueOf(pec_pos[i].y));
@@ -580,7 +582,7 @@ public class Problema {
                     //System.out.println("desf " + String.valueOf(pec_pos[i].x) + " " + String.valueOf(pec_pos[i].y));
                 }
             }
-                    //moure peça
+            //moure peça
         }
         return false;
         /*if (true) { //
@@ -606,26 +608,26 @@ public class Problema {
                 if (tau.getPecaPosició(mov[k]).getTipus() == define.REI) return true;
                 Taulell tau2 = new Taulell(tau);
                 ///if (njug != 0) {
-                    tau2.mover_pieza(pec_pos[i], mov[k], color_act);
-                    //System.out.println("Taulell moviment atac");
-                    //tau2.printTauler();
-                    if (tau2.escac_i_mat(color_cont) == 1) return true;
-                    boolean def = true;
-                    if (njug != 1) {
-                        Posicion pec_cont[] = tau2.getPosColor(color_cont);
-                        for (int j = 0; j < pec_cont.length && def; ++j) {
-                            Posicion mov_cont[] = tau2.todos_movimientos(pec_cont[j]);
-                            for (int l = 0; l < mov_cont.length && def; ++l) {
-                                Taulell tau3 = new Taulell(tau2);
-                                tau3.mover_pieza(pec_cont[j], mov_cont[l], color_cont);
-                                //System.out.println("Taulell moviment defensa");
-                                //tau3.printTauler();
-                                if (!validar_problema2(color_act, tau3, njug - 1, atk)) def = false;
-                            }
+                tau2.mover_pieza(pec_pos[i], mov[k], color_act);
+                //System.out.println("Taulell moviment atac");
+                //tau2.printTauler();
+                if (tau2.escac_i_mat(color_cont) == 1) return true;
+                boolean def = true;
+                if (njug != 1) {
+                    Posicion pec_cont[] = tau2.getPosColor(color_cont);
+                    for (int j = 0; j < pec_cont.length && def; ++j) {
+                        Posicion mov_cont[] = tau2.todos_movimientos(pec_cont[j]);
+                        for (int l = 0; l < mov_cont.length && def; ++l) {
+                            Taulell tau3 = new Taulell(tau2);
+                            tau3.mover_pieza(pec_cont[j], mov_cont[l], color_cont);
+                            //System.out.println("Taulell moviment defensa");
+                            //tau3.printTauler();
+                            if (!validar_problema2(color_act, tau3, njug - 1, atk)) def = false;
                         }
                     }
-                    else def = false;
-                    if (def) return true;
+                }
+                else def = false;
+                if (def) return true;
                 ///}
             }
         }

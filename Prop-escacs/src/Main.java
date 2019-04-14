@@ -146,7 +146,11 @@ public class Main {
                         second = new Naive((p.getPrimer()==define.WHITE)?define.BLACK:define.WHITE);
                         master.setColor(p.getPrimer());
                     }
-                    //else if(ataca == 2 && val == 2){
+                    else if(ataca == 2 && val == 2){
+                        //defender      &&  //naive
+                        second = new Naive(p.getPrimer());
+                        master.setColor((p.getPrimer()==define.WHITE)?define.BLACK:define.WHITE);
+                    }
                     else {
                         //defender    &&   //naive
                         second = new Usuari(p.getPrimer());
@@ -201,6 +205,7 @@ public class Main {
                         res = p.crear_problema(njug, fen);
                         // cancelar
                         //afegir
+                        System.out.println("-- FINAL --");
                     } while (res < 0);
                     break;
                 }
@@ -342,6 +347,16 @@ public class Main {
                     break;
                 }
                 case 7: {
+                    /*
+                    System.out.println("Crear Problema");
+                    Problema p = new Problema ();
+                    int res = p.crear_problema(2, "5Br1/6P1/5KBk/8/8/8/8/8 w - - 0 1");
+
+                    System.out.println(String.valueOf(res));
+                    System.out.println(String.valueOf(p.getId()) + " " + String.valueOf(p.getNumJugades()) + " " +
+                            String.valueOf(p.getPrimer()) + " " + p.getPosIni() + " " +
+                            String.valueOf(p.getDificultat()));
+                    */
                     System.out.println("Sortint...");
                     break;
                 }
