@@ -84,9 +84,10 @@ public class Main {
             switch (val) {
                 case 1: {
                     String[][] problemes = Problema.consultarProblemes();
+                    System.out.println("Id  #Jug Color Dif  Posició inicial en FEN");
                     for (int i = 0; i < problemes.length; ++i) {
-                        System.out.println(i + " - " + problemes[i][1] + " " + problemes[i][2] + " "
-                        + problemes[i][3] + " " + problemes[i][4]);
+                        System.out.println(i + "  -  " + problemes[i][1] + "    " + problemes[i][2] + "    "
+                        + problemes[i][4] + "   " + problemes[i][3]);
                     }
                     Scanner sc = new Scanner(System.in);
                     int op = -1;
@@ -214,9 +215,10 @@ public class Main {
                             if (sc.nextInt() == -1) break;
                         }
                         else prim = false;
+                        System.out.println("Id  #Jug Color Dif  Posició inicial en FEN");
                         for (int i = 0; i < problemes.length; ++i) {
-                            System.out.println(problemes[i][0] + " " + problemes[i][1] + " " + problemes[i][2] + " "
-                                    + problemes[i][3] + " " + problemes[i][4]);
+                            System.out.println(i + "  -  " + problemes[i][1] + "    " + problemes[i][2] + "    "
+                                    + problemes[i][4] + "   " + problemes[i][3]);
                         }
                         int op = 0;
                         boolean primer = true;
@@ -257,9 +259,10 @@ public class Main {
                 }
                 case 4: {
                     String[][] problemes = Problema.consultarProblemes();
+                    System.out.println("Id  #Jug Color Dif  Posició inicial en FEN");
                     for (int i = 0; i < problemes.length; ++i) {
-                        System.out.println(problemes[i][0] + " " + problemes[i][1] + " " + problemes[i][2] + " "
-                                + problemes[i][3] + " " + problemes[i][4]);
+                        System.out.println(i + "  -  " + problemes[i][1] + "    " + problemes[i][2] + "    "
+                                + problemes[i][4] + "   " + problemes[i][3]);
                     }
                     Scanner sc = new Scanner(System.in);
                     int op = 0;
@@ -293,9 +296,10 @@ public class Main {
                             case 1: {
                                 System.out.println("Selecciona un problema:");
                                 String[][] problemes = Problema.consultarProblemes();
+                                System.out.println("Id  #Jug Color Dif  Posició inicial en FEN");
                                 for (int i = 0; i < problemes.length; ++i) {
-                                    System.out.println(i + " - " + problemes[i][1] + " " + problemes[i][2] + " "
-                                            + problemes[i][3] + " " + problemes[i][4]);
+                                    System.out.println(i + "  -  " + problemes[i][1] + "    " + problemes[i][2] + "    "
+                                            + problemes[i][4] + "   " + problemes[i][3]);
                                 }
                                 int opcio1 = sc.nextInt();;
                                 if (opcio1 >= 0 && opcio1 < problemes.length) {
