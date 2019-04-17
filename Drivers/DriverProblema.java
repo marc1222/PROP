@@ -23,6 +23,7 @@ public class DriverProblema {
 
     public void testCrearProblema(int njug, String fen) {
         System.out.println("Crear Problema");
+        System.out.println(fen);
         Problema p = new Problema ();
         //int res = p.crear_problema(4, "8/8/8/7k/8/8/1R6/R7 w - - 0 0");
         //int res = p.crear_problema(3, "8/8/2Pb2pk/1R1B4/6Pp/5R1K/2r5/8 w - - 0 0");
@@ -121,6 +122,7 @@ public class DriverProblema {
                     System.out.println("Introdueix el Id, numJugades, PosIni i Primer(0 blanc)");
                     int id = sc.nextInt();
                     int njug = sc.nextInt();
+                    sc.useDelimiter("\\s+");
                     String fen = sc.next();
                     int prim = sc.nextInt();
                     dp.testSetters(id, njug, fen, prim);
@@ -131,6 +133,7 @@ public class DriverProblema {
                     System.out.println("Introdueix fen");
                     sc.useDelimiter(System.lineSeparator());
                     String fen2 = sc.next();
+                    sc.useDelimiter("\\s+");
                     dp.testCrearProblema(njug2, fen2);
                     break;
                 case 4:
@@ -139,18 +142,21 @@ public class DriverProblema {
                     System.out.println("Introdueix fen");
                     sc.useDelimiter(System.lineSeparator());
                     String fen3 = sc.next();
+                    sc.useDelimiter("\\s+");
                     dp.testModificarProblema(fen3, njug3);
                     break;
                 case 5:
                     System.out.println("Introdueix el Id, numJugades, PosIni i Primer(0 blanc)");
                     int id4 = sc.nextInt();
                     int njug4 = sc.nextInt();
+                    sc.useDelimiter("\\s+");
                     String fen4 = sc.next();
                     int prim4 = sc.nextInt();
                     dp.testEliminarProblema(id4, njug4, fen4, prim4);
                     break;
                 case 6:
                     System.out.println("Introdueix PosIni");
+                    sc.useDelimiter("\\s+");
                     String fen5 = sc.next();
                     dp.testGetPeces(fen5);
                     break;
