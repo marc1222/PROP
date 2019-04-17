@@ -3,7 +3,7 @@ public class Rei extends Peca {
 
     public Rei () {
         id = getNextId();
-        color = -1;
+        color = define.NULL_COLOR;
         amenacades = null;
         amenaces = null;
     }

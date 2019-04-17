@@ -3,7 +3,7 @@ public class Torre extends Peca {
 
     public Torre () {
         id = getNextId();
-        color = -1;
+        color = define.NULL_COLOR;
         amenacades = null;
         amenaces = null;
     }

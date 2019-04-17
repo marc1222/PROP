@@ -3,7 +3,7 @@ public class Alfil extends Peca {
 
     public Alfil () {
         id = getNextId();
-        color = -1;
+        color = define.NULL_COLOR;
         amenacades = null;
         amenaces = null;
     }

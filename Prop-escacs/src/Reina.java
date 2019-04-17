@@ -3,7 +3,7 @@ public class Reina extends Peca {
 
     public Reina () {
         id = getNextId();
-        color = -1;
+        color = define.NULL_COLOR;
         amenacades = null;
         amenaces = null;
     }
