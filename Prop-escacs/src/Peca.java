@@ -6,20 +6,22 @@ public abstract class Peca {
 
     protected static int index = 0;
 
+    /** Retorna el següent Id (pot no ser únic)
+     */
     protected static int getNextId() {
         return ++index;
     }
 
-    /** retorna una matriu de ints on cada fila son les coordenades x, y de la nova posició, en el cas de peça nula
-     *  retorna un array buit
+    /** Retorna un array de les posicions on es pot moure la peça paràmetre implícit(poden ser no vàlides: fora
+     *  del tauler, ocupades o amb camí obstruït), en el cas de peça nula retorna null
      */
     abstract public Posicion[] movimientos_posibles(Posicion pos); //variable size?
-    //abstract public int[][] movimientos_posibles(int posI, int posJ);
 
-    /** retorna true si el moviment està dins del rang de la peça
+    /** Rep una posició inicial i una posició destí del desplaçament de la peça
+     *  Retorna true si el moviment està dins del rang de la peça paràmetre implícit o false altrament
+     * (el moviment pot no ser vàlid), en el cas de peça nula retorna false
      */
     abstract public boolean rango(Posicion ini, Posicion fin);
-    //abstract public boolean rango(int iniI, int iniJ, int finI, int finJ);
 
     public int getId() {
         return this.id;
@@ -38,7 +40,7 @@ public abstract class Peca {
         else ; //
     }
 
-    /** retorna el define del tipus de peça del paràmetre implícit
+    /** Retorna el define del tipus de peça del paràmetre implícit
      */
     abstract public String getTipus();
 }

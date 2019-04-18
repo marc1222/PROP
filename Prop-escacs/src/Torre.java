@@ -1,5 +1,4 @@
 public class Torre extends Peca {
-    //int id;
 
     public Torre () {
         id = getNextId();
@@ -8,13 +7,8 @@ public class Torre extends Peca {
         amenaces = null;
     }
 
-    /*Torre (int id) {
-        this.id = id;
-        color = -1;
-        amenacades = null;
-        amenaces = null;
-    }*/
-
+    /** Crea una instància de torre amb el color passat per paràmetre i el següent Id (pot no ser únic)
+     */
     public Torre (int color) {
         this.id = getNextId();
         this.color = color;
@@ -28,25 +22,6 @@ public class Torre extends Peca {
         this.amenacades = amenacades;
         this.amenaces = amenaces;
     }
-
-    /*public int[][] movimientos_posibles(int posI, int posJ) {
-        // i + (-7, 7)
-        // j + (-7, 7)
-        int res[][] = new int[28][2];
-        for (int i = -7; i < 0; ++i) {
-            res[i + 7][0] = posI + i;
-            res[i + 7][1] = posJ;
-            res[i + 21][0] = posI;
-            res[i + 21][1] = posJ + i;
-        }
-        for (int i = 1; i < 8; ++i) {
-            res[i + 6][0] = posI + i;
-            res[i + 6][1] = posJ;
-            res[i + 20][0] = posI;
-            res[i + 20][1] = posJ + i;
-        }
-        return res;
-    }*/
 
     public Posicion[] movimientos_posibles(Posicion pos) { //i,j => x,y no arreglat
         // i + (-7, 7)
@@ -62,16 +37,6 @@ public class Torre extends Peca {
         }
         return res;
     }
-
-    public void validar_movimiento() {
-        // if not in the way
-        // if not occupied by same color
-        // if not out of bounds
-    }
-
-    /*public boolean rango(int iniI, int iniJ, int finI, int finJ) {
-        return (finI - iniI == 0 || finJ - iniJ == 0);
-    }*/
 
     public boolean rango(Posicion ini, Posicion fin) {
         return (fin.x - ini.x == 0 || fin.y - ini.y == 0);
