@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 public class Alfil extends Peca {
 
     public Alfil () {
@@ -16,7 +18,7 @@ public class Alfil extends Peca {
         amenaces = null;
     }
 
-    public Alfil (int id, int color, Posicion[] amenacades, Posicion[] amenaces) {
+    public Alfil (int id, int color, ArrayList<Posicion> amenacades, ArrayList<Posicion> amenaces) {
         this.id = id;
         this.color = color;
         this.amenacades = amenacades;

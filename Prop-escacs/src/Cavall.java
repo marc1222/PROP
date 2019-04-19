@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 public class Cavall extends Peca {
 
     public Cavall () {
@@ -16,7 +18,7 @@ public class Cavall extends Peca {
         amenaces = null;
     }
 
-    public Cavall (int id, int color, Posicion[] amenacades, Posicion[] amenaces) {
+    public Cavall (int id, int color, ArrayList<Posicion> amenacades, ArrayList<Posicion> amenaces) {
         this.id = id;
         this.color = color;
         this.amenacades = amenacades;

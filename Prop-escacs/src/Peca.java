@@ -1,8 +1,10 @@
+import java.util.ArrayList;
+
 public abstract class Peca {
     protected int id;
     protected int color;
-    protected Posicion[] amenacades; // quines posicions amenacço
-    protected Posicion[] amenaces;   // quines posicions m'estan amenaçant
+    protected ArrayList<Posicion> amenacades; // quines posicions amenacço
+    protected ArrayList<Posicion> amenaces;   // quines posicions m'estan amenaçant
 
     protected static int index = 0;
 
@@ -39,8 +41,28 @@ public abstract class Peca {
         if (color == define.BLACK || color == define.WHITE) this.color = color;
         else ; //
     }
+    public void add_amenaca(Posicion a) {
+        amenaces.add(a);
+    }
+    public void add_amenacada(Posicion a) {
+        amenacades.add(a);
+    }
+    public void reset() {
+        amenacades = null;
+        amenacades = new ArrayList<>();
+        amenaces = null;
+        amenaces = new ArrayList<>();
+    }
 
-    /** Retorna el define del tipus de peça del paràmetre implícit
+    public ArrayList<Posicion> getAmenacades() {
+        return amenacades;
+    }
+
+    public ArrayList<Posicion> getAmenaces() {
+        return amenaces;
+    }
+
+    /** retorna el define del tipus de peça del paràmetre implícit
      */
     abstract public String getTipus();
 }

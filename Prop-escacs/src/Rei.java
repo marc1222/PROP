@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 public class Rei extends Peca {
 
     public Rei () {
@@ -16,7 +18,7 @@ public class Rei extends Peca {
         amenaces = null;
     }
 
-    public Rei (int id, int color, Posicion[] amenacades, Posicion[] amenaces) {
+    public Rei (int id, int color, ArrayList<Posicion> amenacades, ArrayList<Posicion> amenaces) {
         this.id = id;
         this.color = color;
         this.amenacades = amenacades;

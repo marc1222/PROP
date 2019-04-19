@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 public class Peo extends Peca {
     boolean primer_mov;
 
@@ -27,7 +29,7 @@ public class Peo extends Peca {
         amenaces = null;
     }
 
-    public Peo (int id, int color, boolean primer_mov, Posicion[] amenacades, Posicion[] amenaces) {
+    public Peo (int id, int color, boolean primer_mov, ArrayList<Posicion> amenacades,ArrayList<Posicion> amenaces) {
         this.id = id;
         this.color = color;
         this.primer_mov = primer_mov;
