@@ -165,6 +165,7 @@ public class Main {
                     if (second.getTipus() == define.MAQUINA) {
                         Maquina n = (Maquina)second;
                         n.setTauler(pa.getTauler());
+                        n.setProfunditat(pa.getMat());
                     }
                     System.out.println("\nComença la partida...  A JUGAR :D");
                     pa.jugar_partida();
@@ -349,6 +350,15 @@ public class Main {
                     break;
                 }
                 case 7: {
+                    /*
+                    System.out.println("Crear Problema");
+                    Problema p = new Problema ();
+                    int res = p.crear_problema(2, "5Br1/6P1/5KBk/8/8/8/8/8 w - - 0 1");
+                    System.out.println(String.valueOf(res));
+                    System.out.println(String.valueOf(p.getId()) + " " + String.valueOf(p.getNumJugades()) + " " +
+                            String.valueOf(p.getPrimer()) + " " + p.getPosIni() + " " +
+                            String.valueOf(p.getDificultat()));
+                    */
                     System.out.println("Sortint...");
                     break;
                 }

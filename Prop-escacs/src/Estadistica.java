@@ -39,7 +39,7 @@ public class Estadistica {
                 System.out.println(line);
             }
         } catch (Exception e) {
-            System.out.println("Problema en llegir el fitxer.");
+            System.out.println("El fitxer no existeix.");
         }
     }
 
@@ -63,7 +63,7 @@ public class Estadistica {
             String aux = String.join(" ",dades);
             pw.println(aux);
         } catch (Exception e) {
-            e.printStackTrace();
+            System.out.println("El fitxer no existeix");
         } finally {
             try {
                 if (null != fichero) fichero.close();
@@ -140,7 +140,7 @@ public class Estadistica {
             fileOut.close();
 
         } catch (Exception e) {
-            System.out.println("Problem reading file.");
+            System.out.println("El fitxer no existeix");
         }
     }
 
@@ -165,7 +165,7 @@ public class Estadistica {
                 }
             }
         } catch (FileNotFoundException ex) {
-            System.out.println("ERROR - El fitxer no existeix.");
+            System.out.println("El fitxer no existeix.");
         } catch (IOException ex) {
             System.out.println("ERROR - En la entrada i sortida da dades.");
         } catch (NumberFormatException e) {

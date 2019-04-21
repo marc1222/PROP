@@ -4,6 +4,7 @@ public class Partida  {
 
     private int torn;
     private int ronda;
+    private int mat;
     private Taulell Tauler;
     private Problema Prob;
     private Jugador W;
@@ -25,6 +26,7 @@ public class Partida  {
         this.B = b;
         this.clock =  0;
         this.save_stat = save;
+        this.mat = Prob.getNumJugades();
     }
 
     //private
@@ -34,6 +36,10 @@ public class Partida  {
     //public
     public Taulell getTauler() {
         return this.Tauler;
+    }
+
+    public int getMat() {
+        return mat;
     }
     //
     //pre: true

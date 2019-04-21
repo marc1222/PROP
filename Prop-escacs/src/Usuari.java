@@ -7,9 +7,9 @@ import java.util.HashMap; // import the HashMap class
  * @author Marian Dumitru Danci
  */
 public class Usuari extends Jugador{
-    String idUsuari;
-    int color;
-    int tipus;
+    private String idUsuari;
+    private int color;
+    private static final int tipus = define.USER;
 
     // Fitxer ons es guarden els usuaris
     static String fitxerUsuaris = "./files/usuaris.txt";
@@ -19,13 +19,19 @@ public class Usuari extends Jugador{
     public Usuari () {
         idUsuari = "Anònim";
         color = define.NULL_COLOR;
-        tipus = define.USER;
     }
 
     public Usuari (int color) {
         idUsuari = "Anònim";
         this.color = color;
-        tipus = define.USER;
+    }
+
+    public static String getFitxerUsuaris() {
+        return fitxerUsuaris;
+    }
+
+    public static void setFitxerUsuaris(String fitxer) {
+        fitxerUsuaris = fitxer;
     }
 
     public int getTipus() {
@@ -84,9 +90,9 @@ public class Usuari extends Jugador{
                 }
             }
         } catch (FileNotFoundException ex) {
-            ex.printStackTrace();
+            System.out.println("El fitxer no existeix");
         } catch (IOException ex) {
-            ex.printStackTrace();
+            System.out.println("El format d'entrada o sortida no és correcte");
         }
         System.out.println("Usuari no existeix.\n");
         return false;
@@ -124,9 +130,9 @@ public class Usuari extends Jugador{
                     }
                 }
             } catch (FileNotFoundException ex) {
-                ex.printStackTrace();
+                System.out.println("El fitxer no existeix");
             } catch (IOException ex) {
-                ex.printStackTrace();
+                System.out.println("El format d'entrada o sortida no és correcte");
             }
             // Registre correcte i es guarda usuari a fitxer
             input_output IO = new input_output();
@@ -182,7 +188,7 @@ public class Usuari extends Jugador{
             }
 
         } catch (Exception e) {
-            System.out.println("Problem reading file.");
+            System.out.println("El fitxer no existeix");
         }
     }
 
@@ -198,9 +204,9 @@ public class Usuari extends Jugador{
                 usuaris.add(dades[0]);
             }
         } catch (FileNotFoundException ex) {
-            ex.printStackTrace();
+            System.out.println("El fitxer no existeix");
         } catch (IOException ex) {
-            ex.printStackTrace();
+            System.out.println("El format d'entrada o sortida no és correcte");
         }
 
         String[] totsUsuaris = new String[usuaris.size()];
@@ -208,29 +214,76 @@ public class Usuari extends Jugador{
         return totsUsuaris;
     }
 
-    public long moviment(Posicion ini, Posicion fi) {
+    public long moviment(Posicion origen, Posicion desti) {
         long iniCrono = 0;
-
         iniCrono = System.currentTimeMillis();
 
         String posPeca, destiPeca;
+        boolean entradaValida;
 
+        do {
+            entradaValida = true;
 
-        System.out.println("Escull la peça que vols moure\n");
-        posPeca = sc.nextLine();
-        String[] posIni = posPeca.split("\\s+");
-        ini.x = Integer.parseInt(posIni[0]);
-        ini.y = Integer.parseInt(posIni[1]);
+            System.out.println("-- MOVIMENT --\n" +
+                    "Selecciona la peça que vols moure ('x y'):\n");
+            posPeca = sc.nextLine();
+            String[] posIni = posPeca.split("\\s+");
 
-        System.out.println("Escriu la posició de destí\n");
-        destiPeca = sc.nextLine();
-        String[] posDesti = destiPeca.split("\\s+");
-        fi.x = Integer.parseInt(posDesti[0]);
-        fi.y = Integer.parseInt(posDesti[1]);
+            try {
+                origen.x = Integer.parseInt(posIni[0]);
+                origen.y = Integer.parseInt(posIni[1]);
+            } catch (NumberFormatException e) {
+                entradaValida = false;
+                System.out.println("Entrada invalida.");
+            }
+            catch (ArrayIndexOutOfBoundsException e) {
+                entradaValida = false;
+                System.out.println("Entrada invalida.");
+            }
+            if(origen.x > 7 || origen.x < 0 ||
+                    origen.y > 7 || origen.y < 0) {
+                entradaValida = false;
+                System.out.println("Entrada invalida.");
+            }
+
+            if (entradaValida) {
+                System.out.println("Selecciona la casella de destí ('x y'):\n");
+                destiPeca = sc.nextLine();
+                String[] posDesti = destiPeca.split("\\s+");
+                try {
+                    desti.x = Integer.parseInt(posDesti[0]);
+                    desti.y = Integer.parseInt(posDesti[1]);
+                } catch (NumberFormatException e) {
+                    entradaValida = false;
+                    System.out.println("Entrada invalida.");
+                }
+                catch (ArrayIndexOutOfBoundsException e) {
+                    entradaValida = false;
+                    System.out.println("Entrada invalida.");
+                }
+
+                if(desti.x > 7 || desti.x < 0 ||
+                        desti.y > 7 || desti.y < 0) {
+                    entradaValida = false;
+                    System.out.println("Entrada invalida.");
+                }
+            }
+        } while(!entradaValida);
 
         long time = 0;
         long tempsCrono = System.currentTimeMillis() - iniCrono;
         time += tempsCrono;
         return time;
+    }
+
+    public static void mostrarsetFitxerUsuaris() {
+        try (BufferedReader br = new BufferedReader(new FileReader(fitxerUsuaris))) {
+            String line = null;
+            while ((line = br.readLine()) != null) {
+                System.out.println(line);
+            }
+        } catch (Exception e) {
+            System.out.println("El fitxer no existeix");
+        }
     }
 }

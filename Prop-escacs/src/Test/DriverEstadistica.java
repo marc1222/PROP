@@ -2,7 +2,7 @@ import java.util.Scanner;
 
 public class DriverEstadistica {
     // Fitxer ons es guarden les estadistiques
-    private static String fitxerProvesStats = "./files/provesEstadistiques.txt";
+    private static String fitxerProvesStats = "./files/testEstadistiques.txt";
 
     public static void main(String[] args) {
         Estadistica.setFitxerStats(fitxerProvesStats);
@@ -18,7 +18,7 @@ public class DriverEstadistica {
                     "5 - Eliminar usuari\n" +
                     "6 - Mostrar ruta fitxer\n" +
                     "7 - Canviar ruta fitxer\n" +
-                    "8 - Sortir");
+                    "0 - Sortir");
 
             opcio = sc.nextInt();
             // Salta la seguent linea
@@ -87,7 +87,7 @@ public class DriverEstadistica {
                     Estadistica.setFitxerStats(fitxer);
                     break;
                 }
-                case 8: {
+                case 0: {
                     System.out.println("Sortint...");
                     break;
                 }
