@@ -13,6 +13,34 @@ public class Taulell {
         T = new Peca[8][8];
         this.T = t; //que sera de peces
     }
+
+    //Taulell deep copy
+    public Taulell(Peca t[][], boolean b) {
+        Peca p[][] = new Peca[8][8];
+        for (int i = 0; i < 8; ++i) {
+            for (int j = 0; j < 8; ++j) {
+                try {
+                    p[i][j] = (Peca) Class.forName(t[i][j].getTipus()).getConstructor(int.class,ArrayList.class, ArrayList.class).newInstance(t[i][j].getColor(),t[i][j].getAmenacades(),t[i][j].getAmenaces());
+                    if (t[i][j].getTipus() == define.PEO) {
+                        Peo p2 = (Peo) p[i][j];
+                        if (t[i][j].getColor() == define.WHITE) p2.setPeoPrimer(j == 1);
+                        else p2.setPeoPrimer(j == 6);
+                    }
+                } catch (InstantiationException e) {
+                    e.printStackTrace();
+                } catch (IllegalAccessException e) {
+                    e.printStackTrace();
+                } catch (InvocationTargetException e) {
+                    e.printStackTrace();
+                } catch (NoSuchMethodException e) {
+                    e.printStackTrace();
+                } catch (ClassNotFoundException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+        T = p;
+    }
     public Taulell(Taulell tau) {
         T = new Peca[8][8];
         for (int i = 0; i < 8; ++i) {
@@ -205,7 +233,13 @@ public class Taulell {
 
         if (aux.getColor() != color) return false;
         if (aux.getTipus() != define.CAVALL && descartar_movimiento(inici, fi)) return false;
-
+        if (aux.getTipus() == define.PEO) { //descartar mov peo que no tingui enemic
+            if (Math.abs(inici.x - fi.x) == Math.abs(inici.y - fi.y)) {
+                //diagonal && hay un enemigo ->
+                if (T[fi.x][fi.y].getColor() == color || T[fi.x][fi.y].getColor() == define.NULL_COLOR) return false;
+            }
+            else if (T[fi.x][fi.y].getColor() != define.NULL_COLOR) return false;
+        }
         //end checks call peça checker -> booleanç
 
         return aux.rango(inici, fi);
@@ -300,6 +334,7 @@ public class Taulell {
                                     if (T[act_pos.x][act_pos.y].getColor() == ((color == define.WHITE) ? define.BLACK : define.WHITE))
                                         tmp.add(act_pos);
                                 }
+                                else if (act_color == define.NULL_COLOR) tmp.add(act_pos);
                             }
                             else tmp.add(act_pos);
                         }
@@ -354,8 +389,9 @@ public class Taulell {
         boolean aux;
         aux = (Rei.x != ReiIni.x) || (Rei.y != ReiIni.y);
         Peca tmp = T[Rei.x][Rei.y];
+        Peca ini = T[ReiIni.x][ReiIni.y];
         if (aux) {
-            crea_peca_xy(Rei,T[ReiIni.x][ReiIni.y].getColor(),define.REI);
+            T[Rei.x][Rei.y] = ini;
             borra_peca_xy(ReiIni);
         }
         int color = T[Rei.x][Rei.y].getColor();
@@ -368,7 +404,7 @@ public class Taulell {
                 //   System.out.println("Mov: " + Peces[i].x + "-" + Peces[i].y + "--->" + Rei.x + "-" + Rei.y + " " + ret);
                 if (ret) { //si no se descarta el movimiento significa que hay un posible desplazamiento -> jaque
                     if (aux) {
-                        crea_peca_xy(ReiIni, T[Rei.x][Rei.y].getColor(), define.REI);
+                        T[ReiIni.x][ReiIni.y] = ini;
                         T[Rei.x][Rei.y] = tmp;
                     }
                     return true;
@@ -380,21 +416,57 @@ public class Taulell {
         }
         //restablecer el tablero
         if (aux) {
-            crea_peca_xy(ReiIni,T[Rei.x][Rei.y].getColor(),define.REI);
+            T[ReiIni.x][ReiIni.y] = ini;
             T[Rei.x][Rei.y] = tmp;
         }
         //no hay camino -> no hi ha escac
         return false;
     }
 
-    private boolean matar_amenaça() {
-        return true;
+    //hem de veure si donat un color, les peces d'aquell color (incluit el mateix rei)
+    //son capaces de generar una situació al taulell tal que puguin
+    //conseguir que el rei tingui 0 amenaces en alguna posició destí posible
+    //pre: color == WHITE o color == BLACK
+    //post: retorna true si s'ha trobat una solució valida, altrament false
+    private boolean generar_situacio(int color) {
+        if (color != define.BLACK && color != define.WHITE) return false;
+        //agafem la posició del rei
+        Posicion Rei = getReiPos(color);
+        ArrayList<Posicion> perill = T[Rei.x][Rei.y].getAmenaces();
+        if (perill.size() > 0) {
+            //simulem una situació en un taulell auxiliar amb totes les posicions del rei
+            //i guardem l'estat original del taulell en aux
+            Posicion[] moves = T[Rei.x][Rei.y].movimientos_posibles(Rei);
+            boolean moved;
+            Taulell T2;
+            for (int i = 0; i < moves.length; ++i) {
+                T2 = new Taulell(this.T, true);
+                moved = T2.mover_pieza(Rei,moves[i],color);
+                //System.out.println(moves[i].x+","+moves[i].y+" - "+moved);
+                if (moved) { //si sha pogut moure mirem si té 0 amenaces
+                    if(T2.T[moves[i].x][moves[i].y].getAmenaces().size() == 0) return true;
+                }
+            }
+            //si arribem aqui, cap posicio del rei es capaç de generar una situació de no escac i mat
+            //mirem si algun moviment posible de les altres peces que no siguin el rei poden evitarho
+            Posicion[] peces = getPosColor(color);
+            for (int i = 0; i < peces.length; ++i) {
+                if (peces[i] != Rei) { //si es difernet al rei que ja l'hem mirat
+                    moves = T[peces[i].x][peces[i].y].movimientos_posibles(peces[i]);
+                    for (int j = 0; j < moves.length; ++j) {
+                        T2 = new Taulell(this.T, true);
+                        moved = T2.mover_pieza(peces[i],moves[j],color);
+                      //  System.out.println(moves[j].x+","+moves[j].y+" - "+moved);
+                        if (moved) { //si sha pogut moure mirem si té 0 amenaces, altrament restaurem el taulell
+                            if(T2.T[Rei.x][Rei.y].getAmenaces().size() == 0) return true;
+                        }
+                    }
+                }
+            }
+        }
+        //si arribem aqui no em generat cap situació
+        return false;
     }
-
-    private boolean protegir_rei() {
-        return true;
-    }
-
     //pre -> color pertany define.WHITE || define.BLACK
     //post --> retorna 1 si hi ha un escac i mat al rei del color indicat pel parametre color,
     // 0 si nomes hi ha escac,
@@ -416,8 +488,8 @@ public class Taulell {
                     if (!escac(Peces_atacant, Rei_moves[i], Rei)) return 0;
                 }
             }
-            if (!matar_amenaça()) return 0;
-            if (!protegir_rei()) return 0;
+            if (generar_situacio(color)) return 0;
+
             return 1;
         }
         else if (Rei_moves.length == 0) {
@@ -508,8 +580,6 @@ public class Taulell {
                     recalcular_amanaça_tauler();
                 }
             }
-            //a.getClass().getSimpleName() --> class name
-            //getClass().getName() --> package + class name
         } catch (ChessException ex) {
             System.out.println(ex.getMessage());
         } finally {

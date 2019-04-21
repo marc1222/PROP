@@ -24,6 +24,12 @@ public class Rei extends Peca {
         this.amenacades = amenacades;
         this.amenaces = amenaces;
     }
+    public Rei (int color, ArrayList<Posicion> amenacades, ArrayList<Posicion> amenaces) {
+        this.id = getNextId();
+        this.color = color;
+        this.amenacades = amenacades;
+        this.amenaces = amenaces;
+    }
 
     public Posicion[] movimientos_posibles(Posicion pos) { //i,j => x,y no arreglat
         // i + (-1, 1), j + (-1, 1)

@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 public class Peca_Nula extends Peca {
 
     /** Crea una instància de peça nula amb el color null i el següent Id (pot no ser únic)
@@ -14,6 +16,14 @@ public class Peca_Nula extends Peca {
         this.color = define.NULL_COLOR;
         amenacades = null;
         amenaces = null;
+    }
+
+
+    public Peca_Nula(int color, ArrayList<Posicion> amenacades, ArrayList<Posicion> amenaces) {
+        this.id = getNextId();
+        this.color = define.NULL_COLOR;
+        this.amenacades = null;
+        this.amenaces = null;
     }
 
     public Posicion[] movimientos_posibles(Posicion pos) {

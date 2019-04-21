@@ -24,6 +24,12 @@ public class Alfil extends Peca {
         this.amenacades = amenacades;
         this.amenaces = amenaces;
     }
+    public Alfil (int color, ArrayList<Posicion> amenacades, ArrayList<Posicion> amenaces) {
+        this.id = getNextId();
+        this.color = color;
+        this.amenacades = amenacades;
+        this.amenaces = amenaces;
+    }
 
     public Posicion[] movimientos_posibles(Posicion pos) {
         // i + x, j + x; x in (-7,7)

@@ -24,6 +24,12 @@ public class Torre extends Peca {
         this.amenacades = amenacades;
         this.amenaces = amenaces;
     }
+    public Torre (int color, ArrayList<Posicion> amenacades, ArrayList<Posicion> amenaces) {
+        this.id = getNextId();
+        this.color = color;
+        this.amenacades = amenacades;
+        this.amenaces = amenaces;
+    }
 
     public Posicion[] movimientos_posibles(Posicion pos) { //i,j => x,y no arreglat
         // i + (-7, 7)

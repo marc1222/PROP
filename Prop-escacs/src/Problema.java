@@ -585,6 +585,8 @@ public class Problema {
      *  Retorna true si el problema té solució en njug jugades o false altrament
      */
     public boolean validar_problema(int color_act, Taulell tau, int njug) { //private?
+        //System.out.println("Actual " + njug);
+        //tau.printTauler();
         if (njug == 0) return false;
         int color_cont;
         if (color_act == define.WHITE) color_cont = define.BLACK;
@@ -596,6 +598,8 @@ public class Problema {
                 if (tau.getPecaPosició(mov[k]).getTipus() == define.REI) return true;
                 Taulell tau2 = new Taulell(tau);
                 if (tau2.mover_pieza(pec_pos[i], mov[k], color_act)) {
+                    //System.out.println("Atac " + njug);
+                    //tau2.printTauler();
                     if (tau2.escac_i_mat(color_cont) == 1) return true;
                     boolean def = true;
                     if (njug != 1) {
@@ -604,9 +608,12 @@ public class Problema {
                             Posicion mov_cont[] = tau2.todos_movimientos(pec_cont[j]);
                             for (int l = 0; (l < mov_cont.length) && def; ++l) {
                                 Taulell tau3 = new Taulell(tau2);
-                                tau3.mover_pieza(pec_cont[j], mov_cont[l], color_cont);
-                                //if (tau3.escac_i_mat(color_act) == 1) def = false;
-                                if (!validar_problema(color_act, tau3, njug - 1)) def = false;
+                                if (tau3.mover_pieza(pec_cont[j], mov_cont[l], color_cont)) {
+                                    //System.out.println("Defensa " + njug);
+                                    //tau3.printTauler();
+                                    //if (tau3.escac_i_mat(color_act) == 1) def = false;
+                                    if (!validar_problema(color_act, tau3, njug - 1)) def = false;
+                                }
                             }
                         }
                     } else def = false;

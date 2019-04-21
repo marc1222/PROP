@@ -37,6 +37,13 @@ public class Peo extends Peca {
         this.amenaces = amenaces;
     }
 
+    public Peo (int color, ArrayList<Posicion> amenacades,ArrayList<Posicion> amenaces) {
+        this.id = getNextId();
+        this.color = color;
+        this.primer_mov = false;
+        this.amenacades = amenacades;
+        this.amenaces = amenaces;
+    }
     public void setPeoPrimer(boolean a) {
         this.primer_mov = a;
     }

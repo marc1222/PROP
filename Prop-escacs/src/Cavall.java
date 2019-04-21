@@ -17,7 +17,12 @@ public class Cavall extends Peca {
         amenacades = null;
         amenaces = null;
     }
-
+    public Cavall (int color, ArrayList<Posicion> amenacades, ArrayList<Posicion> amenaces) {
+        this.id = getNextId();
+        this.color = color;
+        this.amenacades = amenacades;
+        this.amenaces = amenaces;
+    }
     public Cavall (int id, int color, ArrayList<Posicion> amenacades, ArrayList<Posicion> amenaces) {
         this.id = id;
         this.color = color;
