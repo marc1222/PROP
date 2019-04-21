@@ -19,6 +19,7 @@ public class Taulell {
             for (int j = 0; j < 8; ++j) {
                 try {
                     T[i][j] = (Peca) Class.forName(tau.T[i][j].getTipus()).getConstructor(int.class).newInstance(tau.T[i][j].getColor());
+                    T[i][j].reset();
                 } catch (InstantiationException e) {
                     e.printStackTrace();
                 } catch (IllegalAccessException e) {
@@ -32,8 +33,63 @@ public class Taulell {
                 }
             }
         }
+        recalcular_amanaça_tauler();
     }
     //operacions
+    private void reset_amenaces_tauler() {
+        for (int i = 0; i < 8; ++i) {
+            for (int j = 0; j < 8; ++j) {
+                T[i][j].reset();
+            }
+        }
+    }
+    //S'encarrega d'actualitzar totes les amaneces donat el taulell
+    //Pre: T ha de ser un taulell valid i de peces inicialitzades
+    public void recalcular_amanaça_tauler() {
+        Posicion[] whitys = getPosColor(define.WHITE);
+        Posicion[] blackys = getPosColor(define.BLACK);
+        //per cada relació de peces blanques i negres, mirem si aquestes s'amanacen les unes a les altres
+        //total iteracions -> peces_blanques x peces negres iteracions
+        for (int i = 0; i < whitys.length; ++i) {
+            for (int j = 0; j < blackys.length; ++j) {
+                recalcular_amenaça_pos(whitys[i],blackys[j]);
+            }
+        }
+    }
+    //donada una posició inicial es comprova si aquesta amanenaça a la fi i en cas afirmatiu
+    //s'afegeix en la pos ini la pos que amenaça, i en pos fi es posa com amenaçadda
+
+    //a continuació es comprova si fi amanenaça a la ini i en cas afirmatiu
+    //s'afegeix en la pos fi la pos que amenaça (ini), i en pos ini es posa fi com amenaçades
+    //pre: a posicion ini hi ha d'haver una pos valida, igual que a fi, i diferent de PECA_NULA
+    private void recalcular_amenaça_pos(Posicion ini, Posicion fi) {
+        int act_color = T[ini.x][ini.y].getColor();
+        try {
+            //peces valides -> moviment ini -> fi
+            boolean ret = validar_moviment(ini, fi, act_color);
+            if (ret) {
+                //moviment possible
+                T[ini.x][ini.y].add_amenacada(fi);
+                T[fi.x][fi.y].add_amenaca(ini);
+            }
+        } catch (ChessException ex) {
+            System.out.println(ex.getMessage());
+        }
+
+        try {
+            //peces valides -> moviment fi -> ini
+            act_color = T[fi.x][fi.y].getColor();
+            boolean ret = validar_moviment(fi, ini, act_color);
+            if (ret) {
+                //moviment valid
+                T[fi.x][fi.y].add_amenacada(ini);
+                T[ini.x][ini.y].add_amenaca(fi);
+            }
+        } catch (ChessException ex) {
+            System.out.println(ex.getMessage());
+        }
+    }
+
     public void printTauler() {
         String type;
         char p;
@@ -45,10 +101,10 @@ public class Taulell {
             }
             for (int j = 0; j < 8; ++j) {
                 if (i == 8) {
-                    if (j == 0) {
-                        System.out.println("-----------------------");
-                        System.out.print("X  ");
-                    }
+                   if (j == 0) {
+                       System.out.println("-----------------------");
+                       System.out.print("X  ");
+                   }
                     System.out.print(j+ " ");
 
                 }
@@ -352,6 +408,9 @@ public class Taulell {
         Posicion Peces_atacant[] = getPosColor((color==define.WHITE)?define.BLACK:define.WHITE);
         //TODOS_MOVIMIENTOS RETURNS POS VALIDES REI ON NO ES TROBA EN ESCAC
         Posicion Rei_moves[] = todos_movimientos(Rei);
+        //System.out.println("\nColor " + color );
+        //printTauler();
+        //System.out.println(Rei_moves.length);
         //primeo validar el jaque a la posición inicial del Rei
         if (escac(Peces_atacant,Rei,Rei)){
             //comprovar si es escac i mat
@@ -394,6 +453,9 @@ public class Taulell {
                 throw new IllegalArgumentException(("Taulell: Peça NULL invalida"));
 
             crea_peca_xy(pos,color,tipus);
+            //actualitzar amenaces
+            reset_amenaces_tauler();
+            recalcular_amanaça_tauler();
 
         } catch(IllegalArgumentException ex) {
             System.out.println(ex.getMessage());
@@ -413,6 +475,8 @@ public class Taulell {
                 throw new ChessException("Taulell: No hay ninguna pieza que destruir en la posición: ["+pos.x+"] ["+pos.y+"]");
 
             borra_peca_xy(pos);
+            reset_amenaces_tauler();
+            recalcular_amanaça_tauler();
 
         } catch(IllegalArgumentException ex) {
             System.out.println(ex.getMessage());
@@ -423,10 +487,11 @@ public class Taulell {
             ex.printStackTrace();
         }
     }
-    //encarregada de moure una peça de una posició a una altre fent abans les seguents comprovacions:
-    //invoca a validar moviment i en cas que la peça sigui rei, comprova que no es trobi en escac (el destí)
+    //encarregada de moure una peça de una posició a una altre
     //pre: true -> rep parametres x0,y0 (pos inicial) i parametres x,y (pos desti) i  color (peces que es mouen)
-    //post: retorna true si s'ha pogut moure la peça, false altrament
+    //post: invoca el metoda que valida totes les regles d'integritat del moviment indicat,
+    // instancia una peça a la posició x,y
+    // i borra la de x0,y0 es produeix una excpeció
     public boolean mover_pieza(Posicion inici, Posicion fi, int color) {
         boolean ret = false;
         try {
@@ -442,13 +507,19 @@ public class Taulell {
                 if (ret) {
                     borra_peca_xy(inici);
                     crea_peca_xy(fi, color, aux.getTipus());
+                    reset_amenaces_tauler();
+                    recalcular_amanaça_tauler();
                 }
             }
+            //a.getClass().getSimpleName() --> class name
+            //getClass().getName() --> package + class name
         } catch (ChessException ex) {
             System.out.println(ex.getMessage());
         } finally {
             return ret;
         }
     }
+
+
 
 }

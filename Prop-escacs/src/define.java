@@ -3,8 +3,8 @@ public class define {
     //juegador
     public static final int WHITE = 0;
     public static final int BLACK = 1;
-    public static final int NULL_COLOR = 2;
 
+    public static final int NULL_COLOR = 2;
     public static final int USER = 3;
     public static final int MAQUINA = 4;
 

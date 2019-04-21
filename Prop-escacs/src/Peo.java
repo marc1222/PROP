@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 public class Peo extends Peca {
     boolean primer_mov;
 
@@ -8,7 +10,9 @@ public class Peo extends Peca {
         amenacades = null;
         amenaces = null;
     }
-
+    /** Crea una instància de peó amb el color passat per paràmetre, el següent Id (pot no ser únic) i el
+     *  primer moviment false
+     */
     public Peo (int color) {
         this.id = getNextId();
         this.color = color;
@@ -25,7 +29,7 @@ public class Peo extends Peca {
         amenaces = null;
     }
 
-    public Peo (int id, int color, boolean primer_mov, Posicion[] amenacades, Posicion[] amenaces) {
+    public Peo (int id, int color, boolean primer_mov, ArrayList<Posicion> amenacades,ArrayList<Posicion> amenaces) {
         this.id = id;
         this.color = color;
         this.primer_mov = primer_mov;
@@ -36,46 +40,6 @@ public class Peo extends Peca {
     public void setPeoPrimer(boolean a) {
         this.primer_mov = a;
     }
-
-    /*public int[][] movimientos_posibles(int posI, int posJ) {
-        // i - 1 negras;; i + 1 blancas
-        // i - 2 if first_move; i + 2
-        // i + 1, j + 1 if i + 1, j + 1 ocuppied and color != own_color; i - 1, j + 1
-        // i + 1, j - 1; i - 1; j - 1    "                "               "
-        int res[][] = new int[4][2];
-        if (color == 'B') {
-            res[0][0] = posI + 1;
-            res[0][1] = posJ;
-            if (primer_mov) {
-                res[1][0] = posI + 2;
-                res[1][1] = posJ;
-            }
-            else {
-                res[1][0] = -1;
-                res[1][1] = -1;
-            }
-            res[2][0] = posI + 1;
-            res[2][1] = posJ - 1;
-            res[3][0] = posI + 1;
-            res[3][1] = posJ + 1;
-        }
-        else if (color == 'N') {
-            res[0][0] = posI - 1;
-            res[0][1] = posJ;
-            if (primer_mov) {
-                res[1][0] = posI - 2;
-                res[1][1] = posJ;
-            } else {
-                res[1][0] = -1;
-                res[1][1] = -1;
-            }
-            res[2][0] = posI - 1;
-            res[2][1] = posJ - 1;
-            res[3][0] = posI - 1;
-            res[3][1] = posJ + 1;
-        }
-        return res;
-    }*/
 
     public Posicion[] movimientos_posibles(Posicion pos) {
         // i - 1 negras;; i + 1 blancas
@@ -107,39 +71,6 @@ public class Peo extends Peca {
         }
         return res;
     }
-
-    public void validar_movimiento() {
-        // if not in the way
-        // if not occupied by same color
-        // if not out of bounds
-    }
-
-    /*public boolean rango(int iniI, int iniJ, int finI, int finJ) {
-        boolean rangj = finJ == iniJ + 1 || finJ == iniJ - 1 || finJ == iniJ;
-        if (color == 'B') {
-            if (finI == iniI + 1) {
-                return rangj;
-            }
-            if (primer_mov) {
-                if (finI == iniI + 2) {
-                    return (finJ == iniJ);
-                }
-            }
-            return false;
-        }
-        else if (color == 'N') {
-            if (finI == iniI - 1) {
-                return rangj;
-            }
-            if (primer_mov) {
-                if (finI == iniI - 2) {
-                    return (finJ == iniJ);
-                }
-            }
-            return false;
-        }
-        return false;
-    }*/
 
     public boolean rango(Posicion ini, Posicion fin) {
         boolean rangj = fin.x == ini.x + 1 || fin.x == ini.x - 1 || fin.x == ini.x;

@@ -1,5 +1,7 @@
 public class Peca_Nula extends Peca {
 
+    /** Crea una instància de peça nula amb el color null i el següent Id (pot no ser únic)
+     */
     public Peca_Nula() {
         id = getNextId();
         color = define.NULL_COLOR;
@@ -14,20 +16,9 @@ public class Peca_Nula extends Peca {
         amenaces = null;
     }
 
-
-
-    /*public int[][] movimientos_posibles(int posI, int posJ) {
-        int res[][] = new int[0][0];
-        return res;
-    }*/
-
     public Posicion[] movimientos_posibles(Posicion pos) {
         return null;
     }
-
-    /*public boolean rango(int iniI, int iniJ, int finI, int finJ) {
-        return false;
-    }*/
 
     public boolean rango(Posicion ini, Posicion fin) {
         return false;

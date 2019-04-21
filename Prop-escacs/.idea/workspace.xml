@@ -6,23 +6,34 @@
       <change beforePath="$PROJECT_DIR$/files/estadistiques.txt" beforeDir="false" afterPath="$PROJECT_DIR$/files/estadistiques.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/files/index.txt" beforeDir="false" afterPath="$PROJECT_DIR$/files/index.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/files/problemes.txt" beforeDir="false" afterPath="$PROJECT_DIR$/files/problemes.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Prop-escacs/DriverEstadistica.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Prop-escacs/DriverEstadistica.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Prop-escacs/Estadistica$Marca.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Prop-escacs/Estadistica$Marca.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Prop-escacs/Estadistica.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Prop-escacs/Estadistica.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/files/usuaris.txt" beforeDir="false" afterPath="$PROJECT_DIR$/files/usuaris.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Prop-escacs/Alfil.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Prop-escacs/Alfil.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Prop-escacs/Cavall.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Prop-escacs/Cavall.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Prop-escacs/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Prop-escacs/Main.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Prop-escacs/Naive.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Prop-escacs/Naive.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Prop-escacs/Partida.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Prop-escacs/Partida.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Prop-escacs/Peca.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Prop-escacs/Peca.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Prop-escacs/Peca_Nula.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Prop-escacs/Peca_Nula.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Prop-escacs/Peo.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Prop-escacs/Peo.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Prop-escacs/Problema.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Prop-escacs/Problema.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Prop-escacs/Rei.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Prop-escacs/Rei.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Prop-escacs/Reina.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Prop-escacs/Reina.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Prop-escacs/Taulell.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Prop-escacs/Taulell.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Estadistica.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Estadistica.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Prop-escacs/Torre.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Prop-escacs/Torre.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Alfil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Alfil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Cavall.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Cavall.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Maquina.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Maquina.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Naive.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Naive.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Partida.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Partida.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Peca.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Peca.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Peca_Nula.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Peca_Nula.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Peo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Peo.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Problema.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Problema.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Rei.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Rei.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Reina.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Reina.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Taulell.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Taulell.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Test/DriverEstadistica.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Test/DriverEstadistica.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Torre.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Torre.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/define.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/define.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -36,16 +47,12 @@
     <window id="1">
       <content type="file-editors">
         <state>
-          <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+          <leaf>
             <file pinned="false" current-in-tab="true">
-              <entry file="file://$PROJECT_DIR$/src/Naive.java">
+              <entry file="file://$PROJECT_DIR$/src/Maquina.java">
                 <provider selected="true" editor-type-id="text-editor">
-                  <state relative-caret-position="431">
-                    <caret line="134" column="9" lean-forward="true" selection-start-line="134" selection-start-column="9" selection-end-line="134" selection-end-column="9" />
-                    <folding>
-                      <element signature="method#Naive#0;class#Naive#0" />
-                      <element signature="method#puntuacioPeca#0;class#Naive#0" />
-                    </folding>
+                  <state relative-caret-position="252">
+                    <caret line="12" column="1" selection-start-line="12" selection-start-column="1" selection-end-line="12" selection-end-column="1" />
                   </state>
                 </provider>
               </entry>
@@ -57,16 +64,60 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Test/DriverEstadistica.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1753">
+              <caret line="88" column="17" lean-forward="true" selection-start-line="88" selection-start-column="17" selection-end-line="88" selection-end-column="17" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Jugador.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="252">
+              <caret line="14" column="4" selection-start-line="14" selection-start-column="4" selection-end-line="14" selection-end-column="35" />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="61">
-              <caret line="365" column="5" selection-start-line="365" selection-start-column="5" selection-end-line="365" selection-end-column="5" />
+            <state relative-caret-position="639">
+              <caret line="358" column="1" lean-forward="true" selection-start-line="358" selection-start-column="1" selection-end-line="358" selection-end-column="1" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Usuari.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="609">
+              <caret line="50" column="40" selection-start-line="50" selection-start-column="40" selection-end-line="50" selection-end-column="40" />
               <folding>
-                <element signature="e#676#1527#1" />
-                <element signature="e#1552#1761#1" />
-                <element signature="e#1786#1887#1" />
-                <element signature="e#1913#2019#1" />
+                <element signature="method#Usuari#0;class#Usuari#0" />
+                <element signature="method#Usuari#1;class#Usuari#0" />
+                <element signature="method#iniciarSessio#0;class#Usuari#0" />
+                <element signature="method#registrar#0;class#Usuari#0" />
+                <element signature="method#baixa#0;class#Usuari#0" />
+                <element signature="method#eliminarUsuari#0;class#Usuari#0" />
+                <element signature="method#totsUsuaris#0;class#Usuari#0" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Naive.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-609">
+              <caret line="37" column="8" lean-forward="true" selection-start-line="37" selection-start-column="8" selection-end-line="37" selection-end-column="8" />
+              <folding>
+                <element signature="method#Naive#0;class#Naive#0" />
+                <element signature="method#desferMoviment#0;class#Naive#0" />
+                <element signature="method#puntuacioPeca#0;class#Naive#0" />
               </folding>
             </state>
           </provider>
@@ -83,36 +134,36 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>----</find>
-      <find>CREA</find>
-      <find>BORRA</find>
-      <find>peça null in</find>
-      <find>-</find>
-      <find>-1</find>
-      <find>---</find>
+      <find>printTaul</find>
+      <find>getre</find>
+      <find>getRei</find>
+      <find>getRe</find>
+      <find>MOVER</find>
+      <find>POSb</find>
+      <find>posb</find>
+      <find>escac_i_</find>
+      <find>escac_m</find>
+      <find>escac_i</find>
+      <find>escac</find>
+      <find>todos</find>
+      <find>mover_p</find>
+      <find>null invali</find>
+      <find>no hi ha cap</find>
       <find>desfer</find>
-      <find>scanne</find>
-      <find>crear</find>
-      <find>w</find>
-      <find>W</find>
-      <find>PRINT</find>
-      <find>PRINTTauler</find>
-      <find>printTau</find>
-      <find>mover_</find>
-      <find>MOVIMENT</find>
-      <find>crea_peca</find>
-      <find>moviment</find>
+      <find>no hi</find>
+      <find>no h</find>
+      <find>todos_movimientos(</find>
+      <find>fitxer</find>
+      <find>no hi ha</find>
+      <find>no</find>
+      <find>*</find>
+      <find>*************</find>
       <find>mover</find>
-      <find>tauler</find>
-      <find>el j</find>
+      <find>mover(</find>
+      <find>print</find>
       <find>printT</find>
-      <find>borra</find>
-      <find>borra_peca</find>
-      <find>crea</find>
-      <find>des</find>
-      <find>REI OFE</find>
-      <find>min</find>
-      <find>max</find>
+      <find>loadi</find>
+      <find>ESCAC A ADV: 1</find>
     </findStrings>
     <dirStrings>
       <dir>$PROJECT_DIR$/src</dir>
@@ -125,25 +176,27 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/.idea/workspace.xml" />
-        <option value="$PROJECT_DIR$/src/Posicion.java" />
         <option value="$PROJECT_DIR$/src/Jugador.java" />
-        <option value="$PROJECT_DIR$/src/Maquina.java" />
         <option value="$PROJECT_DIR$/src/Usuari.java" />
         <option value="$PROJECT_DIR$/files/estadistiques.txt" />
-        <option value="$PROJECT_DIR$/files/usuaris.txt" />
         <option value="$PROJECT_DIR$/src/define.java" />
         <option value="$PROJECT_DIR$/src/Peca_Nula.java" />
         <option value="$PROJECT_DIR$/src/Test/DriverEstadistica.java" />
         <option value="$PROJECT_DIR$/src/DriverEstadistica.java" />
         <option value="$PROJECT_DIR$/src/Estadistica.java" />
         <option value="$PROJECT_DIR$/files/provesEstadistiques.txt" />
-        <option value="$PROJECT_DIR$/files/problemes.txt" />
-        <option value="$PROJECT_DIR$/src/Problema.java" />
+        <option value="$PROJECT_DIR$/files/usuaris.txt" />
         <option value="$PROJECT_DIR$/files/index.txt" />
-        <option value="$PROJECT_DIR$/src/Main.java" />
+        <option value="$PROJECT_DIR$/src/Posicion.java" />
         <option value="$PROJECT_DIR$/src/Partida.java" />
+        <option value="$PROJECT_DIR$/src/Peca.java" />
+        <option value="$PROJECT_DIR$/src/Alfil.java" />
+        <option value="$PROJECT_DIR$/src/Problema.java" />
         <option value="$PROJECT_DIR$/src/Taulell.java" />
+        <option value="$PROJECT_DIR$/files/problemes.txt" />
         <option value="$PROJECT_DIR$/src/Naive.java" />
+        <option value="$PROJECT_DIR$/src/Main.java" />
+        <option value="$PROJECT_DIR$/src/Maquina.java" />
       </list>
     </option>
   </component>
@@ -153,11 +206,10 @@
       <select />
     </treeState>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="1562" />
-    <option name="y" value="195" />
-    <option name="width" value="1364" />
-    <option name="height" value="745" />
+  <component name="ProjectFrameBounds">
+    <option name="x" value="1359" />
+    <option name="width" value="1463" />
+    <option name="height" value="1057" />
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
@@ -181,16 +233,22 @@
               <item name="Prop-escacs" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="Prop-escacs" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Prop-escacs" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="Test" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
       <pane id="Scope" />
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1555155827984" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1555787865697" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
   </component>
   <component name="RunDashboard">
@@ -250,11 +308,11 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="1358" y="-8" width="1936" height="1066" extended-state="6" />
+    <frame x="1359" y="0" width="1463" height="1057" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49889624" visible="true" weight="0.1663113" />
-      <window_info id="Structure" order="1" sideWeight="0.50110376" side_tool="true" weight="0.17549168" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49056605" visible="true" weight="0.2173913" />
+      <window_info id="Structure" order="1" sideWeight="0.509434" side_tool="true" weight="0.17019667" />
       <window_info id="Designer" order="2" />
       <window_info id="Learn" order="3" />
       <window_info id="UI Designer" order="4" />
@@ -263,15 +321,15 @@
       <window_info id="Capture Tool" order="7" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.7491961" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.13528138" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="bottom" id="TODO" order="6" weight="0.3290461" />
+      <window_info anchor="bottom" id="TODO" order="6" weight="0.32900432" />
       <window_info anchor="bottom" id="Version Control" order="7" weight="0.32850242" />
       <window_info anchor="bottom" id="Terminal" order="8" />
       <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
-      <window_info anchor="bottom" id="Messages" order="10" weight="0.3279743" />
+      <window_info anchor="bottom" id="Messages" order="10" weight="0.39502165" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -316,99 +374,27 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/Naive.java</url>
-          <line>262</line>
+          <line>75</line>
           <properties />
-          <option name="timeStamp" value="4" />
+          <option name="timeStamp" value="43" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/Naive.java</url>
-          <line>169</line>
+          <line>102</line>
           <properties />
-          <option name="timeStamp" value="18" />
+          <option name="timeStamp" value="53" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/Naive.java</url>
-          <line>190</line>
+          <line>136</line>
           <properties />
-          <option name="timeStamp" value="19" />
+          <option name="timeStamp" value="79" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/Naive.java</url>
-          <line>205</line>
+          <line>115</line>
           <properties />
-          <option name="timeStamp" value="21" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/Naive.java</url>
-          <line>182</line>
-          <properties />
-          <option name="timeStamp" value="22" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/Naive.java</url>
-          <line>173</line>
-          <properties />
-          <option name="timeStamp" value="24" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/Naive.java</url>
-          <line>187</line>
-          <properties />
-          <option name="timeStamp" value="25" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/Naive.java</url>
-          <line>122</line>
-          <properties />
-          <option name="timeStamp" value="26" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/Naive.java</url>
-          <line>120</line>
-          <properties />
-          <option name="timeStamp" value="27" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/Naive.java</url>
-          <line>132</line>
-          <properties />
-          <option name="timeStamp" value="28" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/Naive.java</url>
-          <line>121</line>
-          <properties />
-          <option name="timeStamp" value="29" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/Naive.java</url>
-          <line>135</line>
-          <properties />
-          <option name="timeStamp" value="30" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/Naive.java</url>
-          <line>89</line>
-          <properties />
-          <option name="timeStamp" value="35" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/Naive.java</url>
-          <line>95</line>
-          <properties />
-          <option name="timeStamp" value="36" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/Naive.java</url>
-          <line>140</line>
-          <properties />
-          <option name="timeStamp" value="37" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/Naive.java</url>
-          <line>139</line>
-          <properties />
-          <option name="timeStamp" value="38" />
+          <option name="timeStamp" value="80" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
@@ -421,34 +407,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Alfil.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="13" selection-start-column="13" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Posicion.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="11" column="1" lean-forward="true" selection-start-line="11" selection-start-column="1" selection-end-line="11" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Jugador.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="14" column="4" selection-start-line="14" selection-start-column="4" selection-end-line="14" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Maquina.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="147">
-          <caret line="9" column="13" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://C:/Program Files/Java/jdk1.8.0_201/src.zip!/java/lang/NumberFormatException.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="71">
@@ -456,33 +414,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Usuari.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="609">
-          <caret line="50" column="40" selection-start-line="50" selection-start-column="40" selection-end-line="50" selection-end-column="40" />
-          <folding>
-            <element signature="method#Usuari#0;class#Usuari#0" />
-            <element signature="method#Usuari#1;class#Usuari#0" />
-            <element signature="method#iniciarSessio#0;class#Usuari#0" />
-            <element signature="method#registrar#0;class#Usuari#0" />
-            <element signature="method#baixa#0;class#Usuari#0" />
-            <element signature="method#eliminarUsuari#0;class#Usuari#0" />
-            <element signature="method#totsUsuaris#0;class#Usuari#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://C:/Program Files/Java/jdk1.8.0_201/src.zip!/java/lang/AbstractStringBuilder.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="105">
           <caret line="448" selection-start-line="448" selection-end-line="448" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Peca.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-378">
-          <caret column="22" selection-start-column="22" selection-end-column="22" />
         </state>
       </provider>
     </entry>
@@ -507,24 +442,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/define.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="126">
-          <caret line="6" selection-start-line="6" selection-end-line="6" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Test/inout.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-6666">
           <caret line="39" column="4" lean-forward="true" selection-start-line="39" selection-start-column="4" selection-end-line="39" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Test/DriverEstadistica.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1848">
-          <caret line="88" column="29" selection-start-line="88" selection-start-column="29" selection-end-line="88" selection-end-column="29" />
         </state>
       </provider>
     </entry>
@@ -535,17 +456,149 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/DriverEstadistica.java" />
+    <entry file="file://$PROJECT_DIR$/files/estadistiques.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="252">
+          <caret line="12" selection-start-line="12" selection-end-line="12" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/files/usuaris.txt">
       <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="5" lean-forward="true" selection-start-line="5" selection-end-line="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/files/index.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="21">
+          <caret line="1" selection-start-line="1" selection-end-line="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Posicion.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="294">
+          <caret line="14" column="5" lean-forward="true" selection-start-line="14" selection-start-column="5" selection-end-line="14" selection-end-column="5" />
+          <folding>
+            <element signature="e#191#192#0" expanded="true" />
+            <element signature="e#229#230#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/DriverEstadistica.java" />
+    <entry file="file://$PROJECT_DIR$/src/Cavall.java">
+      <provider selected="true" editor-type-id="text-editor">
         <state>
-          <caret column="6" selection-start-column="6" selection-end-column="6" />
+          <caret column="13" selection-start-column="13" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Alfil.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1008">
+          <caret line="48" column="1" selection-start-line="48" selection-start-column="1" selection-end-line="48" selection-end-column="1" />
+          <folding>
+            <element signature="e#1283#1284#0" expanded="true" />
+            <element signature="e#1358#1359#0" expanded="true" />
+            <element signature="e#1390#1391#0" expanded="true" />
+            <element signature="e#1425#1426#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Peca.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="483">
+          <caret line="68" lean-forward="true" selection-start-line="68" selection-end-line="68" />
+          <folding>
+            <element signature="e#395#396#0" expanded="true" />
+            <element signature="e#425#426#0" expanded="true" />
+            <element signature="e#1074#1075#0" expanded="true" />
+            <element signature="e#1104#1105#0" expanded="true" />
+            <element signature="e#1132#1133#0" expanded="true" />
+            <element signature="e#1165#1166#0" expanded="true" />
+            <element signature="e#1442#1443#0" expanded="true" />
+            <element signature="e#1473#1474#0" expanded="true" />
+            <element signature="e#1517#1518#0" expanded="true" />
+            <element signature="e#1550#1551#0" expanded="true" />
+            <element signature="e#1762#1763#0" expanded="true" />
+            <element signature="e#1795#1796#0" expanded="true" />
+            <element signature="e#1843#1844#0" expanded="true" />
+            <element signature="e#1874#1875#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_201/src.zip!/java/io/FileInputStream.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="106">
+          <caret line="199" column="13" selection-start-line="199" selection-start-column="10" selection-end-line="199" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/define.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="126">
+          <caret line="6" selection-start-line="6" selection-end-line="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Problema.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="273">
+          <caret line="14" column="4" selection-start-line="14" selection-start-column="4" selection-end-line="14" selection-end-column="4" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/files/problemes.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="21">
+          <caret line="1" column="1" lean-forward="true" selection-start-line="1" selection-start-column="1" selection-end-line="1" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Taulell.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="7980">
+          <caret line="401" column="19" selection-start-line="401" selection-start-column="19" selection-end-line="401" selection-end-column="19" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#168#169#0" expanded="true" />
+            <element signature="e#222#223#0" expanded="true" />
+            <element signature="e#6660#6661#0" expanded="true" />
+            <element signature="e#6728#6729#0" expanded="true" />
+            <element signature="e#6780#6781#0" expanded="true" />
+            <element signature="e#6804#6805#0" expanded="true" />
+            <element signature="e#6999#7000#0" expanded="true" />
+            <element signature="e#7037#7038#0" expanded="true" />
+            <element signature="e#16431#16432#0" expanded="true" />
+            <element signature="e#16458#16459#0" expanded="true" />
+            <element signature="e#16496#16497#0" expanded="true" />
+            <element signature="e#16523#16524#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Partida.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-697">
+          <caret line="47" selection-start-line="47" selection-end-line="47" />
+          <folding>
+            <element signature="e#718#719#0" expanded="true" />
+            <element signature="e#752#753#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Estadistica.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="431">
+        <state relative-caret-position="1239">
           <caret line="132" column="56" selection-start-line="132" selection-start-column="56" selection-end-line="132" selection-end-column="56" />
           <folding>
             <element signature="docComment;method#getFitxerStats#0;class#Estadistica#0" />
@@ -565,102 +618,59 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Problema.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3696">
-          <caret line="176" column="25" lean-forward="true" selection-start-line="176" selection-start-column="25" selection-end-line="176" selection-end-column="25" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#2582#2583#0" expanded="true" />
-            <element signature="e#2612#2613#0" expanded="true" />
-            <element signature="e#2646#2647#0" expanded="true" />
-            <element signature="e#2681#2682#0" expanded="true" />
-            <element signature="e#2711#2712#0" expanded="true" />
-            <element signature="e#2745#2746#0" expanded="true" />
-            <element signature="e#2778#2779#0" expanded="true" />
-            <element signature="e#2813#2814#0" expanded="true" />
-            <element signature="e#2847#2848#0" expanded="true" />
-            <element signature="e#2885#2886#0" expanded="true" />
-            <element signature="e#14518#14528#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/files/problemes.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="63">
-          <caret line="3" selection-start-line="3" selection-end-line="3" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/files/estadistiques.txt">
+    <entry file="file://$PROJECT_DIR$/src/Jugador.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="252">
-          <caret line="12" selection-start-line="12" selection-end-line="12" />
+          <caret line="14" column="4" selection-start-line="14" selection-start-column="4" selection-end-line="14" selection-end-column="35" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/files/index.txt">
+    <entry file="file://$PROJECT_DIR$/src/Test/DriverEstadistica.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="2" selection-start-column="2" selection-end-column="2" />
+        <state relative-caret-position="1753">
+          <caret line="88" column="17" lean-forward="true" selection-start-line="88" selection-start-column="17" selection-end-line="88" selection-end-column="17" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Partida.java">
+    <entry file="file://$PROJECT_DIR$/src/Usuari.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="481">
-          <caret line="112" column="1" selection-start-line="112" selection-start-column="1" selection-end-line="112" selection-end-column="1" />
+        <state relative-caret-position="609">
+          <caret line="50" column="40" selection-start-line="50" selection-start-column="40" selection-end-line="50" selection-end-column="40" />
           <folding>
-            <element signature="e#797#798#0" expanded="true" />
-            <element signature="e#831#832#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Taulell.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1868">
-          <caret line="453" column="1" lean-forward="true" selection-start-line="453" selection-start-column="1" selection-end-line="453" selection-end-column="1" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#168#169#0" expanded="true" />
-            <element signature="e#222#223#0" expanded="true" />
-            <element signature="e#4324#4325#0" expanded="true" />
-            <element signature="e#4392#4393#0" expanded="true" />
-            <element signature="e#4444#4445#0" expanded="true" />
-            <element signature="e#4468#4469#0" expanded="true" />
-            <element signature="e#4663#4664#0" expanded="true" />
-            <element signature="e#4701#4702#0" expanded="true" />
-            <element signature="e#14095#14096#0" expanded="true" />
-            <element signature="e#14122#14123#0" expanded="true" />
-            <element signature="e#14160#14161#0" expanded="true" />
-            <element signature="e#14187#14188#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Main.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="61">
-          <caret line="365" column="5" selection-start-line="365" selection-start-column="5" selection-end-line="365" selection-end-column="5" />
-          <folding>
-            <element signature="e#676#1527#1" />
-            <element signature="e#1552#1761#1" />
-            <element signature="e#1786#1887#1" />
-            <element signature="e#1913#2019#1" />
+            <element signature="method#Usuari#0;class#Usuari#0" />
+            <element signature="method#Usuari#1;class#Usuari#0" />
+            <element signature="method#iniciarSessio#0;class#Usuari#0" />
+            <element signature="method#registrar#0;class#Usuari#0" />
+            <element signature="method#baixa#0;class#Usuari#0" />
+            <element signature="method#eliminarUsuari#0;class#Usuari#0" />
+            <element signature="method#totsUsuaris#0;class#Usuari#0" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Naive.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="431">
-          <caret line="134" column="9" lean-forward="true" selection-start-line="134" selection-start-column="9" selection-end-line="134" selection-end-column="9" />
+        <state relative-caret-position="-609">
+          <caret line="37" column="8" lean-forward="true" selection-start-line="37" selection-start-column="8" selection-end-line="37" selection-end-column="8" />
           <folding>
             <element signature="method#Naive#0;class#Naive#0" />
+            <element signature="method#desferMoviment#0;class#Naive#0" />
             <element signature="method#puntuacioPeca#0;class#Naive#0" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="639">
+          <caret line="358" column="1" lean-forward="true" selection-start-line="358" selection-start-column="1" selection-end-line="358" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Maquina.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="252">
+          <caret line="12" column="1" selection-start-line="12" selection-start-column="1" selection-end-line="12" selection-end-column="1" />
         </state>
       </provider>
     </entry>

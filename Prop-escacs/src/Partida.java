@@ -10,7 +10,6 @@ public class Partida  {
     private Jugador B;
     private boolean save_stat;
     private long clock;
-    private int max_rondes;
 
 
     //creadora
@@ -26,7 +25,6 @@ public class Partida  {
         this.B = b;
         this.clock =  0;
         this.save_stat = save;
-        this.max_rondes = (P.getNumJugades()*2)-1;
     }
 
     //private
@@ -67,9 +65,9 @@ public class Partida  {
     //post: retorna el jugador guanyador si es produeix escac i mat, o be si s'excedeix el numero de rondes permeses, altrament retorna -1
     public int jugar_torn(Posicion inici, Posicion fi)
     {
-        this.ronda++;
+        if (this.torn == Prob.getPrimer()) this.ronda++;
         long aux;
-        if (this.ronda <= this.max_rondes) {
+        if (this.ronda <= this.Prob.getNumJugades()) {
             boolean jugada = false;
             do {
                 if (this.torn == define.WHITE) {
@@ -88,19 +86,15 @@ public class Partida  {
             } while (!jugada); //mover pieza retorna true si s'ha pogut executar el moviment o fals altrament
 
             aux = Tauler.escac_i_mat((this.torn == define.WHITE) ? define.BLACK : define.WHITE);
-            if (aux == 1) { //jaque mate del jugador que acaba de tirar
+            if (aux == 1) { //jaque mate
                 System.out.println("--- FI DE LA PARTIDA --- ESCAC I MAT ---");
                 return this.torn;
             }
-            else if (aux == 0) { //jaque jugador que acaba de tirar fa escac
+            else if (aux == 0) { //jaque
                 System.out.println("--- ATENCIÓ --- ESCAC ---");
 
             }
-            else if (aux == 2) { //ofegat, automaticament el jugador que acaba de tirar perd
-                System.out.println("--- FI DE LA PARTIDA --- REI OFEGAT ---");
-                return (this.torn == define.WHITE)?define.BLACK:define.WHITE;
 
-            }
             if (this.torn == define.WHITE) this.torn = define.BLACK;
             else this.torn = define.WHITE;
             Tauler.printTauler();
