@@ -23,7 +23,7 @@ public class Smart extends Maquina {
     }
 
     public void setProfunditat(int mat) {
-        if (profunditat > 6) profunditat = 6;
+        if (profunditat > 4) profunditat = 4;
         else profunditat = mat;
     }
 

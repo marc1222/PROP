@@ -4,13 +4,13 @@ public class Partida  {
 
     private int torn;
     private int ronda;
-    private int mat;
     private Taulell Tauler;
     private Problema Prob;
     private Jugador W;
     private Jugador B;
     private boolean save_stat;
     private long clock;
+    private int max_rondes;
 
 
     //creadora
@@ -20,13 +20,13 @@ public class Partida  {
     Partida(Problema P, Jugador w, Jugador b,boolean save) {
         this.torn = P.getPrimer();
         this.ronda = 0;
-        this.Tauler = new Taulell(P.getPeces());
+        this.Tauler = new Taulell(new Taulell(P.getPeces()));
         this.Prob = P;
         this.W = w;
         this.B = b;
         this.clock =  0;
         this.save_stat = save;
-        this.mat = Prob.getNumJugades();
+        this.max_rondes = (P.getNumJugades()*2)-1;
     }
 
     //private
@@ -39,7 +39,7 @@ public class Partida  {
     }
 
     public int getMat() {
-        return mat;
+        return Prob.getNumJugades();
     }
     //
     //pre: true
@@ -71,9 +71,9 @@ public class Partida  {
     //post: retorna el jugador guanyador si es produeix escac i mat, o be si s'excedeix el numero de rondes permeses, altrament retorna -1
     public int jugar_torn(Posicion inici, Posicion fi)
     {
-        if (this.torn == Prob.getPrimer()) this.ronda++;
+        this.ronda++;
         long aux;
-        if (this.ronda <= this.Prob.getNumJugades()) {
+        if (this.ronda <= this.max_rondes) {
             boolean jugada = false;
             do {
                 if (this.torn == define.WHITE) {
@@ -92,15 +92,19 @@ public class Partida  {
             } while (!jugada); //mover pieza retorna true si s'ha pogut executar el moviment o fals altrament
 
             aux = Tauler.escac_i_mat((this.torn == define.WHITE) ? define.BLACK : define.WHITE);
-            if (aux == 1) { //jaque mate
+            if (aux == 1) { //jaque mate del jugador que acaba de tirar
                 System.out.println("--- FI DE LA PARTIDA --- ESCAC I MAT ---");
                 return this.torn;
             }
-            else if (aux == 0) { //jaque
+            else if (aux == 0) { //jaque jugador que acaba de tirar fa escac
                 System.out.println("--- ATENCIÓ --- ESCAC ---");
 
             }
+            else if (aux == 2) { //ofegat, automaticament el jugador que acaba de tirar perd
+                System.out.println("--- FI DE LA PARTIDA --- REI OFEGAT ---");
+                return (this.torn == define.WHITE)?define.BLACK:define.WHITE;
 
+            }
             if (this.torn == define.WHITE) this.torn = define.BLACK;
             else this.torn = define.WHITE;
             Tauler.printTauler();

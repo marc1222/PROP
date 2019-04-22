@@ -4,6 +4,7 @@ import java.util.Scanner; // import the Scanner class
 import java.util.HashMap; // import the HashMap class
 
 /**
+ * Classe que tracta
  * @author Marian Dumitru Danci
  */
 public class Usuari extends Jugador{
@@ -16,50 +17,92 @@ public class Usuari extends Jugador{
 
     Scanner sc = new Scanner(System.in);
 
+    /**
+     * Constructora per defecte, crea un usuari Anonim amb color null.
+     */
     public Usuari () {
         idUsuari = "Anònim";
         color = define.NULL_COLOR;
     }
 
+    /**
+     * Constructora que crea un usuari 'Anonim' amb un color determinat
+     * @param color Color de les peces de l'usuari
+     */
     public Usuari (int color) {
         idUsuari = "Anònim";
         this.color = color;
     }
 
+    /**
+     *
+     * @return Nom del fitxer os es guarden els usuaris
+     */
     public static String getFitxerUsuaris() {
         return fitxerUsuaris;
     }
 
+    /**
+     * Canvia el fitxer os es guarden els usuaris
+     * @param fitxer Nom del nou fitxer os es guarden els usuaris
+     */
     public static void setFitxerUsuaris(String fitxer) {
         fitxerUsuaris = fitxer;
     }
 
+    /**
+     *
+     * @return Retorna el tipus de jugador que es l'usuari
+     */
     public int getTipus() {
         return this.tipus;
     }
 
+    /**
+     *
+     * @return Nom de l'usuari
+     */
     public String getNom() {
         return idUsuari;
     }
 
+    /**
+     *
+     * @param nom Nom a l'usuari
+     */
     public void setNom(String nom) {
         idUsuari = nom;
     }
 
+    /**
+     *
+     * @return Color de les peces de l'usuari
+     */
     public int getColor() {
         return this.color;
     }
 
+    /**
+     *
+     * @param color Color de les peces
+     */
     public void setColor(int color) {
         this.color = color;
     }
 
+    /**
+     * Segons l'usuari escollit demana la contrasenya i comproba que tot
+     * es correcte
+     * @param nomUsuari Nom d'usuari
+     * @return Retorna true si l'inici de sessio es correcte
+     */
     public boolean iniciarSessio(String nomUsuari) {
         String contrasenya;
 
         System.out.println("Contrasenya:");
         contrasenya = sc.nextLine();
 
+        // Comproba que el tipus de dades es correcte
         if(nomUsuari != null && !nomUsuari.isEmpty()) {
             if (contrasenya == null && contrasenya.isEmpty()) {
                 System.out.println("Contrasenya no vàlida.\n");
@@ -71,12 +114,12 @@ public class Usuari extends Jugador{
             return false;
         }
 
-        // Si nom i contrasenya no buits comprobar que existeix lusuari
+        // Si nom i contrasenya coherents comprobar les dades en el fitxer
         try (BufferedReader br = new BufferedReader(new FileReader(fitxerUsuaris))) {
             String line;
-            // Recorrer fitxer per cada linea
+            // Recorre fitxer per cada linia
             while ((line = br.readLine()) != null) {
-                // Separar nom i contrasenya
+                // Separa nom i contrasenya
                 String[] dades = line.split("\\s+");
                 if(dades[0].equals(nomUsuari)) {
                     if (dades[1].equals(contrasenya)) {
@@ -89,15 +132,25 @@ public class Usuari extends Jugador{
                     }
                 }
             }
-        } catch (FileNotFoundException ex) {
+        }
+        catch (FileNotFoundException e) {
             System.out.println("El fitxer no existeix");
-        } catch (IOException ex) {
+        }
+        catch (IOException e) {
             System.out.println("El format d'entrada o sortida no és correcte");
+        }
+        catch (Exception e) {
+
         }
         System.out.println("Usuari no existeix.\n");
         return false;
     }
 
+    /**
+     * Demana les dades necesaries per registrar un usuari, so tot es correcte
+     * guarda les dades al fitxer
+     * @return Retorna true si el registre s'ha completat amb exit
+     */
     public boolean registrar() {
         String nomUsuari, contrasenya1, contrasenya2;
         System.out.println("Usuari:");
@@ -118,9 +171,9 @@ public class Usuari extends Jugador{
             try (BufferedReader br = new BufferedReader(new FileReader(fitxerUsuaris))) {
                 String line;
 
-                // Recorrer fitxer per linies
+                // Recorre fitxer per cada linia
                 while ((line = br.readLine()) != null) {
-                    // Separar nom i contrasenya
+                    // Separa nom i contrasenya
                     String[] dades = line.split("\\s+");
                     if(dades[0].equals(nomUsuari)) {
                         if (dades[0].equals(nomUsuari)) {
@@ -129,69 +182,142 @@ public class Usuari extends Jugador{
                         }
                     }
                 }
-            } catch (FileNotFoundException ex) {
-                System.out.println("El fitxer no existeix");
-            } catch (IOException ex) {
-                System.out.println("El format d'entrada o sortida no és correcte");
             }
-            // Registre correcte i es guarda usuari a fitxer
-            input_output IO = new input_output();
-            String[] dades = {nomUsuari, contrasenya2};
-            IO.write(fitxerUsuaris, dades);
+            catch (FileNotFoundException e) {
+                System.out.println("El fitxer no existeix");
+            }
+            catch (IOException e) {
+                System.out.println("Error en la entrada i sortida da dades.");
+            }
+            catch (Exception e) {
+                e.printStackTrace();
+            }
 
+            // Registre correcte i es guarda usuari a fitxer
+            String[] dades = {nomUsuari, contrasenya2};
+
+            FileWriter fichero = null;
+            PrintWriter pw = null;
+            try {
+                fichero = new FileWriter(fitxerUsuaris,true);
+                pw = new PrintWriter(fichero);
+                // Junta els parametres en un String i separar per un espai
+                String aux = String.join(" ",dades);
+                // Afegeix a l'ultima linea
+                pw.println(aux);
+            }
+            catch (FileNotFoundException e) {
+                System.out.println("El fitxer no existeix");
+            }
+            catch (IOException e) {
+                System.out.println("Error en la entrada i sortida da dades.");
+            }
+            catch (Exception e) {
+                e.printStackTrace();
+            }
+            finally {
+                try {
+                    if (null != fichero) fichero.close();
+                }
+                catch (FileNotFoundException e) {
+                    System.out.println("El fitxer no existeix");
+                }
+                catch (IOException e) {
+                    System.out.println("Error en la entrada i sortida da dades.");
+                }
+                catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+
+            // Si l'usuari s'ha registrar correctament se li dona el nom
+            // d'usuari que ha fet el registre
             idUsuari = nomUsuari;
             System.out.println("T'has registrat correctament.\n");
             return  true;
         }
     }
 
+    /**
+     * D'ona de baixa el propi usuari eliminatlo del fitxer i pasa a
+     * ser un usuari 'Anonim'
+     * @return Retorna true si l'usuari s'ha donat de baixa correctament
+     */
     public boolean baixa() {
-        System.out.println("Estàs segur que et vols donar de baixa? (si) o (no)");
-        String confirmacio = sc.nextLine();
-        if(confirmacio.equals("si")) {
-            eliminarUsuari(idUsuari);
-            idUsuari = "Anònim";
-            System.out.println("T'has donat de baixa correctament.\n");
-            return true;
-        }
-        else if(confirmacio.equals("no")) {
-            System.out.println("S'ha cancelat la baixa.\n");
-        }
-        else {
-            System.out.println("La de reposta ha de ser 'si' o 'no'.\n");
-            baixa();
-        }
+        int opcio;
+        do {
+            System.out.println("Estàs segur que et vols donar de baixa?\n" +
+                    "    1 - Si\n" +
+                    "    2 - No\n");
+
+            opcio = sc.nextInt();
+            switch (opcio) {
+                case 1: {
+                    eliminarUsuari(idUsuari);
+                    idUsuari = "Anònim";
+                    System.out.println("T'has donat de baixa correctament.\n");
+                    break;
+                }
+                case 2: {
+                    System.out.println("S'ha cancelat la baixa.\n");
+                    break;
+                }
+                default: {
+                    System.out.println("Opcio invalida.\n");
+                }
+            }
+        } while(opcio != 1 || opcio != 2);
+
+        if (opcio == 1) return true;
         return false;
     }
 
+    /*
+     * Elimina el registre de l'usuari al fitxer
+     * @param usuari Nom de l'usuari
+     */
     private void eliminarUsuari(String usuari) {
         try {
+            // Per seguretat (no perdre les dades en cas d'algun imprevist)
+            // es crea un fitxer temporal
             File tempFile = File.createTempFile("./files/tmpUsuaris.txt", "");
-
-            BufferedReader reader = new BufferedReader(new FileReader(fitxerUsuaris));
             BufferedWriter writer = new BufferedWriter(new FileWriter(tempFile));
 
-            String currentLine;
+            BufferedReader reader = new BufferedReader(new FileReader(fitxerUsuaris));
 
+            String currentLine;
             while((currentLine = reader.readLine()) != null) {
+                // Separar nom i contrasenya per espai
                 String[] dades = currentLine.split("\\s+");
-                // trim newline when comparing with lineToRemove
-                String trimmedLine = currentLine.trim();
+                // Quan es troba l'usuari no s'escriu al fitxer temporal
                 if(dades[0].equals(usuari)) continue;
                 writer.write(currentLine + System.getProperty("line.separator"));
             }
             writer.close();
             reader.close();
+
             File oldFile = new File(fitxerUsuaris);
+            // S'elimina el fitxer antic i es renombra el temporal
             if (oldFile.delete()) {
                 tempFile.renameTo(oldFile);
             }
 
-        } catch (Exception e) {
+        }
+        catch (FileNotFoundException e) {
             System.out.println("El fitxer no existeix");
+        }
+        catch (IOException e) {
+            System.out.println("Error en la entrada i sortida da dades.");
+        }
+        catch (Exception e) {
+            e.printStackTrace();
         }
     }
 
+    /**
+     *
+     * @return Conjunt de Strings amb tots els usuaris registrats
+     */
     public static String[] totsUsuaris() {
         ArrayList<String> usuaris = new ArrayList<String>();
 
@@ -203,10 +329,15 @@ public class Usuari extends Jugador{
                 String[] dades = line.split("\\s+");
                 usuaris.add(dades[0]);
             }
-        } catch (FileNotFoundException ex) {
+        }
+        catch (FileNotFoundException e) {
             System.out.println("El fitxer no existeix");
-        } catch (IOException ex) {
-            System.out.println("El format d'entrada o sortida no és correcte");
+        }
+        catch (IOException e) {
+            System.out.println("Error en la entrada i sortida da dades.");
+        }
+        catch (Exception e) {
+            e.printStackTrace();
         }
 
         String[] totsUsuaris = new String[usuaris.size()];
@@ -214,13 +345,18 @@ public class Usuari extends Jugador{
         return totsUsuaris;
     }
 
+    /**
+     *
+     * @param origen Posicio peca seleccionada per fer el moviment
+     * @param desti Posicio desti on vol que es mogui la peca
+     * @return
+     */
     public long moviment(Posicion origen, Posicion desti) {
-        long iniCrono = 0;
-        iniCrono = System.currentTimeMillis();
+        // Inici del cronometre
+        long iniCrono = System.currentTimeMillis();
 
         String posPeca, destiPeca;
         boolean entradaValida;
-
         do {
             entradaValida = true;
 
@@ -232,7 +368,8 @@ public class Usuari extends Jugador{
             try {
                 origen.x = Integer.parseInt(posIni[0]);
                 origen.y = Integer.parseInt(posIni[1]);
-            } catch (NumberFormatException e) {
+            }
+            catch (NumberFormatException e) {
                 entradaValida = false;
                 System.out.println("Entrada invalida.");
             }
@@ -253,7 +390,8 @@ public class Usuari extends Jugador{
                 try {
                     desti.x = Integer.parseInt(posDesti[0]);
                     desti.y = Integer.parseInt(posDesti[1]);
-                } catch (NumberFormatException e) {
+                }
+                catch (NumberFormatException e) {
                     entradaValida = false;
                     System.out.println("Entrada invalida.");
                 }
@@ -270,20 +408,28 @@ public class Usuari extends Jugador{
             }
         } while(!entradaValida);
 
-        long time = 0;
-        long tempsCrono = System.currentTimeMillis() - iniCrono;
-        time += tempsCrono;
-        return time;
+        long tempsMoviment = System.currentTimeMillis() - iniCrono;;
+        return tempsMoviment;
     }
 
+    /**
+     * Mostra el contingut complet del fitxer on es guarda els usuaris
+     */
     public static void mostrarsetFitxerUsuaris() {
         try (BufferedReader br = new BufferedReader(new FileReader(fitxerUsuaris))) {
             String line = null;
             while ((line = br.readLine()) != null) {
                 System.out.println(line);
             }
-        } catch (Exception e) {
+        }
+        catch (FileNotFoundException e) {
             System.out.println("El fitxer no existeix");
+        }
+        catch (IOException e) {
+            System.out.println("Error en la entrada i sortida da dades.");
+        }
+        catch (Exception e) {
+            e.printStackTrace();
         }
     }
 }

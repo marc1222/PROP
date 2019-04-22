@@ -23,7 +23,7 @@ public class Naive extends Maquina {
     }
 
     public void setProfunditat(int mat) {
-        if (mat > 5 ) profunditat = 5;
+        if (mat > 2) profunditat = 2;
         else profunditat = mat;
     }
 
@@ -47,9 +47,7 @@ public class Naive extends Maquina {
                             auxPeca = super.getTipusPeca(desti);
                         }
                         //while (!Tauler.mover_pieza(ini, desti, colorJugador));
-                        if (!super.mourePeca(ini, desti, colorJugador)) {
-                            System.out.println("MATA AL REI");
-                        }
+                        super.mourePeca(ini, desti, colorJugador);
 
                         int aux = minimax(profunditat, false);
                         while (!super.desferMoviment(ini, desti, auxPeca, colorJugador));
