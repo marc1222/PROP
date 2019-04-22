@@ -597,7 +597,7 @@ public class Problema {
         for (int i = 0; i < pec_pos.length; ++i) {
             Posicion mov[] = tau.todos_movimientos(pec_pos[i]);
             for (int k = 0; k < mov.length; ++k) {
-                if (tau.getPecaPosició(mov[k]).getTipus() == define.REI) return true;
+                if (((tau.getPecaPosició(mov[k])).getTipus()).equals(define.REI)) return true;
                 Taulell tau2 = new Taulell(tau);
                 if (tau2.mover_pieza(pec_pos[i], mov[k], color_act)) {
                     //System.out.println("Atac " + njug);
