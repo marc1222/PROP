@@ -373,7 +373,8 @@ public class Problema {
                             mat[j][i] = new Rei(define.BLACK);
                             break;
                         case 'p':
-                            mat[j][i] = new Peo(define.BLACK);
+                            if (i == 6) mat[j][i] = new Peo(define.BLACK, true);
+                            else mat[j][i] = new Peo(define.BLACK);
                             break;
                         case 'R':
                             mat[j][i] = new Torre(define.WHITE);
@@ -391,7 +392,8 @@ public class Problema {
                             mat[j][i] = new Rei(define.WHITE);
                             break;
                         case 'P':
-                            mat[j][i] = new Peo(define.WHITE);
+                            if (i == 1) mat[j][i] = new Peo(define.WHITE, true);
+                            else mat[j][i] = new Peo(define.WHITE);
                             break;
                         default:
                             //

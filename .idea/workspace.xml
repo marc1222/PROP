@@ -4,18 +4,7 @@
     <list default="true" id="bf280e90-a2da-4ac2-83de-13d6ab47cb68" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Prop-escacs/files/index.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Prop-escacs/files/index.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Prop-escacs/files/mytemp.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Prop-escacs/files/mytemp.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Prop-escacs/files/problemes.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Prop-escacs/files/problemes.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Prop-escacs/src/Alfil.java" beforeDir="false" afterPath="$PROJECT_DIR$/Prop-escacs/src/Alfil.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Prop-escacs/src/Cavall.java" beforeDir="false" afterPath="$PROJECT_DIR$/Prop-escacs/src/Cavall.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Prop-escacs/src/Partida.java" beforeDir="false" afterPath="$PROJECT_DIR$/Prop-escacs/src/Partida.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Prop-escacs/src/Peca_Nula.java" beforeDir="false" afterPath="$PROJECT_DIR$/Prop-escacs/src/Peca_Nula.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Prop-escacs/src/Peo.java" beforeDir="false" afterPath="$PROJECT_DIR$/Prop-escacs/src/Peo.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Prop-escacs/src/Problema.java" beforeDir="false" afterPath="$PROJECT_DIR$/Prop-escacs/src/Problema.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Prop-escacs/src/Rei.java" beforeDir="false" afterPath="$PROJECT_DIR$/Prop-escacs/src/Rei.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Prop-escacs/src/Reina.java" beforeDir="false" afterPath="$PROJECT_DIR$/Prop-escacs/src/Reina.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Prop-escacs/src/Taulell.java" beforeDir="false" afterPath="$PROJECT_DIR$/Prop-escacs/src/Taulell.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Prop-escacs/src/Torre.java" beforeDir="false" afterPath="$PROJECT_DIR$/Prop-escacs/src/Torre.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -37,8 +26,11 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Prop-escacs/src/Peo.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1155">
-              <caret line="79" column="5" selection-start-line="79" selection-start-column="5" selection-end-line="79" selection-end-column="5" />
+            <state relative-caret-position="60">
+              <caret line="82" column="83" lean-forward="true" selection-start-line="82" selection-start-column="83" selection-end-line="82" selection-end-column="83" />
+              <folding>
+                <element signature="e#3411#3412#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -46,7 +38,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Prop-escacs/src/Rei.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="465">
+            <state relative-caret-position="355">
               <caret line="31" column="5" selection-start-line="31" selection-start-column="5" selection-end-line="31" selection-end-column="5" />
             </state>
           </provider>
@@ -55,7 +47,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Prop-escacs/src/Reina.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="465">
+            <state relative-caret-position="355">
               <caret line="31" column="5" selection-start-line="31" selection-start-column="5" selection-end-line="31" selection-end-column="5" />
             </state>
           </provider>
@@ -73,8 +65,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Prop-escacs/src/Taulell.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="236">
-              <caret line="338" column="50" lean-forward="true" selection-start-line="338" selection-start-column="50" selection-end-line="338" selection-end-column="50" />
+            <state relative-caret-position="3735">
+              <caret line="251" lean-forward="true" selection-start-line="251" selection-end-line="251" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#7885#7886#0" expanded="true" />
@@ -91,8 +83,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Prop-escacs/src/Problema.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="348">
-              <caret line="612" column="38" selection-start-line="612" selection-start-column="38" selection-end-line="612" selection-end-column="38" />
+            <state relative-caret-position="-20">
+              <caret line="612" column="49" selection-start-line="612" selection-start-column="49" selection-end-line="612" selection-end-column="49" />
             </state>
           </provider>
         </entry>
@@ -100,7 +92,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Prop-escacs/src/Alfil.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="465">
+            <state relative-caret-position="348">
               <caret line="31" column="5" selection-start-line="31" selection-start-column="5" selection-end-line="31" selection-end-column="5" />
             </state>
           </provider>
@@ -135,10 +127,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>movimientos_validos</find>
-      <find>line.sep</find>
-      <find>void</find>
-      <find>fitxerId</find>
       <find>new Problema</find>
       <find>Peca_nula</find>
       <find>descarta</find>
@@ -159,12 +147,16 @@
       <find>crea_peca_xy</find>
       <find>esca</find>
       <find>escac_i</find>
-      <find>mover_pieza</find>
-      <find>validar_moviment</find>
       <find>todos_</find>
       <find>mover_pie</find>
       <find>validar_movi</find>
       <find>define.PEO</find>
+      <find>todos_movimientos</find>
+      <find>descartar_movimiento</find>
+      <find>todos_movimiento</find>
+      <find>mover_piez</find>
+      <find>mover_pieza</find>
+      <find>validar_moviment</find>
     </findStrings>
     <replaceStrings>
       <replace>.y</replace>
@@ -199,12 +191,12 @@
         <option value="$PROJECT_DIR$/Prop-escacs/src/DriverProblema.java" />
         <option value="$PROJECT_DIR$/Prop-escacs/src/Cavall.java" />
         <option value="$PROJECT_DIR$/Prop-escacs/src/Peca.java" />
-        <option value="$PROJECT_DIR$/Prop-escacs/src/Peo.java" />
         <option value="$PROJECT_DIR$/Prop-escacs/src/Alfil.java" />
         <option value="$PROJECT_DIR$/Prop-escacs/src/Rei.java" />
         <option value="$PROJECT_DIR$/Prop-escacs/src/Reina.java" />
         <option value="$PROJECT_DIR$/Prop-escacs/src/Torre.java" />
         <option value="$PROJECT_DIR$/Prop-escacs/src/Peca_Nula.java" />
+        <option value="$PROJECT_DIR$/Prop-escacs/src/Peo.java" />
         <option value="$PROJECT_DIR$/Prop-escacs/src/Taulell.java" />
         <option value="$PROJECT_DIR$/Prop-escacs/src/Problema.java" />
       </list>
@@ -350,6 +342,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="64" y="-11" width="1303" height="780" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" weight="0.28525898" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -358,8 +351,8 @@
       <window_info id="UI Designer" order="4" />
       <window_info id="Favorites" order="5" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49880478" visible="true" weight="0.32868218" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.32868218" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49880478" weight="0.31782946" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -474,34 +467,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Prop-escacs/src/Peo.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1155">
-          <caret line="79" column="5" selection-start-line="79" selection-start-column="5" selection-end-line="79" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Prop-escacs/src/Rei.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="465">
-          <caret line="31" column="5" selection-start-line="31" selection-start-column="5" selection-end-line="31" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Prop-escacs/src/Reina.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="465">
-          <caret line="31" column="5" selection-start-line="31" selection-start-column="5" selection-end-line="31" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Prop-escacs/src/Alfil.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="465">
-          <caret line="31" column="5" selection-start-line="31" selection-start-column="5" selection-end-line="31" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Prop-escacs/src/Cavall.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="135">
@@ -516,6 +481,37 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/Prop-escacs/src/Alfil.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="348">
+          <caret line="31" column="5" selection-start-line="31" selection-start-column="5" selection-end-line="31" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Prop-escacs/src/Rei.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="355">
+          <caret line="31" column="5" selection-start-line="31" selection-start-column="5" selection-end-line="31" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Prop-escacs/src/Reina.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="355">
+          <caret line="31" column="5" selection-start-line="31" selection-start-column="5" selection-end-line="31" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Prop-escacs/src/Peo.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="82" column="83" lean-forward="true" selection-start-line="82" selection-start-column="83" selection-end-line="82" selection-end-column="83" />
+          <folding>
+            <element signature="e#3411#3412#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/Prop-escacs/src/Torre.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="348">
@@ -525,8 +521,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Prop-escacs/src/Taulell.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="236">
-          <caret line="338" column="50" lean-forward="true" selection-start-line="338" selection-start-column="50" selection-end-line="338" selection-end-column="50" />
+        <state relative-caret-position="3735">
+          <caret line="251" lean-forward="true" selection-start-line="251" selection-end-line="251" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#7885#7886#0" expanded="true" />
@@ -541,8 +537,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Prop-escacs/src/Problema.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="348">
-          <caret line="612" column="38" selection-start-line="612" selection-start-column="38" selection-end-line="612" selection-end-column="38" />
+        <state relative-caret-position="-20">
+          <caret line="612" column="49" selection-start-line="612" selection-start-column="49" selection-end-line="612" selection-end-column="49" />
         </state>
       </provider>
     </entry>
