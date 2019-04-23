@@ -2,6 +2,10 @@ import java.time.temporal.JulianFields;
 
 public class Partida  {
 
+    //------------------------------------------------------------------------
+    //ATRIBUTS DE LA CLASSE
+    //------------------------------------------------------------------------
+
     private int torn;
     private int ronda;
     private Taulell Tauler;
@@ -13,10 +17,16 @@ public class Partida  {
     private int max_rondes;
 
 
-    //creadora
+    //------------------------------------------------------------------------
+    //CREADORES
+    //------------------------------------------------------------------------
 
-    //pre: true
-    //post: instancia un problema, dos usuaris i un taulell;
+    //creadora per defecte
+    Partida() {
+
+    }
+
+    //creadora d'una partida amb tots els paràmetres necessaris
     Partida(Problema P, Jugador w, Jugador b,boolean save) {
         this.torn = P.getPrimer();
         this.ronda = 0;
@@ -29,47 +39,15 @@ public class Partida  {
         this.max_rondes = (P.getNumJugades()*2)-1;
     }
 
-    //private
-
-
-
-    //public
-    public Taulell getTauler() {
-        return this.Tauler;
-    }
-
-    public int getMat() {
-        return Prob.getNumJugades();
-    }
-    //
-    //pre: true
-    //post:
-    public void jugar_partida() {
-        Posicion inici = new Posicion();
-        Posicion fi = new Posicion();
-        int ret;
-        String res = (this.torn == define.WHITE) ? "WHITE" : "BLACK";
-        System.out.println("INICI: El jugador que ha de guanyar es el "+res);
-        Tauler.printTauler();
-        while ( (ret = jugar_torn(inici,fi) ) == -1);
-
-        res = (define.WHITE == ret) ? "WHITE" : "BLACK";
-        System.out.println("FINAL: Ha guanyat el jugador: "+res);
-        if (this.save_stat && ret==Prob.getPrimer()) {
-            //guardar stat
-            Usuari Wu = (Usuari) W;
-            Usuari Bu = (Usuari) B;
-            String name = (Prob.getPrimer()==define.WHITE)?Wu.getNom():Bu.getNom();
-            //se tendria que grabar estadistica si se pierde????->o deberia ser otro campo que guardar mas????
-            Estadistica.guardarTemps(String.valueOf(Prob.getId()), name, String.valueOf(this.ronda),String.valueOf(this.clock));
-            System.out.println("Se han guardado las estadísticas");
-        }
-    }
+    //------------------------------------------------------------------------
+    //OPERACIONS PRIVADES
+    //------------------------------------------------------------------------
 
     //juga una ronda, tot indicant si aquesta serà la ultima de la partida i en cas que ho sigui el jugador guanyador
-    //pre: sempre el jugador que acaba de tirar es el que suposadament ha de guanyar
-    //post: retorna el jugador guanyador si es produeix escac i mat, o be si s'excedeix el numero de rondes permeses, altrament retorna -1
-    public int jugar_torn(Posicion inici, Posicion fi)
+    //pre: true
+    //post: retorna el jugador guanyador si es produeix escac i mat, o be si s'excedeix el numero de rondes permeses,
+    //      altrament retorna -1
+    private int jugar_torn(Posicion inici, Posicion fi)
     {
         this.ronda++;
         long aux;
@@ -114,4 +92,39 @@ public class Partida  {
 
         return this.torn;
     }
-}
+
+
+    //------------------------------------------------------------------------
+    //OPERACIONS PÚBLIQUES
+    //------------------------------------------------------------------------
+    //getter de taulell d'una partida
+    public Taulell getTauler() {
+        return this.Tauler;
+    }
+
+    //encarregada de jugar una partida al complet (mitjançant la funció jugar_torn)
+    //i cridar a estadística per guardar-ne les estadísitques, si s'ha de guardar
+    //pre: partida vàlida inicialitzada correctament
+    //post: juga la partida
+    public void jugar_partida() {
+        Posicion inici = new Posicion();
+        Posicion fi = new Posicion();
+        int ret;
+        String res = (this.torn == define.WHITE) ? "WHITE" : "BLACK";
+        System.out.println("INICI: El jugador que ha de guanyar es el "+res);
+        Tauler.printTauler();
+        while ( (ret = jugar_torn(inici,fi) ) == -1);
+
+        res = (define.WHITE == ret) ? "WHITE" : "BLACK";
+        System.out.println("FINAL: Ha guanyat el jugador: "+res);
+        if (this.save_stat && ret==Prob.getPrimer()) {
+            //guardar stat
+            Usuari Wu = (Usuari) W;
+            Usuari Bu = (Usuari) B;
+            String name = (Prob.getPrimer()==define.WHITE)?Wu.getNom():Bu.getNom();
+            Estadistica.guardarTemps(String.valueOf(Prob.getId()), name, String.valueOf(this.ronda),String.valueOf(this.clock));
+            System.out.println("Se han guardado las estadísticas");
+        }
+    }
+
+   }

@@ -26,17 +26,17 @@ public class Main {
                     String[] Users = Usuari.totsUsuaris();
 
 
-                    System.out.println("Selecciona un usuari");
-                    for (int i = 0; i < Users.length; ++i) {
-                        System.out.println(i + " - " + Users[i]);
-                    }
-                    int usrSeleccionat = sc.nextInt();
-                    if(usrSeleccionat >= 0 && usrSeleccionat < Users.length) {
-                        sessioIniciada = master.iniciarSessio(Users[usrSeleccionat]);
-                    }
-                    else {
-                        System.out.println("Usuari seleccionat no vàlid");
-                    }
+                        System.out.println("Selecciona un usuari");
+                        for (int i = 0; i < Users.length; ++i) {
+                            System.out.println(i + " - " + Users[i]);
+                        }
+                        int usrSeleccionat = sc.nextInt();
+                        if(usrSeleccionat >= 0 && usrSeleccionat < Users.length) {
+                            sessioIniciada = master.iniciarSessio(Users[usrSeleccionat]);
+                        }
+                        else {
+                            System.out.println("Usuari seleccionat no vàlid");
+                        }
 
 
                     break;
@@ -87,7 +87,7 @@ public class Main {
                     System.out.println("Id  #Jug Color Dif  Posició inicial en FEN");
                     for (int i = 0; i < problemes.length; ++i) {
                         System.out.println(i + "  -  " + problemes[i][1] + "    " + problemes[i][2] + "    "
-                                + problemes[i][4] + "   " + problemes[i][3]);
+                        + problemes[i][4] + "   " + problemes[i][3]);
                     }
                     Scanner sc = new Scanner(System.in);
                     int op = -1;
@@ -165,7 +165,6 @@ public class Main {
                     if (second.getTipus() == define.MAQUINA) {
                         Maquina n = (Maquina)second;
                         n.setTauler(pa.getTauler());
-                        n.setProfunditat(pa.getMat());
                     }
                     System.out.println("\nComença la partida...  A JUGAR :D");
                     pa.jugar_partida();
@@ -350,15 +349,6 @@ public class Main {
                     break;
                 }
                 case 7: {
-                    /*
-                    System.out.println("Crear Problema");
-                    Problema p = new Problema ();
-                    int res = p.crear_problema(2, "5Br1/6P1/5KBk/8/8/8/8/8 w - - 0 1");
-                    System.out.println(String.valueOf(res));
-                    System.out.println(String.valueOf(p.getId()) + " " + String.valueOf(p.getNumJugades()) + " " +
-                            String.valueOf(p.getPrimer()) + " " + p.getPosIni() + " " +
-                            String.valueOf(p.getDificultat()));
-                    */
                     System.out.println("Sortint...");
                     break;
                 }

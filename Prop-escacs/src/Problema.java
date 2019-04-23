@@ -9,10 +9,10 @@ public class Problema {
     private int dificultat;
     //usuari creador pels permissos
 
-    //static private String fitxer = "./Prop-escacs/files/problemes.txt";  //branca narcis
-    static private String fitxer = "./files/problemes.txt";     //branca main
-    //static private String fitxerId = "./Prop-escacs/files/index.txt";   //branca narcis
-    static private String fitxerId = "./files/index.txt";       //branca main
+    static private String fitxer = "./Prop-escacs/files/problemes.txt";  //branca narcis
+    //static private String fitxer = "./files/problemes.txt";     //branca main
+    static private String fitxerId = "./Prop-escacs/files/index.txt";   //branca narcis
+    //static private String fitxerId = "./files/index.txt";       //branca main
     private static int index = -1;
 
     /** retorna el següent Id de problema disponible o 0 si és el primer
@@ -310,12 +310,12 @@ public class Problema {
     public int eliminar_problema() { //prob_id? //borrar objecte?
         //permissos?
         String borra_linia = String.valueOf(this.id) + " " + String.valueOf(this.jugades) + " " +
-                String.valueOf(this.primer) + " " + this.ini_pos + " " + this.dificultat;
+                             String.valueOf(this.primer) + " " + this.ini_pos + " " + this.dificultat;
         File tempfile = new File ("/home/narcis/PROP/Prop-escacs/files/mytemp.txt");
         File inputfile = new File (fitxer);
         boolean trobat = false;
         try (BufferedReader reader = new BufferedReader(new FileReader(fitxer));
-             BufferedWriter writer = new BufferedWriter(new FileWriter(tempfile))) {
+         BufferedWriter writer = new BufferedWriter(new FileWriter(tempfile))) {
             String line;
             while ((line = reader.readLine()) != null) {
                 if (!line.equals(borra_linia)) {
@@ -597,7 +597,7 @@ public class Problema {
         for (int i = 0; i < pec_pos.length; ++i) {
             Posicion mov[] = tau.todos_movimientos(pec_pos[i]);
             for (int k = 0; k < mov.length; ++k) {
-                if (tau.getPecaPosició(mov[k]).getTipus() == define.REI) return true;
+                if (((tau.getPecaPosició(mov[k])).getTipus()).equals(define.REI)) return true;
                 Taulell tau2 = new Taulell(tau);
                 if (tau2.mover_pieza(pec_pos[i], mov[k], color_act)) {
                     //System.out.println("Atac " + njug);
