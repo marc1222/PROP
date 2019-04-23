@@ -1,159 +1,183 @@
+import javafx.geometry.Pos;
 
 /**
- * Esta clase da movientos en la partida de ajedrez, etc
+ * Classe que juga una partida amb uns recursos limitats, pels cuals no sempre
+ * aconsegueix fer el mat en el minim de jugades.
+ * S'aplica l'algoritme Minimax de la teoria de jocs, un tipus de
+ * 'backtracking' amb una profunditat limitada i a on a cada node se li dona
+ * un valor. Segons el valor del node es minimitza la maxima perdua esperada.
  * @author Marian Dumitru Danci
  */
 public class Naive extends Maquina {
-    private Taulell Tauler;
-    private static int profunditat = 4;
+    private int profunditat;
+    private int mat;
     private int colorJugador;
-    private int tipus;
+    private int colorContrari;
 
     public Naive(int color) {
-        this.Tauler = null;
         colorJugador = color;
-        tipus = define.MAQUINA;
+        colorContrari = color ^ 1;
     }
 
+    /**
+     *
+     * @return Tipus de jugador
+     */
     public int getTipus() {
-        return this.tipus;
+        return super.getTipusMaquina();
     }
 
+    /**
+     *
+     * @param tauler Tauler de la partida
+     */
     public void setTauler(Taulell tauler) {
-        this.Tauler = tauler;
+        super.setTaulerMaquina(tauler);
     }
 
-    public long moviment(Posicion inici, Posicion fi) {
-        Peca pecesTau[][] = Tauler.getTauler();
-        //hay que hacer deep copy de Taullel, solo se ha de copiar matriz
-        // se da por hecho que se quiere maximizar colorJugador, colorJugador = colorActual
+    /**
+     * Segons el nombre de jugades en fer mat s'especifica una profunditat,
+     * especificant un maxim
+     * @param mat Nombre de jugades en asolir mat del problema
+     */
+    public void setProfunditat(int mat) {
+        this.mat = mat;
+        actualitzarProfunditat();
+    }
+
+    /**
+     * Actualitza la profunditat limit
+     */
+    public void actualitzarProfunditat() {
+        if (mat > 2) profunditat = 2;
+        else profunditat = mat;
+    }
+
+    /**
+     *
+     * @param origen Posicio peca seleccionada per fer el moviment
+     * @param desti Posicio desti on vol que es mogui la peca
+     * @return Retorna 0
+     */
+    public long moviment(Posicion origen, Posicion desti) {
+        System.out.println("\nCarregant moviment...");
         Posicion mejorIni = new Posicion(0, 0);
         Posicion mejorDesti = new Posicion(0, 0);
-        int actual, max, colorActual;
-        max = Integer.MIN_VALUE;
-        colorActual = colorJugador;
+        int maxF = -9999;
 
-        for (int i = 0; i < pecesTau.length; i++) {
-            for (int j = 0; j < pecesTau[0].length; j++) {
-                //if (pecesTau[i][j].getColor() == colorJugador) {
-                if ((pecesTau[i][j].getColor() == colorJugador) && !pecesTau[i][j].getTipus().equals(define.PECA_NULA)) {
-                    //System.out.println("TIPUS " + i + " "+ j + + pecesTau[i][j].getColor() + " " + pecesTau[i][j].getTipus());
-                    Posicion ini = new Posicion(i, j);
-                    for (Posicion desti : Tauler.todos_movimientos(ini)) {
-                        Tauler.mover_pieza(ini, desti, colorJugador);
-                        colorActual ^= 1;
-                        actual = minimax(colorActual, profunditat - 1);
-                        Tauler.mover_pieza(desti, ini, colorJugador);
-                        if (actual > max) {
-                            mejorIni = ini;
-                            mejorDesti = desti;
-                            max = actual;
+        // Recorre el tauler
+        for (int i = 0; i < 8; i++) {
+            for (int j = 0; j < 8; j++) {
+                Posicion ini = new Posicion(i, j);
+                // Tractar peca propia
+                if (super.getColorPeca(ini) == colorJugador) {
+                    Posicion[] tots =  super.totsMovimentsPeca(ini);
+                    // Fer tots els moviments que pot fer la peca
+                    for (Posicion moviment : tots) {
+                        // Si el moviment es a una casella amb una peca de
+                        // l'oponent, es guarda el tipus de la peca
+                        String auxPeca = define.PECA_NULA;
+                        if(super.getColorPeca(moviment) != 2) {
+                            auxPeca = super.getTipusPeca(moviment);
+                        }
+                        if (super.mourePeca(ini, moviment, colorJugador)) {
+                            // Si s'ha fet el moviment correctament,
+                            // cridar al algortime minimax
+                            int aux = minimax(profunditat, false);
+                            super.desferMoviment(ini, moviment, auxPeca, colorJugador);
+                            // Si el valor que s'obte de l'algoritme es major
+                            // del que es te del millor moviment, agafar
+                            // aquest com a millor
+                            if (aux > maxF) {
+                                mejorIni.x = ini.x;
+                                mejorIni.y = ini.y;
+                                mejorDesti.x = moviment.x;
+                                mejorDesti.y = moviment.y;
+
+                                maxF = aux;
+                            }
                         }
                     }
                 }
             }
         }
-        //caso de que se pierde seguro hacer movimiento random
-        inici = mejorIni;
-        fi = mejorDesti;
 
+        origen.x = mejorIni.x;
+        origen.y = mejorIni.y;
+        desti.x = mejorDesti.x;
+        desti.y = mejorDesti.y;
+
+        --mat;
+        actualitzarProfunditat();
         return 0;
     }
 
-    private int minimax(int depth, int colorActual) {
-        //or si es mate del algun jugador
-        if (depth == 0) {
-            return evaluar();
-        }
-        int min, max, actual;
-        max = Integer.MIN_VALUE;
-        min = Integer.MAX_VALUE;
-        boolean maximitzar = (colorActual == colorJugador);
-        colorActual ^= 1;
-        Peca pecesTau[][] = Tauler.getTauler();
+    /**
+     *
+     * @param depth Profunditat que es vol arribar
+     * @param maximitzar Bolea que determina si es vol maximitzar valor dels nodes
+     * @return Retorna el valor seleccionat pel algoritme
+     */
+    private int minimax(int depth, boolean maximitzar) {
+        int estatPropi = super.estatMat(colorContrari);
+        int estatOponent = super.estatMat(colorJugador);
 
-        for (int i = 0; i < pecesTau.length; i++) {
-            for (int j = 0; j < pecesTau[0].length; j++) {
-                //if (maximitzar && (pecesTau[i][j].getColor() == colorJugador)) {
-                if (maximitzar && (pecesTau[i][j].getColor() == colorJugador) && !pecesTau[i][j].getTipus().equals(define.PECA_NULA)) {
-                    Posicion ini = new Posicion(i, j);
-                    for (Posicion desti : Tauler.todos_movimientos(ini)) {
-                        Tauler.mover_pieza(ini, desti, colorJugador);
-                        actual = minimax(colorActual, depth - 1);
-                        if (actual > max) max = actual;
-                        Tauler.mover_pieza(desti, ini, colorJugador);
+        // L'algoritme termina si s'ha arribat a la maxima profunditat,
+        // hi ha un escac i mat o si hi ha un mat i no es el torn del
+        // jugador que esta en mat
+        if (depth == 0 ||
+                (estatPropi == 1) || (estatOponent == 1) ||
+                (estatPropi == 2 && !maximitzar) || (estatOponent == 2 && maximitzar)) {
+            return super.evaluar(colorJugador);
+        }
+        int min, max;
+        max = -9999;
+        min = 9999;
+
+        for (int i = 0; i < 8; i++) {
+            for (int j = 0; j < 8; j++) {
+                Posicion ini = new Posicion(i, j);
+
+                // Cas en que es vol maximitzar i la peca es del jugador
+                if (maximitzar && (super.getColorPeca(ini) == colorJugador)) {
+                    Posicion[] movimentsPosibles = super.totsMovimentsPeca(ini);
+                    // Fer tots els moviments que pot fer la peca
+                    for (Posicion desti : movimentsPosibles) {
+                        String auxPeca = define.PECA_NULA;
+                        if(super.getColorPeca(desti) != 2) {
+                            auxPeca = super.getTipusPeca(desti);
+                        }
+                        if (super.mourePeca(ini, desti, colorJugador)) {
+                            int aux = minimax(depth - 1, false);
+                            if (aux > max) {
+                                max = aux;
+                            }
+                            super.desferMoviment(ini, desti, auxPeca, colorJugador);
+                        }
                     }
                 }
-                else if (!maximitzar && (pecesTau[i][j].getColor() == (colorJugador ^ 1))) {
-                    Posicion ini = new Posicion(i, j);
-                    for (Posicion desti : Tauler.todos_movimientos(ini)) {
-                        Tauler.mover_pieza(ini, desti, colorJugador);
-                        actual = minimax(colorActual, depth - 1);
-                        if (actual < min) min = actual;
-                        Tauler.mover_pieza(desti, ini, colorJugador);
+                // Cas en que es vol minimitzar i la peca es del oponent
+                else if (!maximitzar && (super.getColorPeca(ini) == (colorContrari))) {
+                    Posicion[] movimentsPosibles = super.totsMovimentsPeca(ini);
+                    // Fer tots els moviments que pot fer la peca
+                    for (Posicion desti : movimentsPosibles) {
+                        String auxPeca = define.PECA_NULA;
+                        if(super.getColorPeca(desti) != 2) {
+                            auxPeca = super.getTipusPeca(desti);
+                        }
+
+                        if (super.mourePeca(ini, desti, colorContrari)) {
+                            int aux = minimax(depth - 1, true);
+                            if (aux < min) {
+                                min = aux;
+                            }
+                            desferMoviment(ini, desti, auxPeca, colorContrari);
+                        }
                     }
                 }
             }
         }
         if (maximitzar) return max;
         return  min;
-    }
-
-    private int evaluar() {
-        int amenazaPropia, amenazaOponent, mobilitatPropia, mobilitatOponent,
-                puntPropia, puntOponent;
-        amenazaPropia = amenazaOponent = mobilitatPropia = mobilitatOponent =
-                puntPropia = puntOponent = 0;
-
-        Peca pecesTau[][] = Tauler.getTauler();
-        for (int i = 0; i < pecesTau.length; i++) {
-            for (int j = 0; j < pecesTau[0].length; j++) {
-                if ((pecesTau[i][j].getColor() == colorJugador) && !pecesTau[i][j].getTipus().equals(define.PECA_NULA)) {
-                    mobilitatPropia++;
-                    puntPropia += puntuacioPeca(pecesTau[i][j].getTipus());
-
-                    Posicion ini = new Posicion(i, j);
-                    for (Posicion desti : Tauler.todos_movimientos(ini)) {
-                        if(pecesTau[desti.x][desti.y].getColor() != colorJugador) {
-                            amenazaPropia++;
-                        }
-                    }
-                }
-                else if (pecesTau[i][j].getColor() == (colorJugador ^ 1)) {
-                    mobilitatOponent++;
-                    puntOponent += puntuacioPeca(pecesTau[i][j].getTipus());
-
-                    Posicion ini = new Posicion(i, j);
-                    for (Posicion desti : Tauler.todos_movimientos(ini)) {
-                        if(pecesTau[desti.x][desti.y].getColor() == colorJugador) {
-                            amenazaOponent++;
-                        }
-                    }
-                }
-            }
-        }
-        return ((mobilitatPropia-mobilitatOponent) + (puntPropia-puntOponent) + (amenazaPropia-amenazaOponent));
-    }
-
-    private int puntuacioPeca(String tipus) {
-        int puntuacio = 0;
-        switch (tipus) {
-            case define.PEO:
-                puntuacio = 10;
-                break;
-            case define.CAVALL:
-                puntuacio = 35;
-                break;
-            case define.ALFIL:
-                puntuacio = 35;
-                break;
-            case define.TORRE:
-                puntuacio = 52;
-                break;
-            case define.REINA:
-                puntuacio = 100;
-                break;
-        }
-        return puntuacio;
     }
 }

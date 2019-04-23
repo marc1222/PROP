@@ -6,7 +6,13 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 /**
- * Classe que trata les estadistiques de les partides
+ * Classe que consisteix exclusivament de metodes static. Tracta les
+ * estadistiques de les partides jugades, si el que fa mat es
+ * un usuari o un invitat (guarda com 'Anònim').
+ *
+ * S'utilitza l'interficie funcional de java 'Interface Comparator',
+ * nomes compatible amb versions a partir de la 1.8.
+ *
  * @author Marian Dumitru Danci
  */
 public class Estadistica {
@@ -30,7 +36,7 @@ public class Estadistica {
     }
 
     /**
-     * Mostra el contingut complet del fitxer
+     * Mostra el contingut complet del fitxer on es guarda les estadistiques
      */
     public static void mostrarsetFitxerStats() {
         try (BufferedReader br = new BufferedReader(new FileReader(fitxerStats))) {
@@ -38,91 +44,106 @@ public class Estadistica {
             while ((line = br.readLine()) != null) {
                 System.out.println(line);
             }
-        } catch (Exception e) {
-            System.out.println("Problema en llegir el fitxer.");
+        }
+        catch (FileNotFoundException e) {
+            System.out.println("El fitxer no existeix.");
+        }
+        catch (IOException e) {
+            System.out.println("Error en la entrada i sortida da dades.");
+        }
+        catch (Exception e) {
+            System.out.println("Error en tractar el fitxer.");
         }
     }
 
     /**
-     * pre: problema i usuari existeix
-     * psot: es guarda una la linea al fitxer (problema usuari temps)
-     * @param problema
-     * @param usuari
-     * @param movimentsMat
+     * Es guarda a l'última line del fitxer les dades que es pasen
+     * @param problema nom del problema resolt
+     * @param usuari nom de l'usuari que l'ha resolt
+     * @param movimentsMat nombre de moviments en fer el mat
      * @param temps en milisegonds
      */
-
-
-    /**
-     * Es guarda a l'última line del fitxer les dades que es pasen
-     * @param problema
-     * @param usuari
-     * @param movimentsMat
-     * @param temps
-     */
     public static void guardarTemps(String problema, String usuari, String movimentsMat, String temps) {
-        //input_output IO = new input_output();
         String[] dades = {problema, usuari, movimentsMat, temps};
-        //IO.write(fitxerStats, dades);
 
         FileWriter fichero = null;
         PrintWriter pw = null;
         try {
             fichero = new FileWriter(fitxerStats,true);
             pw = new PrintWriter(fichero);
+            // Junta els parametres en un String i separar per un espai
             String aux = String.join(" ",dades);
+            // Afegeix a l'ultima linea
             pw.println(aux);
-        } catch (Exception e) {
-            e.printStackTrace();
-        } finally {
+        }
+        catch (FileNotFoundException e) {
+            System.out.println("El fitxer no existeix");
+        }
+        catch (IOException e) {
+            System.out.println("Error en la entrada i sortida da dades.");
+        }
+        catch (Exception e) {
+            System.out.println("Eror en tractar el fitxer.");
+        }
+        finally {
             try {
                 if (null != fichero) fichero.close();
-            } catch (Exception e2) {
-                e2.printStackTrace();
+            }
+            catch (FileNotFoundException e) {
+                System.out.println("El fitxer no existeix");
+            }
+            catch (IOException e) {
+                System.out.println("Error en la entrada i sortida da dades.");
+            }
+            catch (Exception e) {
+                System.out.println("El fitxer no s'ha pogut tancar.");
             }
         }
     }
 
-    // pre: usuari existeix
-    // post: retorna tots els problemes resolts amb el seu temps
-
     /**
      * Mostra tots els usuaris que han resolt el problema, ordenats primer
-     * per el numero de moviments que ha fet mat i segon per el temps
-     * @param problema
+     * pel numero de moviments que ha conseguit fer mat i segon pel temps.
+     * @param problema nom del problema que es vol consultar.
      */
     public static void estadistiquesProblema(String problema) {
-        System.out.println("Jugador Mat Temps");
         List<Marca> marquesOrdenades = estadistiquesOrdenades(problema, 0);
+
+        if (marquesOrdenades.isEmpty()) {
+            System.out.println("No hi han registres del problema");
+        }
+        else {
+            System.out.println("Jugador  Mat  Temps");
+        }
         for(Marca m : marquesOrdenades) {
             String temps = milisATemps(m.getTemps());
             System.out.println(m.getUsuari() + "  " + m.getMat() + "  " + temps);
-        }
-        if (marquesOrdenades.isEmpty()) {
-            System.out.println("No hi han registres del problema");
         }
     }
 
     /**
      * Mostra tots els problemes que han resolt l'usuari, ordenats primer
-     * per el numero de moviments que ha fet mat i segon per el temps
-     * @param usuari
+     * per el numero de moviments que ha conseguit fer mat i segon peel temps.
+     * @param usuari nom de l'usuari que es vol consultar.
      */
     public static void estadistiquesUsuari(String usuari) {
-        System.out.println("Problema Mat Temps");
         List<Marca> marquesOrdenades = estadistiquesOrdenades(usuari, 1);
-        for(Marca m : marquesOrdenades) {
-            String temps = milisATemps(m.getTemps());
-            System.out.println(m.getProblema() + "         " + m.getMat() + "  " + temps);
-        }
+
         if (marquesOrdenades.isEmpty()) {
             System.out.println("No hi han registres de l'usuari");
+        }
+        else {
+            System.out.println("Problema  Mat  Temps");
+        }
+        for(Marca m : marquesOrdenades) {
+            String temps = milisATemps(m.getTemps());
+            System.out.println(m.getProblema() + "  " + m.getMat() + "  " + temps);
         }
     }
 
     /**
-     * Posa com a 'Anónim' totes les aparicions de l'usuari en el fitxer
-     * @param usuari
+     * Canvia a 'Anonim' totes les aparicions de l'usuari en el fitxer
+     * @param usuari usuari que es vol remplacar
      */
     public static void eliminatStatsUsuari(String usuari) {
         try {
@@ -130,68 +151,90 @@ public class Estadistica {
             String line;
             StringBuffer inputBuffer = new StringBuffer();
 
+            // Safegeix espais al String, perque si hi han usuari que
+            // content el els mateixos caracteres dins del seu nom no
+            // es remplacin
+            usuari = " " + usuari + " ";
             while ((line = file.readLine()) != null) {
                 inputBuffer.append(line);
                 inputBuffer.append('\n');
             }
+            // Converteix tot el contingut en un sol String
             String inputStr = inputBuffer.toString();
 
             file.close();
 
-            //System.out.println(inputStr);
+            // Es remplaca totes les aparicions d'usuari al String
+            inputStr = inputStr.replace(usuari, " Anònim ");
 
-            inputStr = inputStr.replace(usuari, "Anònim");
-
-            //System.out.println("----------------------------------\n"  + inputStr);
-
-            // escriure el nou String amb la modficacio en les lineas sobre el mateix fitxer
+            // Escriu el nou String amb la modficacio en les lineas sobre el mateix fitxer
             FileOutputStream fileOut = new FileOutputStream(fitxerStats);
             fileOut.write(inputStr.getBytes());
             fileOut.close();
 
-        } catch (Exception e) {
-            System.out.println("Problem reading file.");
+        }
+        catch (FileNotFoundException e) {
+            System.out.println("El fitxer no existeix.");
+        }
+        catch (IOException e) {
+            System.out.println("Error en la entrada i sortida da dades.");
+        }
+        catch (Exception e) {
+            System.out.println("Error en tractar el fitxer.");
         }
     }
 
 
-
-    /**
-     * Retorna una llista ordenada del problema o l'usuari
-     * @param nom nom de l'usuari o el problema
-     * @param buscar 0 problema, 1 usuari
-     * @return
+    /*
+     * Retorna una llista ordenada per dos valors, el numero en que s'ha fet
+     * mat i el temps en milisegons en que s'ha fet.
+     * @param nom nom de l'usuari o el problema a buscar
+     * @param buscar 0 retorna marques d'un problema
+     *               1 retorna marques d'un usuari
+     * @return retorna la llista amb les maqrques ordenades
      */
     private static List<Marca> estadistiquesOrdenades(String nom, int buscar) {
         ArrayList<Marca> marques = new ArrayList<>();
         try (BufferedReader br = new BufferedReader(new FileReader(fitxerStats))) {
             String line;
             while ((line = br.readLine()) != null) {
+                // Separa la linea adel fitxer per els espais
                 String[] dades = line.split("\\s+");
+                // Segons el valor de buscar, busca en la primer columna del
+                // fitxer o en la segona, i compara amb el nom donat
                 if(dades[buscar].equals(nom)) {
+                    // Nombre de mat a enter
                     int mat = Integer.parseInt(dades[2]);
+                    // Milisegons a enter
                     long temps = Long.parseLong(dades[3]);
                     marques.add(new Marca(dades[0], dades[1], mat, temps));
                 }
             }
-        } catch (FileNotFoundException ex) {
-            ex.printStackTrace();
-        } catch (IOException ex) {
-            ex.printStackTrace();
-        } catch (NumberFormatException e) {
-            System.out.println(e);
+        }
+        catch (FileNotFoundException e) {
+            System.out.println("El fitxer no existeix.");
+        }
+        catch (IOException e) {
+            System.out.println("Error en la entrada i sortida da dades.");
+        }
+        catch (NumberFormatException e) {
+            System.out.println("Error en el format de nombres.");
         }
 
+        // S'ordena les marques pel nombre de mat
         Comparator<Marca> comparador = Comparator.comparing(m -> m.getMat());
+        // Sense alterar l'ordenacio de marques per mat, s'ordena les marques
+        // pel temps
         comparador = comparador.thenComparing(Comparator.comparing(m -> m.getTemps()));
+        // S'aplica el comparador a les marques obtingudes i es converteix en una llista
         List<Marca> marquesOrdenades = marques.stream().sorted(comparador).collect(Collectors.toList());
         return marquesOrdenades;
     }
 
-    /**
-     * Passa els milisegons a minuts y segons
-     * @param milis
-     * @return
+    /*
+     * Converteix els milisegons a minuts i segons
+     * @param milis Milisegons
+     * @return String amb minuts i segons
      */
     private static String milisATemps(long milis) {
         int sec, min;
@@ -204,9 +247,7 @@ public class Estadistica {
         return temps;
     }
 
-    /**
-     * Classe que guarda les dades de una linea del fitxer
-     */
+    // Classe que representa un fila del fitxer d'estadisiques
     private static class Marca {
         private String problema;
         private String usuari;
