@@ -47,6 +47,11 @@ public class Taulell {
             for (int j = 0; j < 8; ++j) {
                 try {
                     T[i][j] = (Peca) Class.forName(tau.T[i][j].getTipus()).getConstructor(int.class).newInstance(tau.T[i][j].getColor());
+                    if ((tau.T[i][j].getTipus()).equals(define.PEO)) {
+                        Peo p2 = (Peo) T[i][j];
+                        if (tau.T[i][j].getColor() == define.WHITE) p2.setPeoPrimer(j == 1);
+                        else p2.setPeoPrimer(j == 6);
+                    }
                     T[i][j].reset();
                 } catch (InstantiationException e) {
                     e.printStackTrace();
