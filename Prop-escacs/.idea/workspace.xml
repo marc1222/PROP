@@ -5,36 +5,20 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/files/estadistiques.txt" beforeDir="false" afterPath="$PROJECT_DIR$/files/estadistiques.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/files/index.txt" beforeDir="false" afterPath="$PROJECT_DIR$/files/index.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/files/problemes.txt" beforeDir="false" afterPath="$PROJECT_DIR$/files/problemes.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Prop-escacs/Alfil.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Prop-escacs/Alfil.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Prop-escacs/Cavall.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Prop-escacs/Cavall.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Prop-escacs/Estadistica$Marca.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Prop-escacs/Estadistica$Marca.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Prop-escacs/Estadistica.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Prop-escacs/Estadistica.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Prop-escacs/Maquina.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Prop-escacs/Maquina.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Prop-escacs/Naive.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Prop-escacs/Naive.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Prop-escacs/Partida.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Prop-escacs/Partida.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Prop-escacs/Peca_Nula.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Prop-escacs/Peca_Nula.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Prop-escacs/Peo.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Prop-escacs/Peo.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Prop-escacs/Problema.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Prop-escacs/Problema.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Prop-escacs/Rei.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Prop-escacs/Rei.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Prop-escacs/Reina.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Prop-escacs/Reina.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Prop-escacs/Smart.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Prop-escacs/Smart.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Prop-escacs/Taulell.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Prop-escacs/Taulell.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Prop-escacs/Torre.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Prop-escacs/Torre.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Alfil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Alfil.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Cavall.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Cavall.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Estadistica.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Estadistica.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Jugador.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Jugador.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Prop-escacs/Test/testDriverEstadistica.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Prop-escacs/Usuari.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Prop-escacs/Usuari.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/DriverUsuari.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Maquina.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Maquina.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Naive.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Naive.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Partida.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Partida.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Peca_Nula.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Peca_Nula.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Peo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Peo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Problema.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Problema.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Rei.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Rei.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Reina.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Reina.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Smart.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Smart.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Taulell.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Taulell.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Torre.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Torre.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Usuari.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Usuari.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Test/testDriverEstadistica.txt" beforeDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -46,19 +30,10 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Main.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="6258">
-              <caret line="298" column="35" selection-start-line="298" selection-start-column="35" selection-end-line="298" selection-end-column="44" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Estadistica.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="483">
-              <caret line="38" column="76" selection-start-line="38" selection-start-column="7" selection-end-line="38" selection-end-column="76" />
+            <state relative-caret-position="504">
+              <caret line="39" column="7" selection-start-line="39" selection-start-column="7" selection-end-line="39" selection-end-column="7" />
               <folding>
                 <element signature="docComment;method#getFitxerStats#0;class#Estadistica#0" />
                 <element signature="docComment;method#setFitxerStats#0;class#Estadistica#0" />
@@ -70,6 +45,7 @@
                 <element signature="docComment;method#estadistiquesUsuari#0;class#Estadistica#0" />
                 <element signature="method#estadistiquesUsuari#0;class#Estadistica#0" />
                 <element signature="docComment;method#eliminatStatsUsuari#0;class#Estadistica#0" />
+                <element signature="method#eliminatStatsUsuari#0;class#Estadistica#0" />
                 <element signature="method#estadistiquesOrdenades#0;class#Estadistica#0" />
                 <element signature="method#milisATemps#0;class#Estadistica#0" />
                 <element signature="class#Marca#0;class#Estadistica#0" />
@@ -81,8 +57,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Jugador.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="126">
-              <caret line="8" column="3" selection-start-line="8" selection-start-column="3" selection-end-line="8" selection-end-column="3" />
+            <state relative-caret-position="189">
+              <caret line="11" column="4" selection-start-line="11" selection-start-column="4" selection-end-line="16" selection-end-column="7" />
             </state>
           </provider>
         </entry>
@@ -90,18 +66,32 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Usuari.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-627">
-              <caret line="153" column="31" selection-start-line="153" selection-start-column="31" selection-end-line="153" selection-end-column="31" />
+            <state relative-caret-position="630">
+              <caret line="59" selection-start-line="59" selection-end-line="59" />
               <folding>
                 <element signature="docComment;method#Usuari#0;class#Usuari#0" />
                 <element signature="method#Usuari#0;class#Usuari#0" />
+                <element signature="docComment;method#Usuari#1;class#Usuari#0" />
                 <element signature="method#Usuari#1;class#Usuari#0" />
+                <element signature="docComment;method#getFitxerUsuaris#0;class#Usuari#0" />
+                <element signature="docComment;method#setFitxerUsuaris#0;class#Usuari#0" />
+                <element signature="docComment;method#getTipus#0;class#Usuari#0" />
+                <element signature="docComment;method#getNom#0;class#Usuari#0" />
+                <element signature="docComment;method#setNom#0;class#Usuari#0" />
+                <element signature="docComment;method#getColor#0;class#Usuari#0" />
+                <element signature="docComment;method#setColor#0;class#Usuari#0" />
+                <element signature="docComment;method#iniciarSessio#0;class#Usuari#0" />
+                <element signature="method#iniciarSessio#0;class#Usuari#0" />
                 <element signature="docComment;method#registrar#0;class#Usuari#0" />
                 <element signature="method#registrar#0;class#Usuari#0" />
+                <element signature="docComment;method#baixa#0;class#Usuari#0" />
+                <element signature="method#baixa#0;class#Usuari#0" />
                 <element signature="method#eliminarUsuari#0;class#Usuari#0" />
                 <element signature="docComment;method#totsUsuaris#0;class#Usuari#0" />
                 <element signature="method#totsUsuaris#0;class#Usuari#0" />
+                <element signature="docComment;method#moviment#0;class#Usuari#0" />
                 <element signature="method#moviment#0;class#Usuari#0" />
+                <element signature="docComment;method#mostrarsetFitxerUsuaris#0;class#Usuari#0" />
                 <element signature="method#mostrarsetFitxerUsuaris#0;class#Usuari#0" />
               </folding>
             </state>
@@ -109,22 +99,49 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/Naive.java">
+        <entry file="file://$PROJECT_DIR$/src/Taulell.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="546">
-              <caret line="30" column="39" selection-start-line="30" selection-start-column="39" selection-end-line="30" selection-end-column="39" />
-              <folding>
-                <element signature="method#minimax#0;class#Naive#0" />
-              </folding>
+            <state relative-caret-position="11">
+              <caret line="583" column="48" selection-start-line="583" selection-start-column="48" selection-end-line="583" selection-end-column="48" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Smart.java">
+        <entry file="file://$PROJECT_DIR$/src/Naive.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="441">
-              <caret line="25" column="27" selection-start-line="25" selection-start-column="27" selection-end-line="25" selection-end-column="27" />
+            <state relative-caret-position="143">
+              <caret line="42" column="36" selection-start-line="42" selection-start-column="36" selection-end-line="42" selection-end-column="36" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Maquina.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="67">
+              <caret line="118" column="14" selection-start-line="118" selection-start-column="14" selection-end-line="118" selection-end-column="14" />
+              <folding>
+                <element signature="docComment;method#getTipusMaquina#0;class#Maquina#0" />
+                <element signature="docComment;method#moviment#0;class#Maquina#0" />
+                <element signature="docComment;method#setTauler#0;class#Maquina#0" />
+                <element signature="docComment;method#setProfunditat#0;class#Maquina#0" />
+                <element signature="docComment;method#puntuacioPeca#0;class#Maquina#0" />
+                <element signature="method#puntuacioPeca#0;class#Maquina#0" />
+                <element signature="docComment;method#setTaulerMaquina#0;class#Maquina#0" />
+                <element signature="method#setTaulerMaquina#0;class#Maquina#0" />
+                <element signature="docComment;method#getColorPeca#0;class#Maquina#0" />
+                <element signature="docComment;method#getTipusPeca#0;class#Maquina#0" />
+                <element signature="docComment;method#totsMovimentsPeca#0;class#Maquina#0" />
+                <element signature="docComment;method#mourePeca#0;class#Maquina#0" />
+                <element signature="docComment;method#evaluar#0;class#Maquina#0" />
+                <element signature="docComment;method#estatMat#0;class#Maquina#0" />
+                <element signature="e#6584#6585#0" expanded="true" />
+                <element signature="e#6632#6633#0" expanded="true" />
+                <element signature="docComment;method#desferMoviment#0;class#Maquina#0" />
+                <element signature="e#7618#7619#0" expanded="true" />
+                <element signature="e#7654#7655#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -140,36 +157,36 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>jugar_t</find>
-      <find>tots</find>
-      <find>tipus</find>
-      <find>el fit</find>
-      <find>exce</find>
-      <find>ioex</find>
-      <find>excep</find>
-      <find>sca</find>
-      <find>sc</find>
-      <find>getNumJuga</find>
-      <find>setT</find>
-      <find>puntua</find>
-      <find>evalua</find>
-      <find>evaluar</find>
-      <find>new</find>
-      <find>moureP</find>
-      <find>desfer</find>
-      <find>el fitxer</find>
-      <find>ex</find>
-      <find>io.</find>
-      <find>io.wr</find>
-      <find>notf</find>
-      <find>exc</find>
-      <find>baixa</find>
-      <find>pw</find>
-      <find>case</find>
-      <find>opc</find>
       <find>trimmedLine</find>
       <find>split</find>
-      <find>case</find>
+      <find>has de</find>
+      <find>escac_i</find>
+      <find>move</find>
+      <find>moure</find>
+      <find>no hi ha cap</find>
+      <find>++</find>
+      <find>printl</find>
+      <find>has</find>
+      <find>peca_Nula</find>
+      <find>mover</find>
+      <find>no hay</find>
+      <find>desti</find>
+      <find>getT</find>
+      <find>no hay ning</find>
+      <find>dest</find>
+      <find>null invali</find>
+      <find>desfer</find>
+      <find>destr</find>
+      <find>.x</find>
+      <find>null</find>
+      <find>POS</find>
+      <find>mover_pieza</find>
+      <find>mata</find>
+      <find>pos</find>
+      <find>taulell</find>
+      <find>crea</find>
+      <find>&quot;</find>
+      <find>pos:</find>
     </findStrings>
     <dirStrings>
       <dir>$PROJECT_DIR$/src</dir>
@@ -196,16 +213,20 @@
         <option value="$PROJECT_DIR$/src/Test/DriverEstadistica.java" />
         <option value="$PROJECT_DIR$/src/DriverUsuari.java" />
         <option value="$PROJECT_DIR$/src/Main.java" />
-        <option value="$PROJECT_DIR$/src/Maquina.java" />
         <option value="$PROJECT_DIR$/files/problemes.txt" />
-        <option value="$PROJECT_DIR$/src/Smart.java" />
-        <option value="$PROJECT_DIR$/src/Taulell.java" />
         <option value="$PROJECT_DIR$/src/Partida.java" />
         <option value="$PROJECT_DIR$/src/Problema.java" />
-        <option value="$PROJECT_DIR$/src/Naive.java" />
         <option value="$PROJECT_DIR$/src/Jugador.java" />
         <option value="$PROJECT_DIR$/src/Estadistica.java" />
         <option value="$PROJECT_DIR$/src/Usuari.java" />
+        <option value="$PROJECT_DIR$/src/Taulell2.java" />
+        <option value="$PROJECT_DIR$/src/Smart.java" />
+        <option value="$PROJECT_DIR$/src/Naive2.java" />
+        <option value="$PROJECT_DIR$/src/Naive3.java" />
+        <option value="$PROJECT_DIR$/src/Taulell3.java" />
+        <option value="$PROJECT_DIR$/src/Taulell.java" />
+        <option value="$PROJECT_DIR$/src/Maquina.java" />
+        <option value="$PROJECT_DIR$/src/Naive.java" />
       </list>
     </option>
   </component>
@@ -216,17 +237,15 @@
     </treeState>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-8" />
-    <option name="y" value="-8" />
-    <option name="width" value="1382" />
-    <option name="height" value="754" />
+    <option name="x" value="-7" />
+    <option name="width" value="697" />
+    <option name="height" value="745" />
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -255,10 +274,11 @@
         </subPane>
       </pane>
       <pane id="Scope" />
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1555875255475" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1555980908454" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
   </component>
   <component name="RunDashboard">
@@ -327,9 +347,8 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="754" extended-state="6" />
-    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.48965517" visible="true" weight="0.22919819" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.48965517" weight="0.20877458" />
       <window_info id="Structure" order="1" sideWeight="0.5103448" side_tool="true" weight="0.22024234" />
       <window_info id="Designer" order="2" />
       <window_info id="Learn" order="3" />
@@ -339,7 +358,36 @@
       <window_info id="Capture Tool" order="7" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.81642514" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.68599033" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" weight="0.32900432" />
+      <window_info anchor="bottom" id="Version Control" order="7" weight="0.32850242" />
+      <window_info anchor="bottom" id="Terminal" order="8" />
+      <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
+      <window_info anchor="bottom" id="Messages" order="10" weight="0.1594203" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="Palette" order="3" />
+      <window_info anchor="right" id="Palette&#9;" order="4" />
+      <window_info anchor="right" id="Capture Analysis" order="5" />
+      <window_info anchor="right" id="Theme Preview" order="6" />
+      <window_info anchor="right" id="Maven" order="7" weight="0.023449318" />
+    </layout>
+    <layout-to-restore>
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.48965517" visible="true" weight="0.23676248" />
+      <window_info id="Structure" order="1" sideWeight="0.5103448" side_tool="true" weight="0.22024234" />
+      <window_info id="Designer" order="2" />
+      <window_info id="Learn" order="3" />
+      <window_info id="UI Designer" order="4" />
+      <window_info id="Favorites" order="5" side_tool="true" />
+      <window_info id="Image Layers" order="6" />
+      <window_info id="Capture Tool" order="7" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.048309177" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -356,63 +404,28 @@
       <window_info anchor="right" id="Capture Analysis" order="5" />
       <window_info anchor="right" id="Theme Preview" order="6" />
       <window_info anchor="right" id="Maven" order="7" weight="0.023449318" />
-    </layout>
-    <layout-to-restore>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49056605" visible="true" weight="0.22024234" />
-      <window_info id="Structure" order="1" sideWeight="0.509434" side_tool="true" weight="0.17019667" />
-      <window_info id="Designer" order="2" />
-      <window_info id="Learn" order="3" />
-      <window_info id="UI Designer" order="4" />
-      <window_info id="Favorites" order="5" side_tool="true" />
-      <window_info id="Image Layers" order="6" />
-      <window_info id="Capture Tool" order="7" />
-      <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.5021645" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
-      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
-      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="bottom" id="TODO" order="6" weight="0.32900432" />
-      <window_info anchor="bottom" id="Version Control" order="7" weight="0.32850242" />
-      <window_info anchor="bottom" id="Terminal" order="8" />
-      <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
-      <window_info anchor="bottom" id="Messages" order="10" weight="0.39502165" />
-      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
-      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
-      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-      <window_info anchor="right" id="Palette" order="3" />
-      <window_info anchor="right" id="Palette&#9;" order="4" />
-      <window_info anchor="right" id="Capture Analysis" order="5" />
-      <window_info anchor="right" id="Theme Preview" order="6" />
-      <window_info anchor="right" id="Maven" order="7" weight="0.023449318" />
     </layout-to-restore>
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/Naive.java</url>
-          <line>64</line>
+          <url>file://$PROJECT_DIR$/src/Maquina.java</url>
+          <line>112</line>
           <properties />
-          <option name="timeStamp" value="43" />
+          <option name="timeStamp" value="83" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/Naive.java</url>
-          <line>93</line>
+          <url>file://$PROJECT_DIR$/src/Maquina.java</url>
+          <line>113</line>
           <properties />
-          <option name="timeStamp" value="53" />
+          <option name="timeStamp" value="84" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/Naive.java</url>
-          <line>123</line>
+          <url>file://$PROJECT_DIR$/src/Maquina.java</url>
+          <line>118</line>
           <properties />
-          <option name="timeStamp" value="79" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/Naive.java</url>
-          <line>104</line>
-          <properties />
-          <option name="timeStamp" value="80" />
+          <option name="timeStamp" value="85" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
@@ -556,13 +569,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/DriverUsuari.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="245">
-          <caret line="118" column="18" selection-start-line="118" selection-start-column="18" selection-end-line="118" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/DriverUsuari.java" />
     <entry file="file://$PROJECT_DIR$/files/problemes.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state>
@@ -570,39 +577,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Maquina.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="487">
-          <caret line="168" column="32" selection-start-line="168" selection-start-column="32" selection-end-line="168" selection-end-column="32" />
-          <folding>
-            <element signature="method#puntuacioPeca#0;class#Maquina#0" />
-            <element signature="method#desferMoviment#0;class#Maquina#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/files/estadistiques.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="63">
           <caret line="3" column="8" selection-start-line="3" selection-start-column="2" selection-end-line="3" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Taulell.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="48">
-          <caret line="22" selection-start-line="22" selection-end-line="22" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#168#169#0" expanded="true" />
-            <element signature="e#222#223#0" expanded="true" />
-            <element signature="e#7885#7886#0" expanded="true" />
-            <element signature="e#7953#7954#0" expanded="true" />
-            <element signature="e#8005#8006#0" expanded="true" />
-            <element signature="e#8029#8030#0" expanded="true" />
-            <element signature="e#8224#8225#0" expanded="true" />
-            <element signature="e#8262#8263#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -645,17 +623,31 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/input_output.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="252">
+          <caret line="48" column="27" selection-start-line="48" selection-start-column="27" selection-end-line="48" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/Main.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="6258">
-          <caret line="298" column="35" selection-start-line="298" selection-start-column="35" selection-end-line="298" selection-end-column="44" />
+        <state relative-caret-position="147">
+          <caret line="304" column="50" selection-start-line="304" selection-start-column="50" selection-end-line="304" selection-end-column="50" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Smart.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="91">
+          <caret line="136" column="74" selection-start-line="136" selection-start-column="74" selection-end-line="136" selection-end-column="74" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Estadistica.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="483">
-          <caret line="38" column="76" selection-start-line="38" selection-start-column="7" selection-end-line="38" selection-end-column="76" />
+        <state relative-caret-position="504">
+          <caret line="39" column="7" selection-start-line="39" selection-start-column="7" selection-end-line="39" selection-end-column="7" />
           <folding>
             <element signature="docComment;method#getFitxerStats#0;class#Estadistica#0" />
             <element signature="docComment;method#setFitxerStats#0;class#Estadistica#0" />
@@ -667,6 +659,7 @@
             <element signature="docComment;method#estadistiquesUsuari#0;class#Estadistica#0" />
             <element signature="method#estadistiquesUsuari#0;class#Estadistica#0" />
             <element signature="docComment;method#eliminatStatsUsuari#0;class#Estadistica#0" />
+            <element signature="method#eliminatStatsUsuari#0;class#Estadistica#0" />
             <element signature="method#estadistiquesOrdenades#0;class#Estadistica#0" />
             <element signature="method#milisATemps#0;class#Estadistica#0" />
             <element signature="class#Marca#0;class#Estadistica#0" />
@@ -676,51 +669,111 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Jugador.java">
       <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="189">
+          <caret line="11" column="4" selection-start-line="11" selection-start-column="4" selection-end-line="16" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Naive2.java">
+      <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="126">
-          <caret line="8" column="3" selection-start-line="8" selection-start-column="3" selection-end-line="8" selection-end-column="3" />
+          <caret line="6" column="18" selection-start-line="6" selection-start-column="18" selection-end-line="6" selection-end-column="18" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Smart.java">
+    <entry file="file://$PROJECT_DIR$/src/Taulell2.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="441">
-          <caret line="25" column="27" selection-start-line="25" selection-start-column="27" selection-end-line="25" selection-end-column="27" />
+        <state relative-caret-position="42">
+          <caret line="3" column="13" selection-start-line="3" selection-start-column="13" selection-end-line="3" selection-end-column="13" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/input_output.java">
+    <entry file="file://$PROJECT_DIR$/src/Taulell3.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="252">
-          <caret line="48" column="27" selection-start-line="48" selection-start-column="27" selection-end-line="48" selection-end-column="27" />
+        <state relative-caret-position="294">
+          <caret line="17" column="18" selection-start-line="17" selection-start-column="18" selection-end-line="17" selection-end-column="18" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Usuari.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-627">
-          <caret line="153" column="31" selection-start-line="153" selection-start-column="31" selection-end-line="153" selection-end-column="31" />
+        <state relative-caret-position="630">
+          <caret line="59" selection-start-line="59" selection-end-line="59" />
           <folding>
             <element signature="docComment;method#Usuari#0;class#Usuari#0" />
             <element signature="method#Usuari#0;class#Usuari#0" />
+            <element signature="docComment;method#Usuari#1;class#Usuari#0" />
             <element signature="method#Usuari#1;class#Usuari#0" />
+            <element signature="docComment;method#getFitxerUsuaris#0;class#Usuari#0" />
+            <element signature="docComment;method#setFitxerUsuaris#0;class#Usuari#0" />
+            <element signature="docComment;method#getTipus#0;class#Usuari#0" />
+            <element signature="docComment;method#getNom#0;class#Usuari#0" />
+            <element signature="docComment;method#setNom#0;class#Usuari#0" />
+            <element signature="docComment;method#getColor#0;class#Usuari#0" />
+            <element signature="docComment;method#setColor#0;class#Usuari#0" />
+            <element signature="docComment;method#iniciarSessio#0;class#Usuari#0" />
+            <element signature="method#iniciarSessio#0;class#Usuari#0" />
             <element signature="docComment;method#registrar#0;class#Usuari#0" />
             <element signature="method#registrar#0;class#Usuari#0" />
+            <element signature="docComment;method#baixa#0;class#Usuari#0" />
+            <element signature="method#baixa#0;class#Usuari#0" />
             <element signature="method#eliminarUsuari#0;class#Usuari#0" />
             <element signature="docComment;method#totsUsuaris#0;class#Usuari#0" />
             <element signature="method#totsUsuaris#0;class#Usuari#0" />
+            <element signature="docComment;method#moviment#0;class#Usuari#0" />
             <element signature="method#moviment#0;class#Usuari#0" />
+            <element signature="docComment;method#mostrarsetFitxerUsuaris#0;class#Usuari#0" />
             <element signature="method#mostrarsetFitxerUsuaris#0;class#Usuari#0" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/Maquina.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="67">
+          <caret line="118" column="14" selection-start-line="118" selection-start-column="14" selection-end-line="118" selection-end-column="14" />
+          <folding>
+            <element signature="docComment;method#getTipusMaquina#0;class#Maquina#0" />
+            <element signature="docComment;method#moviment#0;class#Maquina#0" />
+            <element signature="docComment;method#setTauler#0;class#Maquina#0" />
+            <element signature="docComment;method#setProfunditat#0;class#Maquina#0" />
+            <element signature="docComment;method#puntuacioPeca#0;class#Maquina#0" />
+            <element signature="method#puntuacioPeca#0;class#Maquina#0" />
+            <element signature="docComment;method#setTaulerMaquina#0;class#Maquina#0" />
+            <element signature="method#setTaulerMaquina#0;class#Maquina#0" />
+            <element signature="docComment;method#getColorPeca#0;class#Maquina#0" />
+            <element signature="docComment;method#getTipusPeca#0;class#Maquina#0" />
+            <element signature="docComment;method#totsMovimentsPeca#0;class#Maquina#0" />
+            <element signature="docComment;method#mourePeca#0;class#Maquina#0" />
+            <element signature="docComment;method#evaluar#0;class#Maquina#0" />
+            <element signature="docComment;method#estatMat#0;class#Maquina#0" />
+            <element signature="e#6584#6585#0" expanded="true" />
+            <element signature="e#6632#6633#0" expanded="true" />
+            <element signature="docComment;method#desferMoviment#0;class#Maquina#0" />
+            <element signature="e#7618#7619#0" expanded="true" />
+            <element signature="e#7654#7655#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Naive3.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="189">
+          <caret line="10" column="29" lean-forward="true" selection-start-line="10" selection-start-column="29" selection-end-line="10" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/Naive.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="546">
-          <caret line="30" column="39" selection-start-line="30" selection-start-column="39" selection-end-line="30" selection-end-column="39" />
-          <folding>
-            <element signature="method#minimax#0;class#Naive#0" />
-          </folding>
+        <state relative-caret-position="143">
+          <caret line="42" column="36" selection-start-line="42" selection-start-column="36" selection-end-line="42" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Taulell.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="11">
+          <caret line="583" column="48" selection-start-line="583" selection-start-column="48" selection-end-line="583" selection-end-column="48" />
         </state>
       </provider>
     </entry>

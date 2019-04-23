@@ -52,7 +52,7 @@ public class Smart extends Maquina {
                         }
 
                         int aux = alphaBeta(profunditat,false, -10000, 10000);
-                        while (!super.desferMoviment(ini, desti, auxPeca, colorJugador));
+                        super.desferMoviment(ini, desti, auxPeca, colorJugador);
                         if (aux > maxF) {
                             mejorIni.x = ini.x;
                             mejorIni.y = ini.y;
@@ -110,7 +110,7 @@ public class Smart extends Maquina {
                         if (beta <= alpha) {
                             return aux;
                         }
-                        while (!super.desferMoviment(ini, desti, auxPeca, colorJugador));
+                        super.desferMoviment(ini, desti, auxPeca, colorJugador);
                     }
                 }
                 else if (!maximitzar && (super.getColorPeca(ini) == (colorContrari))) {
@@ -134,7 +134,7 @@ public class Smart extends Maquina {
                         if (beta <= alpha) {
                             return aux;
                         }
-                        while (!desferMoviment(ini, desti, auxPeca, colorContrari));
+                        desferMoviment(ini, desti, auxPeca, colorContrari);
                     }
                 }
             }

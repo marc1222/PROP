@@ -129,10 +129,10 @@ public class Taulell {
             }
             for (int j = 0; j < 8; ++j) {
                 if (i == 8) {
-                   if (j == 0) {
-                       System.out.println("-----------------------");
-                       System.out.print("X  ");
-                   }
+                    if (j == 0) {
+                        System.out.println("-----------------------");
+                        System.out.print("X  ");
+                    }
                     System.out.print(j+ " ");
 
                 }
@@ -183,12 +183,17 @@ public class Taulell {
     private void crea_peca_xy(Posicion Pos, int color, String tipus) {
         try {
             Peca aux = (Peca) Class.forName(tipus).getConstructor(int.class).newInstance(color);
-            T[Pos.x][Pos.y] = aux;
-            if (tipus == define.PEO) {
+            if (tipus.equals(define.PEO)) {
                 Peo p = (Peo)aux;
-                if (color == define.WHITE) p.setPeoPrimer(Pos.y == 1);
-                else p.setPeoPrimer(Pos.y == 6);
+                if (color == define.WHITE) {
+                    p.setPeoPrimer(Pos.y == 1);
+                }
+                else {
+                    p.setPeoPrimer(Pos.y == 6);
+                }
+                aux = (Peca)p;
             }
+            T[Pos.x][Pos.y] = aux;
 
         } catch (Exception ex) {
             ex.printStackTrace();
@@ -238,6 +243,7 @@ public class Taulell {
                 //diagonal && hay un enemigo ->
                 if (T[fi.x][fi.y].getColor() == color || T[fi.x][fi.y].getColor() == define.NULL_COLOR) return false;
             }
+            else if (T[fi.x][fi.y].getColor() != define.NULL_COLOR) return false;
         }
         //end checks call peça checker -> booleanç
 
@@ -333,6 +339,7 @@ public class Taulell {
                                     if (T[act_pos.x][act_pos.y].getColor() == ((color == define.WHITE) ? define.BLACK : define.WHITE))
                                         tmp.add(act_pos);
                                 }
+                                else if (act_color == define.NULL_COLOR) tmp.add(act_pos);
                             }
                             else tmp.add(act_pos);
                         }
@@ -454,7 +461,7 @@ public class Taulell {
                     for (int j = 0; j < moves.length; ++j) {
                         T2 = new Taulell(this.T, true);
                         moved = T2.mover_pieza(peces[i],moves[j],color);
-                      //  System.out.println(moves[j].x+","+moves[j].y+" - "+moved);
+                        //  System.out.println(moves[j].x+","+moves[j].y+" - "+moved);
                         if (moved) { //si sha pogut moure mirem si té 0 amenaces, altrament restaurem el taulell
                             if(T2.T[Rei.x][Rei.y].getAmenaces().size() == 0) return true;
                         }
@@ -566,14 +573,40 @@ public class Taulell {
             else {
                 ret = true;
                 Peca aux = T[inici.x][inici.y];
-                if (aux.getTipus() == define.REI)  {
+                if (aux.getTipus().equals(define.REI))  {
                     Posicion[] peces = getPosColor((color==define.WHITE)?define.BLACK:define.WHITE);
                     if (escac(peces,fi,inici)) ret = false;
                 }
+                else { //la peca que volem moure te un moviment valid, pero NO es un rei, mirem si el rei esta en escac
+                    Posicion Rei = getReiPos(color);
+                    if (this.T[Rei.x][Rei.y].getAmenaces().size() > 0) {
+                        //Simulem el moviment si el rei es troba en escac
+                        Taulell T2 = new Taulell(this.T,true);
+                        T2.borra_peca_xy(inici);
+                        T2.crea_peca_xy(fi, color, aux.getTipus());
+                        T2.reset_amenaces_tauler();
+                        T2.recalcular_amanaça_tauler();
+                        Rei = T2.getReiPos(color);
+                        if (T2.T[Rei.x][Rei.y].getAmenaces().size() != 0) {
+                            //System.out.print("Has de protegir el rei, està en ESCAC!!!\n");
+                            ret = false;
+                        }
+                    }
+                }
 
                 if (ret) {
-                    borra_peca_xy(inici);
-                    crea_peca_xy(fi, color, aux.getTipus());
+                    if (aux.getTipus().equals(define.PEO)) {
+                        if ((aux.getColor() == define.WHITE && fi.y == 7) || (aux.getColor() == define.BLACK && fi.y == 0)) {
+                            borra_peca_xy(inici);
+                            crea_peca_xy(fi, color, define.REINA);
+                        } else {
+                            borra_peca_xy(inici);
+                            crea_peca_xy(fi, color, aux.getTipus());
+                        }
+                    } else {
+                        borra_peca_xy(inici);
+                        crea_peca_xy(fi, color, aux.getTipus());
+                    }
                     reset_amenaces_tauler();
                     recalcular_amanaça_tauler();
                 }
