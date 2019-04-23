@@ -10,6 +10,7 @@ import javafx.geometry.Pos;
  */
 public class Naive extends Maquina {
     private int profunditat;
+    private int mat;
     private int colorJugador;
     private int colorContrari;
 
@@ -40,6 +41,14 @@ public class Naive extends Maquina {
      * @param mat Nombre de jugades en asolir mat del problema
      */
     public void setProfunditat(int mat) {
+        this.mat = mat;
+        actualitzarProfunditat();
+    }
+
+    /**
+     * Actualitza la profunditat limit
+     */
+    public void actualitzarProfunditat() {
         if (mat > 2) profunditat = 2;
         else profunditat = mat;
     }
@@ -98,7 +107,8 @@ public class Naive extends Maquina {
         desti.x = mejorDesti.x;
         desti.y = mejorDesti.y;
 
-        --profunditat;
+        --mat;
+        actualitzarProfunditat();
         return 0;
     }
 

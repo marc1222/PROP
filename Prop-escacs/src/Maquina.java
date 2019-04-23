@@ -139,7 +139,7 @@ public abstract class Maquina extends Jugador {
         }
         // Escac
         else if (escac_mat1 == 0) {
-            total += 1000;
+            total += 500;
         }
         // Ofegat
         else if (escac_mat1 == 2){
