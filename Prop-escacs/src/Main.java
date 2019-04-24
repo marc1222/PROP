@@ -153,9 +153,9 @@ public class Main {
                         master.setColor((p.getPrimer()==define.WHITE)?define.BLACK:define.WHITE);
                     }
                     else {
-                        //defender    &&   //naive
+                        //defender    &&   //usuari
                         second = new Usuari(p.getPrimer());
-                        master.setColor((p.getPrimer()==define.WHITE)?define.BLACK:define.WHITE);
+                        //master.setColor((p.getPrimer()==define.WHITE)?define.BLACK:define.WHITE);
                     }
                     //else ;
                     System.out.println("\nCreant partida...");

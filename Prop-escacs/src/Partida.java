@@ -123,10 +123,17 @@ public class Partida  {
         System.out.println("FINAL: Ha guanyat el jugador: "+res);
         if (this.save_stat && ret==Prob.getPrimer()) {
             //guardar stat
-            Usuari Wu = (Usuari) W;
-            Usuari Bu = (Usuari) B;
-            String name = (Prob.getPrimer()==define.WHITE)?Wu.getNom():Bu.getNom();
-            Estadistica.guardarTemps(String.valueOf(Prob.getId()), name, String.valueOf(this.ronda),String.valueOf(this.clock));
+            Usuari Wu,Bu;
+            String name = "";
+            if (W.getTipus() == define.USER && Prob.getPrimer()==define.WHITE) {
+                Wu = (Usuari) W;
+                name = Wu.getNom();
+            }
+            else if (B.getTipus() == define.USER && Prob.getPrimer()==define.BLACK) {
+                Bu = (Usuari) B;
+                name = Bu.getNom();
+            }
+            Estadistica.guardarTemps(String.valueOf(Prob.getId()), name, String.valueOf(this.ronda/2 + 1),String.valueOf(this.clock));
             System.out.println("Se han guardado las estadísticas");
         }
     }

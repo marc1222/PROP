@@ -231,15 +231,15 @@ public abstract class Maquina extends Jugador {
         //System.out.println("\n+++++\n" + peca + " ORIG: "+ origen.x + "-" + origen.y + " " + desti.x + "-" + desti.y);
         //pintar();
         Peca aux = pecesTau[desti.x][desti.y];
-        Tauler.destrueix_peça(desti);
+        Tauler.destrueix_peca(desti);
         //pintar();
-        Tauler.crear_peça(origen, color, aux.getTipus());
+        Tauler.crear_peca(origen, color, aux.getTipus());
         //pintar();
 
         // Si el moviment que s'ha fet no ha sigut sobre una peca nula es crea
         // la peca eliminada de l'oponent
         if(!peca.equals(define.PECA_NULA)) {
-            Tauler.crear_peça(desti, color ^ 1, peca);
+            Tauler.crear_peca(desti, color ^ 1, peca);
         }
     }
 

@@ -266,7 +266,7 @@ public class Usuari extends Jugador{
                     System.out.println("Opcio invalida.\n");
                 }
             }
-        } while(opcio != 1 || opcio != 2);
+        } while(opcio != 1 && opcio != 2);
 
         if (opcio == 1) return true;
         return false;

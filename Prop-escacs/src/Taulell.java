@@ -50,7 +50,7 @@ public class Taulell {
                 }
             }
         }
-        recalcular_amanaça_tauler();
+        recalcular_amanaca_tauler();
     }
 
     //creadora d'un nou taulell independent a partir d'un taulell
@@ -101,13 +101,13 @@ public class Taulell {
     //i afegim l'amenaça corresponent sobre la relacio iterada
     //Pre: this.T ha de ser un taulell valid i de peces inicialitzades
     //Post: Les peces que es troben a this.T tenen setejades correctament les amenaces i les amenaçades
-    private void recalcular_amanaça_tauler() {
+    private void recalcular_amanaca_tauler() {
         Posicion[] whitys = getPosColor(define.WHITE);
         Posicion[] blackys = getPosColor(define.BLACK);
         //fem peces_blanques x peces negres iteracions
         for (int i = 0; i < whitys.length; ++i) {
             for (int j = 0; j < blackys.length; ++j) {
-                recalcular_amenaça_pos(whitys[i],blackys[j]);
+                recalcular_amenaca_pos(whitys[i],blackys[j]);
             }
         }
     }
@@ -119,7 +119,7 @@ public class Taulell {
     //pre: a posicion ini hi ha d'haver una pos valida, igual que a fi, i diferent de PECA_NULA i NULL_COLOR
     //post: si ini amenaça a fi, queda enregistrat en els arraylist d'amenaces,
     //      i si fi amenaça a ini igualment queda enregistrat en els arraylists corresponents
-    private void recalcular_amenaça_pos(Posicion ini, Posicion fi) {
+    private void recalcular_amenaca_pos(Posicion ini, Posicion fi) {
         int act_color = T[ini.x][ini.y].getColor();
         boolean ret = validar_moviment(ini, fi, act_color); //moviment: ini -> fi
         if (ret) {
@@ -269,7 +269,7 @@ public class Taulell {
     //es retorna la peca que es troba a la posició pos de la matriu de peces del taulell passat com a paràmetre implícit
     //pre: x0,y0,x,y han de pertanyer a l'intèrval següent: 0 <= valor <= 7
     //post: es retorna la instancia de la peça en la posicio (x,y) de T
-    public Peca getPecaPosició(Posicion pos) {
+    public Peca getPecaPosicio(Posicion pos) {
         return T[pos.x][pos.y];
     }
 
@@ -548,7 +548,7 @@ public class Taulell {
     //comprova que els parmàtres siguin vàlids, i en cas efectiu crida a la creadora privada d'una nova peça
     //pre: true
     //post: s'ha creat una peça en cas que no es produeixin excepcions, i s'han actualitzat les amenaces del taulell
-    public void crear_peça(Posicion pos, int color, String tipus) {
+    public void crear_peca(Posicion pos, int color, String tipus) {
         try {
             if (pos.x < 0 || pos.y < 0 || pos.x > 7 || pos.y > 7)
                 throw new IllegalArgumentException("Taulell: X o Y valores inválidos");
@@ -559,7 +559,7 @@ public class Taulell {
 
             crea_peca_xy(pos,color,tipus);
             reset_amenaces_tauler();
-            recalcular_amanaça_tauler();
+            recalcular_amanaca_tauler();
 
         } catch(IllegalArgumentException ex) {
             System.out.println(ex.getMessage());
@@ -570,7 +570,7 @@ public class Taulell {
     //comprova que els parmàtres siguin vàlids, i en cas efectiu crida a la borradora privada d'una peça
     //pre: true
     //post: s'ha borrat una peça en cas que no es produeixin excepcions, i s'han actualitzat les amenaces del taulell
-    public void destrueix_peça(Posicion pos) {
+    public void destrueix_peca(Posicion pos) {
         try {
             if (pos.x < 0 || pos.y < 0 || pos.x > 7 || pos.y > 7)
                 throw new IllegalArgumentException("Taulell: X o Y valores inválidos");
@@ -580,7 +580,7 @@ public class Taulell {
 
             borra_peca_xy(pos);
             reset_amenaces_tauler();
-            recalcular_amanaça_tauler();
+            recalcular_amanaca_tauler();
 
         } catch(IllegalArgumentException ex) {
             System.out.println(ex.getMessage());
@@ -614,7 +614,7 @@ public class Taulell {
                     T2.borra_peca_xy(inici);
                     T2.crea_peca_xy(fi, color, aux.getTipus());
                     T2.reset_amenaces_tauler();
-                    T2.recalcular_amanaça_tauler();
+                    T2.recalcular_amanaca_tauler();
                     Rei = T2.getReiPos(color);
                     if (T2.T[Rei.x][Rei.y].getAmenaces().size() != 0) ret = false;
                 }
@@ -634,7 +634,7 @@ public class Taulell {
                     crea_peca_xy(fi, color, aux.getTipus());
                 }
                 reset_amenaces_tauler();
-                recalcular_amanaça_tauler();
+                recalcular_amanaca_tauler();
             }
         }
         return ret;
