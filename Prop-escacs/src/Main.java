@@ -113,7 +113,7 @@ public class Main {
                         System.out.println("\nContra qui vols jugar?");
                         System.out.println("    1 - Invitado");
                         System.out.println("    2 - Maquina tontita");
-                        System.out.println("    3 - Maquina smart");
+                       // System.out.println("    3 - Maquina smart");
                         sc = new Scanner(System.in);
                         val = sc.nextInt();
                     } while ((val > 3 || val < 1));
@@ -273,16 +273,20 @@ public class Main {
                     int op = 0;
                     boolean primer = true;
                     while (op < 1 || op > (problemes.length - 1)) {
-                        if (!primer) System.out.println("Error");
+                        if (!primer) {
+                            System.out.println("Error, escriu -1 per sortir o qualsevol altre número per tornar a introduir el problema");
+                            if (sc.nextInt() == -1) break;
+                        }
                         else primer = false;
                         System.out.println("Selecciona un problema");
                         op = sc.nextInt();
                     }
-
-                    Problema p = new Problema();
-                    int res = Problema.getProblemaId(Integer.parseInt(problemes[op][0]), p);
-                    if (res < 1) ; //
-                    p.eliminar_problema(); //errors?
+                    if (op > -1 && op < problemes.length) {
+                        Problema p = new Problema();
+                        int res = Problema.getProblemaId(Integer.parseInt(problemes[op][0]), p);
+                        if (res < 1) ; //
+                        p.eliminar_problema(); //errors?
+                    }
                     // consultar problemes
                     // p = getProblemaId
                     // p.eliminarProblema()
