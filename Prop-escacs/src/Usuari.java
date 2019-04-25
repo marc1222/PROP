@@ -4,7 +4,7 @@ import java.util.Scanner; // import the Scanner class
 import java.util.HashMap; // import the HashMap class
 
 /**
- * Classe que tracta
+ * Classe Usuari
  * @author Marian Dumitru Danci
  */
 public class Usuari extends Jugador{
@@ -151,17 +151,7 @@ public class Usuari extends Jugador{
      * guarda les dades al fitxer
      * @return Retorna true si el registre s'ha completat amb exit
      */
-    public boolean registrar() {
-        String nomUsuari, contrasenya1, contrasenya2;
-        System.out.println("Usuari:");
-        nomUsuari = sc.nextLine();
-
-        System.out.println("Contrasenya:");
-        contrasenya1 = sc.nextLine();
-
-        System.out.println("Repeteix contrasenya:");
-        contrasenya2 = sc.nextLine();
-
+    public boolean registrar(String nomUsuari, String contrasenya1, String contrasenya2) {
         if(nomUsuari == null || nomUsuari.isEmpty() || nomUsuari.equals("Convidat")) {
             System.out.println("Usuari no vàlida.\n");
         }

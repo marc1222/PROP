@@ -1,9 +1,5 @@
 /**
- * Classe que juga una partida amb uns recursos limitats, pels cuals no sempre
- * aconsegueix fer el mat en el minim de jugades.
- * S'aplica l'algoritme Minimax de la teoria de jocs, un tipus de
- * 'backtracking' amb una profunditat limitada i a on a cada node se li dona
- * un valor. Segons el valor del node es minimitza la maxima perdua esperada.
+ * Classe Naive
  * @author Marian Dumitru Danci
  */
 public class Naive extends Maquina {

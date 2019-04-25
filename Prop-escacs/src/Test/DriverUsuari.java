@@ -54,8 +54,19 @@ public class DriverUsuari {
                     break;
                 }
                 case "4": {
-                    System.out.println("\n---Registrarte---\n");
-                    sessioIniciada = usuari.registrar();
+                    System.out.println("\n---Registrar-se---\n");
+                    String nomUsuari, contrasenya1, contrasenya2;
+
+                    System.out.println("Usuari:");
+                    nomUsuari = sc.nextLine();
+
+                    System.out.println("Contrasenya:");
+                    contrasenya1 = sc.nextLine();
+
+                    System.out.println("Repeteix contrasenya:");
+                    contrasenya2 = sc.nextLine();
+
+                    sessioIniciada = usuari.registrar(nomUsuari, contrasenya1, contrasenya2);
                     break;
                 }
                 case "0": {

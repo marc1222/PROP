@@ -15,7 +15,7 @@ public class Smart extends Maquina {
     }
 
     public int getTipus() {
-        return super.getTipusMaquina();
+        return super.getTipus();
     }
 
     public void setTauler(Taulell tauler) {
