@@ -18,8 +18,6 @@ public class DriverUsuari {
                     "0 - Sortir");
 
             opcio = sc.nextLine();
-            // Salta la seguent linea
-
 
             Usuari usuari = new Usuari();
             boolean sessioIniciada = false;
@@ -85,7 +83,7 @@ public class DriverUsuari {
                     case "1": {
                         String aux = usuari.getNom();
                         if (usuari.baixa()) {
-                            Estadistica.eliminatStatsUsuari(aux);
+                            Estadistica.eliminarStatsUsuari(aux);
                         }
                         sessioIniciada = false;
                         break;

@@ -18,19 +18,19 @@ public class Usuari extends Jugador{
     Scanner sc = new Scanner(System.in);
 
     /**
-     * Constructora per defecte, crea un usuari Anonim amb color null.
+     * Constructora per defecte, crea un usuari Convidat amb color null.
      */
     public Usuari () {
-        idUsuari = "Anònim";
+        idUsuari = "Convidat";
         color = define.NULL_COLOR;
     }
 
     /**
-     * Constructora que crea un usuari 'Anonim' amb un color determinat
+     * Constructora que crea un usuari 'Convidat' amb un color determinat
      * @param color Color de les peces de l'usuari
      */
     public Usuari (int color) {
-        idUsuari = "Anònim";
+        idUsuari = "Convidat";
         this.color = color;
     }
 
@@ -162,10 +162,15 @@ public class Usuari extends Jugador{
         System.out.println("Repeteix contrasenya:");
         contrasenya2 = sc.nextLine();
 
-
-        if(!contrasenya1.equals(contrasenya2)) {
+        if(nomUsuari == null || nomUsuari.isEmpty() || nomUsuari.equals("Convidat")) {
+            System.out.println("Usuari no vàlida.\n");
+        }
+        else if(contrasenya1 == null || contrasenya1.isEmpty() ||
+                contrasenya2 == null || contrasenya2.isEmpty()) {
+            System.out.println("Contrasenya no vàlida.\n");
+        }
+        else if (!contrasenya1.equals(contrasenya2)) {
             System.out.println("La contrasenya no concideix.\n");
-            return false;
         }
         else {
             try (BufferedReader br = new BufferedReader(new FileReader(fitxerUsuaris))) {
@@ -236,11 +241,12 @@ public class Usuari extends Jugador{
             System.out.println("T'has registrat correctament.\n");
             return  true;
         }
+        return false;
     }
 
     /**
      * D'ona de baixa el propi usuari eliminatlo del fitxer i pasa a
-     * ser un usuari 'Anonim'
+     * ser un usuari 'Convidat'
      * @return Retorna true si l'usuari s'ha donat de baixa correctament
      */
     public boolean baixa() {
@@ -254,7 +260,7 @@ public class Usuari extends Jugador{
             switch (opcio) {
                 case 1: {
                     eliminarUsuari(idUsuari);
-                    idUsuari = "Anònim";
+                    idUsuari = "Convidat";
                     System.out.println("T'has donat de baixa correctament.\n");
                     break;
                 }
@@ -266,7 +272,7 @@ public class Usuari extends Jugador{
                     System.out.println("Opcio invalida.\n");
                 }
             }
-        } while(opcio != 1 || opcio != 2);
+        } while(opcio != 1 && opcio != 2);
 
         if (opcio == 1) return true;
         return false;
@@ -301,7 +307,6 @@ public class Usuari extends Jugador{
             if (oldFile.delete()) {
                 tempFile.renameTo(oldFile);
             }
-
         }
         catch (FileNotFoundException e) {
             System.out.println("El fitxer no existeix");

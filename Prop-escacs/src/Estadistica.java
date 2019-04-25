@@ -1,14 +1,11 @@
 import java.io.*;
-// Import the IOException class to handle errors
-// Import the FileWriter class
-
 import java.util.*;
 import java.util.stream.Collectors;
 
 /**
  * Classe que consisteix exclusivament de metodes static. Tracta les
  * estadistiques de les partides jugades, si el que fa mat es
- * un usuari o un invitat (guarda com 'Anònim').
+ * un usuari o un invitat (guarda com 'Convidat').
  *
  * S'utilitza l'interficie funcional de java 'Interface Comparator',
  * nomes compatible amb versions a partir de la 1.8.
@@ -38,11 +35,12 @@ public class Estadistica {
     /**
      * Mostra el contingut complet del fitxer on es guarda les estadistiques
      */
-    public static void mostrarsetFitxerStats() {
+    public static ArrayList<String> mostrarFitxerStats() {
+        ArrayList<String> stats = new ArrayList<String>();
         try (BufferedReader br = new BufferedReader(new FileReader(fitxerStats))) {
             String line = null;
             while ((line = br.readLine()) != null) {
-                System.out.println(line);
+                stats.add(line);
             }
         }
         catch (FileNotFoundException e) {
@@ -54,6 +52,8 @@ public class Estadistica {
         catch (Exception e) {
             System.out.println("Error en tractar el fitxer.");
         }
+
+        return stats;
     }
 
     /**
@@ -106,19 +106,16 @@ public class Estadistica {
      * pel numero de moviments que ha conseguit fer mat i segon pel temps.
      * @param problema nom del problema que es vol consultar.
      */
-    public static void estadistiquesProblema(String problema) {
+    public static ArrayList<String> estadistiquesProblema(String problema) {
         List<Marca> marquesOrdenades = estadistiquesOrdenades(problema, 0);
+        ArrayList<String> statsProblema = new ArrayList<String>();
 
-        if (marquesOrdenades.isEmpty()) {
-            System.out.println("No hi han registres del problema");
-        }
-        else {
-            System.out.println("Jugador  Mat  Temps");
-        }
         for(Marca m : marquesOrdenades) {
             String temps = milisATemps(m.getTemps());
-            System.out.println(m.getUsuari() + "  " + m.getMat() + "  " + temps);
+            String marca = m.getUsuari() + "  " + m.getMat() + "  " + temps;
+            statsProblema.add(marca);
         }
+        return statsProblema;
     }
 
     /**
@@ -126,26 +123,23 @@ public class Estadistica {
      * per el numero de moviments que ha conseguit fer mat i segon peel temps.
      * @param usuari nom de l'usuari que es vol consultar.
      */
-    public static void estadistiquesUsuari(String usuari) {
+    public static ArrayList<String> estadistiquesUsuari(String usuari) {
         List<Marca> marquesOrdenades = estadistiquesOrdenades(usuari, 1);
+        ArrayList<String> statsUsuari = new ArrayList<String>();
 
-        if (marquesOrdenades.isEmpty()) {
-            System.out.println("No hi han registres de l'usuari");
-        }
-        else {
-            System.out.println("Problema  Mat  Temps");
-        }
         for(Marca m : marquesOrdenades) {
             String temps = milisATemps(m.getTemps());
-            System.out.println(m.getProblema() + "  " + m.getMat() + "  " + temps);
+            String marca = m.getProblema() + "  " + m.getMat() + "  " + temps;
+            statsUsuari.add(marca);
         }
+        return statsUsuari;
     }
 
     /**
-     * Canvia a 'Anonim' totes les aparicions de l'usuari en el fitxer
+     * Canvia a 'Convidat' totes les aparicions de l'usuari en el fitxer
      * @param usuari usuari que es vol remplacar
      */
-    public static void eliminatStatsUsuari(String usuari) {
+    public static void eliminarStatsUsuari(String usuari) {
         try {
             BufferedReader file = new BufferedReader(new FileReader(fitxerStats));
             String line;
@@ -165,7 +159,7 @@ public class Estadistica {
             file.close();
 
             // Es remplaca totes les aparicions d'usuari al String
-            inputStr = inputStr.replace(usuari, " Anònim ");
+            inputStr = inputStr.replace(usuari, " Convidat ");
 
             // Escriu el nou String amb la modficacio en les lineas sobre el mateix fitxer
             FileOutputStream fileOut = new FileOutputStream(fitxerStats);
@@ -181,6 +175,47 @@ public class Estadistica {
         }
         catch (Exception e) {
             System.out.println("Error en tractar el fitxer.");
+        }
+    }
+
+    /**
+     *
+     * @param problema
+     */
+    public static void eliminarStatsProblema(String problema) {
+        try {
+            // Per seguretat (no perdre les dades en cas d'algun imprevist)
+            // es crea un fitxer temporal
+            File tempFile = File.createTempFile("./files/tmpEstadistiques.txt", "");
+            BufferedWriter writer = new BufferedWriter(new FileWriter(tempFile));
+
+            BufferedReader reader = new BufferedReader(new FileReader(fitxerStats));
+
+            String currentLine;
+            while((currentLine = reader.readLine()) != null) {
+                // Separar nom i contrasenya per espai
+                String[] dades = currentLine.split("\\s+");
+                // Quan es troba l'usuari no s'escriu al fitxer temporal
+                if(dades[0].equals(problema)) continue;
+                writer.write(currentLine + System.getProperty("line.separator"));
+            }
+            writer.close();
+            reader.close();
+
+            File oldFile = new File(fitxerStats);
+            // S'elimina el fitxer antic i es renombra el temporal
+            if (oldFile.delete()) {
+                tempFile.renameTo(oldFile);
+            }
+        }
+        catch (FileNotFoundException e) {
+            System.out.println("El fitxer no existeix");
+        }
+        catch (IOException e) {
+            System.out.println("Error en la entrada i sortida da dades.");
+        }
+        catch (Exception e) {
+            e.printStackTrace();
         }
     }
 

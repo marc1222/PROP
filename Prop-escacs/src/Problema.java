@@ -9,10 +9,10 @@ public class Problema {
     private int dificultat;
     //usuari creador pels permissos
 
-    static private String fitxer = "./Prop-escacs/files/problemes.txt";  //branca narcis
-    //static private String fitxer = "./files/problemes.txt";     //branca main
-    static private String fitxerId = "./Prop-escacs/files/index.txt";   //branca narcis
-    //static private String fitxerId = "./files/index.txt";       //branca main
+    //static private String fitxer = "./Prop-escacs/files/problemes.txt";  //branca narcis
+    static private String fitxer = "./files/problemes.txt";     //branca main
+    //static private String fitxerId = "./Prop-escacs/files/index.txt";   //branca narcis
+    static private String fitxerId = "./files/index.txt";       //branca main
     private static int index = -1;
 
     /** retorna el següent Id de problema disponible o 0 si és el primer
@@ -597,7 +597,7 @@ public class Problema {
         for (int i = 0; i < pec_pos.length; ++i) {
             Posicion mov[] = tau.todos_movimientos(pec_pos[i]);
             for (int k = 0; k < mov.length; ++k) {
-                if (((tau.getPecaPosició(mov[k])).getTipus()).equals(define.REI)) return true;
+                if (((tau.getPecaPosicio(mov[k])).getTipus()).equals(define.REI)) return true;
                 Taulell tau2 = new Taulell(tau);
                 if (tau2.mover_pieza(pec_pos[i], mov[k], color_act)) {
                     //System.out.println("Atac " + njug);

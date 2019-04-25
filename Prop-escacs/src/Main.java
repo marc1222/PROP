@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Main {
@@ -26,17 +27,17 @@ public class Main {
                     String[] Users = Usuari.totsUsuaris();
 
 
-                        System.out.println("Selecciona un usuari");
-                        for (int i = 0; i < Users.length; ++i) {
-                            System.out.println(i + " - " + Users[i]);
-                        }
-                        int usrSeleccionat = sc.nextInt();
-                        if(usrSeleccionat >= 0 && usrSeleccionat < Users.length) {
-                            sessioIniciada = master.iniciarSessio(Users[usrSeleccionat]);
-                        }
-                        else {
-                            System.out.println("Usuari seleccionat no vàlid");
-                        }
+                    System.out.println("Selecciona un usuari");
+                    for (int i = 0; i < Users.length; ++i) {
+                        System.out.println(i + " - " + Users[i]);
+                    }
+                    int usrSeleccionat = sc.nextInt();
+                    if(usrSeleccionat >= 0 && usrSeleccionat < Users.length) {
+                        sessioIniciada = master.iniciarSessio(Users[usrSeleccionat]);
+                    }
+                    else {
+                        System.out.println("Usuari seleccionat no vàlid");
+                    }
 
 
                     break;
@@ -87,7 +88,7 @@ public class Main {
                     System.out.println("Id  #Jug Color Dif  Posició inicial en FEN");
                     for (int i = 0; i < problemes.length; ++i) {
                         System.out.println(i + "  -  " + problemes[i][1] + "    " + problemes[i][2] + "    "
-                        + problemes[i][4] + "   " + problemes[i][3]);
+                                + problemes[i][4] + "   " + problemes[i][3]);
                     }
                     Scanner sc = new Scanner(System.in);
                     int op = -1;
@@ -113,7 +114,7 @@ public class Main {
                         System.out.println("\nContra qui vols jugar?");
                         System.out.println("    1 - Invitado");
                         System.out.println("    2 - Maquina tontita");
-                        System.out.println("    3 - Maquina smart");
+                       // System.out.println("    3 - Maquina smart");
                         sc = new Scanner(System.in);
                         val = sc.nextInt();
                     } while ((val > 3 || val < 1));
@@ -153,9 +154,9 @@ public class Main {
                         master.setColor((p.getPrimer()==define.WHITE)?define.BLACK:define.WHITE);
                     }
                     else {
-                        //defender    &&   //naive
+                        //defender    &&   //usuari
                         second = new Usuari(p.getPrimer());
-                        master.setColor((p.getPrimer()==define.WHITE)?define.BLACK:define.WHITE);
+                        //master.setColor((p.getPrimer()==define.WHITE)?define.BLACK:define.WHITE);
                     }
                     //else ;
                     System.out.println("\nCreant partida...");
@@ -165,6 +166,7 @@ public class Main {
                     if (second.getTipus() == define.MAQUINA) {
                         Maquina n = (Maquina)second;
                         n.setTauler(pa.getTauler());
+                        n.setProfunditat(pa.getMat());
                     }
                     System.out.println("\nComença la partida...  A JUGAR :D");
                     pa.jugar_partida();
@@ -272,16 +274,20 @@ public class Main {
                     int op = 0;
                     boolean primer = true;
                     while (op < 1 || op > (problemes.length - 1)) {
-                        if (!primer) System.out.println("Error");
+                        if (!primer) {
+                            System.out.println("Error, escriu -1 per sortir o qualsevol altre número per tornar a introduir el problema");
+                            if (sc.nextInt() == -1) break;
+                        }
                         else primer = false;
                         System.out.println("Selecciona un problema");
                         op = sc.nextInt();
                     }
-
-                    Problema p = new Problema();
-                    int res = Problema.getProblemaId(Integer.parseInt(problemes[op][0]), p);
-                    if (res < 1) ; //
-                    p.eliminar_problema(); //errors?
+                    if (op > -1 && op < problemes.length) {
+                        Problema p = new Problema();
+                        int res = Problema.getProblemaId(Integer.parseInt(problemes[op][0]), p);
+                        if (res < 1) ; //
+                        p.eliminar_problema(); //errors?
+                    }
                     // consultar problemes
                     // p = getProblemaId
                     // p.eliminarProblema()
@@ -307,7 +313,17 @@ public class Main {
                                 }
                                 int opcio1 = sc.nextInt();;
                                 if (opcio1 >= 0 && opcio1 < problemes.length) {
-                                    Estadistica.estadistiquesProblema(String.valueOf(opcio1));
+                                    ArrayList<String> statsProblema = Estadistica.estadistiquesProblema(String.valueOf(opcio1));
+                                    if (statsProblema.isEmpty()) {
+                                        System.out.println("No hi han registres del problema");
+                                    }
+                                    else {
+                                        System.out.println("Jugador  Mat  Temps");
+                                    }
+
+                                    for(String marca : statsProblema) {
+                                        System.out.println(marca);
+                                    }
                                 }
                                 else {
                                     System.out.println("Problema no vàlid");
@@ -322,7 +338,17 @@ public class Main {
                                 }
                                 int opcio2 = sc.nextInt();
                                 if (opcio2 >= 0 && opcio2 < Usuaris.length) {
-                                    Estadistica.estadistiquesUsuari(Usuaris[opcio2]);
+                                    ArrayList<String> statsUsuari = Estadistica.estadistiquesUsuari(Usuaris[opcio2]);
+
+                                    if (statsUsuari.isEmpty()) {
+                                        System.out.println("No hi han registres de l'usuari");
+                                    }
+                                    else {
+                                        System.out.println("Problema  Mat  Temps");
+                                    }
+                                    for(String marca : statsUsuari) {
+                                        System.out.println(marca);
+                                    }
                                 }
                                 else {
                                     System.out.println("Usuari no vàlid");
@@ -344,7 +370,7 @@ public class Main {
                 case 6: {
                     String aux = master.getNom();
                     if (master.baixa()) {
-                        Estadistica.eliminatStatsUsuari(aux);
+                        Estadistica.eliminarStatsUsuari(aux);
                     }
                     break;
                 }

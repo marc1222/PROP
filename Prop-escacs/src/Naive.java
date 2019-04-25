@@ -1,5 +1,3 @@
-import javafx.geometry.Pos;
-
 /**
  * Classe que juga una partida amb uns recursos limitats, pels cuals no sempre
  * aconsegueix fer el mat en el minim de jugades.
@@ -24,7 +22,7 @@ public class Naive extends Maquina {
      * @return Tipus de jugador
      */
     public int getTipus() {
-        return super.getTipusMaquina();
+        return super.getTipus();
     }
 
     /**

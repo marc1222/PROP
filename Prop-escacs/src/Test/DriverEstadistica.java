@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class DriverEstadistica {
@@ -8,7 +9,7 @@ public class DriverEstadistica {
         Estadistica.setFitxerStats(fitxerProvesStats);
         Scanner sc = new Scanner(System.in);
 
-        int opcio;
+        String opcio;
         do {
             System.out.println("\n----- OPCIONS ESTADISTIQUES -----\n" +
                     "1 - Mostrar contingut fitxer\n" +
@@ -16,19 +17,26 @@ public class DriverEstadistica {
                     "3 - Consultar estadistiques problema\n" +
                     "4 - Consultar estadistiques usuari\n"+
                     "5 - Eliminar usuari\n" +
-                    "6 - Mostrar ruta fitxer\n" +
-                    "7 - Canviar ruta fitxer\n" +
+                    "6 - Eliminar problema\n" +
                     "0 - Sortir");
 
-            opcio = sc.nextInt();
-            // Salta la seguent linea
-            sc.nextLine();
+            opcio = sc.nextLine();
             switch (opcio) {
-                case 1: {
-                    Estadistica.mostrarsetFitxerStats();
+                case "1": {
+                    ArrayList<String> stats = Estadistica.mostrarFitxerStats();
+
+                    if (stats.isEmpty()) {
+                        System.out.println("No hi ha registres.");
+                    }
+                    else {
+                        System.out.println("Problema Jugador  Mat  Temps");
+                    }
+                    for(String marca : stats) {
+                        System.out.println(marca);
+                    }
                     break;
                 }
-                case 2: {
+                case "2": {
                     String problema, usuari, mat, temps;
 
                     System.out.println("Nom problema: ");
@@ -46,48 +54,67 @@ public class DriverEstadistica {
                     Estadistica.guardarTemps(problema, usuari, mat, temps);
                     break;
                 }
-                case 3: {
+                case "3": {
                     String problema;
 
                     System.out.println("Nom problema: ");
                     problema = sc.nextLine();
 
-                    Estadistica.estadistiquesProblema(problema);
+                    ArrayList<String> statsProblema = Estadistica.estadistiquesProblema(problema);
+                    if (statsProblema.isEmpty()) {
+                        System.out.println("No hi han registres del problema");
+                    }
+                    else {
+                        System.out.println("Jugador  Mat  Temps");
+                    }
+
+                    for(String marca : statsProblema) {
+                        System.out.println(marca);
+                    }
+
                     break;
                 }
-                case 4: {
+                case "4": {
                     String usuari;
 
                     System.out.println("Nom usuari: ");
                     usuari = sc.nextLine();
 
                     Estadistica.estadistiquesUsuari(usuari);
+
+                    ArrayList<String> statsUsuari = Estadistica.estadistiquesUsuari(usuari);
+
+                    if (statsUsuari.isEmpty()) {
+                        System.out.println("No hi han registres de l'usuari");
+                    }
+                    else {
+                        System.out.println("Problema  Mat  Temps");
+                    }
+                    for(String marca : statsUsuari) {
+                        System.out.println(marca);
+                    }
                     break;
                 }
-                case 5: {
+                case "5": {
                     String usuari;
 
                     System.out.println("Nom usuari: ");
                     usuari = sc.nextLine();
 
-                    Estadistica.eliminatStatsUsuari(usuari);
+                    Estadistica.eliminarStatsUsuari(usuari);
                     break;
                 }
-                case 6: {
-                    String fitxer = Estadistica.getFitxerStats();
-                    System.out.println(fitxer);
-                    break;
-                }
-                case 7: {
-                    String fitxer;
+                case "6": {
+                    String problema;
 
-                    System.out.println("Ruta fitxer: ");
-                    fitxer = sc.nextLine();
+                    System.out.println("Nom problema: ");
+                    problema = sc.nextLine();
+                    System.out.println("Eliminant problema...");
+                    Estadistica.eliminarStatsProblema(problema);
 
-                    Estadistica.setFitxerStats(fitxer);
                     break;
                 }
-                case 0: {
+                case "0": {
                     System.out.println("Sortint...");
                     break;
                 }
@@ -95,6 +122,6 @@ public class DriverEstadistica {
                     System.out.println("Opció invalida.");
                 }
             }
-        } while (opcio != 8);
+        } while (opcio != "0");
     }
 }
