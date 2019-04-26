@@ -3,13 +3,7 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 /**
- * Classe que consisteix exclusivament de metodes static. Tracta les
- * estadistiques de les partides jugades, si el que fa mat es
- * un usuari o un invitat (guarda com 'Convidat').
- *
- * S'utilitza l'interficie funcional de java 'Interface Comparator',
- * nomes compatible amb versions a partir de la 1.8.
- *
+ * Classe Estadistica
  * @author Marian Dumitru Danci
  */
 public class Estadistica {
@@ -33,7 +27,8 @@ public class Estadistica {
     }
 
     /**
-     * Mostra el contingut complet del fitxer on es guarda les estadistiques
+     * S'obte el contingut complet del fitxer on es guarden les estadistiques
+     * @return Conjunt de string de cada linea del fitxer
      */
     public static ArrayList<String> mostrarFitxerStats() {
         ArrayList<String> stats = new ArrayList<String>();
@@ -57,7 +52,7 @@ public class Estadistica {
     }
 
     /**
-     * Es guarda a l'última line del fitxer les dades que es pasen
+     * Es guarda a l'última line del fitxer les dades que es passen
      * @param problema nom del problema resolt
      * @param usuari nom de l'usuari que l'ha resolt
      * @param movimentsMat nombre de moviments en fer el mat
@@ -102,9 +97,11 @@ public class Estadistica {
     }
 
     /**
-     * Mostra tots els usuaris que han resolt el problema, ordenats primer
-     * pel numero de moviments que ha conseguit fer mat i segon pel temps.
+     * pre: problema existeix
+     * post: totes les aparicions del problema en les estadistiques, ordenades
+     *       primer segons el numero de moviments en fer mat i segon pel temps.
      * @param problema nom del problema que es vol consultar.
+     * @return Conjunt de string de cada aparicio del problema
      */
     public static ArrayList<String> estadistiquesProblema(String problema) {
         List<Marca> marquesOrdenades = estadistiquesOrdenades(problema, 0);
@@ -119,9 +116,11 @@ public class Estadistica {
     }
 
     /**
-     * Mostra tots els problemes que han resolt l'usuari, ordenats primer
-     * per el numero de moviments que ha conseguit fer mat i segon peel temps.
+     * pre: usuari existeix
+     * post: totes les aparicions de l'usuari en les estadistiques, ordenades
+     *       primer segons el numero de moviments en fer mat i segon pel temps.
      * @param usuari nom de l'usuari que es vol consultar.
+     * @return Conjunt de string de cada aparicio de l'usuari
      */
     public static ArrayList<String> estadistiquesUsuari(String usuari) {
         List<Marca> marquesOrdenades = estadistiquesOrdenades(usuari, 1);
@@ -136,7 +135,9 @@ public class Estadistica {
     }
 
     /**
-     * Canvia a 'Convidat' totes les aparicions de l'usuari en el fitxer
+     * pre: usuari existeix
+     * post: les aparicions de l'usuari a les estadistiques passen a ser de
+     *       l'usuari general 'Convidat'
      * @param usuari usuari que es vol remplacar
      */
     public static void eliminarStatsUsuari(String usuari) {
@@ -179,8 +180,9 @@ public class Estadistica {
     }
 
     /**
-     *
-     * @param problema
+     * pre: problema existeix
+     * post: s'elimina totes els registres del problema en el fitxer
+     * @param problema problema a eliminar les estadistiques
      */
     public static void eliminarStatsProblema(String problema) {
         try {
@@ -220,7 +222,7 @@ public class Estadistica {
     }
 
 
-    /*
+    /**
      * Retorna una llista ordenada per dos valors, el numero en que s'ha fet
      * mat i el temps en milisegons en que s'ha fet.
      * @param nom nom de l'usuari o el problema a buscar
@@ -266,7 +268,7 @@ public class Estadistica {
         return marquesOrdenades;
     }
 
-    /*
+    /**
      * Converteix els milisegons a minuts i segons
      * @param milis Milisegons
      * @return String amb minuts i segons
@@ -282,7 +284,9 @@ public class Estadistica {
         return temps;
     }
 
-    // Classe que representa un fila del fitxer d'estadisiques
+    /**
+     * Classe que representa un fila del fitxer d'estadisiques
+     */
     private static class Marca {
         private String problema;
         private String usuari;

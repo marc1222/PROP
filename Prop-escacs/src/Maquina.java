@@ -1,4 +1,5 @@
 /**
+ * Classe Maquina
  * @author Marian Dumitru Danci
  */
 public abstract class Maquina extends Jugador {
@@ -29,7 +30,7 @@ public abstract class Maquina extends Jugador {
 
     /**
      *
-     * @param torn Nombre de mat
+     * @param torn Nombre de moviment en fer mat
      */
     public abstract void setProfunditat(int torn);
 
@@ -105,23 +106,17 @@ public abstract class Maquina extends Jugador {
      * @return Retorna cert si s'ha fet el moviment
      */
     public boolean mourePeca(Posicion origen, Posicion desti, int color) {
-        //pintar();
-        //System.out.println("****");
         if(pecesTau[desti.x][desti.y].getTipus() == define.REI) {
-            //System.out.println("\nMATA REI");
-            //System.out.println("POS: "+ origen.x + "-" + origen.y + "  " + desti.x + "-" + desti.y);
-            //pintar();
             return false;
         }
         if(!Tauler.mover_pieza(origen, desti, color)) {
-            //System.out.println("\nPOS: "+ origen.x + "-" + origen.y + "  " + desti.x + "-" + desti.y);
             return false;
         }
         return true;
     }
 
     /**
-     * Segons l'estat del tauler li dona una puntuacio al jugador donat
+     * Segons l'estat del tauler li dona una puntuacio al jugador especificat
      * @param colorJugador Color del jugador que es vol puntuar
      * @return Puntuacio del tauler
      */
@@ -197,10 +192,6 @@ public abstract class Maquina extends Jugador {
                 }
             }
         }
-        //System.out.println("PUNTS : " + total);
-        //System.out.println("ESCAC A PROPI: " + Tauler.escac_i_mat(colorJugador));
-        //System.out.println("ESCAC A ADV: " + Tauler.escac_i_mat(colorContrari));
-        //Tauler.printTauler();
         return total;
     }
 
@@ -226,13 +217,11 @@ public abstract class Maquina extends Jugador {
      * @return Retorna cert si el moviment s'ha desfet
      */
     public void desferMoviment(Posicion origen, Posicion desti, String peca, int color) {
-        //System.out.println("\n+++++\n" + peca + " ORIG: "+ origen.x + "-" + origen.y + " " + desti.x + "-" + desti.y);
-        //pintar();
         Peca aux = pecesTau[desti.x][desti.y];
+
         Tauler.destrueix_peca(desti);
-        //pintar();
+
         Tauler.crear_peca(origen, color, aux.getTipus());
-        //pintar();
 
         // Si el moviment que s'ha fet no ha sigut sobre una peca nula es crea
         // la peca eliminada de l'oponent

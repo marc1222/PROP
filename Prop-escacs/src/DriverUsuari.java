@@ -12,9 +12,8 @@ public class DriverUsuari {
         do {
             System.out.println("\n----- OPCIONS INICI -----\n" +
                     "1 - Mostrar contingut fitxer\n" +
-                    "2 - Usuaris registrats\n" +
+                    "2 - Registrar-se\n" +
                     "3 - Iniciar sessió\n" +
-                    "4 - Registrar-se\n" +
                     "0 - Sortir");
 
             opcio = sc.nextLine();
@@ -28,33 +27,8 @@ public class DriverUsuari {
                     break;
                 }
                 case "2": {
-                    String[] totsUsuaris = Usuari.totsUsuaris();
-                    for (int i = 0; i < totsUsuaris.length; ++i) {
-                        System.out.println(totsUsuaris[i]);
-                    }
-                    break;
-                }
-                case "3": {
-                    //ensenyar usuaris disponibles
-                    System.out.println("\n---Iniciar Sessió---\n");
-                    String[] Users = Usuari.totsUsuaris();
-
-
-                    System.out.println("Selecciona un usuari");
-                    for (int i = 0; i < Users.length; ++i) {
-                        System.out.println(i + " - " + Users[i]);
-                    }
-                    int usrSeleccionat = sc.nextInt();
-                    if(usrSeleccionat >= 0 && usrSeleccionat < Users.length) {
-                        sessioIniciada = usuari.iniciarSessio(Users[usrSeleccionat]);
-                    }
-                    else {
-                        System.out.println("Usuari seleccionat no vàlid");
-                    }
-                    break;
-                }
-                case "4": {
                     System.out.println("\n---Registrar-se---\n");
+
                     String nomUsuari, contrasenya1, contrasenya2;
 
                     System.out.println("Usuari:");
@@ -69,6 +43,33 @@ public class DriverUsuari {
                     sessioIniciada = usuari.registrar(nomUsuari, contrasenya1, contrasenya2);
                     break;
                 }
+                case "3": {
+                    //ensenyar usuaris disponibles
+                    System.out.println("\n---Iniciar Sessió---\n");
+                    String[] Users = Usuari.totsUsuaris();
+
+
+                    System.out.println("Selecciona un usuari");
+                    for (int i = 0; i < Users.length; ++i) {
+                        System.out.println(i + " - " + Users[i]);
+                    }
+                    String select = sc.nextLine();
+                    int usrSeleccionat;
+                    try {
+                        usrSeleccionat = Integer.parseInt(select);
+                    }
+                    catch (NumberFormatException e)
+                    {
+                        usrSeleccionat = -1;
+                    }
+                    if(usrSeleccionat >= 0 && usrSeleccionat < Users.length) {
+                        sessioIniciada = usuari.iniciarSessio(Users[usrSeleccionat]);
+                    }
+                    else {
+                        System.out.println("Usuari seleccionat no vàlid");
+                    }
+                    break;
+                }
                 case "0": {
                     System.out.println("Sortint...");
                     break;
@@ -81,25 +82,15 @@ public class DriverUsuari {
             while (sessioIniciada) {
                 System.out.println("\nSessió de l'usuari " + usuari.getNom() + ".");
                 System.out.println("\n----- OPCIONS SESSIÓ -----\n" +
-                        "1 - Donar-se de baixa\n" +
-                        "2 - Moviment\n" +
+						"1 - Moviment\n" +
+                        "2 - Donar-se de baixa\n" +
                         "3 - Tancar sessió\n" +
                         "0 - Sortir");
 
                 opcio = sc.nextLine();
-                // Salta la seguent linea
-
 
                 switch (opcio) {
-                    case "1": {
-                        String aux = usuari.getNom();
-                        if (usuari.baixa()) {
-                            Estadistica.eliminarStatsUsuari(aux);
-                        }
-                        sessioIniciada = false;
-                        break;
-                    }
-                    case "2": {
+					case "1": {
                         long temps = 0;
                         Posicion origen = new Posicion();
                         Posicion desti = new Posicion();
@@ -110,6 +101,14 @@ public class DriverUsuari {
                                 "\nTemps del moviemnt en milisegons: " + temps);
                         break;
                     }
+                    case "2": {
+                        String aux = usuari.getNom();
+                        if (usuari.baixa()) {
+                            Estadistica.eliminarStatsUsuari(aux);
+                        }
+                        sessioIniciada = false;
+                        break;
+                    }
                     case "3": {
                         System.out.println("Tancant sessió");
                         sessioIniciada = false;
@@ -117,6 +116,7 @@ public class DriverUsuari {
                     }
                     case "0": {
                         System.out.println("Sortint...");
+                        sessioIniciada = false;
                         break;
                     }
                     default: {

@@ -1,10 +1,5 @@
-import java.util.ArrayList;
-import java.util.Scanner;
-import java.io.*;
-// Import the IOException class to handle errors
-// Import the FileWriter class
-
 /**
+ * Classe Jugador
  * @author Marian Dumitru Danci
  */
 public abstract class Jugador {
@@ -13,13 +8,13 @@ public abstract class Jugador {
      *
      * @param origen Posicio peca seleccionada per fer el moviment
      * @param desti Posicio desti on vol que es mogui la peca
-     * @return Retorna el temps (en milisegons) que triga en fer un moviment
+     * @return Retorna el temps (en milisegons) que es triga en fer el moviment
      */
     public abstract long moviment(Posicion origen, Posicion desti);
 
     /**
      *
-     * @return Retorn el tipus de jugador que es
+     * @return Retorn el tipus de jugador
      */
     public abstract int getTipus();
 }

@@ -51,8 +51,7 @@ public class Usuari extends Jugador{
     }
 
     /**
-     *
-     * @return Retorna el tipus de jugador que es l'usuari
+     * @return Retorna el tipus de jugador
      */
     public int getTipus() {
         return this.tipus;
@@ -92,9 +91,9 @@ public class Usuari extends Jugador{
 
     /**
      * Segons l'usuari escollit demana la contrasenya i comproba que tot
-     * es correcte
+     * els les dades concideixen amb les del fitxer
      * @param nomUsuari Nom d'usuari
-     * @return Retorna true si l'inici de sessio es correcte
+     * @return Cert si l'inici de sessio es correcte, fals en cas contari
      */
     public boolean iniciarSessio(String nomUsuari) {
         String contrasenya;
@@ -147,9 +146,12 @@ public class Usuari extends Jugador{
     }
 
     /**
-     * Demana les dades necesaries per registrar un usuari, so tot es correcte
-     * guarda les dades al fitxer
-     * @return Retorna true si el registre s'ha completat amb exit
+     * Comproba que les dades son correctes i que el nom d'usuari no estigui registrat,
+     * si tot es correcte s'afegeix una linea al fitxer amb les dades del nou usuari.
+     * @param nomUsuari Nom d'usuari
+     * @param contrasenya1 Contrasenya de l'usuari
+     * @param contrasenya2 Contrasenya repetida de l'usuari
+     * @return Cert si s'ha registrat i fals en cas contrari
      */
     public boolean registrar(String nomUsuari, String contrasenya1, String contrasenya2) {
         if(nomUsuari == null || nomUsuari.isEmpty() || nomUsuari.equals("Convidat")) {
@@ -235,9 +237,9 @@ public class Usuari extends Jugador{
     }
 
     /**
-     * D'ona de baixa el propi usuari eliminatlo del fitxer i pasa a
+     * D'ona de baixa el propi usuari eliminat-lo del fitxer i passa a
      * ser un usuari 'Convidat'
-     * @return Retorna true si l'usuari s'ha donat de baixa correctament
+     * @return Cert si l'usuari s'ha donat de baixa correctament, fals altrament
      */
     public boolean baixa() {
         int opcio;
@@ -268,8 +270,9 @@ public class Usuari extends Jugador{
         return false;
     }
 
-    /*
-     * Elimina el registre de l'usuari al fitxer
+    /**
+     * pre: usuari es troba al fitxer d'usuaris
+     * post: usuari ja no es troba en el fitxer
      * @param usuari Nom de l'usuari
      */
     private void eliminarUsuari(String usuari) {
@@ -344,7 +347,7 @@ public class Usuari extends Jugador{
      *
      * @param origen Posicio peca seleccionada per fer el moviment
      * @param desti Posicio desti on vol que es mogui la peca
-     * @return
+     * @return Retorna el temps (en milisegons) que es triga en fer el moviment
      */
     public long moviment(Posicion origen, Posicion desti) {
         // Inici del cronometre
