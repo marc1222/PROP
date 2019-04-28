@@ -9,13 +9,28 @@ public class Alfil extends Peca {
         amenaces = null;
     }
 
-    /** Crea una instància d'alfil amb el color passat per paràmetre i el següent Id (pot no ser únic)
+    /**
+     * Crea una instància d'alfil amb el color passat per paràmetre i el següent Id (pot no ser únic)
+     * Pre: color blanc o negre (0 o 1)
+     * @param color color del alfil creat
      */
     public Alfil (int color) {
         this.id = getNextId();
         this.color = color;
         amenacades = null;
         amenaces = null;
+    }
+
+    /**
+     * Crea una instància d'alfil que és una còpia de l'alfil passat per paràmetre
+     * Pre: true
+     * @param a alfil que es copia
+     */
+    public Alfil (Alfil a) {
+        this.id = a.id;
+        this.color = a.color;
+        this.amenacades = a.amenacades;
+        this.amenaces = a.amenaces;
     }
 
     public Alfil (int id, int color, ArrayList<Posicion> amenacades, ArrayList<Posicion> amenaces) {

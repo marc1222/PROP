@@ -2,7 +2,9 @@ import java.util.ArrayList;
 
 public class Peca_Nula extends Peca {
 
-    /** Crea una instància de peça nula amb el color null i el següent Id (pot no ser únic)
+    /**
+     * Crea una instància de peça nula amb el color null i el següent Id (pot no ser únic)
+     * Pre: true
      */
     public Peca_Nula() {
         id = getNextId();

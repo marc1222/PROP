@@ -2,9 +2,27 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a9986b48-1538-4a05-b098-ee43f0cbf3cd" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/DriverPeca.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/StubReina.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/files/index.txt" beforeDir="false" afterPath="$PROJECT_DIR$/files/index.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/files/mytemp.txt" beforeDir="false" afterPath="$PROJECT_DIR$/files/mytemp.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/files/problemes.txt" beforeDir="false" afterPath="$PROJECT_DIR$/files/problemes.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Alfil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Alfil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Cavall.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Cavall.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Estadistica.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Estadistica.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Jugador.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Jugador.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Maquina.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Maquina.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Naive.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Naive.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Partida.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Partida.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Peca.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Peca.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Peca_Nula.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Peca_Nula.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Peo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Peo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Problema.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Problema.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Rei.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Rei.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Reina.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Reina.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Taulell.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Taulell.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Torre.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Torre.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Usuari.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Usuari.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -19,7 +37,7 @@
         <entry file="file://$PROJECT_DIR$/src/Alfil.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="165">
-              <caret line="11" column="21" selection-start-line="11" selection-start-column="21" selection-end-line="11" selection-end-column="21" />
+              <caret line="11" column="7" selection-start-line="11" selection-start-column="7" selection-end-line="11" selection-end-column="7" />
             </state>
           </provider>
         </entry>
@@ -37,7 +55,7 @@
         <entry file="file://$PROJECT_DIR$/src/Cavall.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="315">
-              <caret line="21" column="24" selection-start-line="21" selection-start-column="24" selection-end-line="21" selection-end-column="24" />
+              <caret line="21" column="5" lean-forward="true" selection-start-line="21" selection-start-column="5" selection-end-line="21" selection-end-column="5" />
             </state>
           </provider>
         </entry>
@@ -46,7 +64,7 @@
         <entry file="file://$PROJECT_DIR$/src/Reina.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="315">
-              <caret line="21" column="24" selection-start-line="21" selection-start-column="24" selection-end-line="21" selection-end-column="24" />
+              <caret line="21" column="5" lean-forward="true" selection-start-line="21" selection-start-column="5" selection-end-line="21" selection-end-column="5" />
             </state>
           </provider>
         </entry>
@@ -60,30 +78,21 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Problema.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1080">
-              <caret line="111" selection-start-line="111" selection-end-line="111" />
+            <state relative-caret-position="165">
+              <caret line="11" column="38" lean-forward="true" selection-start-line="11" selection-start-column="38" selection-end-line="11" selection-end-column="38" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="method#Problema#0;class#Problema#0" />
                 <element signature="method#Problema#1;class#Problema#0" />
                 <element signature="method#Problema#2;class#Problema#0" />
                 <element signature="method#Problema#3;class#Problema#0" />
-                <element signature="e#1582#1613#1" />
-                <element signature="e#2591#2592#0" expanded="true" />
-                <element signature="e#1648#1684#1" />
-                <element signature="e#2662#2663#0" expanded="true" />
-                <element signature="e#2726#2727#0" expanded="true" />
-                <element signature="e#2794#2795#0" expanded="true" />
-                <element signature="e#2823#2824#0" expanded="true" />
-                <element signature="e#2855#2856#0" expanded="true" />
                 <element signature="method#setId#0;class#Problema#0" />
                 <element signature="method#setNumJugades#0;class#Problema#0" />
                 <element signature="method#setPrimer#0;class#Problema#0" />
                 <element signature="method#setPosIni#0;class#Problema#0" />
-                <element signature="e#12385#12395#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -92,21 +101,17 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/DriverPeca.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="500">
+            <state relative-caret-position="675">
               <caret line="45" lean-forward="true" selection-start-line="45" selection-end-line="45" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/StubReina.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="330">
-              <caret line="22" column="27" selection-start-line="22" selection-start-column="27" selection-end-line="22" selection-end-column="27" />
-              <folding>
-                <element signature="e#42#43#0" expanded="true" />
-                <element signature="e#74#75#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="315">
+              <caret line="23" column="5" lean-forward="true" selection-start-line="23" selection-start-column="5" selection-end-line="23" selection-end-column="5" />
             </state>
           </provider>
         </entry>
@@ -114,8 +119,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Peca.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="450">
-              <caret line="42" column="38" selection-start-line="42" selection-start-column="3" selection-end-line="42" selection-end-column="38" />
+            <state relative-caret-position="555">
+              <caret line="42" column="26" lean-forward="true" selection-start-line="41" selection-start-column="25" selection-end-line="42" selection-end-column="26" />
               <folding>
                 <element signature="method#setId#0;class#Peca#0" />
                 <element signature="method#setColor#0;class#Peca#0" />
@@ -233,8 +238,11 @@
   </component>
   <component name="PropertiesComponent">
     <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1553551259575" />
-    <property name="last_opened_file_path" value="$USER_HOME$/PROPmaster/PROP/Prop-escacs" />
-    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="project.structure.last.edited" value="Libraries" />
+    <property name="project.structure.proportion" value="0.0" />
+    <property name="project.structure.side.proportion" value="0.2" />
+    <property name="settings.editor.selected.configurable" value="configurable.group.editor" />
   </component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
@@ -253,9 +261,16 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Application.DriverPeca">
+  <component name="RunManager" selected="Application.DriverProblema">
     <configuration name="DriverPeca" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="DriverPeca" />
+      <module name="Prop-escacs" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="DriverProblema" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="DriverProblema" />
       <module name="Prop-escacs" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -277,6 +292,7 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.DriverProblema" />
         <item itemvalue="Application.DriverPeca" />
         <item itemvalue="Application.main" />
         <item itemvalue="Application.test_in_out" />
@@ -297,10 +313,10 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="65" y="24" width="1301" height="744" extended-state="6" />
+    <frame x="65" y="-4" width="1301" height="772" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" weight="0.16573705" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.16573705" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Learn" order="3" weight="0.32988048" />
@@ -392,52 +408,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Torre.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
-          <caret line="24" column="4" selection-start-line="24" selection-start-column="4" selection-end-line="29" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Peo.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="390">
-          <caret line="26" selection-start-line="26" selection-end-line="26" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Cavall.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="315">
-          <caret line="21" column="24" selection-start-line="21" selection-start-column="24" selection-end-line="21" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Alfil.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="11" column="21" selection-start-line="11" selection-start-column="21" selection-end-line="11" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Reina.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="315">
-          <caret line="21" column="24" selection-start-line="21" selection-start-column="24" selection-end-line="21" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Peca.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="450">
-          <caret line="42" column="38" selection-start-line="42" selection-start-column="3" selection-end-line="42" selection-end-column="38" />
-          <folding>
-            <element signature="method#setId#0;class#Peca#0" />
-            <element signature="method#setColor#0;class#Peca#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Taulell.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="4632">
@@ -461,47 +431,80 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/Alfil.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="11" column="7" selection-start-line="11" selection-start-column="7" selection-end-line="11" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Peo.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="390">
+          <caret line="26" selection-start-line="26" selection-end-line="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Cavall.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="315">
+          <caret line="21" column="5" lean-forward="true" selection-start-line="21" selection-start-column="5" selection-end-line="21" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Reina.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="315">
+          <caret line="21" column="5" lean-forward="true" selection-start-line="21" selection-start-column="5" selection-end-line="21" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Torre.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="360">
+          <caret line="24" column="4" selection-start-line="24" selection-start-column="4" selection-end-line="29" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/DriverPeca.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="675">
+          <caret line="45" lean-forward="true" selection-start-line="45" selection-end-line="45" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Peca.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="555">
+          <caret line="42" column="26" lean-forward="true" selection-start-line="41" selection-start-column="25" selection-end-line="42" selection-end-column="26" />
+          <folding>
+            <element signature="method#setId#0;class#Peca#0" />
+            <element signature="method#setColor#0;class#Peca#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/StubReina.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="315">
+          <caret line="23" column="5" lean-forward="true" selection-start-line="23" selection-start-column="5" selection-end-line="23" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/Problema.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1080">
-          <caret line="111" selection-start-line="111" selection-end-line="111" />
+        <state relative-caret-position="165">
+          <caret line="11" column="38" lean-forward="true" selection-start-line="11" selection-start-column="38" selection-end-line="11" selection-end-column="38" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="method#Problema#0;class#Problema#0" />
             <element signature="method#Problema#1;class#Problema#0" />
             <element signature="method#Problema#2;class#Problema#0" />
             <element signature="method#Problema#3;class#Problema#0" />
-            <element signature="e#1582#1613#1" />
-            <element signature="e#2591#2592#0" expanded="true" />
-            <element signature="e#1648#1684#1" />
-            <element signature="e#2662#2663#0" expanded="true" />
-            <element signature="e#2726#2727#0" expanded="true" />
-            <element signature="e#2794#2795#0" expanded="true" />
-            <element signature="e#2823#2824#0" expanded="true" />
-            <element signature="e#2855#2856#0" expanded="true" />
             <element signature="method#setId#0;class#Problema#0" />
             <element signature="method#setNumJugades#0;class#Problema#0" />
             <element signature="method#setPrimer#0;class#Problema#0" />
             <element signature="method#setPosIni#0;class#Problema#0" />
-            <element signature="e#12385#12395#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/DriverPeca.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="500">
-          <caret line="45" lean-forward="true" selection-start-line="45" selection-end-line="45" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/StubReina.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="330">
-          <caret line="22" column="27" selection-start-line="22" selection-start-column="27" selection-end-line="22" selection-end-column="27" />
-          <folding>
-            <element signature="e#42#43#0" expanded="true" />
-            <element signature="e#74#75#0" expanded="true" />
           </folding>
         </state>
       </provider>

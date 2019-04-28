@@ -9,7 +9,10 @@ public class Reina extends Peca {
         amenaces = null;
     }
 
-    /** Crea una instància de reina amb el color passat per paràmetre i el següent Id (pot no ser únic)
+    /**
+     * Crea una instància de reina amb el color passat per paràmetre i el següent Id (pot no ser únic)
+     * Pre: color blanc o negre (0 o 1)
+     * @param color color de la reina creada
      */
     public Reina (int color) {
         this.id = getNextId();
@@ -18,6 +21,18 @@ public class Reina extends Peca {
         amenaces = null;
     }
 
+    /**
+     * Crea una instància de reina que és una còpia de la reina passada per paràmetre
+     * Pre: true
+     * @param r reina que es copia
+     */
+    public Reina (Reina r) {
+        this.id = r.id;
+        this.color = r.color;
+        this.amenacades = r.amenacades;
+        this.amenaces = r.amenaces;
+    }
+    
     public Reina (int id, int color, ArrayList<Posicion> amenacades, ArrayList<Posicion> amenaces) {
         this.id = id;
         this.color = color;

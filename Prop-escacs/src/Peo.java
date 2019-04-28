@@ -10,8 +10,10 @@ public class Peo extends Peca {
         amenacades = null;
         amenaces = null;
     }
-    /** Crea una instància de peó amb el color passat per paràmetre, el següent Id (pot no ser únic) i el
-     *  primer moviment false
+    /**
+     * Crea una instància de peó amb el color passat per paràmetre i el següent Id (pot no ser únic)
+     * Pre: color blanc o negre (0 o 1)
+     * @param color color del peó creat
      */
     public Peo (int color) {
         this.id = getNextId();
@@ -21,6 +23,18 @@ public class Peo extends Peca {
         amenaces = null;
     }
 
+    /**
+     * Crea una instància de peó que és una còpia del peó passat per paràmetre
+     * Pre: true
+     * @param p peo que es copia
+     */
+    public Peo (Peo p) {
+        this.id = p.id;
+        this.color = p.color;
+        this.amenacades = p.amenacades;
+        this.amenaces = p.amenaces;
+    }
+    
     public Peo (int color, boolean primer_mov) {
         this.id = getNextId();
         this.color = color;

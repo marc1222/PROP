@@ -9,7 +9,10 @@ public class Rei extends Peca {
         amenaces = null;
     }
 
-    /** Crea una instància de rei amb el color passat per paràmetre i el següent Id (pot no ser únic)
+    /**
+     * Crea una instància de rei amb el color passat per paràmetre i el següent Id (pot no ser únic)
+     * Pre: color blanc o negre (0 o 1)
+     * @param color color del rei creat
      */
     public Rei (int color) {
         this.id = getNextId();
@@ -18,6 +21,18 @@ public class Rei extends Peca {
         amenaces = null;
     }
 
+    /**
+     * Crea una instància de rei que és una còpia del rei passat per paràmetre
+     * Pre: true
+     * @param r rei que es copia
+     */
+    public Rei (Rei r) {
+        this.id = r.id;
+        this.color = r.color;
+        this.amenacades = r.amenacades;
+        this.amenaces = r.amenaces;
+    }
+    
     public Rei (int id, int color, ArrayList<Posicion> amenacades, ArrayList<Posicion> amenaces) {
         this.id = id;
         this.color = color;

@@ -9,7 +9,10 @@ public class Torre extends Peca {
         amenaces = null;
     }
 
-    /** Crea una instància de torre amb el color passat per paràmetre i el següent Id (pot no ser únic)
+    /**
+     * Crea una instància de torre amb el color passat per paràmetre i el següent Id (pot no ser únic)
+     * Pre: color blanc o negre (0 o 1)
+     * @param color color de la torre creada
      */
     public Torre (int color) {
         this.id = getNextId();
@@ -18,6 +21,18 @@ public class Torre extends Peca {
         amenaces = null;
     }
 
+    /**
+     * Crea una instància de torre que és una còpia de la torre passada per paràmetre
+     * Pre: true
+     * @param t torre que es copia
+     */
+    public Torre (Torre t) {
+        this.id = t.id;
+        this.color = t.color;
+        this.amenacades = t.amenacades;
+        this.amenaces = t.amenaces;
+    }
+    
     public Torre (int id, int color, ArrayList<Posicion> amenacades, ArrayList<Posicion> amenaces) {
         this.id = id;
         this.color = color;

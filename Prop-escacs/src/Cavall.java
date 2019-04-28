@@ -9,7 +9,10 @@ public class Cavall extends Peca {
         amenaces = null;
     }
 
-    /** Crea una instància de cavall amb el color passat per paràmetre i el següent Id (pot no ser únic)
+    /**
+     * Crea una instància de cavall amb el color passat per paràmetre i el següent Id (pot no ser únic)
+     * Pre: color blanc o negre (0 o 1)
+     * @param color color del cavall creat
      */
     public Cavall (int color) {
         this.id = getNextId();
@@ -17,6 +20,19 @@ public class Cavall extends Peca {
         amenacades = null;
         amenaces = null;
     }
+
+    /**
+     * Crea una instància de cavall que és una còpia del cavall passat per paràmetre
+     * Pre: true
+     * @param c cavall que es copia
+     */
+    public Cavall (Cavall c) {
+        this.id = c.id;
+        this.color = c.color;
+        this.amenacades = c.amenacades;
+        this.amenaces = c.amenaces;
+    }
+    
     public Cavall (int color, ArrayList<Posicion> amenacades, ArrayList<Posicion> amenaces) {
         this.id = getNextId();
         this.color = color;
