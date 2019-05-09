@@ -1,6 +1,9 @@
 import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 
+/**
+ * @author Marc Guinovart
+ */
 public class Taulell {
 
     //------------------------------------------------------------------------
@@ -13,18 +16,26 @@ public class Taulell {
    //CREADORES
     //------------------------------------------------------------------------
 
-    //creadora buida per defecte
+    /**
+     * creadora buida per defecte
+     */
     public Taulell() {
         T = new Peca[8][8]; //que sera de peces
     }
 
-    //creadora reben una matriu de peces
+    /**
+     * creadora reben una matriu de peces
+     * @param t
+     */
     public Taulell(Peca t[][]) {
         T = new Peca[8][8];
         this.T = t; //que sera de peces
     }
 
-    //creadora d'un nou taulell independent a partir d'un taulell, que a més inicialitza els arraylist d'amenaces de les peces
+    /**
+     * creadora d'un nou taulell independent a partir d'un taulell, que a més inicialitza els arraylist d'amenaces de les peces
+     * @param tau
+     */
     public Taulell(Taulell tau) {
         this.T = new Peca[8][8];
         for (int i = 0; i < 8; ++i) {
@@ -53,7 +64,11 @@ public class Taulell {
         recalcular_amanaca_tauler();
     }
 
-    //creadora d'un nou taulell independent a partir d'un taulell
+    /**
+     * creadora d'un nou taulell independent a partir d'un taulell
+     * @param t
+     * @param b
+     */
     public Taulell(Peca t[][], boolean b) {
         Peca p[][] = new Peca[8][8];
         for (int i = 0; i < 8; ++i) {
@@ -85,9 +100,12 @@ public class Taulell {
     //OPERACIONS PRIVADES
     //------------------------------------------------------------------------
 
-    //donat un taulell de peces, reseteja tots els arraylist d'amenaces de les peces del taulell
-    //pre: true
-    //post: arraylist<Posicion> amenaca i amenacada de cada peca inicialitzats i buits
+    /**
+     *     donat un taulell de peces, reseteja tots els arraylist d'amenaces de les peces del taulell
+     *     pre: true
+     *     post: arraylist<Posicion> amenaca i amenacada de cada peca inicialitzats i buits
+     */
+
     private void reset_amenaces_tauler() {
         for (int i = 0; i < 8; ++i) {
             for (int j = 0; j < 8; ++j) {
@@ -96,11 +114,13 @@ public class Taulell {
         }
     }
 
-    //S'encarrega d'actualitzar totes les amaneces donat el taulell
-    //per cada relació de peces blanques i negres, mirem si aquestes s'amanacen les unes a les altres
-    //i afegim l'amenaça corresponent sobre la relacio iterada
-    //Pre: this.T ha de ser un taulell valid i de peces inicialitzades
-    //Post: Les peces que es troben a this.T tenen setejades correctament les amenaces i les amenaçades
+    /**
+     *     S'encarrega d'actualitzar totes les amaneces donat el taulell
+     *     per cada relació de peces blanques i negres, mirem si aquestes s'amanacen les unes a les altres
+     *     i afegim l'amenaça corresponent sobre la relacio iterada
+     *     Pre: this.T ha de ser un taulell valid i de peces inicialitzades
+     *     Post: Les peces que es troben a this.T tenen setejades correctament les amenaces i les amenaçades
+     */
     private void recalcular_amanaca_tauler() {
         Posicion[] whitys = getPosColor(define.WHITE);
         Posicion[] blackys = getPosColor(define.BLACK);
@@ -112,13 +132,17 @@ public class Taulell {
         }
     }
 
-    //donada una posició inicial es comprova si aquesta amenaça a la fi i en cas afirmatiu
-    //s'afegeix en la pos ini la pos que amenaçada, i en pos fi es posa com amenaça;
-    //a continuació es comprova si fi amanenaça a la ini i en cas afirmatiu
-    //s'afegeix en la pos fi la pos que amenaçada (ini), i en pos ini es posa fi com amenaça
-    //pre: a posicion ini hi ha d'haver una pos valida, igual que a fi, i diferent de PECA_NULA i NULL_COLOR
-    //post: si ini amenaça a fi, queda enregistrat en els arraylist d'amenaces,
-    //      i si fi amenaça a ini igualment queda enregistrat en els arraylists corresponents
+    /**
+     *     donada una posició inicial es comprova si aquesta amenaça a la fi i en cas afirmatiu
+     *     s'afegeix en la pos ini la pos que amenaçada, i en pos fi es posa com amenaça;
+     *     a continuació es comprova si fi amanenaça a la ini i en cas afirmatiu
+     *     s'afegeix en la pos fi la pos que amenaçada (ini), i en pos ini es posa fi com amenaça
+     *     pre: a posicion ini hi ha d'haver una pos valida, igual que a fi, i diferent de PECA_NULA i NULL_COLOR
+     *     post: si ini amenaça a fi, queda enregistrat en els arraylist d'amenaces,
+     *           i si fi amenaça a ini igualment queda enregistrat en els arraylists corresponents
+     * @param ini
+     * @param fi
+     */
     private void recalcular_amenaca_pos(Posicion ini, Posicion fi) {
         int act_color = T[ini.x][ini.y].getColor();
         boolean ret = validar_moviment(ini, fi, act_color); //moviment: ini -> fi
@@ -134,12 +158,17 @@ public class Taulell {
         }
     }
 
-
-    //crea una peça a la posició pos, amb el color 'color' i de tipus 'tipus', a més,
-    //si és del tippus PEO seteja el seu atribut primer mov
-    //pre: x,y pertanyen a l'interval 0 <= valor <= 7, color = {'b','w','-'}, tipus = tots els tipus (null inclòs)
-    //post: a la matriu de peces T en posició ( x, y ) s'hi troba una referencia de la peça creada
-    private void crea_peca_xy(Posicion Pos, int color, String tipus) {
+    /**
+     *     crea una peça a la posició pos, amb el color 'color' i de tipus 'tipus', a més,
+     *     si és del tippus PEO seteja el seu atribut primer mov
+     *     pre: x,y pertanyen a l'interval 0 <= valor <= 7, color = {'b','w','-'}, tipus = tots els tipus (null inclòs)
+     *     post: a la matriu de peces T en posició ( x, y ) s'hi troba una referencia de la peça creada
+     *
+     * @param Pos
+     * @param color
+     * @param tipus
+     */
+   private void crea_peca_xy(Posicion Pos, int color, String tipus) {
         try {
             Peca aux = (Peca) Class.forName(tipus).getConstructor(int.class).newInstance(color);
             if (tipus.equals(define.PEO)) {
@@ -159,25 +188,37 @@ public class Taulell {
         }
     }
 
-    //borra la peca de la posició especificada creanthi una peca de tipus NULA
-    //pre: x,y pertanyen a l'interval 0 <= valor <= 7
-    //post: a la matriu de peces T en posició ( x, y ) s'hi troba una referencia de peça nula instanciada
+    /**
+     *     borra la peca de la posició especificada creanthi una peca de tipus NULA
+     *     pre: x,y pertanyen a l'interval 0 <= valor <= 7
+     *     post: a la matriu de peces T en posició ( x, y ) s'hi troba una referencia de peça nula instanciada
+     * @param pos
+     */
+
     private void borra_peca_xy(Posicion pos) {
         crea_peca_xy(pos,define.NULL_COLOR,define.PECA_NULA);
     }
 
-    //s'encarrega donat dues coordenades dins el taulell verificar que no infringiran les regles d'integritat que el taulell
-    //comporta, i a continuació crida a la peca en concret perquè faci la verificació de les seves regles d'integritat
-    //fa els següents checks:
-    //      que x0,y0,x,y han de pertanyer a l'intèrval següent: 0 <= valor <= 7,
-    //      que a la posició inici (x0,y0) hi ha una peça no nula,
-    //      que inici pertanyi al jugador que tira (color indica el jugador que tira),
-    //      que a la posició desti (x,y) NO hi ha una peça del jugador que tira
-    //      es crida a descartar movimiento per veure si no hi ha peces pel mig que impedeixen el moviment
-    //      si es un peo es verifica que hi hagi un enemic a la diagonal, o be que estigui lliure la posició del davant
-    //      executa la validació del moviment que comprova les regles d'integritat del moviment de la peça
-    //pre: true
-    //post: retorna true si el moviment es vàlid i per tant, possible; false altrament
+    /**
+     *     s'encarrega donat dues coordenades dins el taulell verificar que no infringiran les regles d'integritat que el taulell
+     *     comporta, i a continuació crida a la peca en concret perquè faci la verificació de les seves regles d'integritat
+     *     fa els següents checks:
+     *           que x0,y0,x,y han de pertanyer a l'intèrval següent: 0 <= valor <= 7,
+     *           que a la posició inici (x0,y0) hi ha una peça no nula,
+     *           que inici pertanyi al jugador que tira (color indica el jugador que tira),
+     *           que a la posició desti (x,y) NO hi ha una peça del jugador que tira
+     *           es crida a descartar movimiento per veure si no hi ha peces pel mig que impedeixen el moviment
+     *           si es un peo es verifica que hi hagi un enemic a la diagonal, o be que estigui lliure la posició del davant
+     *           executa la validació del moviment que comprova les regles d'integritat del moviment de la peça
+     *     pre: true
+     *     post: retorna true si el moviment es vàlid i per tant, possible; false altrament
+     * @param inici
+     * @param fi
+     * @param color
+     * @return
+     * @throws IllegalArgumentException
+     */
+
     private boolean validar_moviment(Posicion inici, Posicion fi, int color) throws IllegalArgumentException {
 
         if (inici.x < 0 || inici.y < 0 || inici.x > 7 || inici.y > 7 || fi.x < 0 || fi.y < 0 || fi.x > 7 || fi.y > 7)
@@ -201,15 +242,20 @@ public class Taulell {
         return aux.rango(inici, fi);
     }
 
-    //donada una posició inici i final es mira si les caselles que estan entre aquestes (formant una vertical/diagonal/horitzontal)
-    //contenen alguna peça la cual impedeixi el moviment cap a la posicio desti
-    //pre: a pos inici hi ha un peça no nula, i posició inici && desti son posicions valides
-    //post: retorna TRUE si el moviment proposat no es pot acomplir o be perquè no és un
-    //moviment horitzontal/diagonal/vertical o bé perquè s'hi interposa alguna
-    //peça entre totes les caselles que haurà de recórrer la peça que es troba a inici
-    //per acabar realitzant el desplaçament cap al destí.
-    //retorna FALSE en cas que no s'hagi de descartar el moviment i per tant aquest es consideri
-    //un moviment vàlid dins les dinàmiques establertes per la funció.
+    /**
+     * donada una posició inici i final es mira si les caselles que estan entre aquestes (formant una vertical/diagonal/horitzontal)
+     *     contenen alguna peça la cual impedeixi el moviment cap a la posicio desti
+     *     pre: a pos inici hi ha un peça no nula, i posició inici && desti son posicions valides
+     *     post: retorna TRUE si el moviment proposat no es pot acomplir o be perquè no és un
+     *     moviment horitzontal/diagonal/vertical o bé perquè s'hi interposa alguna
+     *     peça entre totes les caselles que haurà de recórrer la peça que es troba a inici
+     *     per acabar realitzant el desplaçament cap al destí.
+     *     retorna FALSE en cas que no s'hagi de descartar el moviment i per tant aquest es consideri
+     *     un moviment vàlid dins les dinàmiques establertes per la funció.
+     * @param inici
+     * @param desti
+     * @return
+     */
     private boolean descartar_movimiento(Posicion inici, Posicion desti) {
         //check cami fins destí
         double dx = inici.x - desti.x;
@@ -261,21 +307,31 @@ public class Taulell {
     //OPERACIONS PÚBLIQUES
     //------------------------------------------------------------------------
 
-    //getter de la matriu de peces del taulell passat com a paràmetre implícit
+    /**
+     *     getter de la matriu de peces del taulell passat com a paràmetre implícit
+     * @return
+     */
     public Peca[][] getTauler() {
         return T;
     }
 
-    //es retorna la peca que es troba a la posició pos de la matriu de peces del taulell passat com a paràmetre implícit
-    //pre: x0,y0,x,y han de pertanyer a l'intèrval següent: 0 <= valor <= 7
-    //post: es retorna la instancia de la peça en la posicio (x,y) de T
+    /**
+     * es retorna la peca que es troba a la posició pos de la matriu de peces del taulell passat com a paràmetre implícit
+     *     pre: x0,y0,x,y han de pertanyer a l'intèrval següent: 0 <= valor <= 7
+     *     post: es retorna la instancia de la peça en la posicio (x,y) de T
+     * @param pos
+     * @return
+     */
+
     public Peca getPecaPosicio(Posicion pos) {
         return T[pos.x][pos.y];
     }
 
-    //impreix el tauler passat com a paràmetre implícit
-    //pre: true
-    //post: s'ha imprès el tauler per stdout
+    /**
+     *     impreix el tauler passat com a paràmetre implícit
+     *     pre: true
+     *     post: s'ha imprès el tauler per stdout
+     */
     public void printTauler() {
         String type;
         char p;
@@ -334,11 +390,15 @@ public class Taulell {
         }
     }
 
-    //donada una posicio inici, si es troba una peca valida (peca dins la matriu i diferent de nula)
-    //es retornen tots els seus moviments possibles dins de la matriu de peces que son possibles i vàlids
-    //pre: true
-    //post: al vector de retorn de posicions si troben totes les posicions destí valides per la peça especificada,
-    //      si es troba buit és perquè o bé s'ha produit una excepció, o bé no hi ha moviments vàlids
+    /**
+     *     donada una posicio inici, si es troba una peca valida (peca dins la matriu i diferent de nula)
+     *     es retornen tots els seus moviments possibles dins de la matriu de peces que son possibles i vàlids
+     *     pre: true
+     *     post: al vector de retorn de posicions si troben totes les posicions destí valides per la peça especificada,
+     *           si es troba buit és perquè o bé s'ha produit una excepció, o bé no hi ha moviments vàlids
+     * @param inici
+     * @return
+     */
     public Posicion[] todos_movimientos(Posicion inici) {
         Posicion[] all_pos;
         try {
@@ -388,10 +448,14 @@ public class Taulell {
         }
     }
 
-    //donat un taulell com a paràmetre implícit, es retorna la posició en la matriu de peces
-    //on es troba el rei del color 'color'
-    //pre: sempre existira un rei amb el color 'color'
-    //post retorna la posició del rei corresponent
+    /**
+     *     donat un taulell com a paràmetre implícit, es retorna la posició en la matriu de peces
+     *     on es troba el rei del color 'color'
+     *     pre: sempre existira un rei amb el color 'color'
+     *     post retorna la posició del rei corresponent
+     * @param color
+     * @return
+     */
     public Posicion getReiPos(int color) {
         Peca aux;
         for (int i= 0; i < 8; ++i) {
@@ -405,9 +469,13 @@ public class Taulell {
         return new Posicion();
     }
 
-    //retorna totes les posicions de les peces que són del color 'color'
-    //pre: true
-    //post: retorna un array de posicions amb totes les posicions que contenen una peca del color 'color'
+    /**
+     *     retorna totes les posicions de les peces que són del color 'color'
+     *     pre: true
+     *     post: retorna un array de posicions amb totes les posicions que contenen una peca del color 'color'
+     * @param color
+     * @return
+     */
     public Posicion[] getPosColor(int color) {
         Peca aux;
         ArrayList<Posicion> tmp = new ArrayList<>();
@@ -421,15 +489,22 @@ public class Taulell {
         }
         return tmp.toArray(new Posicion[tmp.size()]);
     }
-    //per un conjunt de peces es determina si aquestes amenacen a la peca indicada pel paràmetre
-    //ReiIni (pensat pel rei), a més, si Rei != ReiIni es mourà la peça de ReiIni a la posició Rei,
-    //sense comprovar cap regla d'integritat, i posteriorment, s'acabarà retornant el taulell al seu estat original
-    //tot retornant si s'ha trobat alguna peca que amenaces a la peça de la posicio Rei
-    //Rei: posición donde se debe simular el jaque
-    //ReiIni: posición inicial donde se encuentra el rei en el tablero para tenerla
-    //        en cuenta como una casilla vacia (es la que el rei en la simulación abandonaria para desplazarse a la posicio Rei)
-    //pre: true
-    //post--> devuelve true si alguna de las piezas en 'Peces' amenaza la posición Rei
+
+    /**
+     *     per un conjunt de peces es determina si aquestes amenacen a la peca indicada pel paràmetre
+     *     ReiIni (pensat pel rei), a més, si Rei != ReiIni es mourà la peça de ReiIni a la posició Rei,
+     *     sense comprovar cap regla d'integritat, i posteriorment, s'acabarà retornant el taulell al seu estat original
+     *     tot retornant si s'ha trobat alguna peca que amenaces a la peça de la posicio Rei
+     *     Rei: posición donde se debe simular el jaque
+     *     ReiIni: posición inicial donde se encuentra el rei en el tablero para tenerla
+     *             en cuenta como una casilla vacia (es la que el rei en la simulación abandonaria para desplazarse a la posicio Rei)
+     *     pre: true
+     *     post--> devuelve true si alguna de las piezas en 'Peces' amenaza la posición Rei
+     * @param Peces
+     * @param Rei
+     * @param ReiIni
+     * @return
+     */
     public boolean escac(Posicion[] Peces, Posicion Rei, Posicion ReiIni) {
         boolean aux;
         aux = (Rei.x != ReiIni.x) || (Rei.y != ReiIni.y);
@@ -458,11 +533,16 @@ public class Taulell {
         return false; //no hay camino -> no hi ha amenaça
     }
 
-    //donat un color, veiem si les peces d'aquell color (incluit el mateix rei)
-    //son capaces de generar alguna situació al taulell tal que puguin
-    //aconseguir que el rei tingui 0 amenaces
-    //pre: true
-    //post: retorna true si s'ha trobat una solució valida, altrament false
+    /**
+     *     donat un color, veiem si les peces d'aquell color (incluit el mateix rei)
+     *     son capaces de generar alguna situació al taulell tal que puguin
+     *     aconseguir que el rei tingui 0 amenaces
+     *     pre: true
+     *     post: retorna true si s'ha trobat una solució valida, altrament false
+     * @param color
+     * @return
+     */
+
     private boolean generar_situacio(int color) {
         if (color != define.BLACK && color != define.WHITE) return false;
         //agafem la posició del rei
@@ -501,14 +581,17 @@ public class Taulell {
         return false; //si arribem aqui no em generat cap situació, retornem
     }
 
-    //donada una situació en el taulell implícit i un color, es mira si el rei d'aquell color es troba en escac i mat
-    //retorna 0 si nomes hi ha escac,
-    //1 si hi ha un escac i mat,
-    //retorna 2 si el rei esta ofegat
-    //retorna -1 altrament
-    //pre: color pertany define.WHITE || define.BLACK i en el taulell hi ha un rei amb color 'color'
-    //post: retorna un indicador de la situació en la que es troba el rei del color 'color'
-
+    /**
+     *     donada una situació en el taulell implícit i un color, es mira si el rei d'aquell color es troba en escac i mat
+     *     retorna 0 si nomes hi ha escac,
+     *     1 si hi ha un escac i mat,
+     *     retorna 2 si el rei esta ofegat
+     *     retorna -1 altrament
+     *     pre: color pertany define.WHITE || define.BLACK i en el taulell hi ha un rei amb color 'color'
+     *     post: retorna un indicador de la situació en la que es troba el rei del color 'color'
+     * @param color
+     * @return
+     */
     public int escac_i_mat(int color) {
         //get posició del rei
         Posicion Rei = getReiPos(color);
@@ -545,9 +628,16 @@ public class Taulell {
         }
         return -1;
     }
-    //comprova que els parmàtres siguin vàlids, i en cas efectiu crida a la creadora privada d'una nova peça
-    //pre: true
-    //post: s'ha creat una peça en cas que no es produeixin excepcions, i s'han actualitzat les amenaces del taulell
+
+    /**
+     *     comprova que els parmàtres siguin vàlids, i en cas efectiu crida a la creadora privada d'una nova peça
+     *     pre: true
+     *     post: s'ha creat una peça en cas que no es produeixin excepcions, i s'han actualitzat les amenaces del taulell
+     * @param pos
+     * @param color
+     * @param tipus
+     */
+
     public void crear_peca(Posicion pos, int color, String tipus) {
         try {
             if (pos.x < 0 || pos.y < 0 || pos.x > 7 || pos.y > 7)
@@ -567,9 +657,14 @@ public class Taulell {
             ex.printStackTrace();
         }
     }
-    //comprova que els parmàtres siguin vàlids, i en cas efectiu crida a la borradora privada d'una peça
-    //pre: true
-    //post: s'ha borrat una peça en cas que no es produeixin excepcions, i s'han actualitzat les amenaces del taulell
+
+    /**
+     *     comprova que els parmàtres siguin vàlids, i en cas efectiu crida a la borradora privada d'una peça
+     *     pre: true
+     *     post: s'ha borrat una peça en cas que no es produeixin excepcions, i s'han actualitzat les amenaces del taulell
+     * @param pos
+     */
+
     public void destrueix_peca(Posicion pos) {
         try {
             if (pos.x < 0 || pos.y < 0 || pos.x > 7 || pos.y > 7)
@@ -592,11 +687,17 @@ public class Taulell {
         }
     }
 
-    //encarregada de moure una peça de una posició a una altre
-    //fa checks invocant al mètode privat que valida totes les regles d'integritat del moviment indicat,
-    //pre: true -> rep paràmetres x0,y0 (pos inicial) i paràmetres x,y (pos desti) i  color (peces que es mouen)
-    //post: si el moviment es valid instancia la peça de la posicio inici a la fi, i la borra de inici,
-    //      altrament no fa res sobre el taulell
+    /**
+     *  encarregada de moure una peça de una posició a una altre
+     *     fa checks invocant al mètode privat que valida totes les regles d'integritat del moviment indicat,
+     *     pre: true -> rep paràmetres x0,y0 (pos inicial) i paràmetres x,y (pos desti) i  color (peces que es mouen)
+     *     post: si el moviment es valid instancia la peça de la posicio inici a la fi, i la borra de inici,
+     *           altrament no fa res sobre el taulell
+     * @param inici
+     * @param fi
+     * @param color
+     * @return
+     */
     public boolean mover_pieza(Posicion inici, Posicion fi, int color) {
     boolean ret;
         if (!validar_moviment(inici,fi,color)) ret = false;

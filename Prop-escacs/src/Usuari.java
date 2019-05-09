@@ -7,7 +7,7 @@ import java.util.HashMap; // import the HashMap class
  * Classe Usuari
  * @author Marian Dumitru Danci
  */
-public class Usuari extends Jugador{
+public class Usuari extends Jugador {
     private String idUsuari;
     private int color;
     private static final int tipus = define.USER;
@@ -276,32 +276,31 @@ public class Usuari extends Jugador{
      * @param usuari Nom de l'usuari
      */
     private void eliminarUsuari(String usuari) {
-        try {
-            // Per seguretat (no perdre les dades en cas d'algun imprevist)
+    	try {
+    		// Per seguretat (no perdre les dades en cas d'algun imprevist)
             // es crea un fitxer temporal
-            File tempFile = File.createTempFile("./files/tmpUsuaris.txt", "");
-            BufferedWriter writer = new BufferedWriter(new FileWriter(tempFile));
-
-            BufferedReader reader = new BufferedReader(new FileReader(fitxerUsuaris));
-
-            String currentLine;
-            while((currentLine = reader.readLine()) != null) {
-                // Separar nom i contrasenya per espai
+	    	File inputFile = new File(fitxerUsuaris);
+	    	File tempFile = new File("./files/tmpUsuaris.txt");
+	
+	    	BufferedReader reader = new BufferedReader(new FileReader(inputFile));
+	    	BufferedWriter writer = new BufferedWriter(new FileWriter(tempFile));
+	
+	    	String currentLine;
+	
+	    	while((currentLine = reader.readLine()) != null) {
+	    	    // Separar nom i contrasenya per espai
                 String[] dades = currentLine.split("\\s+");
                 // Quan es troba l'usuari no s'escriu al fitxer temporal
-                if(dades[0].equals(usuari)) continue;
-                writer.write(currentLine + System.getProperty("line.separator"));
-            }
-            writer.close();
-            reader.close();
-
-            File oldFile = new File(fitxerUsuaris);
-            // S'elimina el fitxer antic i es renombra el temporal
-            if (oldFile.delete()) {
-                tempFile.renameTo(oldFile);
-            }
-        }
-        catch (FileNotFoundException e) {
+                if(dades.length != 0) {
+                	if(dades[0].equals(usuari)) continue;
+                }
+	    	    writer.write(currentLine + System.getProperty("line.separator"));
+	    	}
+	    	writer.close(); 
+	    	reader.close(); 
+	    	tempFile.renameTo(inputFile);
+    	}
+    	catch (FileNotFoundException e) {
             System.out.println("El fitxer no existeix");
         }
         catch (IOException e) {

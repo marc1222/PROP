@@ -1,4 +1,6 @@
-import java.time.temporal.JulianFields;
+/**
+ * @author Marc Guinovart
+ */
 
 public class Partida  {
 
@@ -26,7 +28,13 @@ public class Partida  {
 
     }
 
-    //creadora d'una partida amb tots els paràmetres necessaris
+    /**
+     * creadora d'una partida amb tots els paràmetres necessaris
+     * @param P
+     * @param w
+     * @param b
+     * @param save
+     */
     Partida(Problema P, Jugador w, Jugador b,boolean save) {
         this.torn = P.getPrimer();
         this.ronda = 0;
@@ -34,7 +42,7 @@ public class Partida  {
         this.Prob = P;
         this.W = w;
         this.B = b;
-        this.clock =  0;
+        this.clock = 0;
         this.save_stat = save;
         this.max_rondes = (P.getNumJugades()*2)-1;
     }
@@ -43,10 +51,15 @@ public class Partida  {
     //OPERACIONS PRIVADES
     //------------------------------------------------------------------------
 
-    //juga una ronda, tot indicant si aquesta serà la ultima de la partida i en cas que ho sigui el jugador guanyador
-    //pre: true
-    //post: retorna el jugador guanyador si es produeix escac i mat, o be si s'excedeix el numero de rondes permeses,
-    //      altrament retorna -1
+    /**
+     *juga una ronda, tot indicant si aquesta serà la ultima de la partida i en cas que ho sigui el jugador guanyador
+     *pre: true
+     *post: retorna el jugador guanyador si es produeix escac i mat, o be si s'excedeix el numero de rondes permeses, altrament retorna -1
+     * @param inici
+     * @param fi
+     * @return
+     */
+
     private int jugar_torn(Posicion inici, Posicion fi)
     {
         this.ronda++;
@@ -97,19 +110,27 @@ public class Partida  {
     //------------------------------------------------------------------------
     //OPERACIONS PÚBLIQUES
     //------------------------------------------------------------------------
-    //getter de taulell d'una partida
+
+    /**
+     * getter de taulell d'una partida
+     */
     public Taulell getTauler() {
         return this.Tauler;
     }
-
+    /**
+     * getter de las jugadas del problema
+     */
     public int getMat() {
         return Prob.getNumJugades();
     }
 
-    //encarregada de jugar una partida al complet (mitjançant la funció jugar_torn)
-    //i cridar a estadística per guardar-ne les estadísitques, si s'ha de guardar
-    //pre: partida vàlida inicialitzada correctament
-    //post: juga la partida
+    /**
+     *     encarregada de jugar una partida al complet (mitjançant la funció jugar_torn)
+     *     i cridar a estadística per guardar-ne les estadísitques, si s'ha de guardar
+     *     pre: partida vàlida inicialitzada correctament
+     *     post: juga la partida
+     */
+
     public void jugar_partida() {
         Posicion inici = new Posicion();
         Posicion fi = new Posicion();

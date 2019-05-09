@@ -304,6 +304,7 @@ public class Main {
                             int res = Problema.getProblemaId(Integer.parseInt(problemes[op][0]), p);
                             if (res < 1) ; //
                             p.eliminar_problema(); //errors?
+                            Estadistica.eliminarStatsProblema(String.valueOf(problemes[op][0]));
                         }
                         // consultar problemes
                         // p = getProblemaId

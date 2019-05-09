@@ -5,28 +5,31 @@ public class Problema {
     private int id;
     private int jugades;
     private int primer;
-    private String ini_pos; // String?
+    private String ini_pos;
     private int dificultat;
-    //usuari creador pels permissos
+    //usuari creador pels permissos (not implemented)
 
-    //static private String fitxer = "./Prop-escacs/files/problemes.txt";  //branca narcis
     static private String fitxer = "./files/problemes.txt";     //branca main
-    //static private String fitxerId = "./Prop-escacs/files/index.txt";   //branca narcis
     static private String fitxerId = "./files/index.txt";       //branca main
     private static int index = -1;
 
-    /** retorna el següent Id de problema disponible o 0 si és el primer
+    /**
+     * Assigna els Id als problemes
+     * Pre: true
+     * @return el següent Id de problema disponible o 0 si és el primer (identificador únic)
      */
     private static int getNextId() {
         if (index == -1) {
             index = llegirId();
         }
         ++index;
-        guardarId(); // fi de programa?
+        guardarId();
         return index;
     }
 
-    /** escriu l'últim Id de problema assignat en el fitxer index.txt i si no existia el crea
+    /**
+     * Escriu l'últim Id de problema assignat en el fitxer index.txt i si no existia el crea
+     * Pre: true
      */
     private static void guardarId() {
         try (FileWriter fileWriter = new FileWriter(fitxerId, false); PrintWriter pw = new PrintWriter(fileWriter)) {
@@ -36,7 +39,10 @@ public class Problema {
         }
     }
 
-    /** llegeix l'últim Id de problema assignat del fitxer index.txt si exitiex, si no retorna 0
+    /**
+     * Llegeix l'id actual del fitxer
+     * Pre: true
+     * @return l'últim Id de problema assignat del fitxer index.txt si exitiex, si no retorna -1 o -2 en cas d'error
      */
     private static int llegirId() {
         try (BufferedReader br = new BufferedReader(new FileReader(fitxerId))) {
@@ -50,10 +56,12 @@ public class Problema {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        return -1; // try return
+        return -2; // try return
     }
 
-    /** Crea un problema amb el següent Id disponible i la resta de camps buits
+    /**
+     * Crea un problema amb el següent Id disponible i la resta de camps buits
+     * Pre: true
      */
     Problema () {
         id = getNextId();
@@ -63,14 +71,14 @@ public class Problema {
         dificultat = -1;
     }
 
-    Problema (int jugades, int primer) { //int id
+    Problema (int jugades, int primer) {
         this.id = getNextId();
         this.jugades = jugades;
         this.primer = primer;
         ini_pos = null;
-    } //?
+    }
 
-    Problema (int jugades, int primer, String ini_pos, int dificultat) { //int id
+    Problema (int jugades, int primer, String ini_pos, int dificultat) {
         this.id = getNextId();
         this.jugades = jugades;
         this.primer = primer;
@@ -78,7 +86,7 @@ public class Problema {
         this.dificultat = dificultat;
     }
 
-    Problema (int jugades, String fen) { //int id
+    Problema (int jugades, String fen) {
         this.id = getNextId();
         int i = fen.indexOf(' ');
         char prim = fen.charAt(i + 1);
@@ -152,8 +160,12 @@ public class Problema {
         else return -1;
     }
 
-    /** Calcula la dificultat d'un problema segons el número de peces i les jugades per resoldre
-     *  Rep per paràmetre una posició inicial null o vàlida i el número de jugades del problema i retorna la dificultat
+    /**
+     * Calcula la dificultat d'un problema segons el número de peces i les jugades per resoldre
+     * Pre: pos_ini és un FEN vàlid
+     * @param pos_ini posició incial del problema en format FEN
+     * @param njug número de jugades del problema
+     * @return la dificultat del problema del 0 al 10
      */
     private static int calculaDif(String pos_ini, int njug) {
         int count = 0;
@@ -169,13 +181,15 @@ public class Problema {
         return res;
     }
 
-    /** Crea un problema a partir d'un string FEN complert i el nombre de jugades i el valida, si es vàlid i encara
-     *  no existeix l'escriu al fitxer
-     *  El FEN ha d'he contenir com a mínim un espai
-     *  Retorna 0 si ha creat el problema, -1 si no és vàlid, -2 si el FEN és invàlid i -3 si el problema ja existia
+    /**
+     * Crea un problema a partir d'un string FEN complert i el nombre de jugades i el valida, si es vàlid i encara
+     * no existeix l'escriu al fitxer
+     * Pre: njug >= 0, fen ha de contenir 1 o més espais
+     * @param njug número de jugades del problema
+     * @param fen FEN de la posició inicial del problema
+     * @return 0 si s'ha creat el problema, -1 si no és vàlid, -2 si el FEN és invàlid i -3 si el problema ja existia
      */
-    public int crear_problema(int njug, String fen) { // public void? //if not validar return codi error?  //creadora abans especifica o no?
-        //prob_id? //int prob_id, String fen, int njug
+    public int crear_problema(int njug, String fen) {
         this.jugades = njug;
 
         int i = fen.indexOf(' ');
@@ -238,13 +252,15 @@ public class Problema {
         return 0;
     }
 
-    /** Modifica un problema a partir d'un problema anterior, l'string FEN complert i el nombre de jugades i el valida,
-     *  si es valid i no existeix al fitxer sense borrar l'anterior
-     *  El FEN ha d'he contenir com a mínim un espai
-     *  Retorna 0 si ha creat el problema, -1 si no és vàlid, -2 si el FEN és invàlid i -3 si el problema ja existia
+    /**
+     * Modifica un problema a partir d'un problema anterior, l'string FEN complert i el nombre de jugades i el valida,
+     * si es vàlid i no existeix al fitxer sense borrar l'anterior
+     * Pre: njug >= 0, fen ha contenir 1 o més espais
+     * @param fen FEN de la posició inicial del problema
+     * @param njug número de jugades del problema
+     * @return 0 si s'ha creat el problema, -1 si no és vàlid, -2 si el FEN és invàlid i -3 si el problema ja existia
      */
     public int modificar_problema(String fen, int njug) {
-        //modificar objecte o crear nou?
         this.jugades = njug;
 
         int i = fen.indexOf(' ');
@@ -304,8 +320,10 @@ public class Problema {
         return 0;
     }
 
-    /** Elimina el problema paràmetre implícit del fitxer
-     *  Retorna 0 si s'ha eliminat o -1 si el problema no existia
+    /**
+     * Elimina el problema paràmetre implícit del fitxer
+     * Pre: true
+     * @return 0 si s'ha eliminat o -1 si el problema no existia
      */
     public int eliminar_problema() { //prob_id? //borrar objecte?
         //permissos?
@@ -345,8 +363,11 @@ public class Problema {
         return 0;
     }
 
-    /** Retorna una matriu de peces de 8x8 amb les peces posades al seu lloc i peces nules als espais buits del problema
-     *  paràmetre implícit si la posició inicial no és null, altrament retorna null
+    /**
+     * Genera la matriu de peces de la posició inicial del problema
+     * Pre: true
+     * @return una matriu de peces de 8x8 amb les peces posades al seu lloc i peces nules als espais buits del problema
+     * paràmetre implícit si la posició inicial no és null, altrament retorna null
      */
     public Peca[][] getPeces() {
         Peca mat[][] = new Peca[8][8];
@@ -438,9 +459,11 @@ public class Problema {
         return null; //try return?
     }*/
 
-    /** Retorna un array d'strings de tots els problemes del fitxer
-     *  Cada fila de la matriu és un problema i cada columna un atribut (5)
-     *  Si el fitxer no existeix retorna null
+    /**
+     * Consulta tots els problemes creats i guardats en el fitxer
+     * Pre: true
+     * @return un array d'strings de tots els problemes del fitxer on cada fila de la matriu és un problema i cada
+     * columna un atribut (5), si el fitxer no existeix retorna null
      */
     public static String[][] consultarProblemes() {
         try (BufferedReader br = new BufferedReader(new FileReader(fitxer))) {
@@ -493,9 +516,13 @@ public class Problema {
         return null; //try return?
     }*/
 
-    /** Retorna el problema amb el id passat per paràmetre pel paràmetre p
-     *  Retorna 0 si ha retornat el problema pel paràmetre p, -1 si no s'ha trobat el problema amb aquest id o -2
-     *  si no hi ha cap problema creat (el fitxer no existeix)
+    /**
+     * Consulta el problema amb l'id donat
+     * Pre: true
+     * @param id id del problema que es vol buscar
+     * @param p paràmetre de sortida on es retorna el problema
+     * @return 0 0 si ha retornat el problema pel paràmetre p, -1 si no s'ha trobat el problema amb aquest id o -2
+     * si no hi ha cap problema creat (el fitxer no existeix)
      */
     public static int getProblemaId(int id, Problema p) { //comprobar problema.id != id
         try (BufferedReader br = new BufferedReader(new FileReader(fitxer))) {
@@ -582,9 +609,13 @@ public class Problema {
         //}
     }*/
 
-    /** Valida si el problema paràmetre implícit té solució en njug jugades
-     *  Rep per paràmetre el color que ha de resoldre el problema, el tauler actual i el número de jugades
-     *  Retorna true si el problema té solució en njug jugades o false altrament
+    /**
+     * Valida si el problema paràmetre implícit té solució en njug jugades
+     * Pre: njug >= 0
+     * @param color_act color del jugador que va primer i ha de resoldre el problema (atacant)
+     * @param tau situació actual de les peces
+     * @param njug número de jugades màxim per resoldre el problema
+     * @return true si el problema té solució en njug jugades o false altrament
      */
     public boolean validar_problema(int color_act, Taulell tau, int njug) { //private?
         //System.out.println("Actual " + njug);

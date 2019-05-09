@@ -9,7 +9,10 @@ public class Reina extends Peca {
         amenaces = null;
     }
 
-    /** Crea una instància de reina amb el color passat per paràmetre i el següent Id (pot no ser únic)
+    /**
+     * Crea una instància de reina amb el color passat per paràmetre i el següent Id (pot no ser únic)
+     * Pre: color blanc o negre (0 o 1)
+     * @param color color de la reina creada
      */
     public Reina (int color) {
         this.id = getNextId();

@@ -186,31 +186,30 @@ public class Estadistica {
      */
     public static void eliminarStatsProblema(String problema) {
         try {
-            // Per seguretat (no perdre les dades en cas d'algun imprevist)
+    		// Per seguretat (no perdre les dades en cas d'algun imprevist)
             // es crea un fitxer temporal
-            File tempFile = File.createTempFile("./files/tmpEstadistiques.txt", "");
-            BufferedWriter writer = new BufferedWriter(new FileWriter(tempFile));
-
-            BufferedReader reader = new BufferedReader(new FileReader(fitxerStats));
-
-            String currentLine;
-            while((currentLine = reader.readLine()) != null) {
-                // Separar nom i contrasenya per espai
+	    	File inputFile = new File(fitxerStats);
+	    	File tempFile = new File("./files/tmpEstadistiques.txt");
+	
+	    	BufferedReader reader = new BufferedReader(new FileReader(inputFile));
+	    	BufferedWriter writer = new BufferedWriter(new FileWriter(tempFile));
+	
+	    	String currentLine;
+	
+	    	while((currentLine = reader.readLine()) != null) {
+	    	    // Separar nom i contrasenya per espai
                 String[] dades = currentLine.split("\\s+");
                 // Quan es troba l'usuari no s'escriu al fitxer temporal
-                if(dades[0].equals(problema)) continue;
-                writer.write(currentLine + System.getProperty("line.separator"));
-            }
-            writer.close();
-            reader.close();
-
-            File oldFile = new File(fitxerStats);
-            // S'elimina el fitxer antic i es renombra el temporal
-            if (oldFile.delete()) {
-                tempFile.renameTo(oldFile);
-            }
-        }
-        catch (FileNotFoundException e) {
+                if(dades.length != 0) {
+                	if(dades[0].equals(problema)) continue;
+                }
+	    	    writer.write(currentLine + System.getProperty("line.separator"));
+	    	}
+	    	writer.close(); 
+	    	reader.close(); 
+	    	tempFile.renameTo(inputFile);
+    	}
+    	catch (FileNotFoundException e) {
             System.out.println("El fitxer no existeix");
         }
         catch (IOException e) {
