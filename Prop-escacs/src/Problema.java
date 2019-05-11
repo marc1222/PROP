@@ -209,8 +209,8 @@ public class Problema {
         this.dificultat = calculaDif(this.ini_pos, njug);
 
         //Problema p = new Problema(prob_id, njug, prim, pos);
-        System.out.println("Validant el problema...");
-        if (this.validar_problema(this.primer, new Taulell(this.getPeces()), this.jugades)) {
+        System.out.println("Validant el problemav2...");
+        if (this.validar_problema2(this.primer, new Taulell(new Taulell(this.getPeces())), this.jugades)) {
             String snjug = String.valueOf(njug);
             String sprim = String.valueOf(this.primer);
             String sdif = String.valueOf(this.dificultat);
@@ -556,58 +556,78 @@ public class Problema {
         return -2; //try return?
     }
 
-    /*
-    public boolean validar_problema(int color_act, Taulell tau, int njug, boolean atk) { //private?
-        //Peca pec_mat[][] = this.getPeces();
-        //Taulell tau = new Taulell(pec_mat);
-        //System.out.println("Color " + String.valueOf(color_act) + " jugades " + String.valueOf(njug) + " torn " + String.valueOf(atk));
+    public boolean validar_problema2(int color_act, Taulell tau, int njug) { //private?
+        //System.out.println("Actual " + njug);
+        //tau.printTauler();
         if (njug == 0) return false;
         int color_cont;
         if (color_act == define.WHITE) color_cont = define.BLACK;
         else color_cont = define.WHITE;
-        //for (int i = 0; i < 8; ++i) {
-            //for (int j = 0; j < 8; ++j) {
         Posicion pec_pos[] = tau.getPosColor(color_act);
+        Posicion Reid = tau.getReiPos(color_cont);
+        boolean noEscac[][] = new boolean[pec_pos.length][];
         for (int i = 0; i < pec_pos.length; ++i) {
-            //System.out.println("Peça " + String.valueOf(i) + " pos " + String.valueOf(pec_pos[i].x) + " " + String.valueOf(pec_pos[i].y));
-            // if peça nula
-            //Posicion mov[] = pec_mat[i][j].movimientos_posibles(new Posicion(i, j));
-            //Posicion pos_act = new Posicion(i, j);
             Posicion mov[] = tau.todos_movimientos(pec_pos[i]);
-            if (mov != null) {
-                for (int k = 0; k < mov.length; ++k) {
-                    //System.out.println("Moviment " + String.valueOf(k) + " de " + String.valueOf(mov.length) + " color " + String.valueOf(color_act));
-                    //System.out.println("mov " + String.valueOf(mov[k].x) + " " + String.valueOf(mov[k].y));
-                    boolean ret;
-                    //System.out.println("Actual");
-                    //tau.printTauler();
-                    tau.mover_pieza(pec_pos[i], mov[k], color_act);
-                    //System.out.println("Nou");
-                    //tau.printTauler();
-                    if (atk && tau.escac_i_mat(color_cont) == 1) return true;
-                    if (atk) {
-                        ret = this.validar_problema(color_cont, new Taulell(tau), njug, false);
-                    } else {
-                        if (njug != 1)
-                            ret = this.validar_problema(color_cont, new Taulell(tau), njug - 1, true); // if njug == 1 false
-                        else ret = false;
+            noEscac[i] = new boolean[mov.length];
+            for (int k = 0; k < mov.length; ++k) {
+                if (mov[k].x == Reid.x && mov[k].y == Reid.y) return true;
+                Taulell tau2 = new Taulell(tau.getTauler(), true);
+                if (tau2.mover_pieza(pec_pos[i], mov[k], color_act)) {
+                    //System.out.println("Atac " + njug);
+                    //tau2.printTauler();
+                    if (tau2.escac_i_mat(color_cont) == 1) return true;
+                    if (tau2.escac(pec_pos, Reid, Reid)) {
+                        boolean def = true;
+                        if (njug != 1) {
+                            Posicion pec_cont[] = tau2.getPosColor(color_cont);
+                            for (int j = 0; (j < pec_cont.length) && def; ++j) {
+                                Posicion mov_cont[] = tau2.todos_movimientos(pec_cont[j]);
+                                for (int l = 0; (l < mov_cont.length) && def; ++l) {
+                                    Taulell tau3 = new Taulell(tau2.getTauler(), true);
+                                    if (tau3.mover_pieza(pec_cont[j], mov_cont[l], color_cont)) {
+                                        //System.out.println("Defensa " + njug);
+                                        //tau3.printTauler();
+                                        //if (tau3.escac_i_mat(color_act) == 1) def = false;
+                                        if (!validar_problema2(color_act, tau3, njug - 1)) def = false;
+                                    }
+                                }
+                            }
+                        } else def = false;
+                        if (def) return true;
                     }
-                    if (ret) return true;
-                    tau.mover_pieza(mov[k], pec_pos[i], color_act); // o new tau?
-                    //System.out.println("desf " + String.valueOf(pec_pos[i].x) + " " + String.valueOf(pec_pos[i].y));
+                    else noEscac[i][k] = true;
                 }
             }
-                    //moure peça
+        }
+        for (int i = 0; i < pec_pos.length; ++i) {
+            Posicion mov[] = tau.todos_movimientos(pec_pos[i]);
+            for (int k = 0; k < mov.length; ++k) {
+                if (noEscac[i][k]) {
+                    Taulell tau2 = new Taulell(tau);
+                    if (tau2.mover_pieza(pec_pos[i], mov[k], color_act)) {
+                        boolean def = true;
+                        if (njug != 1) {
+                            Posicion pec_cont[] = tau2.getPosColor(color_cont);
+                            for (int j = 0; (j < pec_cont.length) && def; ++j) {
+                                Posicion mov_cont[] = tau2.todos_movimientos(pec_cont[j]);
+                                for (int l = 0; (l < mov_cont.length) && def; ++l) {
+                                    Taulell tau3 = new Taulell(tau2);
+                                    if (tau3.mover_pieza(pec_cont[j], mov_cont[l], color_cont)) {
+                                        //System.out.println("Defensa " + njug);
+                                        //tau3.printTauler();
+                                        //if (tau3.escac_i_mat(color_act) == 1) def = false;
+                                        if (!validar_problema2(color_act, tau3, njug - 1)) def = false;
+                                    }
+                                }
+                            }
+                        } else def = false;
+                        if (def) return true;
+                    }
+                }
+            }
         }
         return false;
-        //if (true) { //
-            //System.out.println("El problema és vàlid");
-            //return true;
-        //}
-        //else {
-            //return false;
-        //}
-    }*/
+    }
 
     /**
      * Valida si el problema paràmetre implícit té solució en njug jugades
@@ -629,7 +649,7 @@ public class Problema {
             Posicion mov[] = tau.todos_movimientos(pec_pos[i]);
             for (int k = 0; k < mov.length; ++k) {
                 if (((tau.getPecaPosicio(mov[k])).getTipus()).equals(define.REI)) return true;
-                Taulell tau2 = new Taulell(tau);
+                Taulell tau2 = new Taulell(tau.getTauler(),true);
                 if (tau2.mover_pieza(pec_pos[i], mov[k], color_act)) {
                     //System.out.println("Atac " + njug);
                     //tau2.printTauler();
@@ -640,7 +660,7 @@ public class Problema {
                         for (int j = 0; (j < pec_cont.length) && def; ++j) {
                             Posicion mov_cont[] = tau2.todos_movimientos(pec_cont[j]);
                             for (int l = 0; (l < mov_cont.length) && def; ++l) {
-                                Taulell tau3 = new Taulell(tau2);
+                                Taulell tau3 = new Taulell(tau2.getTauler(), true);
                                 if (tau3.mover_pieza(pec_cont[j], mov_cont[l], color_cont)) {
                                     //System.out.println("Defensa " + njug);
                                     //tau3.printTauler();

@@ -31,12 +31,19 @@ public class DriverProblema {
         //int res = p.crear_problema(2, "7k/8/8/8/8/8/1R6/R6K w - - 0 0");
         //int res = p.crear_problema(2, "7k/8/8/8/8/8/1R6/R7 w - - 0 0");
         //int res = p.crear_problema(1, "7k/R7/8/8/8/8/8/1R6 w - - 0 0");
+        //long st1 = System.currentTimeMillis();
         int res = p.crear_problema(njug, fen);
+        //System.out.println((System.currentTimeMillis() - st1));
 
         System.out.println(String.valueOf(res));
         System.out.println(String.valueOf(p.getId()) + " " + String.valueOf(p.getNumJugades()) + " " +
                 String.valueOf(p.getPrimer()) + " " + p.getPosIni() + " " +
                 String.valueOf(p.getDificultat())); //2 3 0 8/8/2Pb2pk/1R1B4/6Pp/5R1K/2r5/8 3
+        //long st2 = System.currentTimeMillis();
+        //int res2 = p.crear_problema2(njug, fen);
+        //System.out.println((System.currentTimeMillis() - st2));
+
+        //System.out.println(String.valueOf(res2));
     }
 
     public void testModificarProblema(String fen, int njug) {
