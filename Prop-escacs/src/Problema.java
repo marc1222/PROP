@@ -9,42 +9,42 @@ public class Problema {
     private int dificultat;
     //usuari creador pels permissos (not implemented)
 
-    static private String fitxer = "./files/problemes.txt";     //branca main
-    static private String fitxerId = "./files/index.txt";       //branca main
-    private static int index = -1;
+    //static private String fitxer = "./files/problemes.txt";     //branca main
+    //static private String fitxerId = "./files/index.txt";       //branca main
+    //private static int index = -1;
 
     /**
      * Assigna els Id als problemes
      * Pre: true
      * @return el següent Id de problema disponible o 0 si és el primer (identificador únic)
      */
-    private static int getNextId() {
+    /*private static int getNextId() {
         if (index == -1) {
             index = llegirId();
         }
         ++index;
         guardarId();
         return index;
-    }
+    }*/
 
     /**
      * Escriu l'últim Id de problema assignat en el fitxer index.txt i si no existia el crea
      * Pre: true
      */
-    private static void guardarId() {
+    /*private static void guardarId() {
         try (FileWriter fileWriter = new FileWriter(fitxerId, false); PrintWriter pw = new PrintWriter(fileWriter)) {
             pw.println(String.valueOf(index));
         } catch (IOException e1) {
             e1.printStackTrace();
         }
-    }
+    }*/
 
     /**
      * Llegeix l'id actual del fitxer
      * Pre: true
      * @return l'últim Id de problema assignat del fitxer index.txt si exitiex, si no retorna -1 o -2 en cas d'error
      */
-    private static int llegirId() {
+    /*private static int llegirId() {
         try (BufferedReader br = new BufferedReader(new FileReader(fitxerId))) {
             String line;
             if ((line = br.readLine()) != null) {
@@ -57,14 +57,15 @@ public class Problema {
             e.printStackTrace();
         }
         return -2; // try return
-    }
+    }*/
 
     /**
      * Crea un problema amb el següent Id disponible i la resta de camps buits
      * Pre: true
      */
     Problema () {
-        id = getNextId();
+        GestorPersistenciaProblema gpp = new GestorPersistenciaProblema();
+        id = gpp.getNextId();
         jugades = -1;
         primer = -1;
         ini_pos = null;
@@ -72,14 +73,14 @@ public class Problema {
     }
 
     Problema (int jugades, int primer) {
-        this.id = getNextId();
+        //this.id = getNextId();
         this.jugades = jugades;
         this.primer = primer;
         ini_pos = null;
     }
 
     Problema (int jugades, int primer, String ini_pos, int dificultat) {
-        this.id = getNextId();
+        //this.id = getNextId();
         this.jugades = jugades;
         this.primer = primer;
         this.ini_pos = ini_pos;
@@ -87,7 +88,7 @@ public class Problema {
     }
 
     Problema (int jugades, String fen) {
-        this.id = getNextId();
+        //this.id = getNextId();
         int i = fen.indexOf(' ');
         char prim = fen.charAt(i + 1);
         if (prim == 'w') {
@@ -214,36 +215,14 @@ public class Problema {
             String snjug = String.valueOf(njug);
             String sprim = String.valueOf(this.primer);
             String sdif = String.valueOf(this.dificultat);
-            try (BufferedReader br = new BufferedReader(new FileReader(fitxer))) {
-                String line;
-                //String snjug = String.valueOf(this.jugades);
-                //String sprim = String.valueOf(this.primer);
-                //String sdif = String.valueOf(this.dificultat);
-                while ((line = br.readLine()) != null) {
-                    String[] camps = line.split("\\s+");
-                    if (camps[1].equals(snjug) && camps[2].equals(sprim) && camps[3].equals(this.ini_pos)) { //o nomes prob_id?
-                        //problema ja existeix
-                        System.out.println("El problema ja existex");
-                        return -3;
-                    }
-                }
-
-                /*input_output in_out = new input_output();
-                String[] linia = {String.valueOf(this.id), snjug, sprim, this.ini_pos, sdif};
-                in_out.write(fitxer, linia);
-                System.out.println("S'ha creat el problema");*/
+            GestorPersistenciaProblema gpp = new GestorPersistenciaProblema();
+            if (gpp.comprovarExistencia(snjug, sprim, sdif, this.ini_pos)) {
+                //problema ja existeix
+                System.out.println("El problema ja existex");
+                return -3;
             }
-            catch (FileNotFoundException e) {
-                //e.printStackTrace();
-            }
-            catch (IOException e) {
-                e.printStackTrace();
-            }
-            input_output in_out = new input_output();
-            String[] linia = {String.valueOf(this.id), snjug, sprim, this.ini_pos, sdif};
-            in_out.write(fitxer, linia);
+            gpp.escriuProblema(String.valueOf(this.id), snjug, sprim, this.ini_pos, sdif);
             System.out.println("S'ha creat el problema");
-
         }
         else {
             System.out.println("Problema sense solució");
@@ -280,37 +259,17 @@ public class Problema {
         this.dificultat = calculaDif(this.ini_pos, njug);
 
         System.out.println("Validant el problema...");
-        if (this.validar_problema(this.primer, new Taulell(this.getPeces()), this.jugades)) {
+        if (this.validar_problema(this.primer, new Taulell(new Taulell(this.getPeces())), this.jugades)) {
             String snjug = String.valueOf(njug);
-            String sprimer = String.valueOf(this.primer);
+            String sprim = String.valueOf(this.primer);
             String sdif = String.valueOf(this.dificultat);
-            try (BufferedReader br = new BufferedReader(new FileReader(fitxer))) {
-                String line;
-                //String snjug = String.valueOf(njug);
-                //String sprimer = String.valueOf(this.primer);
-                //String sdif = String.valueOf(this.dificultat);
-                while ((line = br.readLine()) != null) {
-                    String[] camps = line.split("\\s+");
-                    if (camps[1].equals(snjug) && camps[2].equals(sprimer) && camps[3].equals(this.ini_pos)) { //o nomes prob_id?
-                        //problema ja existeix
-                        System.out.println("El nou problema ja existeix");
-                        return -3;
-                    }
-                }
-                /*input_output in_out = new input_output();
-                String[] linia = {String.valueOf(this.id), snjug, sprimer, this.ini_pos, sdif};
-                in_out.write(fitxer, linia);
-                System.out.println("S'ha clonat i modificat el problema");*/
+            GestorPersistenciaProblema gpp = new GestorPersistenciaProblema();
+            if (gpp.comprovarExistencia(snjug, sprim, sdif, this.ini_pos)) {
+                //problema ja existeix
+                System.out.println("El nou problema ja existeix");
+                return -3;
             }
-            catch (FileNotFoundException e) {
-                //e.printStackTrace();
-            }
-            catch (IOException e) {
-                e.printStackTrace();
-            }
-            input_output in_out = new input_output();
-            String[] linia = {String.valueOf(this.id), snjug, sprimer, this.ini_pos, sdif};
-            in_out.write(fitxer, linia);
+            gpp.escriuProblema(String.valueOf(this.id), snjug, sprim, this.ini_pos, sdif);
             System.out.println("S'ha clonat i modificat el problema");
         }
         else {
@@ -327,39 +286,15 @@ public class Problema {
      */
     public int eliminar_problema() { //prob_id? //borrar objecte?
         //permissos?
-        String borra_linia = String.valueOf(this.id) + " " + String.valueOf(this.jugades) + " " +
-                             String.valueOf(this.primer) + " " + this.ini_pos + " " + this.dificultat;
-        File tempfile = new File ("/home/narcis/PROP/Prop-escacs/files/mytemp.txt");
-        File inputfile = new File (fitxer);
-        boolean trobat = false;
-        try (BufferedReader reader = new BufferedReader(new FileReader(fitxer));
-         BufferedWriter writer = new BufferedWriter(new FileWriter(tempfile))) {
-            String line;
-            while ((line = reader.readLine()) != null) {
-                if (!line.equals(borra_linia)) {
-                    writer.write(line + System.lineSeparator());
-                }
-                else {
-                    trobat = true;
-                }
-            }
-            //writer.close();
-            //reader.close();
-            if (trobat) {
-                inputfile.delete(); //needed?
-                tempfile.renameTo(inputfile); //successful?
-                System.out.println("El problema s'ha eliminat");
-            }
-            else {
-                // no existeix problema
-                System.out.println("El problema no existeix");
-                return -1;
-            }
-        } catch (FileNotFoundException e) {
-            //e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
+        String borra_linia = this.id + " " + this.jugades + " " +
+                             this.primer + " " + this.ini_pos + " " + this.dificultat;
+        GestorPersistenciaProblema gpp = new GestorPersistenciaProblema();
+        if ((gpp.borrarProblema(borra_linia)) == -1) {
+            // no existeix problema
+            System.out.println("El problema no existeix");
+            return -1;
         }
+        else System.out.println("El problema s'ha eliminat");
         return 0;
     }
 
@@ -466,26 +401,13 @@ public class Problema {
      * columna un atribut (5), si el fitxer no existeix retorna null
      */
     public static String[][] consultarProblemes() {
-        try (BufferedReader br = new BufferedReader(new FileReader(fitxer))) {
-            ArrayList<String[]> probs = new ArrayList<String[]>();
-            String line;
-            while ((line = br.readLine()) != null) {
-                String[] camps = line.split("\\s+");
-                //NumberFormatException0
-                probs.add(camps);
-            }
-            String res[][] = new String[probs.size()][5];
-            res = probs.toArray(res);
-            return res;
-        }
-        catch (FileNotFoundException e) {
-            e.printStackTrace();
+        GestorPersistenciaProblema gpp = new GestorPersistenciaProblema();
+        String[][] res = gpp.llegirProblemes();
+        if (res != null && res[0].length == 1) {
             System.out.println("No hi ha cap problema afegit");
+            return null;
         }
-        catch (IOException e) {
-            e.printStackTrace();
-        }
-        return null; //try return?
+        return res;
     }
 
     /*public static Problema getProblemaId(int id) {
@@ -525,35 +447,24 @@ public class Problema {
      * si no hi ha cap problema creat (el fitxer no existeix)
      */
     public static int getProblemaId(int id, Problema p) { //comprobar problema.id != id
-        try (BufferedReader br = new BufferedReader(new FileReader(fitxer))) {
-            String line;
-            boolean trobat = false;
-            while ((line = br.readLine()) != null) {
-                String[] camps = line.split("\\s+");
-                String sid = String.valueOf(id);
-                if (camps[0].equals(sid)) {
-                    trobat = true;
-                    p.id = id;
-                    p.jugades = Integer.parseInt(camps[1]);
-                    p.primer = Integer.parseInt(camps[2]);
-                    p.ini_pos = camps[3];
-                    p.dificultat = Integer.parseInt(camps[4]);
-                    return 0;
-                }
-            }
-            if (!trobat) {
-                //no existeix el problema amb aquest id
-                return -1;
-            }
-        }
-        catch (FileNotFoundException e) {
-            e.printStackTrace();
+        GestorPersistenciaProblema gpp = new GestorPersistenciaProblema();
+        String[] res = gpp.llegirProblemaId(id);
+        if (res.length == 1) {
             System.out.println("No hi ha cap problema afegit");
+            return -2;
         }
-        catch (IOException e) {
-            e.printStackTrace();
+        else if (res.length == 2) {
+            //no existeix el problema amb aquest id
+            return -1;
         }
-        return -2; //try return?
+        else {
+            p.id = id;
+            p.jugades = Integer.parseInt(res[1]);
+            p.primer = Integer.parseInt(res[2]);
+            p.ini_pos = res[3];
+            p.dificultat = Integer.parseInt(res[4]);
+            return 0;
+        }
     }
 
     public boolean validar_problema2(int color_act, Taulell tau, int njug) { //private?

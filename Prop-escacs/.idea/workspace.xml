@@ -2,13 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a9986b48-1538-4a05-b098-ee43f0cbf3cd" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/GestorPersistenciaProblema.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/files/index.txt" beforeDir="false" afterPath="$PROJECT_DIR$/files/index.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/files/problemes.txt" beforeDir="false" afterPath="$PROJECT_DIR$/files/problemes.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Prop-escacs/DriverProblema.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Prop-escacs/DriverProblema.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Prop-escacs/Problema.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Prop-escacs/Problema.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DriverProblema.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DriverProblema.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Prop-escacs/DriverProblema.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Prop-escacs/Problema.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Problema.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Problema.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -29,26 +27,23 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/DriverProblema.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="510">
-              <caret line="34" column="8" selection-start-line="34" selection-start-column="8" selection-end-line="34" selection-end-column="8" />
+            <state relative-caret-position="97">
+              <caret line="152" selection-start-line="152" selection-end-line="152" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Problema.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="128">
-              <caret line="276" column="45" selection-start-line="276" selection-start-column="45" selection-end-line="276" selection-end-column="45" />
+            <state relative-caret-position="500">
+              <caret line="259" lean-forward="true" selection-start-line="259" selection-end-line="259" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="method#Problema#0;class#Problema#0" />
-                <element signature="method#Problema#1;class#Problema#0" />
-                <element signature="method#Problema#2;class#Problema#0" />
-                <element signature="method#Problema#3;class#Problema#0" />
                 <element signature="method#setId#0;class#Problema#0" />
                 <element signature="method#setNumJugades#0;class#Problema#0" />
                 <element signature="method#setPrimer#0;class#Problema#0" />
@@ -59,10 +54,22 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/GestorPersistenciaProblema.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="172">
+              <caret line="150" column="9" lean-forward="true" selection-start-line="150" selection-start-column="9" selection-end-line="150" selection-end-column="9" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Taulell.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="10545">
-              <caret line="712" column="41" selection-start-line="712" selection-start-column="41" selection-end-line="712" selection-end-column="41" />
+            <state relative-caret-position="135">
+              <caret line="712" column="46" lean-forward="true" selection-start-line="712" selection-start-column="46" selection-end-line="712" selection-end-column="46" />
             </state>
           </provider>
         </entry>
@@ -139,6 +146,10 @@
       <find>escac</find>
       <find>getReiPos</find>
       <find>get</find>
+      <find>crear_problema2</find>
+      <find>llegirId</find>
+      <find>guardarId</find>
+      <find>getNextId</find>
     </findStrings>
     <replaceStrings>
       <replace>fin.x</replace>
@@ -179,8 +190,9 @@
         <option value="$PROJECT_DIR$/src/StubReina.java" />
         <option value="$PROJECT_DIR$/src/DriverPeca.java" />
         <option value="$PROJECT_DIR$/src/Taulell.java" />
-        <option value="$PROJECT_DIR$/src/DriverProblema.java" />
         <option value="$PROJECT_DIR$/src/test.form" />
+        <option value="$PROJECT_DIR$/src/DriverProblema.java" />
+        <option value="$PROJECT_DIR$/src/GestorPersistenciaProblema.java" />
         <option value="$PROJECT_DIR$/src/Problema.java" />
       </list>
     </option>
@@ -305,6 +317,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="64" y="-11" width="1303" height="780" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.17290837" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -316,7 +329,7 @@
       <window_info id="Capture Tool" order="7" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.4604651" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.4604651" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -442,13 +455,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Taulell.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="10545">
-          <caret line="712" column="41" selection-start-line="712" selection-start-column="41" selection-end-line="712" selection-end-column="41" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Main.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="30">
@@ -481,28 +487,42 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Problema.java">
+    <entry file="file://$PROJECT_DIR$/src/GestorPersistenciaProblema.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="128">
-          <caret line="276" column="45" selection-start-line="276" selection-start-column="45" selection-end-line="276" selection-end-column="45" />
+        <state relative-caret-position="172">
+          <caret line="150" column="9" lean-forward="true" selection-start-line="150" selection-start-column="9" selection-end-line="150" selection-end-column="9" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="method#Problema#0;class#Problema#0" />
-            <element signature="method#Problema#1;class#Problema#0" />
-            <element signature="method#Problema#2;class#Problema#0" />
-            <element signature="method#Problema#3;class#Problema#0" />
-            <element signature="method#setId#0;class#Problema#0" />
-            <element signature="method#setNumJugades#0;class#Problema#0" />
-            <element signature="method#setPrimer#0;class#Problema#0" />
-            <element signature="method#setPosIni#0;class#Problema#0" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/DriverProblema.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="510">
-          <caret line="34" column="8" selection-start-line="34" selection-start-column="8" selection-end-line="34" selection-end-column="8" />
+        <state relative-caret-position="97">
+          <caret line="152" selection-start-line="152" selection-end-line="152" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Taulell.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="712" column="46" lean-forward="true" selection-start-line="712" selection-start-column="46" selection-end-line="712" selection-end-column="46" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Problema.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="500">
+          <caret line="259" lean-forward="true" selection-start-line="259" selection-end-line="259" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="method#Problema#0;class#Problema#0" />
+            <element signature="method#setId#0;class#Problema#0" />
+            <element signature="method#setNumJugades#0;class#Problema#0" />
+            <element signature="method#setPrimer#0;class#Problema#0" />
+            <element signature="method#setPosIni#0;class#Problema#0" />
+          </folding>
         </state>
       </provider>
     </entry>
