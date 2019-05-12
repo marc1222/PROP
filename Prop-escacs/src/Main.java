@@ -1,5 +1,8 @@
+import domini.*;
+
 import java.util.ArrayList;
 import java.util.Scanner;
+
 
 public class Main {
     public static void main(String args[]) {
@@ -38,7 +41,7 @@ public class Main {
                             sessioIniciada = master.iniciarSessio(Users[usrSeleccionat]);
                         }
                         else {
-                            System.out.println("Usuari seleccionat no vàlid");
+                            System.out.println("domini.Usuari seleccionat no vàlid");
                         }
                     }
                     else {
@@ -52,7 +55,7 @@ public class Main {
 
                     String nomUsuari, contrasenya1, contrasenya2;
 
-                    System.out.println("Usuari:");
+                    System.out.println("domini.Usuari:");
                     nomUsuari = sc.nextLine();
 
                     System.out.println("Contrasenya:");
@@ -125,11 +128,12 @@ public class Main {
                             } else first = false;
                             System.out.println("\nContra qui vols jugar?");
                             System.out.println("    1 - Invitado");
-                            System.out.println("    2 - Maquina");
-                            System.out.println("    3 - Maquina VS Maquina");
+                            System.out.println("    2 - Maquina naive");
+                            System.out.println("    3 - MaquinaN VS MaquinaN");
+                            System.out.println("    4 - Maquina Smart");
                             sc = new Scanner(System.in);
                             val = sc.nextInt();
-                        } while ((val > 3 || val < 1));
+                        } while ((val > 4 || val < 1));
 
                         Partida pa = new Partida();
                         if (val != 3) {
@@ -162,6 +166,14 @@ public class Main {
                             } else if (ataca == 2 && val == 2) {
                                 //defender      &&  //naive
                                 second = new Naive(p.getPrimer());
+                                master.setColor((p.getPrimer() == define.WHITE) ? define.BLACK : define.WHITE);
+                            } else if (ataca == 1 && val == 4) {
+                                //atacar   &&    //smart
+                                second = new Smart((p.getPrimer() == define.WHITE) ? define.BLACK : define.WHITE);
+                                master.setColor(p.getPrimer());
+                            } else if(ataca == 2 && val == 4) {
+                                //defender      &&  //naive
+                                second = new Smart(p.getPrimer());
                                 master.setColor((p.getPrimer() == define.WHITE) ? define.BLACK : define.WHITE);
                             } else {
                                 //defender    &&   //usuari
@@ -342,7 +354,7 @@ public class Main {
                                             System.out.println(marca);
                                         }
                                     } else {
-                                        System.out.println("Problema no vàlid");
+                                        System.out.println("domini.Problema no vàlid");
                                     }
                                     break;
                                 }
@@ -359,13 +371,13 @@ public class Main {
                                         if (statsUsuari.isEmpty()) {
                                             System.out.println("No hi han registres de l'usuari");
                                         } else {
-                                            System.out.println("Problema  Mat  Temps");
+                                            System.out.println("domini.Problema  Mat  Temps");
                                         }
                                         for (String marca : statsUsuari) {
                                             System.out.println(marca);
                                         }
                                     } else {
-                                        System.out.println("Usuari no vàlid");
+                                        System.out.println("domini.Usuari no vàlid");
                                     }
                                     break;
                                 }
