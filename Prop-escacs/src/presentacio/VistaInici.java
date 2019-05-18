@@ -67,20 +67,20 @@ public class VistaInici {
         JLabel lbUsuariR = new JLabel("Usuari:");
         lbUsuariR.setBounds(20,20, 80,30);
         final JTextField UsuariR = new JTextField();
-        UsuariR.setBounds(100,20, 100,30);
+        UsuariR.setBounds(140,20, 100,30);
 
         JLabel lbContraR = new JLabel("Contrasenya:");
         lbContraR.setBounds(20,75, 80,30);
         final JPasswordField ContraR = new JPasswordField();
-        ContraR.setBounds(100,75,100,30);
+        ContraR.setBounds(140,75,100,30);
 
         JLabel lbContraR2 = new JLabel("Repetir contrasenya:");
-        lbContraR2.setBounds(20,125, 80,30);
+        lbContraR2.setBounds(20,125, 120,30);
         final JPasswordField ContraR2 = new JPasswordField();
-        ContraR2.setBounds(100,125,100,30);
+        ContraR2.setBounds(140,125,100,30);
 
         JButton btnRegistrar = new JButton("Registrar");
-        btnRegistrar.setBounds(100,170, 80,30);
+        btnRegistrar.setBounds(140,170, 80,30);
 
         final JLabel lbMssgR = new JLabel();
         lbMssgR.setBounds(20,205, 300,50);
