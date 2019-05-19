@@ -81,6 +81,7 @@ public class Usuari extends Jugador {
      * @return Cert si l'inici de sessio es correcte, fals en cas contari
      */
     public boolean iniciarSessio(String nomUsuari, String contrasenya) {
+        boolean iniciCorrecte = false;
         // Comproba que el tipus de dades es correcte
         if(nomUsuari != null && !nomUsuari.isEmpty()) {
             if (contrasenya == null && contrasenya.isEmpty()) {
@@ -89,11 +90,15 @@ public class Usuari extends Jugador {
             }
         }
         else {
-            System.out.println("domini.Usuari no vàlida.\n");
+            System.out.println("Usuari no vàlida.\n");
             return false;
         }
 
-        return GestorPersistenciaUsuari.buscarUsuari(nomUsuari, contrasenya);
+        iniciCorrecte = GestorPersistenciaUsuari.buscarUsuari(nomUsuari, contrasenya);
+        if (iniciCorrecte) {
+            idUsuari = nomUsuari;
+        }
+        return iniciCorrecte;
     }
 
     /**
@@ -105,6 +110,7 @@ public class Usuari extends Jugador {
      * @return Cert si s'ha registrat i fals en cas contrari
      */
     public boolean registrar(String nomUsuari, String contrasenya1, String contrasenya2) {
+        boolean iniciCorrecte = false;
         if(nomUsuari == null || nomUsuari.isEmpty() || nomUsuari.equals("Convidat")) {
             System.out.println("domini.Usuari no vàlida.\n");
         }
@@ -116,13 +122,14 @@ public class Usuari extends Jugador {
             System.out.println("La contrasenya no concideix.\n");
         }
         else {
-            if (GestorPersistenciaUsuari.registrar(nomUsuari, contrasenya1)) {
+            iniciCorrecte = GestorPersistenciaUsuari.registrar(nomUsuari, contrasenya1);
+            if (iniciCorrecte) {
                 // Si l'usuari s'ha registrar correctament se li dona el nom
                 // d'usuari que ha fet el registre
                 idUsuari = nomUsuari;
             }
         }
-        return false;
+        return iniciCorrecte;
     }
 
 
@@ -131,8 +138,12 @@ public class Usuari extends Jugador {
      * ser un usuari 'Convidat'
      * @return Cert si l'usuari s'ha donat de baixa correctament, fals altrament
      */
-    private void eliminarUsuari(String usuari) {
-        GestorPersistenciaUsuari.eliminarUsuari(usuari);
+    public boolean eliminarUsuari(String usuari) {
+        boolean eliminat = GestorPersistenciaUsuari.eliminarUsuari(usuari);
+        if (eliminat) {
+            idUsuari = "Convidat";
+        }
+        return eliminat;
     }
 
     /**

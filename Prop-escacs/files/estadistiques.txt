@@ -1,7 +1,7 @@
 1 usr3 4 610310
-5 Anònim 5 81010
+5 Convidat 5 81010
 4 usr3 5 870110
-3 Anònim 5 527210
+3 Convidat 5 527210
 2 usr1 5 123410
 0 Pepito 3 28808
 5 Pepito 2 20542
@@ -34,4 +34,5 @@ p1 u1 3 5511
 p1 u3 3 5511
 p1 u1 2 55311
 p1 u1 3 8511
-1  2 0
+1 Convidat 2 18518
+1 Convidat 2 11241

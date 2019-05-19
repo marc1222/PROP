@@ -38,7 +38,10 @@ public class Main {
                         }
                         int usrSeleccionat = sc.nextInt();
                         if(usrSeleccionat >= 0 && usrSeleccionat < Users.length) {
-                            sessioIniciada = master.iniciarSessio(Users[usrSeleccionat]);
+                            sc.nextLine();
+                            System.out.println("Contrasenya:");
+                            String contrasenya = sc.nextLine();
+                            sessioIniciada = master.iniciarSessio(Users[usrSeleccionat], contrasenya);
                         }
                         else {
                             System.out.println("domini.Usuari seleccionat no vàlid");
@@ -395,8 +398,11 @@ public class Main {
                     }
                     case 6: {
                         String aux = master.getNom();
-                        if (master.baixa()) {
+                        if (master.eliminarUsuari(aux)) {
                             Estadistica.eliminarStatsUsuari(aux);
+                        }
+                        else {
+                            System.out.println("Usuari no eliminat");
                         }
                         sessioIniciada = false;
                         break;

@@ -108,7 +108,6 @@ public class GestorPersistenciaEstadistica {
             FileOutputStream fileOut = new FileOutputStream(fitxerStats);
             fileOut.write(inputStr.getBytes());
             fileOut.close();
-
         }
         catch (FileNotFoundException e) {
             System.out.println("El fitxer no existeix.");
@@ -144,7 +143,11 @@ public class GestorPersistenciaEstadistica {
             }
             writer.close();
             reader.close();
-            tempFile.renameTo(inputFile);
+
+            // S'elimina el fitxer antic i es renombra el temporal
+            if (inputFile.delete()) {
+                tempFile.renameTo(inputFile);
+            }
         }
         catch (FileNotFoundException e) {
             System.out.println("El fitxer no existeix");

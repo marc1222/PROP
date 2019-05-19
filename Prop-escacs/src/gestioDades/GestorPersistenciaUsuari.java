@@ -126,7 +126,11 @@ public class GestorPersistenciaUsuari {
      * post: usuari ja no es troba en el fitxer
      * @param usuari Nom de l'usuari
      */
-    public static void eliminarUsuari(String usuari) {
+    public static boolean eliminarUsuari(String usuari) {
+        boolean eliminat = false;
+        /*System.out.println("Working Directory = " +
+                System.getProperty("user.dir"));
+                */
         try {
             // Per seguretat (no perdre les dades en cas d'algun imprevist)
             // es crea un fitxer temporal
@@ -137,8 +141,8 @@ public class GestorPersistenciaUsuari {
             BufferedWriter writer = new BufferedWriter(new FileWriter(tempFile));
 
             String currentLine;
-
             while((currentLine = reader.readLine()) != null) {
+                //System.out.println(currentLine);
                 // Separar nom i contrasenya per espai
                 String[] dades = currentLine.split("\\s+");
                 // Quan es troba l'usuari no s'escriu al fitxer temporal
@@ -149,7 +153,16 @@ public class GestorPersistenciaUsuari {
             }
             writer.close();
             reader.close();
-            tempFile.renameTo(inputFile);
+            /*
+            if (tempFile.exists()) {
+                System.out.println("Fichero tmpUsuaris existe");
+            }
+            */
+
+            // S'elimina el fitxer antic i es renombra el temporal
+            if (inputFile.delete()) {
+                eliminat = tempFile.renameTo(inputFile);
+            }
         }
         catch (FileNotFoundException e) {
             System.out.println("El fitxer no existeix");
@@ -160,6 +173,8 @@ public class GestorPersistenciaUsuari {
         catch (Exception e) {
             e.printStackTrace();
         }
+
+        return eliminat;
     }
 
     public static ArrayList<String> totsUsuaris() {
