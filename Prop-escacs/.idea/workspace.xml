@@ -2,12 +2,103 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a9986b48-1538-4a05-b098-ee43f0cbf3cd" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/GestorPersistenciaProblema.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/domini/ControladorDominiJugador.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/domini/ControladorDominiPartida.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/domini/ControladorDominiProblema.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/gui/GUIOption.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/gui/GUITauler.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/gui/RenderColor.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/gui/SeleccioProblema.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/gui/TProblemes.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/gui/Taula.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/gui/Tile.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/files/index.txt" beforeDir="false" afterPath="$PROJECT_DIR$/files/index.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Prop-escacs/Alfil.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Prop-escacs/Cavall.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Prop-escacs/ChessException.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Prop-escacs/DriverAlfil.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Prop-escacs/DriverCavall.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Prop-escacs/DriverEstadistica.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Prop-escacs/DriverNaive.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Prop-escacs/DriverPeca.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Prop-escacs/DriverPeca_Nula.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Prop-escacs/DriverPeo.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Prop-escacs/DriverProblema.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Prop-escacs/DriverRei.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Prop-escacs/DriverReina.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Prop-escacs/DriverTorre.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Prop-escacs/DriverUsuari.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Prop-escacs/Estadistica$Marca.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Prop-escacs/Estadistica.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Prop-escacs/GestorPersistenciaProblema.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Prop-escacs/Jugador.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Prop-escacs/Main.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Prop-escacs/Maquina.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Prop-escacs/Naive.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Prop-escacs/Partida.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Prop-escacs/Peca.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Prop-escacs/Peca_Nula.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Prop-escacs/Peo.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Prop-escacs/Posicion.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Prop-escacs/Problema.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Problema.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Problema.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Prop-escacs/Rei.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Prop-escacs/Reina.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Prop-escacs/RetrybleException.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Prop-escacs/StubMaquina.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Prop-escacs/StubNaive.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Prop-escacs/StubProblema.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Prop-escacs/StubReina.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Prop-escacs/StubUsuari.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Prop-escacs/Taulell.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Prop-escacs/Torre.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Prop-escacs/Usuari.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Prop-escacs/define.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Prop-escacs/input_output.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Prop-escacs/prova.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Prop-escacs/test_in_out.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Alfil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/domini/Alfil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Cavall.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/domini/Cavall.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ChessException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/domini/ChessException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/DriverAlfil.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/DriverCavall.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/DriverEstadistica.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/DriverNaive.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/DriverPeca.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/DriverPeca_Nula.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/DriverPeo.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/DriverProblema.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/DriverRei.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/DriverReina.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/DriverTorre.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/DriverUsuari.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Estadistica.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/domini/Estadistica.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GestorPersistenciaProblema.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/domini/GestorPersistenciaProblema.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Jugador.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/domini/Jugador.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/domini/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Maquina.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/domini/Maquina.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Naive.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/domini/Naive.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Partida.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/domini/Partida.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Peca.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/domini/Peca.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Peca_Nula.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/domini/Peca_Nula.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Peo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/domini/Peo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Posicion.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/domini/Posicion.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Problema.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/domini/Problema.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Rei.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/domini/Rei.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Reina.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/domini/Reina.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/RetrybleException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/domini/RetrybleException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/StubMaquina.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/StubNaive.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/StubProblema.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/StubReina.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/StubUsuari.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Taulell.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/domini/Taulell.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Torre.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/domini/Torre.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Usuari.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/domini/Usuari.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/define.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/domini/define.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/input_output.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/domini/input_output.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/prova.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test_in_out.java" beforeDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -19,30 +110,11 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Reina.java">
+        <entry file="file://$PROJECT_DIR$/src/domini/Problema.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="465">
-              <caret line="31" column="31" selection-start-line="31" selection-start-column="31" selection-end-line="31" selection-end-column="31" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/DriverProblema.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="97">
-              <caret line="152" selection-start-line="152" selection-end-line="152" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/Problema.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="500">
-              <caret line="259" lean-forward="true" selection-start-line="259" selection-end-line="259" />
+            <state relative-caret-position="-5077">
+              <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
               <folding>
-                <element signature="imports" expanded="true" />
                 <element signature="method#Problema#0;class#Problema#0" />
                 <element signature="method#setId#0;class#Problema#0" />
                 <element signature="method#setNumJugades#0;class#Problema#0" />
@@ -54,10 +126,24 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/GestorPersistenciaProblema.java">
+        <entry file="file://$PROJECT_DIR$/src/gui/Taula.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="172">
-              <caret line="150" column="9" lean-forward="true" selection-start-line="150" selection-start-column="9" selection-end-line="150" selection-end-column="9" />
+            <state relative-caret-position="266">
+              <caret line="32" column="42" selection-start-line="32" selection-start-column="31" selection-end-line="32" selection-end-column="42" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#1594#1595#0" expanded="true" />
+                <element signature="e#1640#1641#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/gui/Tile.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="255">
+              <caret line="17" column="13" selection-start-line="17" selection-start-column="13" selection-end-line="17" selection-end-column="13" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -66,49 +152,101 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Taulell.java">
+        <entry file="file://$PROJECT_DIR$/src/domini/Main.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-4025">
+              <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/gui/SeleccioProblema.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="132">
+              <caret line="17" column="10" selection-start-line="17" selection-start-column="10" selection-end-line="17" selection-end-column="10" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#642#643#0" expanded="true" />
+                <element signature="e#688#689#0" expanded="true" />
+                <element signature="e#1081#1082#0" expanded="true" />
+                <element signature="e#1124#1125#0" expanded="true" />
+                <element signature="e#1005#1006#0" expanded="true" />
+                <element signature="e#1055#1056#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/gui/GUITauler.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="135">
-              <caret line="712" column="46" lean-forward="true" selection-start-line="712" selection-start-column="46" selection-end-line="712" selection-end-column="46" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Main.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="30">
-              <caret line="3" column="13" selection-start-line="3" selection-start-column="13" selection-end-line="3" selection-end-column="13" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Partida.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="60">
-              <caret line="4" column="13" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/StubReina.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="315">
-              <caret line="23" column="5" selection-start-line="23" selection-start-column="5" selection-end-line="23" selection-end-column="5" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Peca.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="555">
-              <caret line="42" column="26" selection-start-line="41" selection-start-column="25" selection-end-line="42" selection-end-column="26" />
+              <caret line="9" column="13" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
               <folding>
-                <element signature="method#setId#0;class#Peca#0" />
-                <element signature="method#setColor#0;class#Peca#0" />
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/gui/TProblemes.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1155">
+              <caret line="114" column="20" selection-start-line="114" selection-start-column="20" selection-end-line="114" selection-end-column="20" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#2571#2572#0" expanded="true" />
+                <element signature="e#2612#2613#0" expanded="true" />
+                <element signature="e#2664#2665#0" expanded="true" />
+                <element signature="e#2701#2702#0" expanded="true" />
+                <element signature="e#2763#2764#0" expanded="true" />
+                <element signature="e#2804#2805#0" expanded="true" />
+                <element signature="e#2856#2857#0" expanded="true" />
+                <element signature="e#2902#2903#0" expanded="true" />
+                <element signature="e#2940#2941#0" expanded="true" />
+                <element signature="e#2982#2983#0" expanded="true" />
+                <element signature="e#3065#3066#0" expanded="true" />
+                <element signature="e#3094#3095#0" expanded="true" />
+                <element signature="e#3851#3852#0" expanded="true" />
+                <element signature="e#3901#3902#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/gui/RenderColor.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="87">
+              <caret line="17" column="24" selection-start-line="17" selection-start-column="24" selection-end-line="17" selection-end-column="24" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/domini/GestorPersistenciaProblema.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-1377">
+              <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/gui/GUIOption.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="75">
+              <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
+              <folding>
+                <element signature="imports" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -150,6 +288,7 @@
       <find>llegirId</find>
       <find>guardarId</find>
       <find>getNextId</find>
+      <find>ColorRenderer</find>
     </findStrings>
     <replaceStrings>
       <replace>fin.x</replace>
@@ -163,6 +302,7 @@
       <replace>pos.y</replace>
       <replace>.x</replace>
       <replace>.y</replace>
+      <replace>RenderColor</replace>
     </replaceStrings>
   </component>
   <component name="Git.Settings">
@@ -194,6 +334,19 @@
         <option value="$PROJECT_DIR$/src/DriverProblema.java" />
         <option value="$PROJECT_DIR$/src/GestorPersistenciaProblema.java" />
         <option value="$PROJECT_DIR$/src/Problema.java" />
+        <option value="$PROJECT_DIR$/src/GUIOption.java" />
+        <option value="$PROJECT_DIR$/src/GUITauler.java" />
+        <option value="$PROJECT_DIR$/src/gui/Taula.java" />
+        <option value="$PROJECT_DIR$/src/gui/Tile.java" />
+        <option value="$PROJECT_DIR$/src/domini/Posicion.java" />
+        <option value="$PROJECT_DIR$/src/domini/define.java" />
+        <option value="$PROJECT_DIR$/src/domini/ControladorDominiPartida.java" />
+        <option value="$PROJECT_DIR$/src/domini/ControladorDominiJugador.java" />
+        <option value="$PROJECT_DIR$/src/domini/ControladorDominiProblema.java" />
+        <option value="$PROJECT_DIR$/src/gui/RendererColor.java" />
+        <option value="$PROJECT_DIR$/src/gui/RenderColor.java" />
+        <option value="$PROJECT_DIR$/src/gui/TProblemes.java" />
+        <option value="$PROJECT_DIR$/src/gui/SeleccioProblema.java" />
       </list>
     </option>
   </component>
@@ -211,7 +364,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -222,13 +375,24 @@
             <path>
               <item name="Prop-escacs" type="b2602c69:ProjectViewProjectNode" />
               <item name="Prop-escacs" type="462c0819:PsiDirectoryNode" />
+              <item name="files" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Prop-escacs" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Prop-escacs" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Prop-escacs" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Prop-escacs" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="gui" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -256,7 +420,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Application.DriverProblema">
+  <component name="RunManager" selected="Application.SeleccioProblema">
     <configuration name="DriverPeca" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="DriverPeca" />
       <module name="Prop-escacs" />
@@ -272,33 +436,45 @@
       </method>
     </configuration>
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="Main" />
+      <option name="MAIN_CLASS_NAME" value="domini.Main" />
       <module name="Prop-escacs" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="main" />
+    <configuration name="SeleccioProblema" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="gui.SeleccioProblema" />
       <module name="Prop-escacs" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="gui.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="test_in_out" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="test_in_out" />
+    <configuration name="TProblemes" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="gui.TProblemes" />
       <module name="Prop-escacs" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="gui.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.DriverProblema" />
+        <item itemvalue="Application.SeleccioProblema" />
+        <item itemvalue="Application.TProblemes" />
         <item itemvalue="Application.Main" />
+        <item itemvalue="Application.DriverProblema" />
         <item itemvalue="Application.DriverPeca" />
-        <item itemvalue="Application.main" />
-        <item itemvalue="Application.test_in_out" />
       </list>
     </recent_temporary>
   </component>
@@ -316,10 +492,9 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="64" y="-11" width="1303" height="780" extended-state="6" />
-    <editor active="true" />
+    <frame x="65" y="-4" width="1301" height="772" extended-state="6" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.17290837" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.17529881" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Learn" order="3" weight="0.32988048" />
@@ -328,7 +503,7 @@
       <window_info id="Image Layers" order="6" />
       <window_info id="Capture Tool" order="7" />
       <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.32868218" />
       <window_info anchor="bottom" id="Run" order="2" weight="0.4604651" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
@@ -339,23 +514,20 @@
       <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.5003984" side_tool="true" weight="0.3131783" />
       <window_info anchor="bottom" id="Messages" order="10" sideWeight="0.4996016" weight="0.32868218" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
-      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
-      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.24940239" />
-      <window_info anchor="right" id="Palette" order="3" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="1" weight="0.24940239" />
+      <window_info anchor="right" id="Palette" order="2" />
+      <window_info anchor="right" id="Ant Build" order="3" weight="0.24940239" />
       <window_info anchor="right" id="Maven" order="4" />
       <window_info anchor="right" id="Palette&#9;" order="5" />
       <window_info anchor="right" id="Capture Analysis" order="6" />
       <window_info anchor="right" id="Theme Preview" order="7" />
     </layout>
   </component>
+  <component name="antWorkspaceConfiguration">
+    <option name="IS_AUTOSCROLL_TO_SOURCE" value="false" />
+    <option name="FILTER_TARGETS" value="false" />
+  </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/test_in_out.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="1" column="24" selection-start-line="1" selection-start-column="24" selection-end-line="1" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/out/production/Prop-escacs/Alfil.class">
       <provider selected="true" editor-type-id="text-editor">
         <state>
@@ -365,42 +537,21 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/ChessException.java">
+    <entry file="file://$PROJECT_DIR$/src/domini/ChessException.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="105">
           <caret line="13" column="5" selection-start-line="13" selection-start-column="5" selection-end-line="13" selection-end-column="5" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Posicion.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="2" column="17" selection-start-line="2" selection-start-column="17" selection-end-line="2" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/input_output.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="560">
-          <caret line="61" column="1" lean-forward="true" selection-start-line="61" selection-start-column="1" selection-end-line="61" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/define.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="15" column="34" selection-start-line="15" selection-start-column="34" selection-end-line="15" selection-end-column="34" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Rei.java">
+    <entry file="file://$PROJECT_DIR$/src/domini/Rei.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="315">
           <caret line="21" column="24" selection-start-line="21" selection-start-column="24" selection-end-line="21" selection-end-column="24" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Peca_Nula.java">
+    <entry file="file://$PROJECT_DIR$/src/domini/Peca_Nula.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="105">
           <caret line="7" column="5" selection-start-line="7" selection-start-column="5" selection-end-line="7" selection-end-column="5" />
@@ -411,28 +562,14 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Alfil.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="11" column="7" selection-start-line="11" selection-start-column="7" selection-end-line="11" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Peo.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="390">
-          <caret line="26" selection-start-line="26" selection-end-line="26" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Cavall.java">
+    <entry file="file://$PROJECT_DIR$/src/domini/Cavall.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="315">
           <caret line="21" column="5" selection-start-line="21" selection-start-column="5" selection-end-line="21" selection-end-column="5" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Torre.java">
+    <entry file="file://$PROJECT_DIR$/src/domini/Torre.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="75">
           <caret line="5" column="25" selection-start-line="5" selection-start-column="25" selection-end-line="5" selection-end-column="25" />
@@ -448,38 +585,34 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/test.java" />
     <entry file="file://$PROJECT_DIR$/src/test.form" />
-    <entry file="file://$PROJECT_DIR$/src/Reina.java">
+    <entry file="file://$PROJECT_DIR$/src/DriverProblema.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="465">
-          <caret line="31" column="31" selection-start-line="31" selection-start-column="31" selection-end-line="31" selection-end-column="31" />
+        <state relative-caret-position="2280">
+          <caret line="152" selection-start-line="152" selection-end-line="152" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Main.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="3" column="13" selection-start-line="3" selection-start-column="13" selection-end-line="3" selection-end-column="13" />
-        </state>
-      </provider>
+    <entry file="file://$PROJECT_DIR$/files/problemes.txt">
+      <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Partida.java">
+    <entry file="file://$PROJECT_DIR$/src/domini/Taulell.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="4" column="13" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
+        <state relative-caret-position="10545">
+          <caret line="714" column="46" selection-start-line="714" selection-start-column="46" selection-end-line="714" selection-end-column="46" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/StubReina.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="315">
-          <caret line="23" column="5" selection-start-line="23" selection-start-column="5" selection-end-line="23" selection-end-column="5" />
+          <caret line="26" column="5" selection-start-line="26" selection-start-column="5" selection-end-line="26" selection-end-column="5" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Peca.java">
+    <entry file="file://$PROJECT_DIR$/src/domini/Peca.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="555">
-          <caret line="42" column="26" selection-start-line="41" selection-start-column="25" selection-end-line="42" selection-end-column="26" />
+          <caret line="44" column="26" selection-start-line="43" selection-start-column="25" selection-end-line="44" selection-end-column="26" />
           <folding>
             <element signature="method#setId#0;class#Peca#0" />
             <element signature="method#setColor#0;class#Peca#0" />
@@ -487,41 +620,273 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/GestorPersistenciaProblema.java">
+    <entry file="file://$PROJECT_DIR$/src/domini/Reina.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="172">
-          <caret line="150" column="9" lean-forward="true" selection-start-line="150" selection-start-column="9" selection-end-line="150" selection-end-column="9" />
+        <state relative-caret-position="60">
+          <caret line="4" column="13" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/domini/input_output.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/domini/Partida.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="6" column="13" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/domini/Alfil.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-8">
+          <caret line="4" column="13" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/domini/Estadistica.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-8">
+          <caret line="10" column="13" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/domini/Peo.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-8">
+          <caret line="4" column="13" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/StubMaquina.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="30">
+          <caret line="4" column="13" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/StubNaive.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="30">
+          <caret line="3" column="6" selection-start-line="3" selection-start-column="6" selection-end-line="3" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/StubProblema.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="30">
+          <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/DriverCavall.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="30">
+          <caret line="6" column="13" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/prova.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="13" selection-start-column="13" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test_in_out.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="30">
+          <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/DriverAlfil.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="480">
+          <caret line="36" column="30" lean-forward="true" selection-start-line="36" selection-start-column="30" selection-end-line="36" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/domini/define.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="480">
+          <caret line="32" selection-start-line="32" selection-end-line="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/domini/ControladorDominiPartida.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="10" column="32" lean-forward="true" selection-start-line="10" selection-start-column="32" selection-end-line="10" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/domini/ControladorDominiJugador.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="435">
+          <caret line="29" lean-forward="true" selection-start-line="29" selection-end-line="29" />
+          <folding>
+            <element signature="e#188#189#0" expanded="true" />
+            <element signature="e#221#222#0" expanded="true" />
+            <element signature="e#247#248#0" expanded="true" />
+            <element signature="e#280#281#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/domini/ControladorDominiProblema.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="18" lean-forward="true" selection-start-line="18" selection-end-line="18" />
+          <folding>
+            <element signature="e#167#168#0" expanded="true" />
+            <element signature="e#215#216#0" expanded="true" />
+            <element signature="e#245#246#0" expanded="true" />
+            <element signature="e#289#290#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/domini/Posicion.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="195">
+          <caret line="13" column="1" selection-start-line="13" selection-start-column="1" selection-end-line="13" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/domini/Problema.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-5077">
+          <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
+          <folding>
+            <element signature="method#Problema#0;class#Problema#0" />
+            <element signature="method#setId#0;class#Problema#0" />
+            <element signature="method#setNumJugades#0;class#Problema#0" />
+            <element signature="method#setPrimer#0;class#Problema#0" />
+            <element signature="method#setPosIni#0;class#Problema#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/domini/GestorPersistenciaProblema.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1377">
+          <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/DriverProblema.java">
+    <entry file="file://$PROJECT_DIR$/src/gui/GUIOption.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="97">
-          <caret line="152" selection-start-line="152" selection-end-line="152" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Taulell.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="712" column="46" lean-forward="true" selection-start-line="712" selection-start-column="46" selection-end-line="712" selection-end-column="46" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Problema.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="500">
-          <caret line="259" lean-forward="true" selection-start-line="259" selection-end-line="259" />
+        <state relative-caret-position="75">
+          <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="method#Problema#0;class#Problema#0" />
-            <element signature="method#setId#0;class#Problema#0" />
-            <element signature="method#setNumJugades#0;class#Problema#0" />
-            <element signature="method#setPrimer#0;class#Problema#0" />
-            <element signature="method#setPosIni#0;class#Problema#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/gui/RendererColor.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="177">
+          <caret line="16" column="24" selection-start-line="16" selection-start-column="11" selection-end-line="16" selection-end-column="24" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/gui/RenderColor.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="87">
+          <caret line="17" column="24" selection-start-line="17" selection-start-column="24" selection-end-line="17" selection-end-column="24" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/gui/GUITauler.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="9" column="13" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/gui/Tile.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="17" column="13" selection-start-line="17" selection-start-column="13" selection-end-line="17" selection-end-column="13" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/gui/Taula.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="266">
+          <caret line="32" column="42" selection-start-line="32" selection-start-column="31" selection-end-line="32" selection-end-column="42" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1594#1595#0" expanded="true" />
+            <element signature="e#1640#1641#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/gui/TProblemes.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1155">
+          <caret line="114" column="20" selection-start-line="114" selection-start-column="20" selection-end-line="114" selection-end-column="20" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#2571#2572#0" expanded="true" />
+            <element signature="e#2612#2613#0" expanded="true" />
+            <element signature="e#2664#2665#0" expanded="true" />
+            <element signature="e#2701#2702#0" expanded="true" />
+            <element signature="e#2763#2764#0" expanded="true" />
+            <element signature="e#2804#2805#0" expanded="true" />
+            <element signature="e#2856#2857#0" expanded="true" />
+            <element signature="e#2902#2903#0" expanded="true" />
+            <element signature="e#2940#2941#0" expanded="true" />
+            <element signature="e#2982#2983#0" expanded="true" />
+            <element signature="e#3065#3066#0" expanded="true" />
+            <element signature="e#3094#3095#0" expanded="true" />
+            <element signature="e#3851#3852#0" expanded="true" />
+            <element signature="e#3901#3902#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/domini/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-4025">
+          <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/gui/SeleccioProblema.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="132">
+          <caret line="17" column="10" selection-start-line="17" selection-start-column="10" selection-end-line="17" selection-end-column="10" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#642#643#0" expanded="true" />
+            <element signature="e#688#689#0" expanded="true" />
+            <element signature="e#1081#1082#0" expanded="true" />
+            <element signature="e#1124#1125#0" expanded="true" />
+            <element signature="e#1005#1006#0" expanded="true" />
+            <element signature="e#1055#1056#0" expanded="true" />
           </folding>
         </state>
       </provider>
