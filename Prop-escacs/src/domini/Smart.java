@@ -1,4 +1,8 @@
 package domini;
+
+import java.util.*;
+import java.util.stream.Collectors;
+
 /**
  * Classe Smart
  * @author Marian Dumitru Danci
@@ -69,8 +73,43 @@ public class Smart extends Maquina {
                 // Tractar peca propia
                 if (super.getColorPeca(ini) == colorJugador) {
                     Posicion[] tots =  super.totsMovimentsPeca(ini);
-                    // Fer tots els moviments que pot fer la peca
+
+
+
+                    ArrayList<ValorPosicion> movimentsOrdenats = new ArrayList<>();
                     for (Posicion moviment : tots) {
+                        Posicion aux = new Posicion(i, j);
+                        //int valorMoviment = super.avaluarMoviment(aux, moviment);
+
+                        String auxPeca = define.PECA_NULA;
+                        if(super.getColorPeca(moviment) != 2) {
+                            auxPeca = super.getTipusPeca(moviment);
+                        }
+                        super.mourePeca(ini, moviment, colorJugador);
+                        int valorMoviment = super.evaluar(colorJugador);
+                        super.desferMoviment(ini, moviment, auxPeca, colorJugador);
+                        System.out.println("    " + moviment.x + "-" + moviment.y + " :" + valorMoviment);
+                        movimentsOrdenats.add(new ValorPosicion(moviment, valorMoviment));
+                    }
+                    movimentsOrdenats.sort(Comparator.comparing(ValorPosicion::getValor).reversed());
+
+                    System.out.println("\n\n\n");
+                    for (Posicion moviment : tots) {
+                        System.out.println(moviment.x + "-" + moviment.y);
+                    }
+                    System.out.println("*********************************************************");
+                    for (ValorPosicion x : movimentsOrdenats) {
+                        Posicion moviment = x.getPos();
+                        System.out.println(moviment.x + "-" + moviment.y);
+                    }
+
+
+
+
+
+                    // Fer tots els moviments que pot fer la peca
+                    for (ValorPosicion x : movimentsOrdenats) {
+                        Posicion moviment = x.getPos();
                         // Si el moviment es a una casella amb una peca de
                         // l'oponent, es guarda el tipus de la peca
                         String auxPeca = define.PECA_NULA;
@@ -192,5 +231,30 @@ public class Smart extends Maquina {
         }
         if (maximitzar) return max;
         return  min;
+    }
+
+
+    /*
+    private int avaluarMoviment(Posicion origen, Posicion desti) {
+        if()
+    }
+    */
+
+    private static class ValorPosicion {
+        private Posicion pos;
+        private int valor;
+
+        public ValorPosicion(Posicion pos, int valor) {
+            this.pos = pos;
+            this.valor = valor;
+        }
+
+        public Posicion getPos() {
+            return pos;
+        }
+
+        public int getValor() {
+            return valor;
+        }
     }
 }

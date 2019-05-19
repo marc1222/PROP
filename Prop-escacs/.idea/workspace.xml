@@ -3,18 +3,12 @@
   <component name="ChangeListManager">
     <list default="true" id="516eb750-89ac-4e39-ac71-d9c31a183669" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/files/estadistiques.txt" beforeDir="false" afterPath="$PROJECT_DIR$/files/estadistiques.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/files/index.txt" beforeDir="false" afterPath="$PROJECT_DIR$/files/index.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/files/usuaris.txt" beforeDir="false" afterPath="$PROJECT_DIR$/files/usuaris.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Prop-escacs/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Prop-escacs/Main.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Prop-escacs/domini/Estadistica$Marca.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Prop-escacs/domini/Estadistica$Marca.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Prop-escacs/domini/Estadistica.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Prop-escacs/domini/Estadistica.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Prop-escacs/domini/Usuari.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Prop-escacs/domini/Usuari.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Prop-escacs/gestioDades/CtrlGD.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/domini/Usuari.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/domini/Usuari.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/gestioDades/GestorPersistenciaEstadistica.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gestioDades/GestorPersistenciaEstadistica.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/gestioDades/GestorPersistenciaUsuari.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gestioDades/GestorPersistenciaUsuari.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/domini/Estadistica.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/domini/Estadistica.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/domini/Smart.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/domini/Smart.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/presentacio/CtrlPresentacio.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/presentacio/CtrlPresentacio.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/presentacio/VistaEstadistica.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/presentacio/VistaEstadistica.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/presentacio/VistaInici.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/presentacio/VistaInici.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -28,8 +22,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/domini/Estadistica.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="59">
-              <caret line="71" column="59" selection-start-line="71" selection-start-column="59" selection-end-line="71" selection-end-column="59" />
+            <state relative-caret-position="441">
+              <caret line="150" column="104" lean-forward="true" selection-start-line="144" selection-start-column="8" selection-end-line="150" selection-end-column="104" />
               <folding>
                 <element signature="docComment;class#Estadistica#0" />
                 <element signature="docComment;method#guardarTemps#0;class#Estadistica#0" />
@@ -39,11 +33,11 @@
                 <element signature="docComment;method#estadistiquesUsuari#0;class#Estadistica#0" />
                 <element signature="method#estadistiquesUsuari#0;class#Estadistica#0" />
                 <element signature="docComment;method#eliminarStatsUsuari#0;class#Estadistica#0" />
+                <element signature="e#2736#2737#0" expanded="true" />
                 <element signature="e#2809#2810#0" expanded="true" />
                 <element signature="docComment;method#eliminarStatsProblema#0;class#Estadistica#0" />
                 <element signature="method#eliminarStatsProblema#0;class#Estadistica#0" />
                 <element signature="docComment;method#estadistiquesOrdenades#0;class#Estadistica#0" />
-                <element signature="method#estadistiquesOrdenades#0;class#Estadistica#0" />
                 <element signature="docComment;method#milisATemps#0;class#Estadistica#0" />
                 <element signature="method#milisATemps#0;class#Estadistica#0" />
                 <element signature="docComment;class#Marca#0;class#Estadistica#0" />
@@ -54,88 +48,27 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/gestioDades/GestorPersistenciaEstadistica.java">
+        <entry file="file://$PROJECT_DIR$/src/domini/Smart.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1322">
-              <caret line="148" column="16" selection-start-line="148" selection-start-column="16" selection-end-line="148" selection-end-column="16" />
+            <state relative-caret-position="143">
+              <caret line="93" column="99" selection-start-line="93" selection-start-column="99" selection-end-line="93" selection-end-column="99" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="docComment;method#getFitxerStats#0;class#GestorPersistenciaEstadistica#0" />
-                <element signature="docComment;method#setFitxerStats#0;class#GestorPersistenciaEstadistica#0" />
-                <element signature="docComment;method#mostrarFitxerStats#0;class#GestorPersistenciaEstadistica#0" />
-                <element signature="method#mostrarFitxerStats#0;class#GestorPersistenciaEstadistica#0" />
-                <element signature="method#guardarTemps#0;class#GestorPersistenciaEstadistica#0" />
-                <element signature="method#buscar#0;class#GestorPersistenciaEstadistica#0" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/domini/Usuari.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="140">
-              <caret line="145" column="24" lean-forward="true" selection-start-line="145" selection-start-column="24" selection-end-line="145" selection-end-column="24" />
-              <folding>
-                <element signature="docComment;class#Usuari#0" />
-                <element signature="docComment;method#Usuari#0;class#Usuari#0" />
-                <element signature="method#Usuari#0;class#Usuari#0" />
-                <element signature="docComment;method#Usuari#1;class#Usuari#0" />
-                <element signature="method#Usuari#1;class#Usuari#0" />
-                <element signature="docComment;method#getTipus#0;class#Usuari#0" />
-                <element signature="docComment;method#getNom#0;class#Usuari#0" />
-                <element signature="docComment;method#setNom#0;class#Usuari#0" />
-                <element signature="docComment;method#getColor#0;class#Usuari#0" />
-                <element signature="docComment;method#setColor#0;class#Usuari#0" />
-                <element signature="docComment;method#iniciarSessio#0;class#Usuari#0" />
-                <element signature="method#iniciarSessio#0;class#Usuari#0" />
-                <element signature="docComment;method#registrar#0;class#Usuari#0" />
-                <element signature="method#registrar#0;class#Usuari#0" />
-                <element signature="docComment;method#eliminarUsuari#0;class#Usuari#0" />
-                <element signature="docComment;method#totsUsuaris#0;class#Usuari#0" />
-                <element signature="method#totsUsuaris#0;class#Usuari#0" />
-                <element signature="docComment;method#moviment#0;class#Usuari#0" />
-                <element signature="method#moviment#0;class#Usuari#0" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/gestioDades/GestorPersistenciaUsuari.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="167">
-              <caret line="161" column="12" lean-forward="true" selection-start-line="161" selection-start-column="12" selection-end-line="164" selection-end-column="13" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="docComment;method#getFitxerUsuaris#0;class#GestorPersistenciaUsuari#0" />
-                <element signature="docComment;method#setFitxerUsuaris#0;class#GestorPersistenciaUsuari#0" />
-                <element signature="method#registrar#0;class#GestorPersistenciaUsuari#0" />
-                <element signature="method#buscarUsuari#0;class#GestorPersistenciaUsuari#0" />
-                <element signature="docComment;method#eliminarUsuari#0;class#GestorPersistenciaUsuari#0" />
-                <element signature="method#totsUsuaris#0;class#GestorPersistenciaUsuari#0" />
-                <element signature="method#mostrarFitxerUsuaris#0;class#GestorPersistenciaUsuari#0" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/files/estadistiques.txt">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-387">
-              <caret line="3" column="10" selection-start-line="3" selection-start-column="10" selection-end-line="3" selection-end-column="10" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Main.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="122">
-              <caret line="403" column="30" lean-forward="true" selection-start-line="403" selection-start-column="30" selection-end-line="403" selection-end-column="30" />
-              <folding>
-                <element signature="imports" expanded="true" />
+                <element signature="method#Smart#0;class#Smart#0" />
+                <element signature="docComment;method#getTipus#0;class#Smart#0" />
+                <element signature="docComment;method#setTauler#0;class#Smart#0" />
+                <element signature="docComment;method#setProfunditat#0;class#Smart#0" />
+                <element signature="method#setProfunditat#0;class#Smart#0" />
+                <element signature="docComment;method#actualitzarProfunditat#0;class#Smart#0" />
+                <element signature="method#actualitzarProfunditat#0;class#Smart#0" />
+                <element signature="docComment;method#moviment#0;class#Smart#0" />
+                <element signature="docComment;method#minimax#0;class#Smart#0" />
+                <element signature="method#minimax#0;class#Smart#0" />
+                <element signature="class#OrdrePosicions#0;class#Smart#0" />
+                <element signature="e#7697#7698#0" expanded="true" />
+                <element signature="e#7731#7732#0" expanded="true" />
+                <element signature="e#7772#7773#0" expanded="true" />
+                <element signature="e#7800#7801#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -194,10 +127,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/Test/TestingEstadistica.java" />
-        <option value="$PROJECT_DIR$/src/Test/DriverEstadistica.java" />
-        <option value="$PROJECT_DIR$/src/DriverEstadistica.java" />
-        <option value="$PROJECT_DIR$/files/testEstadistiques.txt" />
         <option value="$PROJECT_DIR$/src/Test/StubEstadistica.java" />
         <option value="$PROJECT_DIR$/src/StubEstadistica.java" />
         <option value="$PROJECT_DIR$/src/Test/StubJugador.java" />
@@ -232,19 +161,23 @@
         <option value="$PROJECT_DIR$/src/domini/Problema.java" />
         <option value="$PROJECT_DIR$/src/domini/Partida.java" />
         <option value="$PROJECT_DIR$/src/Main2.java" />
-        <option value="$PROJECT_DIR$/src/presentacio/CtrlPresentacio.java" />
-        <option value="$PROJECT_DIR$/src/presentacio/VistaEstadistica.java" />
-        <option value="$PROJECT_DIR$/src/domini/Smart.java" />
         <option value="$PROJECT_DIR$/src/domini/Naive.java" />
-        <option value="$PROJECT_DIR$/src/presentacio/VistaInici.java" />
         <option value="$PROJECT_DIR$/src/presentacio/VistaX.form" />
         <option value="$PROJECT_DIR$/src/presentacio/VistaBaixa.java" />
-        <option value="$PROJECT_DIR$/src/domini/Estadistica.java" />
         <option value="$PROJECT_DIR$/src/Main.java" />
         <option value="$PROJECT_DIR$/src/domini/Usuari.java" />
         <option value="$PROJECT_DIR$/files/estadistiques.txt" />
         <option value="$PROJECT_DIR$/src/gestioDades/GestorPersistenciaUsuari.java" />
         <option value="$PROJECT_DIR$/src/gestioDades/GestorPersistenciaEstadistica.java" />
+        <option value="$PROJECT_DIR$/src/presentacio/VistaInici.java" />
+        <option value="$PROJECT_DIR$/src/presentacio/VistaRegistrar.java" />
+        <option value="$PROJECT_DIR$/src/presentacio/VistaEstadistica2.java" />
+        <option value="$PROJECT_DIR$/src/presentacio/VistaEstadisticaUsuari.java" />
+        <option value="$PROJECT_DIR$/src/presentacio/VistaEstadisticaProblema.java" />
+        <option value="$PROJECT_DIR$/src/presentacio/CtrlPresentacio.java" />
+        <option value="$PROJECT_DIR$/src/presentacio/VistaEstadistica.java" />
+        <option value="$PROJECT_DIR$/src/domini/Estadistica.java" />
+        <option value="$PROJECT_DIR$/src/domini/Smart.java" />
       </list>
     </option>
   </component>
@@ -255,17 +188,15 @@
     </treeState>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-8" />
-    <option name="y" value="-8" />
-    <option name="width" value="1382" />
-    <option name="height" value="754" />
+    <option name="x" value="529" />
+    <option name="width" value="844" />
+    <option name="height" value="745" />
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -289,22 +220,11 @@
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="domini" type="462c0819:PsiDirectoryNode" />
             </path>
-            <path>
-              <item name="Prop-escacs" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Prop-escacs" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="gestioDades" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Prop-escacs" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Prop-escacs" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="presentacio" type="462c0819:PsiDirectoryNode" />
-            </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
       <pane id="PackagesPane" />
     </panes>
   </component>
@@ -313,7 +233,7 @@
     <property name="Repository.Attach.Annotations" value="false" />
     <property name="Repository.Attach.JavaDocs" value="false" />
     <property name="Repository.Attach.Sources" value="false" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1558276875521" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1558307418170" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit4" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit4" value="" />
     <property name="create.test.in.the.same.root" value="true" />
@@ -448,7 +368,7 @@
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="754" extended-state="6" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.48741418" visible="true" weight="0.19894099" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.48741418" visible="true" weight="0.20196672" />
       <window_info id="Structure" order="1" sideWeight="0.51369864" side_tool="true" weight="0.33055976" />
       <window_info id="Designer" order="2" />
       <window_info id="Learn" order="3" />
@@ -458,15 +378,15 @@
       <window_info id="Capture Tool" order="7" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.25764894" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.16747183" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.32850242" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.39869282" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32900432" />
       <window_info anchor="bottom" id="Version Control" order="7" weight="0.32850242" />
       <window_info anchor="bottom" id="Terminal" order="8" />
       <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
-      <window_info anchor="bottom" id="Messages" order="10" weight="0.29307568" />
+      <window_info anchor="bottom" id="Messages" order="10" weight="0.29146537" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -477,7 +397,7 @@
       <window_info anchor="right" id="Maven" order="7" weight="0.023449318" />
     </layout>
     <layout-to-restore>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.48741418" visible="true" weight="0.17927383" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.48741418" visible="true" weight="0.20196672" />
       <window_info id="Structure" order="1" sideWeight="0.51369864" side_tool="true" weight="0.33055976" />
       <window_info id="Designer" order="2" />
       <window_info id="Learn" order="3" />
@@ -487,15 +407,15 @@
       <window_info id="Capture Tool" order="7" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.25764894" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.30273753" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.048309177" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.39869282" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32900432" />
       <window_info anchor="bottom" id="Version Control" order="7" weight="0.32850242" />
       <window_info anchor="bottom" id="Terminal" order="8" />
       <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
-      <window_info anchor="bottom" id="Messages" order="10" weight="0.43961352" />
+      <window_info anchor="bottom" id="Messages" order="10" weight="0.29146537" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -659,16 +579,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/domini/Taulell.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="138">
-          <caret line="676" column="72" selection-start-line="676" selection-start-column="58" selection-end-line="676" selection-end-column="72" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/domini/Maquina.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="105">
@@ -683,53 +593,8 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/domini/Smart.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="21">
-          <caret line="39" column="28" selection-start-line="39" selection-start-column="28" selection-end-line="39" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/presentacio/CtrlPresentacio.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="189">
-          <caret line="9" column="53" selection-start-line="9" selection-start-column="53" selection-end-line="9" selection-end-column="53" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/presentacio/VistaInici.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1680">
-          <caret line="82" column="33" selection-start-line="82" selection-start-column="33" selection-end-line="82" selection-end-column="33" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Main2.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="84">
-          <caret line="6" column="1" selection-start-line="6" selection-start-column="1" selection-end-line="6" selection-end-column="1" />
-          <folding>
-            <element signature="e#87#88#0" expanded="true" />
-            <element signature="e#145#146#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/presentacio/VistaX.form" />
     <entry file="file://$PROJECT_DIR$/src/presentacio/VistaX.java" />
-    <entry file="file://$PROJECT_DIR$/src/presentacio/VistaEstadistica.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="21">
-          <caret line="32" column="35" selection-start-line="32" selection-start-column="35" selection-end-line="32" selection-end-column="35" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/gestioDades/CtrlGD.java" />
     <entry file="file://$PROJECT_DIR$/src/presentacio/VistaBaixa.java">
       <provider selected="true" editor-type-id="text-editor">
@@ -738,46 +603,42 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/domini/Estadistica.java">
+    <entry file="file://$PROJECT_DIR$/files/tmpUsuaris.txt" />
+    <entry file="file://$PROJECT_DIR$/files/usuaris.txt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="59">
-          <caret line="71" column="59" selection-start-line="71" selection-start-column="59" selection-end-line="71" selection-end-column="59" />
-          <folding>
-            <element signature="docComment;class#Estadistica#0" />
-            <element signature="docComment;method#guardarTemps#0;class#Estadistica#0" />
-            <element signature="method#guardarTemps#0;class#Estadistica#0" />
-            <element signature="docComment;method#estadistiquesProblema#0;class#Estadistica#0" />
-            <element signature="method#estadistiquesProblema#0;class#Estadistica#0" />
-            <element signature="docComment;method#estadistiquesUsuari#0;class#Estadistica#0" />
-            <element signature="method#estadistiquesUsuari#0;class#Estadistica#0" />
-            <element signature="docComment;method#eliminarStatsUsuari#0;class#Estadistica#0" />
-            <element signature="e#2809#2810#0" expanded="true" />
-            <element signature="docComment;method#eliminarStatsProblema#0;class#Estadistica#0" />
-            <element signature="method#eliminarStatsProblema#0;class#Estadistica#0" />
-            <element signature="docComment;method#estadistiquesOrdenades#0;class#Estadistica#0" />
-            <element signature="method#estadistiquesOrdenades#0;class#Estadistica#0" />
-            <element signature="docComment;method#milisATemps#0;class#Estadistica#0" />
-            <element signature="method#milisATemps#0;class#Estadistica#0" />
-            <element signature="docComment;class#Marca#0;class#Estadistica#0" />
-            <element signature="class#Marca#0;class#Estadistica#0" />
-          </folding>
+        <state>
+          <caret column="6" lean-forward="true" selection-start-column="6" selection-end-column="6" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Main.java">
+    <entry file="file://$PROJECT_DIR$/files/estadistiques.txt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="122">
-          <caret line="403" column="30" lean-forward="true" selection-start-line="403" selection-start-column="30" selection-end-line="403" selection-end-column="30" />
+        <state relative-caret-position="187">
+          <caret line="38" lean-forward="true" selection-start-line="38" selection-end-line="38" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/gestioDades/GestorPersistenciaUsuari.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="167">
+          <caret line="161" column="12" selection-start-line="161" selection-start-column="12" selection-end-line="164" selection-end-column="13" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="docComment;method#getFitxerUsuaris#0;class#GestorPersistenciaUsuari#0" />
+            <element signature="docComment;method#setFitxerUsuaris#0;class#GestorPersistenciaUsuari#0" />
+            <element signature="method#registrar#0;class#GestorPersistenciaUsuari#0" />
+            <element signature="method#buscarUsuari#0;class#GestorPersistenciaUsuari#0" />
+            <element signature="docComment;method#eliminarUsuari#0;class#GestorPersistenciaUsuari#0" />
+            <element signature="method#totsUsuaris#0;class#GestorPersistenciaUsuari#0" />
+            <element signature="method#mostrarFitxerUsuaris#0;class#GestorPersistenciaUsuari#0" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/domini/Usuari.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="140">
-          <caret line="145" column="24" lean-forward="true" selection-start-line="145" selection-start-column="24" selection-end-line="145" selection-end-column="24" />
+        <state relative-caret-position="255">
+          <caret line="145" column="24" selection-start-line="145" selection-start-column="24" selection-end-line="145" selection-end-column="24" />
           <folding>
             <element signature="docComment;class#Usuari#0" />
             <element signature="docComment;method#Usuari#0;class#Usuari#0" />
@@ -802,43 +663,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/files/tmpUsuaris.txt">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/files/usuaris.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="6" lean-forward="true" selection-start-column="6" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/files/estadistiques.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-387">
-          <caret line="3" column="10" selection-start-line="3" selection-start-column="10" selection-end-line="3" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/gestioDades/GestorPersistenciaUsuari.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="167">
-          <caret line="161" column="12" lean-forward="true" selection-start-line="161" selection-start-column="12" selection-end-line="164" selection-end-column="13" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="docComment;method#getFitxerUsuaris#0;class#GestorPersistenciaUsuari#0" />
-            <element signature="docComment;method#setFitxerUsuaris#0;class#GestorPersistenciaUsuari#0" />
-            <element signature="method#registrar#0;class#GestorPersistenciaUsuari#0" />
-            <element signature="method#buscarUsuari#0;class#GestorPersistenciaUsuari#0" />
-            <element signature="docComment;method#eliminarUsuari#0;class#GestorPersistenciaUsuari#0" />
-            <element signature="method#totsUsuaris#0;class#GestorPersistenciaUsuari#0" />
-            <element signature="method#mostrarFitxerUsuaris#0;class#GestorPersistenciaUsuari#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/gestioDades/GestorPersistenciaEstadistica.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1322">
+        <state relative-caret-position="528">
           <caret line="148" column="16" selection-start-line="148" selection-start-column="16" selection-end-line="148" selection-end-column="16" />
           <folding>
             <element signature="imports" expanded="true" />
@@ -848,6 +675,147 @@
             <element signature="method#mostrarFitxerStats#0;class#GestorPersistenciaEstadistica#0" />
             <element signature="method#guardarTemps#0;class#GestorPersistenciaEstadistica#0" />
             <element signature="method#buscar#0;class#GestorPersistenciaEstadistica#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Main2.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="126">
+          <caret line="6" column="1" selection-start-line="6" selection-start-column="1" selection-end-line="6" selection-end-column="1" />
+          <folding>
+            <element signature="e#87#88#0" expanded="true" />
+            <element signature="e#145#146#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/presentacio/VistaEstadisticaUsuari.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="16" column="18" lean-forward="true" selection-start-line="16" selection-start-column="18" selection-end-line="16" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/presentacio/VistaEstadisticaProblema.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="95">
+          <caret line="8" column="8" selection-start-line="8" selection-start-column="8" selection-end-line="11" selection-end-column="39" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/presentacio/VistaEstadistica2.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="966">
+          <caret line="52" column="1" lean-forward="true" selection-start-line="52" selection-start-column="1" selection-end-line="52" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/presentacio/CtrlPresentacio.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="315">
+          <caret line="15" lean-forward="true" selection-start-line="15" selection-end-line="15" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/presentacio/VistaEstadistica.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="95">
+          <caret line="61" column="26" selection-start-line="61" selection-start-column="26" selection-end-line="61" selection-end-column="26" />
+          <folding>
+            <element signature="e#3744#3745#0" expanded="true" />
+            <element signature="e#3789#3790#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/presentacio/VistaRegistrar.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="381">
+          <caret line="81" column="11" selection-start-line="81" selection-start-column="11" selection-end-line="81" selection-end-column="11" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/presentacio/VistaInici.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="108">
+          <caret line="60" column="8" selection-start-line="60" selection-start-column="8" selection-end-line="73" selection-end-column="11" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/domini/Taulell.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="138">
+          <caret line="676" column="72" selection-start-line="676" selection-start-column="58" selection-end-line="676" selection-end-column="72" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/domini/Estadistica.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="441">
+          <caret line="150" column="104" lean-forward="true" selection-start-line="144" selection-start-column="8" selection-end-line="150" selection-end-column="104" />
+          <folding>
+            <element signature="docComment;class#Estadistica#0" />
+            <element signature="docComment;method#guardarTemps#0;class#Estadistica#0" />
+            <element signature="method#guardarTemps#0;class#Estadistica#0" />
+            <element signature="docComment;method#estadistiquesProblema#0;class#Estadistica#0" />
+            <element signature="method#estadistiquesProblema#0;class#Estadistica#0" />
+            <element signature="docComment;method#estadistiquesUsuari#0;class#Estadistica#0" />
+            <element signature="method#estadistiquesUsuari#0;class#Estadistica#0" />
+            <element signature="docComment;method#eliminarStatsUsuari#0;class#Estadistica#0" />
+            <element signature="e#2736#2737#0" expanded="true" />
+            <element signature="e#2809#2810#0" expanded="true" />
+            <element signature="docComment;method#eliminarStatsProblema#0;class#Estadistica#0" />
+            <element signature="method#eliminarStatsProblema#0;class#Estadistica#0" />
+            <element signature="docComment;method#estadistiquesOrdenades#0;class#Estadistica#0" />
+            <element signature="docComment;method#milisATemps#0;class#Estadistica#0" />
+            <element signature="method#milisATemps#0;class#Estadistica#0" />
+            <element signature="docComment;class#Marca#0;class#Estadistica#0" />
+            <element signature="class#Marca#0;class#Estadistica#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="8463">
+          <caret line="403" column="30" selection-start-line="403" selection-start-column="30" selection-end-line="403" selection-end-column="30" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/domini/Smart.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="143">
+          <caret line="93" column="99" selection-start-line="93" selection-start-column="99" selection-end-line="93" selection-end-column="99" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="method#Smart#0;class#Smart#0" />
+            <element signature="docComment;method#getTipus#0;class#Smart#0" />
+            <element signature="docComment;method#setTauler#0;class#Smart#0" />
+            <element signature="docComment;method#setProfunditat#0;class#Smart#0" />
+            <element signature="method#setProfunditat#0;class#Smart#0" />
+            <element signature="docComment;method#actualitzarProfunditat#0;class#Smart#0" />
+            <element signature="method#actualitzarProfunditat#0;class#Smart#0" />
+            <element signature="docComment;method#moviment#0;class#Smart#0" />
+            <element signature="docComment;method#minimax#0;class#Smart#0" />
+            <element signature="method#minimax#0;class#Smart#0" />
+            <element signature="class#OrdrePosicions#0;class#Smart#0" />
+            <element signature="e#7697#7698#0" expanded="true" />
+            <element signature="e#7731#7732#0" expanded="true" />
+            <element signature="e#7772#7773#0" expanded="true" />
+            <element signature="e#7800#7801#0" expanded="true" />
           </folding>
         </state>
       </provider>

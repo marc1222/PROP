@@ -125,7 +125,6 @@ public class Estadistica {
             // Separa la linea adel fitxer per els espais
             String[] dades = dada.split("\\s+");
 
-
             // Nombre de mat a enter
             int mat;
             // Milisegons a enter
