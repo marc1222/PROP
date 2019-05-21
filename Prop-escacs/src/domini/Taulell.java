@@ -406,12 +406,12 @@ public class Taulell {
         Posicion[] all_pos;
         try {
             if (inici.x < 0 || inici.y < 0 || inici.x > 7 || inici.y > 7)
-                throw new IllegalArgumentException("domini.Taulell: X o Y valores inválidos");
+                throw new IllegalArgumentException("Taulell: X o Y valores inválidos");
             Peca aux = T[inici.x][inici.y];
             String tipus = aux.getTipus();
             int color = aux.getColor();
             if (tipus.equals(define.PECA_NULA))
-                throw new IllegalArgumentException("domini.Taulell: No hi ha cap peça");
+                throw new IllegalArgumentException("Taulell: No hi ha cap peça");
 
             all_pos = aux.movimientos_posibles(inici);
             ArrayList<Posicion> tmp = new ArrayList<>();
@@ -671,10 +671,10 @@ public class Taulell {
     public void destrueix_peca(Posicion pos) {
         try {
             if (pos.x < 0 || pos.y < 0 || pos.x > 7 || pos.y > 7)
-                throw new IllegalArgumentException("domini.Taulell: X o Y valores inválidos");
+                throw new IllegalArgumentException("Taulell: X o Y valores inválidos");
             Peca p = T[pos.x][pos.y];
             if ((p.getTipus()).equals(define.PECA_NULA))
-                throw new ChessException("domini.Taulell: No hay ninguna pieza que destruir en la posición: ["+pos.x+"] ["+pos.y+"]");
+                throw new ChessException("Taulell: No hay ninguna pieza que destruir en la posición: ["+pos.x+"] ["+pos.y+"]");
 
             borra_peca_xy(pos);
             reset_amenaces_tauler();

@@ -27,6 +27,7 @@ public class VistaInici {
     private JPasswordField ContraIS = new JPasswordField();
     private JButton btnEntrar = new JButton("Entrar");
     private JLabel lbMssg = new JLabel();
+    private JLabel registrar = new JLabel("Clica aquí per registrar-te");
 
     public VistaInici(){
 
@@ -41,15 +42,19 @@ public class VistaInici {
 
         btnEntrar.setBounds(100,120, 80,30);
 
-        lbMssg.setBounds(20,150, 200,50);
+        registrar.setBounds(20,150, 200,50);
+
+        lbMssg.setBounds(20,175, 200,50);
+
 
         f.add(lbUsuariIS); f.add(UsuariIS);
         f.add(lbContraIS); f.add(ContraIS);
         f.add(btnEntrar);  f.add(lbMssg);
+        f.add(registrar);
 
         asignar_listenersComponentes();
 
-        f.setSize(700,700);
+        f.setSize(500,500);
         f.setLayout(null);
         f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         //f.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
@@ -72,5 +77,22 @@ public class VistaInici {
                 }
             }
         });
+
+        registrar.addMouseListener(new MouseAdapter() {
+            public void mouseClicked(MouseEvent e) {
+                JOptionPane.showMessageDialog(f,"afdadfadf","Alerta",JOptionPane.WARNING_MESSAGE);
+                //anarRegistrar(e);
+            }
+        });
     }
+    /*
+    private void anarRegistrar(MouseEvent e) {
+        VistaRegistrar vr = new VistaRegistrar();
+        vr.setVisible(true);
+        vr.pack();
+        vr.setLocationRelativeTo(null);
+        vr.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.dispose();
+    }
+    */
 }

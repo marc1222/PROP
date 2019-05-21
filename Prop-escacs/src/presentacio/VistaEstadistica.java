@@ -116,16 +116,22 @@ public class VistaEstadistica {
     private void asignar_listenersComponentes() {
         btnEntrar.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                taulaUsuari();
+                String buscar = UsuariIS.getText();
+                taulaUsuari(buscar);
             }
         });
     }
 
-    private void taulaUsuari() {
+    private void taulaUsuari(String dades) {
         String column[]={"Problema","Mat", "Temps"};
-        String data[][]={ {"Prob1","2", "51526"},
-                {"Prob1","3", "56646"},
-                {"Prob2","2", "26626"}};
+
+        String data[][];
+        if (dades.equals("1")) {
+            data = dades1();
+        }
+        else {
+            data = dades2();
+        }
 
         JTable jt = new JTable(data,column);
         jt.setBounds(80,100,150,350);
@@ -136,7 +142,7 @@ public class VistaEstadistica {
 
     private void taulaProblema() {
         String column[]={"Usuari","Mat", "Temps"};
-        String data[][]={ {"Usr12","2", "51526"},
+        String data[][]= { {"Usr12","2", "51526"},
                 {"Usr2","3", "56646"},
                 {"Usr4","2", "26626"}};
 
@@ -145,5 +151,19 @@ public class VistaEstadistica {
         JScrollPane sp = new JScrollPane(jt);
         sp.setBounds(80,150,150,350);
         p1.add(sp);
+    }
+
+    private String[][] dades1() {
+        String data[][]={ {"Prob1","2", "51526"},
+                {"Prob1","3", "56646"},
+                {"Prob2","2", "26626"}};
+        return data;
+    }
+
+    private String[][] dades2() {
+        String data[][]={ {"EQFEW","2", "51526"},
+                {"WEF","3", "56646"},
+                {"ProWEFWFE","2", "26626"}};
+        return data;
     }
 }
