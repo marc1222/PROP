@@ -12,6 +12,7 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
 public class TProblemes extends JPanel {
+    private JTable taula;
 
     public TProblemes(boolean foo) {
         super(new GridLayout(1,0));
@@ -31,7 +32,8 @@ public class TProblemes extends JPanel {
             else prob[2] = "Negre";
         }
 
-        final JTable taula = new JTable(dades, nomColumnes);
+        //final JTable taula = new JTable(dades, nomColumnes);
+        taula = new JTable(dades, nomColumnes);
         taula.setPreferredScrollableViewportSize(new Dimension(500, 70));
         taula.setFillsViewportHeight(true);
 
@@ -43,7 +45,8 @@ public class TProblemes extends JPanel {
     public TProblemes() {
         super(new GridLayout(1, 0));
 
-        JTable taula = new JTable(new myTaula());
+        //JTable taula = new JTable(new myTaula());
+        taula = new JTable(new myTaula());
         taula.setPreferredScrollableViewportSize(new Dimension(500, 70));
         taula.setFillsViewportHeight(true);
 
@@ -52,6 +55,10 @@ public class TProblemes extends JPanel {
         taula.setDefaultRenderer(Color.class, new RenderColor(true));
 
         add(scrollPane);
+    }
+
+    public JTable getTaula() {
+        return taula;
     }
 
     class myTaula extends AbstractTableModel {

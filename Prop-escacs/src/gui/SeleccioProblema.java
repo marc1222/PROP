@@ -31,6 +31,19 @@ public class SeleccioProblema implements ActionListener {
 
     public void actionPerformed(ActionEvent e) {
         //bcont.setEnabled(false);
+        if (llistaProblemes.getTaula().getSelectedRowCount() == 0) {
+            JOptionPane.showMessageDialog(frameVista, "Cap problema seleccionat.", "Error de selecció",
+                    JOptionPane.ERROR_MESSAGE);
+        }
+        else if (llistaProblemes.getTaula().getSelectedRowCount() > 1) {
+            JOptionPane.showMessageDialog(frameVista, "Més d'un problema seleccionat.", "Error de selecció",
+                    JOptionPane.ERROR_MESSAGE);
+        }
+        else {
+            int i = llistaProblemes.getTaula().getSelectedRow();
+            String id = (String) llistaProblemes.getTaula().getValueAt(i, 0);
+
+        }
     }
 
     private JMenu crea_menu() {

@@ -14,16 +14,26 @@ import static domini.define.LIGHT_COLOR;
 
 public class AfegirPeca extends JPanel {
     private Posicion Pos;
+    private boolean selected;
     private static Dimension TILE_SIZE = new Dimension(77, 77);
 
     AfegirPeca(final Posicion id) {
         //super(new GridBagLayout());
         this.Pos = id;
+        this.selected = false;
         setPreferredSize(TILE_SIZE);
         assign_color();
         assign_icon();
         //this.addMouseListener(this);
         validate();
+    }
+
+    public boolean getSelected() {
+        return selected;
+    }
+
+    public void setSelected(boolean s) {
+        selected = s;
     }
 
     private void assign_color() {

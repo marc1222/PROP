@@ -258,7 +258,7 @@ public class Problema {
         this.dificultat = calculaDif(this.ini_pos, njug);
 
         System.out.println("Validant el problema...");
-        if (this.validar_problema(this.primer, new Taulell(new Taulell(this.getPeces())), this.jugades)) {
+        if (this.validar_problema2(this.primer, new Taulell(new Taulell(this.getPeces())), this.jugades)) {
             String snjug = String.valueOf(njug);
             String sprim = String.valueOf(this.primer);
             String sdif = String.valueOf(this.dificultat);
