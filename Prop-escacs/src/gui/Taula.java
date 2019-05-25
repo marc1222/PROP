@@ -22,6 +22,7 @@ public class Taula {
     private GUITauler Board;
     private GUIOption OptionBar;
 
+    private Mainmenu mainmenu;
     private Taulell master_tauler;
 
     public Taula() {
@@ -33,13 +34,13 @@ public class Taula {
         this.gameFrame.setSize(SCREEN_SIZE);
 
 
-        Taulell T = new Taulell(init_test());
-        this.master_tauler = T;
-        this.Board = new GUITauler(this.master_tauler);
-        this.gameFrame.add(this.Board, BorderLayout.CENTER);
-
-        this.OptionBar = new GUIOption();
-        this.gameFrame.add(this.OptionBar, BorderLayout.NORTH);
+//        Taulell T = new Taulell(init_test());
+//        this.master_tauler = T;
+//        this.Board = new GUITauler(this.master_tauler);
+//        this.gameFrame.add(this.Board, BorderLayout.CENTER);
+//
+//        this.OptionBar = new GUIOption();
+//        this.gameFrame.add(this.OptionBar, BorderLayout.NORTH);
 
         this.gameFrame.setVisible(true);
     }
@@ -107,6 +108,12 @@ public class Taula {
         }
         return Prova;
     }
+
+    public set_to_user_menu() {
+        this.gameFrame.remove(this.mainmenu);
+        this.gameFrame.add(this.usermenu)
+    }
+    public jugar_parti
 
 }
 

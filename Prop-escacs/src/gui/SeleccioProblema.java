@@ -6,37 +6,51 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 
-public class SeleccioProblema implements ActionListener {
-    private JFrame frameVista = new JFrame("Selecció de problema");
-    private JMenuBar menuBar = new JMenuBar();
+public class SeleccioProblema extends JPanel  implements ActionListener  {
+  //  private JFrame frameVista = new JFrame("Selecció de problema");
+  // private JMenuBar menuBar = new JMenuBar();
     private TProblemes llistaProblemes = new TProblemes();
     private JButton bcont = new JButton("Continua");
 
+    /**
+     * 0 -> jugar
+     * 1 -> simulacio
+     * 2 -> estadistica
+     */
+    private int where;
+
 
     public SeleccioProblema() {
-        menuBar.add(crea_menu());
-        frameVista.setJMenuBar(menuBar);
-        frameVista.setLayout(new BorderLayout());
-        //frameVista.setResizable(false);
-        frameVista.add(llistaProblemes, BorderLayout.CENTER);
+        //menuBar.add(crea_menu());
+        //frameVista.setJMenuBar(menuBar);
+        //frameVista.setLayout(new BorderLayout());
+        // //frameVista.setResizable(false);
+        //frameVista.add(llistaProblemes, BorderLayout.CENTER);
+        this.setLayout(new BorderLayout());
+        this.add(llistaProblemes, BorderLayout.CENTER);
         bcont.setMnemonic(KeyEvent.VK_C); //Alt+C
         bcont.addActionListener(this);
-        frameVista.add(bcont, BorderLayout.PAGE_END);
+        //frameVista.add(bcont, BorderLayout.PAGE_END);
+        this.add(bcont, BorderLayout.PAGE_END);
 
         //frameVista.getRootPane().setDefaultButton(bcont);
-        frameVista.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frameVista.pack();
-        frameVista.setVisible(true);
+        //frameVista.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        //frameVista.pack();
+        //frameVista.setVisible(true);
     }
 
     public void actionPerformed(ActionEvent e) {
         //bcont.setEnabled(false);
         if (llistaProblemes.getTaula().getSelectedRowCount() == 0) {
-            JOptionPane.showMessageDialog(frameVista, "Cap problema seleccionat.", "Error de selecció",
+            /*JOptionPane.showMessageDialog(frameVista, "Cap problema seleccionat.", "Error de selecció",
+                    JOptionPane.ERROR_MESSAGE);*/
+            JOptionPane.showMessageDialog(this, "Cap problema seleccionat.", "Error de selecció",
                     JOptionPane.ERROR_MESSAGE);
         }
         else if (llistaProblemes.getTaula().getSelectedRowCount() > 1) {
-            JOptionPane.showMessageDialog(frameVista, "Més d'un problema seleccionat.", "Error de selecció",
+            /*JOptionPane.showMessageDialog(frameVista, "Més d'un problema seleccionat.", "Error de selecció",
+                    JOptionPane.ERROR_MESSAGE);*/
+            JOptionPane.showMessageDialog(this, "Més d'un problema seleccionat.", "Error de selecció",
                     JOptionPane.ERROR_MESSAGE);
         }
         else {
