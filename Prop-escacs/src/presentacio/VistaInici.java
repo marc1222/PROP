@@ -1,5 +1,7 @@
 package presentacio;
 
+import domini.Usuari;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
@@ -20,46 +22,127 @@ optionType:
 */
 
 public class VistaInici {
-    private JFrame f = new JFrame("Inici");
+    private JFrame frameVista = new JFrame("Inici");
+    private JPanel panel = new JPanel();
+    private JPanel pInici = new JPanel();
+    private JPanel pRegistrar = new JPanel();
+
+    private JPanel panelInformacionA = new JPanel();
+    private int iPanelActivo = 0;
+
+
     private JLabel lbUsuariIS = new JLabel("Usuari:");
     private JTextField UsuariIS = new JTextField();
     private JLabel lbContraIS = new JLabel("Contrasenya:");
     private JPasswordField ContraIS = new JPasswordField();
     private JButton btnEntrar = new JButton("Entrar");
     private JLabel lbMssg = new JLabel();
-    private JLabel registrar = new JLabel("Clica aquí per registrar-te");
-
-    public VistaInici(){
-
-        lbUsuariIS.setBounds(20,20, 80,30);
-        UsuariIS.setBounds(100,20, 100,30);
+    private JLabel labelRegistrar = new JLabel("Clica aquí per registrar-te");
+    private JLabel labelInici = new JLabel("Clica aquí per iniciar sessió");
 
 
-        lbContraIS.setBounds(20,75, 80,30);
-        ContraIS.setBounds(100,75,100,30);
-        ContraIS.setToolTipText("Contrasenya de X a Y...");
 
 
-        btnEntrar.setBounds(100,120, 80,30);
 
-        registrar.setBounds(20,150, 200,50);
+    JLabel lbUsuariR = new JLabel("Usuari:");
+    final JTextField UsuariR = new JTextField();
+    JLabel lbContraR = new JLabel("Contrasenya:");
+    final JPasswordField ContraR = new JPasswordField();
+    JLabel lbContraR2 = new JLabel("Repetir contrasenya:");
+    final JPasswordField ContraR2 = new JPasswordField();
+    JButton btnRegistrar = new JButton("Registrar");
+    final JLabel lbMssgR = new JLabel();
 
-        lbMssg.setBounds(20,175, 200,50);
+    public VistaInici() {
+        /*
+        f.addWindowListener(new WindowAdapter(){
+            public void windowClosing(WindowEvent e) {
+                int a=JOptionPane.showConfirmDialog(f,"Are you sure?", "Question", JOptionPane.YES_NO_OPTION );
+                if(a == JOptionPane.YES_OPTION){
+                    f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+                }
+            }
+        });
+        */
 
-
-        f.add(lbUsuariIS); f.add(UsuariIS);
-        f.add(lbContraIS); f.add(ContraIS);
-        f.add(btnEntrar);  f.add(lbMssg);
-        f.add(registrar);
-
-        asignar_listenersComponentes();
-
-        f.setSize(500,500);
-        f.setLayout(null);
-        f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frameVista.add(panel);
+        frameVista.setSize(700,650);
+        //panel.setLayout(new BorderLayout());
+        //panel.setLayout(new FlowLayout(FlowLayout.CENTER));
+        panel.setLayout(new GridBagLayout());
+        frameVista.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         //f.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
-        f.setVisible(true);
 
+        /*
+        // Tamanyo
+        frameVista.setMinimumSize(new Dimension(700,400));
+        frameVista.setPreferredSize(frameVista.getMinimumSize());
+        frameVista.setResizable(false);
+        // Posicion y operaciones por defecto
+        frameVista.setLocationRelativeTo(null);
+        // Se agrega panelContenidos al contentPane (el panelContenidos se
+        // podria ahorrar y trabajar directamente sobre el contentPane)
+        JPanel contentPane = (JPanel) frameVista.getContentPane();
+        contentPane.add(panel);
+        */
+
+
+        panelInformacionA = pInici;
+        iPanelActivo = 1;
+        //panelInformacionA = pRegistrar;
+        //iPanelActivo = 2;
+        panel.add(panelInformacionA);
+
+        activarInici();
+        activarRegistre();
+
+        hacerVisible();
+    }
+
+    public void activarInici() {
+        VistaInici();
+        asignar_listenersComponentes();
+    }
+
+    public void activarRegistre() {
+        VistaRegistrar();
+        asignar_listenersComponentesRegistre();
+    }
+
+    public void canviarPanel() {
+        panel.remove(panelInformacionA);
+        if (iPanelActivo == 1) {
+            panelInformacionA = pRegistrar;
+            iPanelActivo = 2;
+        }
+        else if(iPanelActivo == 2) {
+            panelInformacionA = pInici;
+            iPanelActivo = 1;
+        }
+        //panel.setLayout(new BorderLayout());
+        //panelInformacionA.setLayout(new BorderLayout());
+        //panel.add(panelInformacionA, JPanel.CENTER_ALIGNMENT);
+        panel.add(panelInformacionA);
+        frameVista.pack();
+        frameVista.setSize(700,650);
+        frameVista.repaint();
+    }
+
+    public void hacerVisible() {
+        frameVista.setVisible(true);
+    }
+
+
+    public void VistaInici() {
+        //lbUsuariIS.setFont(new Font(lbUsuariIS.getFont().getName(), lbUsuariIS.getFont().getStyle(), 20));
+        //btnEntrar.setPreferredSize(new Dimension(70, 50));
+
+        pInici.add(lbUsuariIS); pInici.add(UsuariIS);
+        pInici.add(lbContraIS); pInici.add(ContraIS);
+        pInici.add(btnEntrar);  pInici.add(lbMssg);
+        pInici.add(labelRegistrar);
+
+        pInici.setLayout(new GridLayout(4, 2, 25, 25));
     }
 
     private void asignar_listenersComponentes() {
@@ -68,31 +151,97 @@ public class VistaInici {
                 String usuari, contra;
                 usuari = UsuariIS.getText();
                 contra = new String(ContraIS.getPassword());
+
+                Usuari usr = new Usuari();
+                if(usr.iniciarSessio(usuari, contra)) {
+                    String data = "Usuari CORRECTE";
+                    lbMssg.setText(data);
+                    frameVista.dispose();
+                    VistaMenuPrincipal vmp = new VistaMenuPrincipal();
+                    vmp.setVisible(true);
+                }
+                else {
+                    UsuariIS.setText("");
+                    ContraIS.setText("");
+                    String data = "Usuari incorrecte";
+                    lbMssg.setText(data);
+                }
+
+                /*
                 String data = "Usuari " + usuari +
                         ", Contrasenya: " + contra;
                 lbMssg.setText(data);
                 if(!usuari.equals("usr")) {
                     String error = "Usuari incorrecte ('usr')";
-                    JOptionPane.showMessageDialog(f,error,"Alerta",JOptionPane.WARNING_MESSAGE);
+                    JOptionPane.showMessageDialog(frameVista,error,"Alerta",JOptionPane.WARNING_MESSAGE);
                 }
+                */
             }
         });
 
-        registrar.addMouseListener(new MouseAdapter() {
+        labelRegistrar.addMouseListener(new MouseAdapter() {
             public void mouseClicked(MouseEvent e) {
-                JOptionPane.showMessageDialog(f,"afdadfadf","Alerta",JOptionPane.WARNING_MESSAGE);
-                //anarRegistrar(e);
+                //JOptionPane.showMessageDialog(frameVista,"afdadfadf","Alerta",JOptionPane.WARNING_MESSAGE);
+                canviarPanel();
             }
         });
     }
-    /*
-    private void anarRegistrar(MouseEvent e) {
-        VistaRegistrar vr = new VistaRegistrar();
-        vr.setVisible(true);
-        vr.pack();
-        vr.setLocationRelativeTo(null);
-        vr.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        this.dispose();
+
+    public void VistaRegistrar() {
+        pRegistrar.add(lbUsuariR); pRegistrar.add(UsuariR);
+        pRegistrar.add(lbContraR); pRegistrar.add(ContraR);
+        pRegistrar.add(lbContraR2); pRegistrar.add(ContraR2);
+        pRegistrar.add(btnRegistrar); pRegistrar.add(lbMssgR);
+        pRegistrar.add(labelInici);
+
+        //pRegistrar.setLayout(new BorderLayout());
+        //pRegistrar.setLayout(null);
+        pRegistrar.setLayout(new GridLayout(5, 2, 25, 25));
     }
-    */
+
+    private void asignar_listenersComponentesRegistre() {
+        btnRegistrar.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                String usuari, contra1, contra2;
+                usuari = UsuariR.getText();
+                contra1 = new String(ContraR.getPassword());
+                contra2 = new String(ContraR2.getPassword());
+
+                if(usuari == null || usuari.isEmpty() ||
+                        contra1 == null || contra1.isEmpty() ||
+                        contra2 == null || contra2.isEmpty()) {
+                    String error = "Omple tots els camps.";
+                    lbMssgR.setText(error);
+                }
+                else if(!contra1.equals(contra2)) {
+                    String error = "La contrasenya no concideix";
+                    lbMssgR.setText(error);
+                    //JOptionPane.showMessageDialog(frameVista,error,"Alerta",JOptionPane.WARNING_MESSAGE);
+                }
+                else if(usuari.equals("Convidat")) {
+                    String error = "El nom d'usuari no pot ser 'Convidat'.";
+                    lbMssgR.setText(error);
+                }
+                else {
+                    Usuari usr = new Usuari();
+                    if (usr.registrar(usuari, contra1, contra2)) {
+                        String data = "Usuari REGISTRAT";
+                        lbMssgR.setText(data);
+                    } else {
+                        String data = "L'usuari ja existeix.";
+                        lbMssgR.setText(data);
+                    }
+                }
+                UsuariIS.setText("");
+                ContraIS.setText("");
+            }
+        });
+
+        labelInici.addMouseListener(new MouseAdapter() {
+            public void mouseClicked(MouseEvent e) {
+                //JOptionPane.showMessageDialog(frameVista,"afdadfadf","Alerta",JOptionPane.WARNING_MESSAGE);
+                canviarPanel();
+            }
+        });
+    }
 }

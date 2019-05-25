@@ -1,16 +1,22 @@
 package presentacio;
 
-import domini.*;
-
 public class CtrlPresentacio {
     public CtrlPresentacio() {
         //CtrlDomini CD = new CtrlDomini();
 
-        VistaInici2 VI = new VistaInici2();
+        //----------------------------------------
+
         //VistaInici VI = new VistaInici();
-        //VistaRegistrar VR = new VistaRegistrar();
-        //VistaEstadistica VE = new VistaEstadistica();
+        //VistaPrincipal mp = new VistaPrincipal();
+        VistaEstadistica VE = new VistaEstadistica();
+
+        //VistaEstadistica3 VE3 = new VistaEstadistica3();
+        //VE3.setVisible(true);
+
         //VistaEstadisticaUsuari VEU = new VistaEstadisticaUsuari();
-        //VistaEstadistica VE2 = new VistaEstadistica2();
+
+        //VistaIniciSessio VIS = new VistaIniciSessio();
+
+        //VistaRegistrar VR = new VistaRegistrar();
     }
 }
