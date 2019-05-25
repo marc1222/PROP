@@ -5,9 +5,9 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class MenuProblema implements ActionListener {
-    private JFrame frameVista = new JFrame("Crear Problema FEN");
-    private JMenuBar menuBar = new JMenuBar();
+public class MenuProblema extends JPanel implements ActionListener {
+    //private JFrame frameVista = new JFrame("Crear Problema FEN");
+    //private JMenuBar menuBar = new JMenuBar();
     private JButton bAFEN = new JButton("Crear problema");
     private JButton bMFEN = new JButton("Modificar problema");
     private JLabel lFEN = new JLabel("Afegir problema FEN", JLabel.CENTER);
@@ -21,28 +21,33 @@ public class MenuProblema implements ActionListener {
 
 
     public MenuProblema() {
-        menuBar.add(crea_menu());
-        frameVista.setJMenuBar(menuBar);
+        //menuBar.add(crea_menu());
+        //frameVista.setJMenuBar(menuBar);
 
-        frameVista.setLayout(new GridLayout(4, 1));
+        //frameVista.setLayout(new GridLayout(4, 1));
+        this.setLayout(new GridLayout(4, 1));
         lrow.add(lFEN);
         lrow.add(lG);
-        frameVista.add(lrow);
+        //frameVista.add(lrow);
+        this.add(lrow);
         bAFEN.addActionListener(this);
         crow.add(bAFEN);
         bAG.addActionListener(this);
         crow.add(bAG);
-        frameVista.add(crow);
+        //frameVista.add(crow);
+        this.add(crow);
         bMFEN.addActionListener(this);
         mrow.add(bMFEN);
         mAG.addActionListener(this);
         mrow.add(mAG);
-        frameVista.add(mrow);
-        frameVista.add(bBorrar);
+        //frameVista.add(mrow);
+        this.add(mrow);
+        //frameVista.add(bBorrar);
+        this.add(bBorrar);
 
-        frameVista.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frameVista.pack();
-        frameVista.setVisible(true);
+        //frameVista.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        //frameVista.pack();
+        //frameVista.setVisible(true);
 
     }
 

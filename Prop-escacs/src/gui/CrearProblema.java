@@ -9,9 +9,9 @@ import java.awt.event.*;
 import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 
-public class CrearProblema {
-    private JFrame frameVista = new JFrame("Creació del problema");
-    private JMenuBar menuBar = new JMenuBar();
+public class CrearProblema extends JPanel{
+    //private JFrame frameVista = new JFrame("Creació del problema");
+    //private JMenuBar menuBar = new JMenuBar();
     private Taulell taulell = new Taulell(tauler_buit());
     private GUITauler gTauler = new GUITauler(taulell);
     private BarraPeces barraPeces = new BarraPeces();
@@ -71,15 +71,18 @@ public class CrearProblema {
     }
 
     public CrearProblema() {
-        menuBar.add(crea_menu());
-        frameVista.setJMenuBar(menuBar);
-        frameVista.setLayout(new BorderLayout());
-        frameVista.add(barraPeces, BorderLayout.NORTH);
+        //menuBar.add(crea_menu());
+        //frameVista.setJMenuBar(menuBar);
+        //frameVista.setLayout(new BorderLayout());
+        this.setLayout(new BorderLayout());
+        //frameVista.add(barraPeces, BorderLayout.NORTH);
+        this.add(barraPeces, BorderLayout.NORTH); // new?
         //frameVista.setResizable(false);
-        frameVista.add(gTauler, BorderLayout.CENTER);
-        frameVista.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frameVista.pack();
-        frameVista.setVisible(true);
+        //frameVista.add(gTauler, BorderLayout.CENTER);
+        this.add(gTauler, BorderLayout.CENTER);
+        //frameVista.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        //frameVista.pack();
+        //frameVista.setVisible(true);
     }
 
     private JMenu crea_menu() {

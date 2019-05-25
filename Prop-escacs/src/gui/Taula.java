@@ -22,7 +22,7 @@ public class Taula {
     private GUITauler Board;
     private GUIOption OptionBar;
 
-    private Mainmenu mainmenu;
+    //private Mainmenu mainmenu;
     private Taulell master_tauler;
 
     public Taula() {
@@ -109,11 +109,11 @@ public class Taula {
         return Prova;
     }
 
-    public set_to_user_menu() {
+    /*public set_to_user_menu() {
         this.gameFrame.remove(this.mainmenu);
         this.gameFrame.add(this.usermenu)
-    }
-    public jugar_parti
+    }*/
+    //public jugar_parti
 
 }
 
