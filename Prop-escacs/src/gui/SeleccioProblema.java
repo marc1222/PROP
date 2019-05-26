@@ -12,7 +12,7 @@ public class SeleccioProblema extends JPanel  implements ActionListener  {
     private TProblemes llistaProblemes = new TProblemes();
     private JButton bcont = new JButton("Continua");
     private JLabel lMaquina = new JLabel("Selecciona quina màquina jugarà cada color", JLabel.CENTER);
-    private JPanel selMaquina = new JPanel(new GridLayout(1,4));
+    private JPanel selMaquina = new JPanel();
     private JLabel lBlanc = new JLabel("Blanques", JLabel.CENTER);
     private String[] sMaquina = {"Naive", "Smart"};
     private JComboBox cbBlanc = new JComboBox(sMaquina);
@@ -27,17 +27,21 @@ public class SeleccioProblema extends JPanel  implements ActionListener  {
     private int where;
 
 
-    public SeleccioProblema(JugarPartidaView jpv) {
+    public SeleccioProblema() {//JugarPartidaView jpv) {
         //menuBar.add(crea_menu());
         //frameVista.setJMenuBar(menuBar);
         //frameVista.setLayout(new BorderLayout());
         // //frameVista.setResizable(false);
         //frameVista.add(llistaProblemes, BorderLayout.CENTER);
-        this.setLayout(new GridLayout(0,1));
+        //this.setLayout(new GridLayout(0,1));
+        this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
         this.add(llistaProblemes);
         bcont.setMnemonic(KeyEvent.VK_C); //Alt+C
         bcont.addActionListener(this);
+        bcont.setMaximumSize(new Dimension(Integer.MAX_VALUE, 30));
+        bcont.setAlignmentX(CENTER_ALIGNMENT);
         //frameVista.add(bcont, BorderLayout.PAGE_END);
+        this.add(bcont);
         this.where = 2;
 
 
@@ -47,26 +51,33 @@ public class SeleccioProblema extends JPanel  implements ActionListener  {
         //frameVista.setVisible(true);
     }
 
-    public SeleccioProblema(JugarPartidaView jpv, boolean jugar) {
-        this.setLayout(new GridLayout(0,1));
+    public SeleccioProblema(boolean jugar) {//JugarPartidaView jpv, boolean jugar) {
+        //this.setLayout(new GridLayout(0,1));
+        this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
         this.add(llistaProblemes);
         bcont.setMnemonic(KeyEvent.VK_C); //Alt+C
         bcont.addActionListener(this);
 
         if (!jugar) {
+            lMaquina.setAlignmentX(CENTER_ALIGNMENT);
             this.add(lMaquina);
+            selMaquina.setLayout(new BoxLayout(selMaquina, BoxLayout.X_AXIS));
+            lBlanc.setMaximumSize(new Dimension(500, 30));
             selMaquina.add(lBlanc);
             cbBlanc.setSelectedIndex(0);
+            cbBlanc.setMaximumSize(new Dimension(500, 30));
             selMaquina.add(cbBlanc);
+            lNegre.setMaximumSize(new Dimension(500, 30));
             selMaquina.add(lNegre);
             cbNegre.setSelectedIndex(0);
+            cbNegre.setMaximumSize(new Dimension(500, 30));
             selMaquina.add(cbNegre);
             this.add(selMaquina);
-            this.add(bcont);
             this.where = 1;
         }
         else this.where = 0;
-
+        bcont.setMaximumSize(new Dimension(Integer.MAX_VALUE, 30));
+        bcont.setAlignmentX(CENTER_ALIGNMENT);
         this.add(bcont);
 
     }
@@ -127,12 +138,27 @@ public class SeleccioProblema extends JPanel  implements ActionListener  {
         SeleccioProblema vista = new SeleccioProblema();
     }
 
+    private static void createAndShowGUI() {
+        //Create and set up the window.
+        JFrame frame = new JFrame("Seleccio Problema");
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+        //Create and set up the content pane.
+        SeleccioProblema newContentPane = new SeleccioProblema(false);
+        newContentPane.setOpaque(true); //content panes must be opaque
+        frame.setContentPane(newContentPane);
+
+        //Display the window.
+        frame.pack();
+        frame.setVisible(true);
+    }
+
     public static void main(String[] args) {
         //Schedule a job for the event-dispatching thread:
         //creating and showing this application's GUI.
         javax.swing.SwingUtilities.invokeLater(new Runnable() {
             public void run() {
-                iniciar();
+                createAndShowGUI();
             }
         });
     }
