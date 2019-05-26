@@ -1,8 +1,6 @@
 package gui;
 
-import domini.Peca;
-import domini.Problema;
-import domini.Taulell;
+import domini.*;
 import domini.define;
 
 import javax.swing.*;
@@ -12,36 +10,35 @@ import java.awt.event.ActionListener;
 import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 
-public class Taula {
+public class GameFrame {
 
     private JFrame gameFrame;
     private static Dimension SCREEN_SIZE = new Dimension(730,730);
+    private ControladorDomini DomainController;
 
     private JMenuBar MenuBar;
 
-    private GUITauler Board;
-    private GUIOption OptionBar;
+   // private ControladorDominiPartida PartidaController;
+//    private ControladorDominiJugador JugadorController;
+//    private ControladorDominiEstadistica StatController;
+//    private ControladorDominiProblema ProblemController;
 
-    private Taulell master_tauler;
 
-    public Taula() {
+    public GameFrame() {
         this.gameFrame = new JFrame("Escacs");
+        this.gameFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.gameFrame.setLayout(new BorderLayout());
         this.gameFrame.setResizable(false);
         fill_menu_bar();
         ((JFrame) this.gameFrame).setJMenuBar(this.MenuBar);
         this.gameFrame.setSize(SCREEN_SIZE);
 
+        init_domain_controller();
 
-        Taulell T = new Taulell(init_test());
-        this.master_tauler = T;
-        this.Board = new GUITauler(this.master_tauler);
-        this.gameFrame.add(this.Board, BorderLayout.CENTER);
+        JugarPartidaView partida = new JugarPartidaView(this.gameFrame, false, this.DomainController);
+//        Taulell T = new Taulell(init_test());
+//        this.master_tauler = T;
 
-        this.OptionBar = new GUIOption();
-        this.gameFrame.add(this.OptionBar, BorderLayout.SOUTH);
-
-        this.gameFrame.setVisible(true);
     }
 
     private void fill_menu_bar() {
@@ -90,7 +87,7 @@ public class Taula {
                 }
 
                 try {
-                    Prova[i][j] = (Peca) Class.forName("domini." + name).getConstructor(int.class, ArrayList.class, ArrayList.class).newInstance(define.BLACK, null, null);
+                    Prova[i][j] = (Peca) Class.forName("domini." + name).getConstructor(int.class, ArrayList.class, ArrayList.class).newInstance(define.WHITE, null, null);
                 } catch (InstantiationException e) {
                     e.printStackTrace();
                 } catch (IllegalAccessException e) {
@@ -106,6 +103,10 @@ public class Taula {
             }
         }
         return Prova;
+    }
+
+    private void init_domain_controller() {
+        this.DomainController = new ControladorDomini();
     }
 
 }

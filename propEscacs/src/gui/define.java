@@ -1,6 +1,14 @@
-package domini;
+package gui;
+
+import java.awt.*;
 
 public class define {
+    public static final Color LIGHT_COLOR = new Color(214,177,139);
+    public static final Color DARK_COLOR = new Color(165,122,96);
+    public static final Color BoardBorderColor = new Color(187, 192,196);
+    public static final Color TileSelectedColor = new Color(119,119,119);
+
+    public static final String icons_route = "./asset/pieces/";
 
     //juegador
     public static final int WHITE = 0;
@@ -22,7 +30,12 @@ public class define {
     public static final String PECA_NULA = "Peca_Nula";
 
 
-    //si es necessiten mes, afegiu
+    //id de les vistes de jugar una partida
+    public static final int id_partidaproblemsel = 111;
+    public static final int id_partidasel = 112;
 
+    public static final int simulacio = 113;
+    public static final int normal = 114;
+    public static final int estadistica = 115;
 
 }
