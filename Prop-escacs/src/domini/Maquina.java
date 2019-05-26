@@ -4,7 +4,7 @@ package domini;
  * @author Marian Dumitru Danci
  */
 public abstract class Maquina extends Jugador {
-    private Taulell Tauler;
+    private Taulell tau;
     private Peca pecesTau[][];
 
     /**
@@ -68,8 +68,8 @@ public abstract class Maquina extends Jugador {
      * @param tauler Tauler de la partida
      */
     public void setTaulerMaquina(Taulell tauler) {
-        this.Tauler = tauler;
-        pecesTau = Tauler.getTauler();
+        this.tau = tauler;
+        pecesTau = tau.getTauler();
     }
 
     /**
@@ -96,7 +96,7 @@ public abstract class Maquina extends Jugador {
      * @return Tots els moviments que pot fer aquella peca
      */
     public Posicion[] totsMovimentsPeca(Posicion pos) {
-        return Tauler.todos_movimientos(pos);
+        return tau.todos_movimientos(pos);
     }
 
     /**
@@ -110,7 +110,7 @@ public abstract class Maquina extends Jugador {
         if(pecesTau[desti.x][desti.y].getTipus() == define.REI) {
             return false;
         }
-        if(!Tauler.mover_pieza(origen, desti, color)) {
+        if(!tau.mover_pieza(origen, desti, color)) {
             return false;
         }
         return true;
@@ -126,7 +126,7 @@ public abstract class Maquina extends Jugador {
         int total = 0;
 
         // Estat del rei de l'adversari
-        int escac_mat1 = Tauler.escac_i_mat(colorContrari);
+        int escac_mat1 = tau.escac_i_mat(colorContrari);
         // Mat
         if (escac_mat1 == 1) {
             total += 5000;
@@ -141,7 +141,7 @@ public abstract class Maquina extends Jugador {
         }
 
         // Estat del propi rei
-        int escac_mat2 = Tauler.escac_i_mat(colorJugador);
+        int escac_mat2 = tau.escac_i_mat(colorJugador);
         // Mat
         if (escac_mat2 == 1) {
             total -= 5000;
@@ -163,7 +163,7 @@ public abstract class Maquina extends Jugador {
                     // Suma valor segons tipus de peca
                     total += puntuacioPeca(pecesTau[i][j].getTipus());
 
-                    Posicion[] movimentsPosibles = Tauler.todos_movimientos(ini);
+                    Posicion[] movimentsPosibles = tau.todos_movimientos(ini);
                     // Suma la mobilitat de la peca
                     total += movimentsPosibles.length;
 
@@ -180,7 +180,7 @@ public abstract class Maquina extends Jugador {
                     // Resta valor segons el tipus de peca
                     total -= puntuacioPeca(pecesTau[i][j].getTipus());
 
-                    Posicion[] movimentsPosibles = Tauler.todos_movimientos(ini);
+                    Posicion[] movimentsPosibles = tau.todos_movimientos(ini);
                     // Resta la mobilitat de la peca
                     total -= movimentsPosibles.length;
 
@@ -207,7 +207,7 @@ public abstract class Maquina extends Jugador {
      *
      */
     public int estatMat(int color) {
-        return Tauler.escac_i_mat(color);
+        return tau.escac_i_mat(color);
     }
 
     /**
@@ -220,14 +220,26 @@ public abstract class Maquina extends Jugador {
     public void desferMoviment(Posicion origen, Posicion desti, String peca, int color) {
         Peca aux = pecesTau[desti.x][desti.y];
 
-        Tauler.destrueix_peca(desti);
+        tau.destrueix_peca(desti);
 
-        Tauler.crear_peca(origen, color, aux.getTipus());
+        tau.crear_peca(origen, color, aux.getTipus());
 
         // Si el moviment que s'ha fet no ha sigut sobre una peca nula es crea
         // la peca eliminada de l'oponent
         if(!peca.equals(define.PECA_NULA)) {
-            Tauler.crear_peca(desti, color ^ 1, peca);
+            tau.crear_peca(desti, color ^ 1, peca);
         }
+    }
+
+    public Posicion[] getPosColor(int color) {
+        return tau.getPosColor(color);
+    }
+
+    public boolean escac(Posicion[] peces, Posicion rei, Posicion reiIni) {
+        return tau.escac(peces, rei, reiIni);
+    }
+
+    public Posicion getReiPos(int color) {
+        return tau.getReiPos(color);
     }
 }

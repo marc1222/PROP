@@ -59,6 +59,7 @@ public class SeleccioProblema implements ActionListener {
         return aux;
     }
 
+    /*
     private static void iniciar() {
         SeleccioProblema vista = new SeleccioProblema();
     }
@@ -72,4 +73,5 @@ public class SeleccioProblema implements ActionListener {
             }
         });
     }
+    */
 }

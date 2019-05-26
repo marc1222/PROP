@@ -154,10 +154,10 @@ public class VistaInici {
 
                 Usuari usr = new Usuari();
                 if(usr.iniciarSessio(usuari, contra)) {
-                    String data = "Usuari CORRECTE";
-                    lbMssg.setText(data);
+                    //String data = "Usuari CORRECTE";
+                    //lbMssg.setText(data);
                     frameVista.dispose();
-                    VistaMenuPrincipal vmp = new VistaMenuPrincipal();
+                    VistaMenuPrincipal vmp = new VistaMenuPrincipal(usuari);
                     vmp.setVisible(true);
                 }
                 else {
@@ -225,8 +225,11 @@ public class VistaInici {
                 else {
                     Usuari usr = new Usuari();
                     if (usr.registrar(usuari, contra1, contra2)) {
-                        String data = "Usuari REGISTRAT";
-                        lbMssgR.setText(data);
+                        //String data = "Usuari REGISTRAT";
+                        //lbMssgR.setText(data);
+                        VistaMenuPrincipal vmp = new VistaMenuPrincipal(usuari);
+                        vmp.setVisible(true);
+                        frameVista.dispose();
                     } else {
                         String data = "L'usuari ja existeix.";
                         lbMssgR.setText(data);

@@ -4,16 +4,23 @@
  * and open the template in the editor.
  */
 package presentacio;
+
+import domini.Estadistica;
+import domini.Usuari;
+
+import javax.swing.*;
+
 /**
  *
  * @author MDD
  */
 public class VistaMenuPrincipal extends javax.swing.JFrame {
-
+    private String usuari;
     /**
      * Creates new form VistaMenuPrincipal
      */
-    public VistaMenuPrincipal() {
+    public VistaMenuPrincipal(String usuari) {
+        this.usuari = usuari;
         initComponents();
     }
 
@@ -41,10 +48,25 @@ public class VistaMenuPrincipal extends javax.swing.JFrame {
         jButton22.setText("Gestio problemes");
 
         jButton23.setText("Mirar estadistiques");
+        jButton23.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton23ActionPerformed(evt);
+            }
+        });
 
         jButton24.setText("Donar-se de baixa");
+        jButton24.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton24ActionPerformed(evt);
+            }
+        });
 
         jButton25.setText("Tancar sessió");
+        jButton25.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton25ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
         jPanel7.setLayout(jPanel7Layout);
@@ -113,9 +135,28 @@ public class VistaMenuPrincipal extends javax.swing.JFrame {
         pack();
     }// </editor-fold>                                                               
 
-    /**
-     * @param args the command line arguments
-     */
+    private void jButton23ActionPerformed(java.awt.event.ActionEvent evt) {
+        this.dispose();
+        VistaEstadistica VE = new VistaEstadistica(usuari);
+    }
+
+    private void jButton24ActionPerformed(java.awt.event.ActionEvent evt) {
+        int a= JOptionPane.showConfirmDialog(this,"Estàs segur de que vols donar-te de baixa?",
+                "Question", JOptionPane.YES_NO_OPTION );
+        if(a == JOptionPane.YES_OPTION){
+            Usuari usr = new Usuari();
+            usr.eliminarUsuari(usuari);
+            Estadistica.eliminarStatsUsuari(usuari);
+            new VistaInici();
+            this.dispose();
+        }
+    }
+
+    private void jButton25ActionPerformed(java.awt.event.ActionEvent evt) {
+        this.dispose();
+        new VistaInici();
+    }
+
     // Variables declaration - do not modify
     private javax.swing.JButton jButton21;
     private javax.swing.JButton jButton22;

@@ -7,6 +7,7 @@ import java.util.stream.Collectors;
 
 /**
  * Classe Smart
+ *
  * @author Marian Dumitru Danci
  */
 public class Smart extends Maquina {
@@ -22,7 +23,6 @@ public class Smart extends Maquina {
     }
 
     /**
-     *
      * @return Tipus de jugador
      */
     public int getTipus() {
@@ -30,7 +30,6 @@ public class Smart extends Maquina {
     }
 
     /**
-     *
      * @param tauler Tauler de la partida
      */
     public void setTauler(Taulell tauler) {
@@ -40,10 +39,11 @@ public class Smart extends Maquina {
     /**
      * Segons el nombre de jugades en fer mat s'especifica una profunditat,
      * especificant un maxim
+     *
      * @param mat Nombre de jugades en asolir mat del problema
      */
     public void setProfunditat(int mat) {
-        this.mat = mat*2 - 2;
+        this.mat = mat * 2 - 2;
         actualitzarProfunditat();
     }
 
@@ -56,9 +56,8 @@ public class Smart extends Maquina {
     }
 
     /**
-     *
      * @param origen Posicio peca seleccionada per fer el moviment
-     * @param desti Posicio desti on vol que es mogui la peca
+     * @param desti  Posicio desti on vol que es mogui la peca
      * @return Retorna 0
      */
     public long moviment(Posicion origen, Posicion desti) {
@@ -69,43 +68,60 @@ public class Smart extends Maquina {
         int maxF = -9999;
 
         // Recorre el tauler
-        for (int i = 0; i < 8; i++) {
-            for (int j = 0; j < 8; j++) {
-                Posicion ini = new Posicion(i, j);
-                // Tractar peca propia
-                if (super.getColorPeca(ini) == colorJugador) {
-                    Posicion[] tots =  super.totsMovimentsPeca(ini);
+        Posicion[] peces = super.getPosColor(colorJugador);
 
+        for (Posicion ini : peces) {
+            // Tractar peca propia
+            Posicion[] tots = super.totsMovimentsPeca(ini);
 
-                    ArrayList<ValorPosicion> movimentsOrdenats = movimentsOrdenats(tots, ini, colorJugador);
-                    for (ValorPosicion x : movimentsOrdenats) {
-                        Posicion moviment = x.getPos();
+            List<Posicion> movimentsEscac = new ArrayList<Posicion>();
+            List<Posicion> movimentsNoEscac = new ArrayList<Posicion>();
+            for (Posicion x : tots) {
+                String auxPeca = define.PECA_NULA;
+                if (super.getColorPeca(x) != define.NULL_COLOR) {
+                    auxPeca = super.getTipusPeca(x);
+                }
+                boolean esEscac = false;
+                if (super.mourePeca(ini, x, colorJugador)) {
+                    Posicion posReiContrari = getReiPos(colorContrari);
+                    Posicion[] aux = {x};
+                    esEscac = super.escac(aux, posReiContrari, posReiContrari);
+                    super.desferMoviment(ini, x, auxPeca, colorJugador);
+                }
+                //System.out.println("    " + moviment.x + "-" + moviment.y + " :" + valorMoviment);
+                if(esEscac) movimentsEscac.add(x);
+                else movimentsNoEscac.add(x);
+            }
+            List<Posicion> movimentsOrdenats = movimentsEscac;
+            movimentsOrdenats.addAll(movimentsNoEscac);
 
-                    // Fer tots els moviments que pot fer la peca
-                    //for (Posicion moviment : tots) {
-                        // Si el moviment es a una casella amb una peca de
-                        // l'oponent, es guarda el tipus de la peca
-                        String auxPeca = define.PECA_NULA;
-                        if(super.getColorPeca(moviment) != 2) {
-                            auxPeca = super.getTipusPeca(moviment);
-                        }
-                        if (super.mourePeca(ini, moviment, colorJugador)) {
-                            // Si s'ha fet el moviment correctament,
-                            // cridar al algortime minimax
-                            int aux = minimax(profunditat, false, -99999, 99999);
-                            super.desferMoviment(ini, moviment, auxPeca, colorJugador);
-                            // Si el valor que s'obte de l'algoritme es major
-                            // del que es te del millor moviment, agafar
-                            // aquest com a millor
-                            if (aux > maxF) {
-                                mejorIni.x = ini.x;
-                                mejorIni.y = ini.y;
-                                mejorDesti.x = moviment.x;
-                                mejorDesti.y = moviment.y;
+            //ArrayList<ValorPosicion> movimentsOrdenats = movimentsOrdenats(tots, ini, colorJugador);
+            //for (ValorPosicion x : movimentsOrdenats) {
+                //Posicion moviment = x.getPos();
+            for (Posicion moviment : movimentsOrdenats) {
+                // Fer tots els moviments que pot fer la peca
+                //for (Posicion moviment : tots) {
+                // Si el moviment es a una casella amb una peca de
+                // l'oponent, es guarda el tipus de la peca
+                String auxPeca = define.PECA_NULA;
+                if (super.getColorPeca(moviment) != define.NULL_COLOR) {
+                    auxPeca = super.getTipusPeca(moviment);
+                }
+                if (super.mourePeca(ini, moviment, colorJugador)) {
+                    // Si s'ha fet el moviment correctament,
+                    // cridar al algortime minimax
+                    int aux = minimax(profunditat, false, -99999, 99999);
+                    super.desferMoviment(ini, moviment, auxPeca, colorJugador);
+                    // Si el valor que s'obte de l'algoritme es major
+                    // del que es te del millor moviment, agafar
+                    // aquest com a millor
+                    if (aux > maxF) {
+                        mejorIni.x = ini.x;
+                        mejorIni.y = ini.y;
+                        mejorDesti.x = moviment.x;
+                        mejorDesti.y = moviment.y;
 
-                                maxF = aux;
-                            }
-                        }
+                        maxF = aux;
                     }
                 }
             }
@@ -123,8 +139,7 @@ public class Smart extends Maquina {
     }
 
     /**
-     *
-     * @param depth Profunditat que es vol arribar
+     * @param depth      Profunditat que es vol arribar
      * @param maximitzar Bolea que determina si es vol maximitzar valor dels nodes
      * @return Retorna el valor seleccionat pel algoritme
      */
@@ -146,76 +161,121 @@ public class Smart extends Maquina {
         max = -9999;
         min = 9999;
 
-        for (int i = 0; i < 8; i++) {
-            for (int j = 0; j < 8; j++) {
-                Posicion ini = new Posicion(i, j);
 
-                // Cas en que es vol maximitzar i la peca es del jugador
-                if (maximitzar && (super.getColorPeca(ini) == colorJugador)) {
-                    Posicion[] movimentsPosibles = super.totsMovimentsPeca(ini);
-                    // Fer tots els moviments que pot fer la peca
+        // Cas en que es vol maximitzar i la peca es del jugador
+        if (maximitzar) {
+            Posicion[] peces = super.getPosColor(colorJugador);
+            for (Posicion ini : peces) {
+                Posicion[] movimentsPosibles = super.totsMovimentsPeca(ini);
+                // Fer tots els moviments que pot fer la peca
 
+                List<Posicion> movimentsEscac = new ArrayList<Posicion>();
+                List<Posicion> movimentsNoEscac = new ArrayList<Posicion>();
+                for (Posicion x : movimentsPosibles) {
+                    String auxPeca = define.PECA_NULA;
+                    if (super.getColorPeca(x) != define.NULL_COLOR) {
+                        auxPeca = super.getTipusPeca(x);
+                    }
+                    boolean esEscac = false;
+                    if (super.mourePeca(ini, x, colorJugador)) {
+                        Posicion posReiContrari = getReiPos(colorContrari);
+                        Posicion[] aux = {x};
+                        esEscac = super.escac(aux, posReiContrari, posReiContrari);
+                        super.desferMoviment(ini, x, auxPeca, colorJugador);
+                    }
+                    //System.out.println("    " + moviment.x + "-" + moviment.y + " :" + valorMoviment);
+                    if(esEscac) movimentsEscac.add(x);
+                    else movimentsNoEscac.add(x);
+                }
+                List<Posicion> movimentsOrdenats = movimentsEscac;
+                movimentsOrdenats.addAll(movimentsNoEscac);
 
-                    ArrayList<ValorPosicion> movimentsOrdenats = movimentsOrdenats(movimentsPosibles, ini, colorJugador);
-                    for (ValorPosicion x : movimentsOrdenats) {
-                        Posicion desti = x.getPos();
+                //ArrayList<ValorPosicion> movimentsOrdenats = movimentsOrdenats(movimentsPosibles, ini, colorJugador);
+               // for (ValorPosicion x : movimentsOrdenats) {
+                    //Posicion desti = x.getPos();
                     // Fer tots els moviments que pot fer la peca
                     //for (Posicion desti : movimentsPosibles) {
-                        String auxPeca = define.PECA_NULA;
-                        if(super.getColorPeca(desti) != 2) {
-                            auxPeca = super.getTipusPeca(desti);
+                for (Posicion desti : movimentsOrdenats) {
+                    String auxPeca = define.PECA_NULA;
+                    if (super.getColorPeca(desti) != define.NULL_COLOR) {
+                        auxPeca = super.getTipusPeca(desti);
+                    }
+                    if (super.mourePeca(ini, desti, colorJugador)) {
+                        int aux = minimax(depth - 1, false, alpha, beta);
+                        super.desferMoviment(ini, desti, auxPeca, colorJugador);
+                        //alpha = Math.max(alpha, aux);
+                        if (alpha < aux) {
+                            alpha = aux;
                         }
-                        if (super.mourePeca(ini, desti, colorJugador)) {
-                            int aux = minimax(depth - 1, false, alpha, beta);
-                            super.desferMoviment(ini, desti, auxPeca, colorJugador);
-                            //alpha = Math.max(alpha, aux);
-                            if(alpha < aux) {
-                                alpha = aux;
-                            }
-                            if (beta <= alpha) {
-                                return aux;
-                            }
-                            if (max < aux) {
-                                max = aux;
-                            }
+                        if (beta <= alpha) {
+                            return aux;
+                        }
+                        if (max < aux) {
+                            max = aux;
                         }
                     }
                 }
-                // Cas en que es vol minimitzar i la peca es del oponent
-                else if (!maximitzar && (super.getColorPeca(ini) == (colorContrari))) {
-                    Posicion[] movimentsPosibles = super.totsMovimentsPeca(ini);
-                    // Fer tots els moviments que pot fer la peca
+            }
+        }
+        // Cas en que es vol minimitzar i la peca es del oponent
+        else if (!maximitzar) {
+            Posicion[] peces = super.getPosColor(colorContrari);
+            for (Posicion ini : peces) {
+                Posicion[] movimentsPosibles = super.totsMovimentsPeca(ini);
+                // Fer tots els moviments que pot fer la peca
 
 
-                    ArrayList<ValorPosicion> movimentsOrdenats = movimentsOrdenats(movimentsPosibles, ini, colorContrari);
-                    for (ValorPosicion x : movimentsOrdenats) {
-                        Posicion desti = x.getPos();
+                List<Posicion> movimentsEscac = new ArrayList<Posicion>();
+                List<Posicion> movimentsNoEscac = new ArrayList<Posicion>();
+                for (Posicion x : movimentsPosibles) {
+                    String auxPeca = define.PECA_NULA;
+                    if (super.getColorPeca(x) != define.NULL_COLOR) {
+                        auxPeca = super.getTipusPeca(x);
+                    }
+                    boolean esEscac = false;
+                    if (super.mourePeca(ini, x, colorContrari)) {
+                        Posicion posReiContrari = getReiPos(colorJugador);
+                        Posicion[] aux = {x};
+                        esEscac = super.escac(aux, posReiContrari, posReiContrari);
+                        super.desferMoviment(ini, x, auxPeca, colorContrari);
+                    }
+                    //System.out.println("    " + moviment.x + "-" + moviment.y + " :" + valorMoviment);
+                    if(esEscac) movimentsEscac.add(x);
+                    else movimentsNoEscac.add(x);
+                }
+                List<Posicion> movimentsOrdenats = movimentsEscac;
+                movimentsOrdenats.addAll(movimentsNoEscac);
+
+
+                //ArrayList<ValorPosicion> movimentsOrdenats = movimentsOrdenats(movimentsPosibles, ini, colorContrari);
+                //for (ValorPosicion x : movimentsOrdenats) {
+                    //Posicion desti = x.getPos();
+                for (Posicion desti : movimentsOrdenats) {
                     // Fer tots els moviments que pot fer la peca
                     //for (Posicion desti : movimentsPosibles) {
-                        String auxPeca = define.PECA_NULA;
-                        if(super.getColorPeca(desti) != 2) {
-                            auxPeca = super.getTipusPeca(desti);
-                        }
+                    String auxPeca = define.PECA_NULA;
+                    if (super.getColorPeca(desti) != define.NULL_COLOR) {
+                        auxPeca = super.getTipusPeca(desti);
+                    }
 
-                        if (super.mourePeca(ini, desti, colorContrari)) {
-                            int aux = minimax(depth - 1, true, alpha, beta);
-                            desferMoviment(ini, desti, auxPeca, colorContrari);
-                            if(beta > aux) {
-                                beta = aux;
-                            }
-                            if (beta <= alpha) {
-                                return aux;
-                            }
-                            if (aux < min) {
-                                min = aux;
-                            }
+                    if (super.mourePeca(ini, desti, colorContrari)) {
+                        int aux = minimax(depth - 1, true, alpha, beta);
+                        desferMoviment(ini, desti, auxPeca, colorContrari);
+                        if (beta > aux) {
+                            beta = aux;
+                        }
+                        if (beta <= alpha) {
+                            return aux;
+                        }
+                        if (aux < min) {
+                            min = aux;
                         }
                     }
                 }
             }
         }
         if (maximitzar) return max;
-        return  min;
+        return min;
     }
 
 
@@ -224,7 +284,7 @@ public class Smart extends Maquina {
         for (Posicion moviment : tots) {
             //int valorMoviment = super.avaluarMoviment(aux, moviment);
             String auxPeca = define.PECA_NULA;
-            if(super.getColorPeca(moviment) != 2) {
+            if (super.getColorPeca(moviment) != define.NULL_COLOR) {
                 auxPeca = super.getTipusPeca(moviment);
             }
             int valorMoviment = 0;

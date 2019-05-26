@@ -6,17 +6,15 @@ public class CtrlPresentacio {
 
         //----------------------------------------
 
-        //VistaInici VI = new VistaInici();
-        //VistaPrincipal mp = new VistaPrincipal();
+        VistaInici VI = new VistaInici();
+
+        //VistaMenuPrincipal vmp = new VistaMenuPrincipal();
+        //VistaEstadistica VE = new VistaEstadistica();
+        //SeleccioProblema sp = new SeleccioProblema();
+
+        /*
         VistaEstadistica VE = new VistaEstadistica();
-
-        //VistaEstadistica3 VE3 = new VistaEstadistica3();
-        //VE3.setVisible(true);
-
-        //VistaEstadisticaUsuari VEU = new VistaEstadisticaUsuari();
-
-        //VistaIniciSessio VIS = new VistaIniciSessio();
-
-        //VistaRegistrar VR = new VistaRegistrar();
+        VistaPrincipal mp = new VistaPrincipal();
+         */
     }
 }
