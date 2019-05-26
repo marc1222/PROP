@@ -93,6 +93,19 @@ public class SeleccioProblema extends JPanel  implements ActionListener  {
             }
         }
         else {
+            int k = llistaProblemes.getTaula().getSelectedRowCount();
+            if (k == 0) {
+                JOptionPane.showMessageDialog(this, "Cap problema seleccionat.", "Error de selecció",
+                        JOptionPane.ERROR_MESSAGE);
+            }
+            else {
+                int rows[] = llistaProblemes.getTaula().getSelectedRows();
+                String ids[] = new String[rows.length];
+                for (int i = 0; i < rows.length; ++i) {
+                    ids[i] = (String) llistaProblemes.getTaula().getValueAt(i, 0);
+                }
+            }
+
 
         }
     }
