@@ -7,6 +7,7 @@ package presentacio;
 
 import domini.Estadistica;
 
+import javax.swing.*;
 import java.util.ArrayList;
 
 /**
@@ -197,7 +198,8 @@ public class VistaEstadistica extends javax.swing.JFrame {
     }
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {
-        SeleccioProblema sp = new SeleccioProblema();
+        //SeleccioProblema sp = new SeleccioProblema();
+        JOptionPane.showMessageDialog(this,"Seleccio problema");
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
