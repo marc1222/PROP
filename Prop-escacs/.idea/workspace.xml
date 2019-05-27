@@ -2,20 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a9986b48-1538-4a05-b098-ee43f0cbf3cd" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/files/index.txt" beforeDir="false" afterPath="$PROJECT_DIR$/files/index.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/files/mytemp.txt" beforeDir="false" afterPath="$PROJECT_DIR$/files/mytemp.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/files/problemes.txt" beforeDir="false" afterPath="$PROJECT_DIR$/files/problemes.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/domini/ChessException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/domini/ChessException.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/domini/GestorPersistenciaProblema.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/domini/GestorPersistenciaProblema.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/domini/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/domini/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/domini/Naive.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/domini/Naive.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/domini/Peca.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/domini/Peca.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/domini/Problema.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/domini/Problema.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/gui/CrearProblema.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gui/CrearProblema.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/gui/FENProblema.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gui/FENProblema.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/gui/MenuProblema.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gui/MenuProblema.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/gui/SeleccioProblema.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gui/SeleccioProblema.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -62,7 +49,7 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/domini/ChessException.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="105">
@@ -71,11 +58,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/domini/Problema.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="383">
-              <caret line="473" column="33" lean-forward="true" selection-start-line="473" selection-start-column="33" selection-end-line="473" selection-end-column="33" />
+            <state relative-caret-position="2562">
+              <caret line="719" column="9" lean-forward="true" selection-start-line="719" selection-start-column="9" selection-end-line="719" selection-end-column="9" />
               <folding>
                 <element signature="e#3092#3093#0" expanded="true" />
                 <element signature="e#3122#3123#0" expanded="true" />
@@ -101,6 +88,15 @@
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/domini/ControladorDomini.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="90">
+              <caret line="7" column="2" lean-forward="true" selection-start-line="7" selection-start-column="2" selection-end-line="7" selection-end-column="2" />
             </state>
           </provider>
         </entry>
@@ -208,7 +204,6 @@
         <option value="$PROJECT_DIR$/src/gui/TProblemes.java" />
         <option value="$PROJECT_DIR$/src/gui/Taula.java" />
         <option value="$PROJECT_DIR$/src/gui/AfegirPeca.java" />
-        <option value="$PROJECT_DIR$/src/domini/ControladorDomini.java" />
         <option value="$PROJECT_DIR$/src/domini/define.java" />
         <option value="$PROJECT_DIR$/src/gui/define.java" />
         <option value="$PROJECT_DIR$/src/gui/CrearProblema.java" />
@@ -218,9 +213,10 @@
         <option value="$PROJECT_DIR$/src/domini/Main.java" />
         <option value="$PROJECT_DIR$/files/problemes.txt" />
         <option value="$PROJECT_DIR$/src/domini/GestorPersistenciaProblema.java" />
-        <option value="$PROJECT_DIR$/src/domini/Problema.java" />
         <option value="$PROJECT_DIR$/src/domini/DriverProblema.java" />
         <option value="$PROJECT_DIR$/src/domini/Peca.java" />
+        <option value="$PROJECT_DIR$/src/domini/ControladorDomini.java" />
+        <option value="$PROJECT_DIR$/src/domini/Problema.java" />
       </list>
     </option>
   </component>
@@ -406,6 +402,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="64" y="-11" width="1303" height="780" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.19123507" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -712,17 +709,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/domini/ControladorDomini.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="680">
-          <caret line="238" column="6" selection-start-line="238" selection-start-column="6" selection-end-line="238" selection-end-column="6" />
-          <folding>
-            <element signature="e#7007#7008#0" expanded="true" />
-            <element signature="e#7075#7076#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/gui/GUITauler.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="4080">
@@ -817,10 +803,31 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/domini/DriverProblema.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="15" column="69" lean-forward="true" selection-start-line="15" selection-start-column="69" selection-end-line="15" selection-end-column="69" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/domini/ChessException.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/domini/ControladorDomini.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="7" column="2" lean-forward="true" selection-start-line="7" selection-start-column="2" selection-end-line="7" selection-end-column="2" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/domini/Problema.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="383">
-          <caret line="473" column="33" lean-forward="true" selection-start-line="473" selection-start-column="33" selection-end-line="473" selection-end-column="33" />
+        <state relative-caret-position="2562">
+          <caret line="719" column="9" lean-forward="true" selection-start-line="719" selection-start-column="9" selection-end-line="719" selection-end-column="9" />
           <folding>
             <element signature="e#3092#3093#0" expanded="true" />
             <element signature="e#3122#3123#0" expanded="true" />
@@ -834,20 +841,6 @@
             <element signature="e#3395#3396#0" expanded="true" />
             <element signature="method#setPrimer#0;class#Problema#0" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/domini/DriverProblema.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="15" column="69" lean-forward="true" selection-start-line="15" selection-start-column="69" selection-end-line="15" selection-end-column="69" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/domini/ChessException.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
         </state>
       </provider>
     </entry>

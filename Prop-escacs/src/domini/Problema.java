@@ -644,6 +644,81 @@ public class Problema {
         else sbFEN.append(" b");
         return sbFEN.toString();
     }
+
+    public void FENToGrafic(String fen, String[][] tipus, int[][] colors) {
+        int k = 0;
+        for (int i = 7; i >= 0; --i) {
+            for (int j = 0; j < 8; ++j) {
+                char act = this.ini_pos.charAt(k);
+                if ((act >= 'a' && act <= 'z') || (act >= 'A' && act <= 'Z')) { //class character method
+                    switch(act) {
+                        case 'r':
+                            tipus[j][i] = define.TORRE;
+                            colors[j][i] = define.BLACK;
+                            break;
+                        case 'n':
+                            tipus[j][i] = define.CAVALL;
+                            colors[j][i] = define.BLACK;
+                            break;
+                        case 'b':
+                            tipus[j][i] = define.ALFIL;
+                            colors[j][i] = define.BLACK;
+                            break;
+                        case 'q':
+                            tipus[j][i] = define.REINA;
+                            colors[j][i] = define.BLACK;
+                            break;
+                        case 'k':
+                            tipus[j][i] = define.REI;
+                            colors[j][i] = define.BLACK;
+                            break;
+                        case 'p':
+                            tipus[j][i] = define.PEO;
+                            colors[j][i] = define.BLACK;
+                            break;
+                        case 'R':
+                            tipus[j][i] = define.TORRE;
+                            colors[j][i] = define.WHITE;
+                            break;
+                        case 'N':
+                            tipus[j][i] = define.CAVALL;
+                            colors[j][i] = define.WHITE;
+                            break;
+                        case 'B':
+                            tipus[j][i] = define.ALFIL;
+                            colors[j][i] = define.WHITE;
+                            break;
+                        case 'Q':
+                            tipus[j][i] = define.REINA;
+                            colors[j][i] = define.WHITE;
+                            break;
+                        case 'K':
+                            tipus[j][i] = define.REI;
+                            colors[j][i] = define.WHITE;
+                            break;
+                        case 'P':
+                            tipus[j][i] = define.PEO;
+                            colors[j][i] = define.WHITE;
+                            break;
+                        default:
+                            //
+                            break;
+                    }
+                }
+                else if (act >= '0' && act <= '8'){                             //class character method
+                    for (int z = 0; z < Character.getNumericValue(act); ++z) {
+                        tipus[j][i] = define.PECA_NULA;
+                        colors[j][i] = define.NULL_COLOR;
+                        //tau_mat[i][j] = define.PECA_NULA;
+                        ++j;
+                    }
+                    --j;
+                }
+                ++k;
+            }
+            ++k;
+        }
+    }
     /*
     public boolean validar_problema3(int color_act, Taulell tau, int njug, boolean atk) { //private?
         //Peca pec_mat[][] = this.getPeces();
