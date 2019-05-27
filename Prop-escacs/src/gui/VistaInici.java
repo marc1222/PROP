@@ -1,28 +1,15 @@
 package gui;
 
-import domini.Usuari;
+import domini.ControladorDomini;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 
-/*
-messageType:
-    ERROR_MESSAGE
-    INFORMATION_MESSAGE
-    WARNING_MESSAGE
-    QUESTION_MESSAGE
-    PLAIN_MESSAGE
-
-optionType:
-    DEFAULT_OPTION
-    YES_NO_OPTION
-    YES_NO_CANCEL_OPTION
-    OK_CANCEL_OPTION
-*/
-
 public class VistaInici {
-    private JFrame frameVista = new JFrame("Inici");
+    private JFrame master;
+    private ControladorDomini ctrlDomini;
+
     private JPanel panel = new JPanel();
     private JPanel pInici = new JPanel();
     private JPanel pRegistrar = new JPanel();
@@ -53,25 +40,14 @@ public class VistaInici {
     JButton btnRegistrar = new JButton("Registrar");
     final JLabel lbMssgR = new JLabel();
 
-    public VistaInici() {
-        /*
-        f.addWindowListener(new WindowAdapter(){
-            public void windowClosing(WindowEvent e) {
-                int a=JOptionPane.showConfirmDialog(f,"Are you sure?", "Question", JOptionPane.YES_NO_OPTION );
-                if(a == JOptionPane.YES_OPTION){
-                    f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-                }
-            }
-        });
-        */
+    public VistaInici(JFrame master, ControladorDomini ctrlDomini) {
+        this.master = master;
+        this.ctrlDomini = ctrlDomini;
 
-        frameVista.add(panel);
-        frameVista.setSize(700,650);
+        master.add(panel);
         //panel.setLayout(new BorderLayout());
         //panel.setLayout(new FlowLayout(FlowLayout.CENTER));
         panel.setLayout(new GridBagLayout());
-        frameVista.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        //f.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 
         /*
         // Tamanyo
@@ -123,13 +99,12 @@ public class VistaInici {
         //panelInformacionA.setLayout(new BorderLayout());
         //panel.add(panelInformacionA, JPanel.CENTER_ALIGNMENT);
         panel.add(panelInformacionA);
-        frameVista.pack();
-        frameVista.setSize(700,650);
-        frameVista.repaint();
+        master.pack();
+        master.repaint();
     }
 
     public void hacerVisible() {
-        frameVista.setVisible(true);
+        master.setVisible(true);
     }
 
 
@@ -152,13 +127,15 @@ public class VistaInici {
                 usuari = UsuariIS.getText();
                 contra = new String(ContraIS.getPassword());
 
-                Usuari usr = new Usuari();
-                if(usr.iniciarSessio(usuari, contra)) {
+                if(ctrlDomini.iniciarSessio(usuari, contra)) {
                     //String data = "Usuari CORRECTE";
                     //lbMssg.setText(data);
-                    frameVista.dispose();
-                    VistaMenuPrincipal3 vmp = new VistaMenuPrincipal3(usuari);
-                    vmp.setVisible(true);
+                    //master.dispose();
+                    //VistaMenuPrincipal3 vmp = new VistaMenuPrincipal3(usuari);
+                    //vmp.setVisible(true);
+
+                    String data = "SESSIO INICIADA";
+                    lbMssg.setText(data);
                 }
                 else {
                     UsuariIS.setText("");
@@ -223,13 +200,15 @@ public class VistaInici {
                     lbMssgR.setText(error);
                 }
                 else {
-                    Usuari usr = new Usuari();
-                    if (usr.registrar(usuari, contra1, contra2)) {
+                    if (ctrlDomini.registrar(usuari, contra1, contra2)) {
                         //String data = "Usuari REGISTRAT";
                         //lbMssgR.setText(data);
-                        VistaMenuPrincipal3 vmp = new VistaMenuPrincipal3(usuari);
-                        vmp.setVisible(true);
-                        frameVista.dispose();
+                        //VistaMenuPrincipal3 vmp = new VistaMenuPrincipal3(usuari);
+                        //vmp.setVisible(true);
+                        //master.dispose();
+
+                        String data = "REGISTRAT.";
+                        lbMssgR.setText(data);
                     } else {
                         String data = "L'usuari ja existeix.";
                         lbMssgR.setText(data);

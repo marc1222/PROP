@@ -132,7 +132,6 @@ public class Usuari extends Jugador {
         return iniciCorrecte;
     }
 
-
     /**
      * D'ona de baixa el propi usuari eliminat-lo del fitxer i passa a
      * ser un usuari 'Convidat'

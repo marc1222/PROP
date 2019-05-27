@@ -5,6 +5,8 @@
  */
 package gui;
 
+import domini.ControladorDomini;
+
 import javax.swing.*;
 import java.awt.*;
 
@@ -14,11 +16,15 @@ import java.awt.*;
  */
 public class VistaMenuPrincipal {
     private JFrame master;
+    private ControladorDomini ctrlDomini;
+    private String usuari;
     /**
      * Creates new form VistaMenuPrincipal
      */
-    public VistaMenuPrincipal(JFrame master) {
+    public VistaMenuPrincipal(JFrame master, ControladorDomini ctrlDomini, String usuari) {
         this.master = master;
+        this.ctrlDomini = ctrlDomini;
+        this.usuari = usuari;
         initComponents();
 
         this.master.getContentPane().removeAll();
@@ -54,25 +60,45 @@ public class VistaMenuPrincipal {
         jButton21.setText("Jugar partida");
         jButton21.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                jButton21ActionPerformed(evt);
             }
         });
 
         jButton22.setText("Gestió problemes");
+        jButton22.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton22ActionPerformed(evt);
+            }
+        });
 
         jButton23.setText("Mirar estadístiques");
+        jButton23.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton23ActionPerformed(evt);
+            }
+        });
 
         jButton24.setText("Donar-se de baixa");
+        jButton24.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton24ActionPerformed(evt);
+            }
+        });
 
         jButton25.setText("Tancar sessió");
         jButton25.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton5ActionPerformed(evt);
+                jButton25ActionPerformed(evt);
             }
         });
 
         jButton1.setText("Simular partides");
-        jButton1.setToolTipText("");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        //jButton1.setToolTipText("FGRS");
 
         javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
         jPanel7.setLayout(jPanel7Layout);
@@ -157,17 +183,46 @@ public class VistaMenuPrincipal {
         master.pack();
     }
 
-    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton5ActionPerformed
+    private void jButton21ActionPerformed(java.awt.event.ActionEvent evt) {
+        // TODO --- JUGAR PARTIDA ---
+        JOptionPane.showMessageDialog(master,"Jugar partida");
+    }
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {
+        // TODO --- SIMULAR PARTIDA ---
+        JOptionPane.showMessageDialog(master,"Simular partidas");
+    }
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+    private void jButton22ActionPerformed(java.awt.event.ActionEvent evt) {
+        // TODO --- GESTIO PROBLEMES ---
+        JOptionPane.showMessageDialog(master,"Gestio problemes");
+    }
 
-    /**
-     * @param args the command line arguments
-     */
+    private void jButton23ActionPerformed(java.awt.event.ActionEvent evt) {
+        // TODO --- MIRAR ESTADISTIQUES ---
+        JOptionPane.showMessageDialog(master,"Mirar estadistiques");
+    }
+
+    private void jButton24ActionPerformed(java.awt.event.ActionEvent evt) {
+        // TODO --- DONAR-SE DE BAIXA ---
+        JOptionPane.showMessageDialog(master,"Donar-se de baixa");
+
+        /*
+        int a= JOptionPane.showConfirmDialog(master,"Estàs segur de que vols donar-te de baixa?",
+                "Question", JOptionPane.YES_NO_OPTION );
+        if(a == JOptionPane.YES_OPTION){
+            ctrlDomini.eliminarUsuari(usuari);
+            ctrlDomini.eliminarStatsUsuari(usuari);
+        }
+        */
+    }
+
+    private void jButton25ActionPerformed(java.awt.event.ActionEvent evt) {
+        // TODO --- TANCAR SESSIO ---
+        JOptionPane.showMessageDialog(master,"Tancar sessio");
+    }
+
+
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;

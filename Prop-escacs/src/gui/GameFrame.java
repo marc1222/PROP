@@ -14,7 +14,7 @@ public class GameFrame {
 
     private JFrame gameFrame;
     private static Dimension SCREEN_SIZE = new Dimension(730,730);
-    //private ControladorDomini DomainController;
+    private ControladorDomini DomainController;
 
     private JMenuBar MenuBar;
 
@@ -33,13 +33,18 @@ public class GameFrame {
         ((JFrame) this.gameFrame).setJMenuBar(this.MenuBar);
         this.gameFrame.setSize(SCREEN_SIZE);
 
-        //init_domain_controller();
+        init_domain_controller();
 
-        VistaMenuPrincipal vmp = new VistaMenuPrincipal(this.gameFrame);
-        //JugarPartidaView partida = new JugarPartidaView(this.gameFrame, false, this.DomainController);
+        JugarPartidaView partida = new JugarPartidaView(this.gameFrame, false, this.DomainController);
 //        Taulell T = new Taulell(init_test());
 //        this.master_tauler = T;
 
+
+
+
+        //VistaInici vi = new VistaInici(this.gameFrame, this.DomainController);
+        //VistaMenuPrincipal vmp = new VistaMenuPrincipal(this.gameFrame, this.DomainController, "usr123");
+        //VistaEstadistica ve = new VistaEstadistica(this.gameFrame, this.DomainController, "usr1");
     }
 
     private void fill_menu_bar() {
@@ -106,9 +111,9 @@ public class GameFrame {
         return Prova;
     }
 
-    /*private void init_domain_controller() {
+    private void init_domain_controller() {
         this.DomainController = new ControladorDomini();
-    }*/
+    }
 
 }
 

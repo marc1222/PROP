@@ -5,7 +5,7 @@
  */
 package gui;
 
-import domini.Estadistica;
+import domini.ControladorDomini;
 
 import javax.swing.*;
 import java.util.ArrayList;
@@ -14,15 +14,23 @@ import java.util.ArrayList;
  *
  * @author MDD
  */
-public class VistaEstadistica extends javax.swing.JFrame {
+public class VistaEstadistica {
+    private JFrame master;
+    private ControladorDomini ctrlDomini;
     private String usuari;
     /**
      * Creates new form VistaEstadistica
      */
-    public VistaEstadistica(String usuari) {
+    public VistaEstadistica(JFrame master, ControladorDomini ctrlDomini, String usuari) {
+        this.master = master;
+        this.ctrlDomini = ctrlDomini;
         this.usuari = usuari;
         initComponents();
-        setVisible(true);
+
+        this.master.getContentPane().removeAll();
+        this.master.add(jPanel1);
+        this.master.repaint();
+        this.master.setVisible(true);
     }
 
     /**
@@ -40,8 +48,6 @@ public class VistaEstadistica extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(600, 550));
 
         /*
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
@@ -59,7 +65,7 @@ public class VistaEstadistica extends javax.swing.JFrame {
 
         String column[]={"Problema","Mat", "Temps"};
 
-        ArrayList<String> listUsuari = Estadistica.estadistiquesUsuari(usuari);
+        ArrayList<String> listUsuari = ctrlDomini.estadistiquesUsuari(usuari);
         int listSizeUsuari= listUsuari.size();
         if (listSizeUsuari != 0) {
             String[][] dataUsuari = new String[listSizeUsuari][3];
@@ -120,7 +126,7 @@ public class VistaEstadistica extends javax.swing.JFrame {
             }
         ));
         */
-        ArrayList<String> listProblemes = Estadistica.estadistiquesProblema("p1");
+        ArrayList<String> listProblemes = ctrlDomini.estadistiquesProblema("p1");
         int listSizeProblemes = listProblemes.size();
         String[][] dataProblemes = new String[listSizeProblemes][3] ;
         //System.out.println(listSizeProblemes);
@@ -178,8 +184,8 @@ public class VistaEstadistica extends javax.swing.JFrame {
                 .addContainerGap(32, Short.MAX_VALUE))
         );
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(master.getContentPane());
+        master.getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
@@ -194,12 +200,12 @@ public class VistaEstadistica extends javax.swing.JFrame {
                 .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        pack();
+        master.pack();
     }
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {
         //SeleccioProblema sp = new SeleccioProblema();
-        JOptionPane.showMessageDialog(this,"Seleccio problema");
+        JOptionPane.showMessageDialog(master,"Seleccio problema");
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
