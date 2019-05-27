@@ -6,7 +6,7 @@ import java.util.Scanner; // import the Scanner class
 
 
 /**
- * Classe domini.Usuari
+ * Classe Usuari
  * @author Marian Dumitru Danci
  */
 public class Usuari extends Jugador {
@@ -111,7 +111,7 @@ public class Usuari extends Jugador {
             }
         }
         else {
-            System.out.println("domini.Usuari no vàlida.\n");
+            System.out.println("Usuari no vàlida.\n");
             return false;
         }
 
@@ -143,7 +143,7 @@ public class Usuari extends Jugador {
         catch (Exception e) {
 
         }
-        System.out.println("domini.Usuari no existeix.\n");
+        System.out.println("Usuari no existeix.\n");
         return false;
     }
 
@@ -157,7 +157,7 @@ public class Usuari extends Jugador {
      */
     public boolean registrar(String nomUsuari, String contrasenya1, String contrasenya2) {
         if(nomUsuari == null || nomUsuari.isEmpty() || nomUsuari.equals("Convidat")) {
-            System.out.println("domini.Usuari no vàlida.\n");
+            System.out.println("Usuari no vàlida.\n");
         }
         else if(contrasenya1 == null || contrasenya1.isEmpty() ||
                 contrasenya2 == null || contrasenya2.isEmpty()) {

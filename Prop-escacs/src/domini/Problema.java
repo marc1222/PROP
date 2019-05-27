@@ -6,6 +6,7 @@ public class Problema {
     private int primer;
     private String ini_pos;
     private int dificultat;
+    private String idCreador;
     //usuari creador pels permissos (not implemented)
 
     //static private String fitxer = "./files/problemes.txt";     //branca main
@@ -69,6 +70,7 @@ public class Problema {
         primer = -1;
         ini_pos = null;
         dificultat = -1;
+        idCreador = "-1";
     }
 
     Problema (int jugades, int primer) {
@@ -118,6 +120,8 @@ public class Problema {
         return this.ini_pos;
     }
 
+    public String getIdCreador() {return this.idCreador; }
+
     public int getDificultat() {
         return this.dificultat;
     }
@@ -160,6 +164,11 @@ public class Problema {
         else return -1;
     }
 
+    public void setIdCreador(String idc) {
+        // idc >= 0?
+        this.idCreador = idc;
+    }
+
     /**
      * Calcula la dificultat d'un problema segons el número de peces i les jugades per resoldre
      * Pre: pos_ini és un FEN vàlid
@@ -189,7 +198,7 @@ public class Problema {
      * @param fen FEN de la posició inicial del problema
      * @return 0 si s'ha creat el problema, -1 si no és vàlid, -2 si el FEN és invàlid i -3 si el problema ja existia
      */
-    public int crear_problema(int njug, String fen) {
+    public int crear_problema(int njug, String fen) { //usuari creador
         this.jugades = njug;
 
         int i = fen.indexOf(' ');
@@ -208,23 +217,23 @@ public class Problema {
         this.ini_pos = fen.substring(0, i);
         this.dificultat = calculaDif(this.ini_pos, njug);
 
-        //domini.Problema p = new domini.Problema(prob_id, njug, prim, pos);
-        System.out.println("Validant el problemav2...");
+        //Problema p = new Problema(prob_id, njug, prim, pos);
+        String snjug = String.valueOf(njug);
+        String sprim = String.valueOf(this.primer);
+        String sdif = String.valueOf(this.dificultat);
+        GestorPersistenciaProblema gpp = new GestorPersistenciaProblema();
+        if (gpp.comprovarExistencia(snjug, sprim, sdif, this.ini_pos, idCreador)) {
+            //problema ja existeix
+            System.out.println("El problema ja existex");
+            return -3;
+        }
+        System.out.println("Validant el problema...");
         if (this.validar_problema2(this.primer, new Taulell(new Taulell(this.getPeces())), this.jugades)) {
-            String snjug = String.valueOf(njug);
-            String sprim = String.valueOf(this.primer);
-            String sdif = String.valueOf(this.dificultat);
-            GestorPersistenciaProblema gpp = new GestorPersistenciaProblema();
-            if (gpp.comprovarExistencia(snjug, sprim, sdif, this.ini_pos)) {
-                //problema ja existeix
-                System.out.println("El problema ja existex");
-                return -3;
-            }
-            gpp.escriuProblema(String.valueOf(this.id), snjug, sprim, this.ini_pos, sdif);
+            gpp.escriuProblema(String.valueOf(this.id), snjug, sprim, this.ini_pos, sdif, idCreador);
             System.out.println("S'ha creat el problema");
         }
         else {
-            System.out.println("domini.Problema sense solució");
+            System.out.println("Problema sense solució");
             return -1;
         }
         return 0;
@@ -238,7 +247,7 @@ public class Problema {
      * @param njug número de jugades del problema
      * @return 0 si s'ha creat el problema, -1 si no és vàlid, -2 si el FEN és invàlid i -3 si el problema ja existia
      */
-    public int modificar_problema(String fen, int njug) {
+    public int modificar_problema(String fen, int njug) { //usuari creador
         this.jugades = njug;
 
         int i = fen.indexOf(' ');
@@ -251,24 +260,24 @@ public class Problema {
         }
         else {
             //invalid fen
-            System.out.println("domini.Problema o FEN invàlid");
+            System.out.println("Problema o FEN invàlid");
             return -2;
         }
         this.ini_pos = fen.substring(0, i);
         this.dificultat = calculaDif(this.ini_pos, njug);
 
+        String snjug = String.valueOf(njug);
+        String sprim = String.valueOf(this.primer);
+        String sdif = String.valueOf(this.dificultat);
+        GestorPersistenciaProblema gpp = new GestorPersistenciaProblema();
+        if (gpp.comprovarExistencia(snjug, sprim, sdif, this.ini_pos, idCreador)) {
+            //problema ja existeix
+            System.out.println("El nou problema ja existeix");
+            return -3;
+        }
         System.out.println("Validant el problema...");
         if (this.validar_problema2(this.primer, new Taulell(new Taulell(this.getPeces())), this.jugades)) {
-            String snjug = String.valueOf(njug);
-            String sprim = String.valueOf(this.primer);
-            String sdif = String.valueOf(this.dificultat);
-            GestorPersistenciaProblema gpp = new GestorPersistenciaProblema();
-            if (gpp.comprovarExistencia(snjug, sprim, sdif, this.ini_pos)) {
-                //problema ja existeix
-                System.out.println("El nou problema ja existeix");
-                return -3;
-            }
-            gpp.escriuProblema(String.valueOf(this.id), snjug, sprim, this.ini_pos, sdif);
+            gpp.escriuProblema(String.valueOf(this.id), snjug, sprim, this.ini_pos, sdif, this.idCreador);
             System.out.println("S'ha clonat i modificat el problema");
         }
         else {
@@ -286,7 +295,7 @@ public class Problema {
     public int eliminar_problema() { //prob_id? //borrar objecte?
         //permissos?
         String borra_linia = this.id + " " + this.jugades + " " +
-                             this.primer + " " + this.ini_pos + " " + this.dificultat;
+                             this.primer + " " + this.ini_pos + " " + this.dificultat + " " + this.idCreador;
         GestorPersistenciaProblema gpp = new GestorPersistenciaProblema();
         if ((gpp.borrarProblema(borra_linia)) == -1) {
             // no existeix problema
@@ -358,7 +367,7 @@ public class Problema {
                 else if (act >= '0' && act <= '8'){                             //class character method
                     for (int z = 0; z < Character.getNumericValue(act); ++z) {
                         mat[j][i] = new Peca_Nula();
-                        //tau_mat[i][j] = domini.define.PECA_NULA;
+                        //tau_mat[i][j] = define.PECA_NULA;
                         ++j;
                     }
                     --j;
@@ -370,17 +379,17 @@ public class Problema {
         return mat;
     }
 
-    /*public static domini.Problema[] consultarProblemes() {
+    /*public static Problema[] consultarProblemes() {
         try (BufferedReader br = new BufferedReader(new FileReader(fitxer))) {
-            ArrayList<domini.Problema> probs = new ArrayList<domini.Problema>();
+            ArrayList<Problema> probs = new ArrayList<Problema>();
             String line;
             while ((line = br.readLine()) != null) {
                 String[] camps = line.split("\\s+");
-                domini.Problema prob = new domini.Problema(Integer.parseInt(camps[0]), Integer.parseInt(camps[1]), Integer.parseInt(camps[2]), camps[3]);
+                Problema prob = new Problema(Integer.parseInt(camps[0]), Integer.parseInt(camps[1]), Integer.parseInt(camps[2]), camps[3]);
                 //NumberFormatException0
                 probs.add(prob);
             }
-            domini.Problema res[] = new domini.Problema[probs.size()];
+            Problema res[] = new Problema[probs.size()];
             res = probs.toArray(res);
             return res;
         }
@@ -409,7 +418,7 @@ public class Problema {
         return res;
     }
 
-    /*public static domini.Problema getProblemaId(int id) {
+    /*public static Problema getProblemaId(int id) {
         try (BufferedReader br = new BufferedReader(new FileReader(fitxer))) {
             String line;
             boolean trobat = false;
@@ -419,12 +428,12 @@ public class Problema {
                 if (camps[0].equals(sid)) {
                     trobat = true;
                     //problema ja existeix
-                    domini.Problema res = new domini.Problema(Integer.parseInt(camps[0]), Integer.parseInt(camps[1]), Integer.parseInt(camps[2]), camps[3]);
+                    Problema res = new Problema(Integer.parseInt(camps[0]), Integer.parseInt(camps[1]), Integer.parseInt(camps[2]), camps[3]);
                     return res;
                 }
             }
             if (!trobat) {
-                domini.Problema res = new domini.Problema();
+                Problema res = new Problema();
                 return res;
             }
         }
@@ -462,6 +471,7 @@ public class Problema {
             p.primer = Integer.parseInt(res[2]);
             p.ini_pos = res[3];
             p.dificultat = Integer.parseInt(res[4]);
+            p.idCreador = res[5];
             return 0;
         }
     }
@@ -586,28 +596,76 @@ public class Problema {
         }
         return false;
     }
+
+    public String graficToFEN(String tipus[][], int colors[][], int primer) {
+        StringBuilder sbFEN = new StringBuilder();
+        for (int i = 0; i < 8; ++i) {
+            int cont = 0;
+            for (int j = 7; j >= 0; --j) {
+                if (tipus[i][j].equals(define.PECA_NULA)) cont++;
+                else {
+                    if (cont > 0) {
+                        sbFEN.append(cont);
+                        cont = 0;
+                    }
+                    switch (tipus[i][j]) {
+                        case define.PEO:
+                            if (colors[i][j] == define.WHITE) sbFEN.append("P");
+                            else sbFEN.append("p");
+                            break;
+                        case define.TORRE:
+                            if (colors[i][j] == define.WHITE) sbFEN.append("R");
+                            else sbFEN.append("r");
+                            break;
+                        case define.CAVALL:
+                            if (colors[i][j] == define.WHITE) sbFEN.append("N");
+                            else sbFEN.append("n");
+                            break;
+                        case define.ALFIL:
+                            if (colors[i][j] == define.WHITE) sbFEN.append("B");
+                            else sbFEN.append("b");
+                            break;
+                        case define.REINA:
+                            if (colors[i][j] == define.WHITE) sbFEN.append("Q");
+                            else sbFEN.append("q");
+                            break;
+                        case define.REI:
+                            if (colors[i][j] == define.WHITE) sbFEN.append("K");
+                            else sbFEN.append("k");
+                            break;
+                        default:
+                            break;
+                    }
+                }
+            }
+            if (cont > 0) sbFEN.append(cont);
+        }
+        if (primer == define.WHITE) sbFEN.append(" w");
+        else sbFEN.append(" b");
+        return sbFEN.toString();
+    }
     /*
-    public boolean validar_problema3(int color_act, domini.Taulell tau, int njug, boolean atk) { //private?
-        //domini.Peca pec_mat[][] = this.getPeces();
-        //domini.Taulell tau = new domini.Taulell(pec_mat);
+    public boolean validar_problema3(int color_act, Taulell tau, int njug, boolean atk) { //private?
+        //Peca pec_mat[][] = this.getPeces();
+        //Taulell tau = new Taulell(pec_mat);
         //System.out.println("Color " + String.valueOf(color_act) + " jugades " + String.valueOf(njug) + " torn " + String.valueOf(atk));
         if (njug == 0) return false;
         int color_cont;
-        if (color_act == domini.define.WHITE) color_cont = domini.define.BLACK;
-        else color_cont = domini.define.WHITE;
-        domini.Posicion pec_pos[] = tau.getPosColor(color_act);
+        if (color_act == define.WHITE) color_cont = define.BLACK;
+        else color_cont = define.WHITE;
+        Posicion pec_pos[] = tau.getPosColor(color_act);
         for (int i = 0; i < pec_pos.length; ++i) {
             //System.out.println("Peça " + String.valueOf(i) + " pos " + String.valueOf(pec_pos[i].x) + " " + String.valueOf(pec_pos[i].y));
             // if peça nula
-            //domini.Posicion mov[] = pec_mat[i][j].movimientos_posibles(new domini.Posicion(i, j));
-            //domini.Posicion pos_act = new domini.Posicion(i, j);
-            domini.Posicion mov[] = tau.todos_movimientos(pec_pos[i]);
+            //Posicion mov[] = pec_mat[i][j].movimientos_posibles(new Posicion(i, j));
+            //Posicion pos_act = new Posicion(i, j);
+            Posicion mov[] = tau.todos_movimientos(pec_pos[i]);
             if (mov != null) {
                 for (int k = 0; k < mov.length; ++k) {
                     //System.out.println("Moviment " + String.valueOf(k) + " de " + String.valueOf(mov.length) + " color " + String.valueOf(color_act));
                     //System.out.println("mov " + String.valueOf(mov[k].x) + " " + String.valueOf(mov[k].y));
                     boolean ret;
-                    domini.Taulell tau2 = new domini.Taulell(tau);
+                    Taulell tau2 = new Taulell(tau);
                     //System.out.println("Actual");
                     //tau.printTauler();
                     tau2.mover_pieza(pec_pos[i], mov[k], color_act);

@@ -141,7 +141,7 @@ public class SeleccioProblema extends JPanel  implements ActionListener  {
             }
         }
         else {
-            //TODO this.where == define.SIMULACIO
+            //this.where == define.SIMULACIO
             int k = llistaProblemes.getTaula().getSelectedRowCount();
             if (k == 0) {
                 JOptionPane.showMessageDialog(this, "Cap problema seleccionat.", "Error de selecció",
@@ -153,8 +153,8 @@ public class SeleccioProblema extends JPanel  implements ActionListener  {
                 for (int i = 0; i < rows.length; ++i) {
                     ids[i] = Integer.valueOf(((String) llistaProblemes.getTaula().getValueAt(i, 0)));
                 }
-                int blanc = (cbBlanc.getSelectedItem().toString()=="Naive")?define.NAIVE:define.SMART;
-                int negre = (cbNegre.getSelectedItem().toString()=="Naive")?define.NAIVE:define.SMART;
+                int blanc = (cbBlanc.getSelectedItem().toString().equals("Naive"))?define.NAIVE:define.SMART;
+                int negre = (cbNegre.getSelectedItem().toString().equals("Naive"))?define.NAIVE:define.SMART;
                 jugarview.startSimulacio(ids, blanc, negre);
             }
 

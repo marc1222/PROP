@@ -1,6 +1,6 @@
 package gui;
 
-import domini.*;
+import domini.ControladorDomini;
 
 import javax.imageio.ImageIO;
 import javax.naming.ldap.Control;
@@ -17,7 +17,7 @@ import java.util.ArrayList;
 import static gui.define.DARK_COLOR;
 import static gui.define.LIGHT_COLOR;
 
-public class CrearProblema extends JPanel{
+public class CrearProblema extends JPanel implements ActionListener {
     //private JFrame frameVista = new JFrame("Creació del problema");
     //private JMenuBar menuBar = new JMenuBar();
 
@@ -26,6 +26,10 @@ public class CrearProblema extends JPanel{
     private BarraPeces barraPeces = new BarraPeces();
     private ControladorDomini cd;
     private TaulerCrearProblema tauler;
+    private JButton bCont = new JButton("Confirmar i validar problema");
+    private JPanel pJug = new JPanel(); // = new JPanel(new BoxLayout(this, BoxLayout.Y_AXIS));
+    private JTextField tJug = new JTextField();
+    private JLabel lJug = new JLabel("<html>Escriu el número de<br/>jugades del problema</html>");
 
     private class BarraPeces extends JPanel implements MouseListener {
         private AfegirPeca[] peces = new AfegirPeca[13];
@@ -235,16 +239,6 @@ public class CrearProblema extends JPanel{
 
     //////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-    private Peca[][] tauler_buit() {
-        Peca[][] tau = new Peca[8][8];
-        for (int i = 0; i<8; ++i) {
-            for (int j = 0; j < 8; ++j) {
-                tau[i][j] = new Peca_Nula();
-            }
-        }
-        return tau;
-    }
-
     public CrearProblema(ControladorDomini cd) {
         //menuBar.add(crea_menu());
         //frameVista.setJMenuBar(menuBar);
@@ -257,9 +251,46 @@ public class CrearProblema extends JPanel{
         this.cd = cd;
         tauler = new TaulerCrearProblema(cd);
         this.add(tauler, BorderLayout.CENTER);
+
+        tJug.setMaximumSize(new Dimension(100, 50));
+        tJug.addKeyListener(new KeyAdapter() {
+            public void keyTyped(KeyEvent e) {
+                char c = e.getKeyChar();
+                if (!((c >= '0') && (c <= '9') || (c == KeyEvent.VK_BACK_SPACE) || (c == KeyEvent.VK_DELETE))) {
+                    getToolkit().beep();
+                    e.consume();
+                }
+            }
+        });
+        pJug.setLayout(new BoxLayout(pJug, BoxLayout.Y_AXIS));
+        tJug.setAlignmentX(CENTER_ALIGNMENT);
+        lJug.setAlignmentX(CENTER_ALIGNMENT);
+        pJug.add(lJug);
+        pJug.add(tJug);
+        this.add(pJug, BorderLayout.LINE_END);
+
+        bCont.addActionListener(this);
+        this.add(bCont, BorderLayout.PAGE_END);
         //frameVista.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         //frameVista.pack();
         //frameVista.setVisible(true);
+    }
+
+    public void actionPerformed(ActionEvent e) {
+        //bcont.setEnabled(false);
+        String tipusPeces[][] = new String[8][8];
+        int colors[][] = new int[8][8];
+        for (int i = 0; i < 8; ++i) {
+            for (int j = 0; j < 8; ++j) {
+                tipusPeces[i][j] = tauler.caselles[i][j].tipusP;
+                colors[i][j] = tauler.caselles[i][j].colorP;
+            }
+        }
+        Object[] atacant = {"Blanques", "Negres"};
+        int primer = JOptionPane.showOptionDialog(this, "Quin color començarà jugant (atacant)?",
+                "Escull color atacant", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, atacant, atacant[1]);
+        int njug = Integer.parseInt(tJug.getText());
+
     }
 
     private JMenu crea_menu() {

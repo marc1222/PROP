@@ -1,7 +1,7 @@
 package domini;
 
 /**
- * Classe domini.Naive
+ * Classe Naive
  * @author Marian Dumitru Danci
  */
 public class Naive extends Maquina {

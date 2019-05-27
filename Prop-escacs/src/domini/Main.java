@@ -40,7 +40,7 @@ public class Main {
                             sessioIniciada = master.iniciarSessio(Users[usrSeleccionat]);
                         }
                         else {
-                            System.out.println("domini.Usuari seleccionat no vàlid");
+                            System.out.println("Usuari seleccionat no vàlid");
                         }
                     }
                     else {
@@ -54,7 +54,7 @@ public class Main {
 
                     String nomUsuari, contrasenya1, contrasenya2;
 
-                    System.out.println("domini.Usuari:");
+                    System.out.println("Usuari:");
                     nomUsuari = sc.nextLine();
 
                     System.out.println("Contrasenya:");
@@ -127,8 +127,8 @@ public class Main {
                             } else first = false;
                             System.out.println("\nContra qui vols jugar?");
                             System.out.println("    1 - Invitado");
-                            System.out.println("    2 - domini.Maquina");
-                            System.out.println("    3 - domini.Maquina VS domini.Maquina");
+                            System.out.println("    2 - Maquina");
+                            System.out.println("    3 - Maquina VS Maquina");
                             sc = new Scanner(System.in);
                             val = sc.nextInt();
                         } while ((val > 3 || val < 1));
@@ -168,7 +168,7 @@ public class Main {
                             } else {
                                 //defender    &&   //usuari
                                 second = new Usuari(p.getPrimer());
-                                //master.setColor((p.getPrimer()==domini.define.WHITE)?domini.define.BLACK:domini.define.WHITE);
+                                //master.setColor((p.getPrimer()==define.WHITE)?define.BLACK:define.WHITE);
                             }
                             //else ;
                             System.out.println("\nCreant partida...");
@@ -202,7 +202,7 @@ public class Main {
                         // seleccionar oponent: maquina o usuari
                         // seleccionar atacar o defendre
 
-                        // domini.Partida pa = new domini.Partida(p, atacant, defenent);
+                        // Partida pa = new Partida(p, atacant, defenent);
                         //jugar partida
                         // pa.jugarPartida();
                     }
@@ -227,6 +227,7 @@ public class Main {
                             String fen;
                             fen = scs.next();
                             Problema p = new Problema();
+                            p.setIdCreador(master.getNom());
                             //scanejar jugades i fen
                             res = p.crear_problema(njug, fen);
                             // cancelar
@@ -274,6 +275,7 @@ public class Main {
                             Scanner scs = new Scanner(System.in).useDelimiter(System.lineSeparator());
                             String fen;
                             fen = scs.next();
+                            p.setIdCreador(master.getNom());
                             res = p.modificar_problema(fen, njug);
                         } while (res < 0);
 
@@ -337,14 +339,14 @@ public class Main {
                                         if (statsProblema.isEmpty()) {
                                             System.out.println("No hi han registres del problema");
                                         } else {
-                                            System.out.println("domini.Jugador  Mat  Temps");
+                                            System.out.println("Jugador  Mat  Temps");
                                         }
 
                                         for (String marca : statsProblema) {
                                             System.out.println(marca);
                                         }
                                     } else {
-                                        System.out.println("domini.Problema no vàlid");
+                                        System.out.println("Problema no vàlid");
                                     }
                                     break;
                                 }
@@ -361,13 +363,13 @@ public class Main {
                                         if (statsUsuari.isEmpty()) {
                                             System.out.println("No hi han registres de l'usuari");
                                         } else {
-                                            System.out.println("domini.Problema  Mat  Temps");
+                                            System.out.println("Problema  Mat  Temps");
                                         }
                                         for (String marca : statsUsuari) {
                                             System.out.println(marca);
                                         }
                                     } else {
-                                        System.out.println("domini.Usuari no vàlid");
+                                        System.out.println("Usuari no vàlid");
                                     }
                                     break;
                                 }

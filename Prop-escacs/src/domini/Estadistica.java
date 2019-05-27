@@ -5,7 +5,7 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 /**
- * Classe domini.Estadistica
+ * Classe Estadistica
  * @author Marian Dumitru Danci
  */
 public class Estadistica {

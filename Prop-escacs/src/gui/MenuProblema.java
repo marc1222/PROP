@@ -55,21 +55,19 @@ public class MenuProblema extends JPanel implements ActionListener {
         //bcont.setEnabled(false);
     }
 
-    private JMenu crea_menu() {
-        final JMenu aux = new JMenu("Options");
-        final JMenuItem exit = new JMenuItem("Exit app");
-        exit.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                System.exit(0);
-            }
-        });
-        aux.add(exit);
-        return aux;
-    }
+    private static void createAndShowGUI() {
+        //Create and set up the window.
+        JFrame frame = new JFrame("Menú Problemes");
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-    private static void iniciar() {
-        MenuProblema vista = new MenuProblema();
+        //Create and set up the content pane.
+        MenuProblema newContentPane = new MenuProblema();
+        newContentPane.setOpaque(true); //content panes must be opaque
+        frame.setContentPane(newContentPane);
+
+        //Display the window.
+        frame.pack();
+        frame.setVisible(true);
     }
 
     public static void main(String[] args) {
@@ -77,7 +75,7 @@ public class MenuProblema extends JPanel implements ActionListener {
         //creating and showing this application's GUI.
         javax.swing.SwingUtilities.invokeLater(new Runnable() {
             public void run() {
-                iniciar();
+                createAndShowGUI();
             }
         });
     }

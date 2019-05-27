@@ -1,5 +1,6 @@
 package gui;
 
+import domini.ControladorDomini;
 import domini.define;
 
 import javax.swing.*;
@@ -7,16 +8,18 @@ import javax.swing.text.NumberFormatter;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
+import java.security.Key;
 import java.text.NumberFormat;
+import java.text.ParseException;
 
 public class FENProblema extends JPanel implements ActionListener {
-    //private JFrame frameVista = new JFrame("Crear Problema FEN");
-    //private JMenuBar menuBar = new JMenuBar();
     private JTextField tFen = new JTextField(35);
-    //NumberFormat nf = NumberFormat.getIntegerInstance();
-    NumberFormat nf = NumberFormat.getInstance();
+    /*NumberFormat nf = NumberFormat.getInstance();
     NumberFormatter nfr = new NumberFormatter(nf);
-    private JFormattedTextField tJug;
+    private JFormattedTextField tJug;*/
+    private JTextField tJug = new JTextField();
     private JRadioButton rbBlanc = new JRadioButton("Blanc");
     private JRadioButton rbNegre = new JRadioButton("Negre");
     private ButtonGroup rbg = new ButtonGroup();
@@ -32,16 +35,26 @@ public class FENProblema extends JPanel implements ActionListener {
         //frameVista.setLayout(new BorderLayout());
         //frameVista.setLayout(new GridLayout(0, 1));
         this.setLayout(new GridLayout(0,1));
-        nfr.setValueClass(Integer.class);
+
+        /*nfr.setValueClass(Integer.class);
         nfr.setMaximum(10);
         nfr.setAllowsInvalid(false);
-        nfr.setCommitsOnValidEdit(true);
+        nfr.setCommitsOnValidEdit(true);*/
 
-        tJug = new JFormattedTextField(nfr);
+        //tJug = new JFormattedTextField(nfr);
         tJug.setColumns(5);
         tJug.setPreferredSize(new Dimension(10, 50));
+        tJug.addKeyListener(new KeyAdapter() {
+            public void keyTyped(KeyEvent e) {
+                char c = e.getKeyChar();
+                if (!((c >= '0') && (c <= '9') || (c == KeyEvent.VK_BACK_SPACE) || (c == KeyEvent.VK_DELETE))) {
+                    getToolkit().beep();
+                    e.consume();
+                }
+            }
+        });
 
-        JOptionPane.showMessageDialog(null, tJug);
+        //JOptionPane.showMessageDialog(null, tJug);
 
         rbBlanc.setSelected(true);
         rbg.add(rbBlanc);
@@ -79,7 +92,7 @@ public class FENProblema extends JPanel implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         //bcont.setEnabled(false);
         String fen = tFen.getText();
-        String sjug = (String) tJug.getValue(); // int?
+        int njug = Integer.parseInt(tJug.getText()); // int?
         int color;
         if (rbBlanc.isSelected()) color = define.WHITE;
         else if (rbNegre.isSelected()) color = define.BLACK;
@@ -98,8 +111,19 @@ public class FENProblema extends JPanel implements ActionListener {
         return aux;
     }
 
-    private static void iniciar() {
-        FENProblema vista = new FENProblema();
+    private static void createAndShowGUI() {
+        //Create and set up the window.
+        JFrame frame = new JFrame("Crear Problema FEN");
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+        //Create and set up the content pane.
+        FENProblema newContentPane = new FENProblema();
+        newContentPane.setOpaque(true); //content panes must be opaque
+        frame.setContentPane(newContentPane);
+
+        //Display the window.
+        frame.pack();
+        frame.setVisible(true);
     }
 
     public static void main(String[] args) {
@@ -107,7 +131,7 @@ public class FENProblema extends JPanel implements ActionListener {
         //creating and showing this application's GUI.
         javax.swing.SwingUtilities.invokeLater(new Runnable() {
             public void run() {
-                iniciar();
+                createAndShowGUI();
             }
         });
     }

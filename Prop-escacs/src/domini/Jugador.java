@@ -1,7 +1,7 @@
 package domini;
 
 /**
- * Classe domini.Jugador
+ * Classe Jugador
  * @author Marian Dumitru Danci
  */
 public abstract class Jugador {

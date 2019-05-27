@@ -604,7 +604,7 @@ public class Taulell {
      *     1 si hi ha un escac i mat,
      *     retorna 2 si el rei esta ofegat
      *     retorna -1 altrament
-     *     pre: color pertany domini.define.WHITE || domini.define.BLACK i en el taulell hi ha un rei amb color 'color'
+     *     pre: color pertany define.WHITE || define.BLACK i en el taulell hi ha un rei amb color 'color'
      *     post: retorna un indicador de la situació en la que es troba el rei del color 'color'
      * @param color
      * @return

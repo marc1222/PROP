@@ -54,12 +54,12 @@ public class GestorPersistenciaProblema {
         return -2; // try return
     }
 
-    public boolean comprovarExistencia(String snjug, String sprim, String sdif, String ini_pos) {
+    public boolean comprovarExistencia(String snjug, String sprim, String sdif, String ini_pos, String idc) {
         try (BufferedReader br = new BufferedReader(new FileReader(fitxer))) {
             String line;
             while ((line = br.readLine()) != null) {
                 String[] camps = line.split("\\s+");
-                if (camps[1].equals(snjug) && camps[2].equals(sprim) && camps[3].equals(ini_pos)) { //o nomes prob_id?
+                if (camps[1].equals(snjug) && camps[2].equals(sprim) && camps[3].equals(ini_pos) && camps[5].equals(idc)) { //o nomes prob_id?
                     //problema ja existeix
                     //System.out.println("El problema ja existex");
                     return true;
@@ -76,9 +76,9 @@ public class GestorPersistenciaProblema {
         return false;
     }
 
-    public void escriuProblema(String sid, String snjug, String sprim, String ini_pos, String sdif) {
+    public void escriuProblema(String sid, String snjug, String sprim, String ini_pos, String sdif, String idc) {
         input_output in_out = new input_output();
-        String[] linia = {sid, snjug, sprim, ini_pos, sdif};
+        String[] linia = {sid, snjug, sprim, ini_pos, sdif, idc};
         in_out.write(fitxer, linia);
     }
 
@@ -120,7 +120,7 @@ public class GestorPersistenciaProblema {
                 String[] camps = line.split("\\s+");
                 probs.add(camps);
             }
-            String res[][] = new String[probs.size()][5];
+            String res[][] = new String[probs.size()][6];
             res = probs.toArray(res);
             return res;
         }

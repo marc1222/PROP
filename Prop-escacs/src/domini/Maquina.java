@@ -1,7 +1,7 @@
 package domini;
 
 /**
- * Classe domini.Maquina
+ * Classe Maquina
  * @author Marian Dumitru Danci
  */
 public abstract class Maquina extends Jugador {
@@ -10,7 +10,7 @@ public abstract class Maquina extends Jugador {
 
     /**
      *
-     * @return Retorna el tipus de domini.Jugador
+     * @return Retorna el tipus de Jugador
      */
     public int getTipus() {
         return define.MAQUINA;
@@ -203,7 +203,7 @@ public abstract class Maquina extends Jugador {
      * @return Retorna el seguents valors segons l'estat del rei especificat
      *         0 : Escac
      *         1 : Escac i mat
-     *         2: domini.Rei ofegat
+     *         2: Rei ofegat
      *         -1 : Altrament
      *
      */
