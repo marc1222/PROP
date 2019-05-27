@@ -1,5 +1,4 @@
 package domini;
-
 import java.io.*;
 import java.util.ArrayList;
 
@@ -73,14 +72,14 @@ public class Problema {
         dificultat = -1;
     }
 
-    public Problema (int jugades, int primer) {
+    Problema (int jugades, int primer) {
         this.id = getNextId();
         this.jugades = jugades;
         this.primer = primer;
         ini_pos = null;
     }
 
-    public Problema (int jugades, int primer, String ini_pos, int dificultat) {
+    Problema (int jugades, int primer, String ini_pos, int dificultat) {
         this.id = getNextId();
         this.jugades = jugades;
         this.primer = primer;
@@ -88,7 +87,7 @@ public class Problema {
         this.dificultat = dificultat;
     }
 
-    public Problema (int jugades, String fen) {
+    Problema (int jugades, String fen) {
         this.id = getNextId();
         int i = fen.indexOf(' ');
         char prim = fen.charAt(i + 1);
@@ -210,7 +209,7 @@ public class Problema {
         this.ini_pos = fen.substring(0, i);
         this.dificultat = calculaDif(this.ini_pos, njug);
 
-        //domini.Problema p = new domini.Problema(prob_id, njug, prim, pos);
+        //Problema p = new Problema(prob_id, njug, prim, pos);
         System.out.println("Validant el problema...");
         if (this.validar_problema(this.primer, new Taulell(this.getPeces()), this.jugades)) {
             String snjug = String.valueOf(njug);
@@ -230,7 +229,7 @@ public class Problema {
                     }
                 }
 
-                /*domini.input_output in_out = new domini.input_output();
+                /*input_output in_out = new input_output();
                 String[] linia = {String.valueOf(this.id), snjug, sprim, this.ini_pos, sdif};
                 in_out.write(fitxer, linia);
                 System.out.println("S'ha creat el problema");*/
@@ -248,7 +247,7 @@ public class Problema {
 
         }
         else {
-            System.out.println("domini.Problema sense solució");
+            System.out.println("Problema sense solució");
             return -1;
         }
         return 0;
@@ -275,7 +274,7 @@ public class Problema {
         }
         else {
             //invalid fen
-            System.out.println("domini.Problema o FEN invàlid");
+            System.out.println("Problema o FEN invàlid");
             return -2;
         }
         this.ini_pos = fen.substring(0, i);
@@ -299,7 +298,7 @@ public class Problema {
                         return -3;
                     }
                 }
-                /*domini.input_output in_out = new domini.input_output();
+                /*input_output in_out = new input_output();
                 String[] linia = {String.valueOf(this.id), snjug, sprimer, this.ini_pos, sdif};
                 in_out.write(fitxer, linia);
                 System.out.println("S'ha clonat i modificat el problema");*/
@@ -426,7 +425,7 @@ public class Problema {
                 else if (act >= '0' && act <= '8'){                             //class character method
                     for (int z = 0; z < Character.getNumericValue(act); ++z) {
                         mat[j][i] = new Peca_Nula();
-                        //tau_mat[i][j] = define.PECA_NULA;
+                        //tau_mat[i][j] = domini.define.PECA_NULA;
                         ++j;
                     }
                     --j;
@@ -438,17 +437,17 @@ public class Problema {
         return mat;
     }
 
-    /*public static domini.Problema[] consultarProblemes() {
+    /*public static Problema[] consultarProblemes() {
         try (BufferedReader br = new BufferedReader(new FileReader(fitxer))) {
-            ArrayList<domini.Problema> probs = new ArrayList<domini.Problema>();
+            ArrayList<Problema> probs = new ArrayList<Problema>();
             String line;
             while ((line = br.readLine()) != null) {
                 String[] camps = line.split("\\s+");
-                domini.Problema prob = new domini.Problema(Integer.parseInt(camps[0]), Integer.parseInt(camps[1]), Integer.parseInt(camps[2]), camps[3]);
+                Problema prob = new Problema(Integer.parseInt(camps[0]), Integer.parseInt(camps[1]), Integer.parseInt(camps[2]), camps[3]);
                 //NumberFormatException0
                 probs.add(prob);
             }
-            domini.Problema res[] = new domini.Problema[probs.size()];
+            Problema res[] = new Problema[probs.size()];
             res = probs.toArray(res);
             return res;
         }
@@ -490,7 +489,7 @@ public class Problema {
         return null; //try return?
     }
 
-    /*public static domini.Problema getProblemaId(int id) {
+    /*public static Problema getProblemaId(int id) {
         try (BufferedReader br = new BufferedReader(new FileReader(fitxer))) {
             String line;
             boolean trobat = false;
@@ -500,12 +499,12 @@ public class Problema {
                 if (camps[0].equals(sid)) {
                     trobat = true;
                     //problema ja existeix
-                    domini.Problema res = new domini.Problema(Integer.parseInt(camps[0]), Integer.parseInt(camps[1]), Integer.parseInt(camps[2]), camps[3]);
+                    Problema res = new Problema(Integer.parseInt(camps[0]), Integer.parseInt(camps[1]), Integer.parseInt(camps[2]), camps[3]);
                     return res;
                 }
             }
             if (!trobat) {
-                domini.Problema res = new domini.Problema();
+                Problema res = new Problema();
                 return res;
             }
         }
@@ -559,14 +558,14 @@ public class Problema {
     }
 
     /*
-    public boolean validar_problema(int color_act, domini.Taulell tau, int njug, boolean atk) { //private?
-        //domini.Peca pec_mat[][] = this.getPeces();
-        //domini.Taulell tau = new domini.Taulell(pec_mat);
+    public boolean validar_problema(int color_act, Taulell tau, int njug, boolean atk) { //private?
+        //Peca pec_mat[][] = this.getPeces();
+        //Taulell tau = new Taulell(pec_mat);
         //System.out.println("Color " + String.valueOf(color_act) + " jugades " + String.valueOf(njug) + " torn " + String.valueOf(atk));
         if (njug == 0) return false;
         int color_cont;
-        if (color_act == define.WHITE) color_cont = define.BLACK;
-        else color_cont = define.WHITE;
+        if (color_act == domini.define.WHITE) color_cont = domini.define.BLACK;
+        else color_cont = domini.define.WHITE;
         //for (int i = 0; i < 8; ++i) {
             //for (int j = 0; j < 8; ++j) {
         Posicion pec_pos[] = tau.getPosColor(color_act);
@@ -588,10 +587,10 @@ public class Problema {
                     //tau.printTauler();
                     if (atk && tau.escac_i_mat(color_cont) == 1) return true;
                     if (atk) {
-                        ret = this.validar_problema(color_cont, new domini.Taulell(tau), njug, false);
+                        ret = this.validar_problema(color_cont, new Taulell(tau), njug, false);
                     } else {
                         if (njug != 1)
-                            ret = this.validar_problema(color_cont, new domini.Taulell(tau), njug - 1, true); // if njug == 1 false
+                            ret = this.validar_problema(color_cont, new Taulell(tau), njug - 1, true); // if njug == 1 false
                         else ret = false;
                     }
                     if (ret) return true;
@@ -659,14 +658,14 @@ public class Problema {
         return false;
     }
     /*
-    public boolean validar_problema3(int color_act, domini.Taulell tau, int njug, boolean atk) { //private?
-        //domini.Peca pec_mat[][] = this.getPeces();
-        //domini.Taulell tau = new domini.Taulell(pec_mat);
+    public boolean validar_problema3(int color_act, Taulell tau, int njug, boolean atk) { //private?
+        //Peca pec_mat[][] = this.getPeces();
+        //Taulell tau = new Taulell(pec_mat);
         //System.out.println("Color " + String.valueOf(color_act) + " jugades " + String.valueOf(njug) + " torn " + String.valueOf(atk));
         if (njug == 0) return false;
         int color_cont;
-        if (color_act == define.WHITE) color_cont = define.BLACK;
-        else color_cont = define.WHITE;
+        if (color_act == domini.define.WHITE) color_cont = domini.define.BLACK;
+        else color_cont = domini.define.WHITE;
         Posicion pec_pos[] = tau.getPosColor(color_act);
         for (int i = 0; i < pec_pos.length; ++i) {
             //System.out.println("Peça " + String.valueOf(i) + " pos " + String.valueOf(pec_pos[i].x) + " " + String.valueOf(pec_pos[i].y));
@@ -679,7 +678,7 @@ public class Problema {
                     //System.out.println("Moviment " + String.valueOf(k) + " de " + String.valueOf(mov.length) + " color " + String.valueOf(color_act));
                     //System.out.println("mov " + String.valueOf(mov[k].x) + " " + String.valueOf(mov[k].y));
                     boolean ret;
-                    domini.Taulell tau2 = new domini.Taulell(tau);
+                    Taulell tau2 = new Taulell(tau);
                     //System.out.println("Actual");
                     //tau.printTauler();
                     tau2.mover_pieza(pec_pos[i], mov[k], color_act);

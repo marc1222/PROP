@@ -1,9 +1,7 @@
 package domini;
-
 import java.io.*;
 //Classe que s'encarrega de fer tot el input / output cap a fitxers,
 // i que es crida per totes les classes que necessiten algun tipus de lectura escriptura a un fitxer
-
 public class input_output {
     //Operacio que llegeix dun fitxer anomenat filename i retorna
    public String[] read(String filename, int id_linea) {

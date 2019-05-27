@@ -236,7 +236,8 @@ public abstract class Maquina extends Jugador {
     }
 
     public boolean escac(Posicion[] peces, Posicion rei, Posicion reiIni) {
-        return tau.escac(peces, rei, reiIni);
+        //return tau.escac(peces, rei, reiIni);
+        return false;
     }
 
     public Posicion getReiPos(int color) {

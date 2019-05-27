@@ -1,4 +1,4 @@
-package presentacio;
+package gui;
 
 public class CtrlPresentacio {
     public CtrlPresentacio() {
@@ -6,8 +6,8 @@ public class CtrlPresentacio {
 
         //----------------------------------------
 
-        VistaInici VI = new VistaInici();
-
+        //VistaInici VI = new VistaInici();
+        GameFrame view = new GameFrame();
         //VistaMenuPrincipal vmp = new VistaMenuPrincipal();
         //VistaEstadistica VE = new VistaEstadistica();
         //SeleccioProblema sp = new SeleccioProblema();

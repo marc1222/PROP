@@ -1,9 +1,6 @@
-/*
-import domini.*;
-
+package domini;
 import java.util.ArrayList;
 import java.util.Scanner;
-
 
 public class Main {
     public static void main(String args[]) {
@@ -45,7 +42,7 @@ public class Main {
                             sessioIniciada = master.iniciarSessio(Users[usrSeleccionat], contrasenya);
                         }
                         else {
-                            System.out.println("domini.Usuari seleccionat no vàlid");
+                            System.out.println("Usuari seleccionat no vàlid");
                         }
                     }
                     else {
@@ -59,7 +56,7 @@ public class Main {
 
                     String nomUsuari, contrasenya1, contrasenya2;
 
-                    System.out.println("domini.Usuari:");
+                    System.out.println("Usuari:");
                     nomUsuari = sc.nextLine();
 
                     System.out.println("Contrasenya:");
@@ -132,8 +129,8 @@ public class Main {
                             } else first = false;
                             System.out.println("\nContra qui vols jugar?");
                             System.out.println("    1 - Invitado");
-                            System.out.println("    2 - Maquina naive");
-                            System.out.println("    3 - MaquinaN VS MaquinaN");
+                            System.out.println("    2 - Maquina");
+                            System.out.println("    3 - Maquina VS Maquina");
                             System.out.println("    4 - Maquina Smart");
                             sc = new Scanner(System.in);
                             val = sc.nextInt();
@@ -182,7 +179,7 @@ public class Main {
                             } else {
                                 //defender    &&   //usuari
                                 second = new Usuari(p.getPrimer());
-                                //master.setColor((p.getPrimer()==define.WHITE)?define.BLACK:define.WHITE);
+                                //master.setColor((p.getPrimer()==domini.define.WHITE)?domini.define.BLACK:domini.define.WHITE);
                             }
                             //else ;
                             System.out.println("\nCreant partida...");
@@ -358,7 +355,7 @@ public class Main {
                                             System.out.println(marca);
                                         }
                                     } else {
-                                        System.out.println("domini.Problema no vàlid");
+                                        System.out.println("Problema no vàlid");
                                     }
                                     break;
                                 }
@@ -375,13 +372,13 @@ public class Main {
                                         if (statsUsuari.isEmpty()) {
                                             System.out.println("No hi han registres de l'usuari");
                                         } else {
-                                            System.out.println("domini.Problema  Mat  Temps");
+                                            System.out.println("Problema  Mat  Temps");
                                         }
                                         for (String marca : statsUsuari) {
                                             System.out.println(marca);
                                         }
                                     } else {
-                                        System.out.println("domini.Usuari no vàlid");
+                                        System.out.println("Usuari no vàlid");
                                     }
                                     break;
                                 }
@@ -427,4 +424,3 @@ public class Main {
         } while (val != 0);
     }
 }
-*/

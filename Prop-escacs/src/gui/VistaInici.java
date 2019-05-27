@@ -1,4 +1,4 @@
-package presentacio;
+package gui;
 
 import domini.Usuari;
 
@@ -157,7 +157,7 @@ public class VistaInici {
                     //String data = "Usuari CORRECTE";
                     //lbMssg.setText(data);
                     frameVista.dispose();
-                    VistaMenuPrincipal vmp = new VistaMenuPrincipal(usuari);
+                    VistaMenuPrincipal3 vmp = new VistaMenuPrincipal3(usuari);
                     vmp.setVisible(true);
                 }
                 else {
@@ -227,7 +227,7 @@ public class VistaInici {
                     if (usr.registrar(usuari, contra1, contra2)) {
                         //String data = "Usuari REGISTRAT";
                         //lbMssgR.setText(data);
-                        VistaMenuPrincipal vmp = new VistaMenuPrincipal(usuari);
+                        VistaMenuPrincipal3 vmp = new VistaMenuPrincipal3(usuari);
                         vmp.setVisible(true);
                         frameVista.dispose();
                     } else {

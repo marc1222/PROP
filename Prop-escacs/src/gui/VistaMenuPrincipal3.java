@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package presentacio;
+package gui;
 
 import domini.Estadistica;
 import domini.Usuari;
@@ -14,12 +14,12 @@ import javax.swing.*;
  *
  * @author MDD
  */
-public class VistaMenuPrincipal extends javax.swing.JFrame {
+public class VistaMenuPrincipal3 extends javax.swing.JFrame {
     private String usuari;
     /**
      * Creates new form VistaMenuPrincipal
      */
-    public VistaMenuPrincipal(String usuari) {
+    public VistaMenuPrincipal3(String usuari) {
         this.usuari = usuari;
         initComponents();
     }

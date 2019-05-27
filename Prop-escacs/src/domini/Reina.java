@@ -1,5 +1,4 @@
 package domini;
-
 import java.util.ArrayList;
 
 public class Reina extends Peca {

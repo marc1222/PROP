@@ -4,7 +4,6 @@
 
 //ex. dús a la classe avaluada:
 //    throw new ChessException("NOM_CLASESE: DESC_GENERICA DEL ERROR"+value+"END OR WHATEVER");
-
 package domini;
 
 public class ChessException extends Exception {
