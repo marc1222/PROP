@@ -43,7 +43,7 @@ public class Taulell {
         for (int i = 0; i < 8; ++i) {
             for (int j = 0; j < 8; ++j) {
                 try {
-                    this.T[i][j] = (Peca) Class.forName(tau.T[i][j].getTipus()).getConstructor(int.class).newInstance(tau.T[i][j].getColor());
+                    this.T[i][j] = (Peca) Class.forName("domini."+tau.T[i][j].getTipus()).getConstructor(int.class).newInstance(tau.T[i][j].getColor());
                     if ((tau.T[i][j].getTipus()).equals(define.PEO)) {
                         Peo p2 = (Peo) T[i][j];
                         if (tau.T[i][j].getColor() == define.WHITE) p2.setPeoPrimer(j == 1);
@@ -76,7 +76,7 @@ public class Taulell {
         for (int i = 0; i < 8; ++i) {
             for (int j = 0; j < 8; ++j) {
                 try {
-                    p[i][j] = (Peca) Class.forName(t[i][j].getTipus()).getConstructor(int.class,ArrayList.class, ArrayList.class).newInstance(t[i][j].getColor(),t[i][j].getAmenacades(),t[i][j].getAmenaces());
+                    p[i][j] = (Peca) Class.forName("domini."+t[i][j].getTipus()).getConstructor(int.class,ArrayList.class, ArrayList.class).newInstance(t[i][j].getColor(),t[i][j].getAmenacades(),t[i][j].getAmenaces());
                     if ((t[i][j].getTipus()).equals(define.PEO)) {
                         Peo p2 = (Peo) p[i][j];
                         if (t[i][j].getColor() == define.WHITE) p2.setPeoPrimer(j == 1);
@@ -105,7 +105,7 @@ public class Taulell {
     /**
      *     donat un taulell de peces, reseteja tots els arraylist d'amenaces de les peces del taulell
      *     pre: true
-     *     post: arraylist<domini.Posicion> amenaca i amenacada de cada peca inicialitzats i buits
+     *     post: arraylist<Posicion> amenaca i amenacada de cada peca inicialitzats i buits
      */
 
     private void reset_amenaces_tauler() {
@@ -172,7 +172,7 @@ public class Taulell {
      */
    private void crea_peca_xy(Posicion Pos, int color, String tipus) {
         try {
-            Peca aux = (Peca) Class.forName(tipus).getConstructor(int.class).newInstance(color);
+            Peca aux = (Peca) Class.forName("domini."+tipus).getConstructor(int.class).newInstance(color);
             if (tipus.equals(define.PEO)) {
                 Peo p = (Peo)aux;
                 if (color == define.WHITE) {
@@ -198,7 +198,7 @@ public class Taulell {
      */
 
     private void borra_peca_xy(Posicion pos) {
-        crea_peca_xy(pos,define.NULL_COLOR,define.PECA_NULA);
+        crea_peca_xy(pos, define.NULL_COLOR, define.PECA_NULA);
     }
 
     /**
@@ -330,7 +330,7 @@ public class Taulell {
     }
 
     /**
-     *     impreix el tauler passat com a paràmetre implícit
+     *     imprimeix el tauler passat com a paràmetre implícit
      *     pre: true
      *     post: s'ha imprès el tauler per stdout
      */
@@ -405,12 +405,12 @@ public class Taulell {
         Posicion[] all_pos;
         try {
             if (inici.x < 0 || inici.y < 0 || inici.x > 7 || inici.y > 7)
-                throw new IllegalArgumentException("domini.Taulell: X o Y valores inválidos");
+                throw new IllegalArgumentException("Taulell: X o Y valores inválidos");
             Peca aux = T[inici.x][inici.y];
             String tipus = aux.getTipus();
             int color = aux.getColor();
             if (tipus.equals(define.PECA_NULA))
-                throw new IllegalArgumentException("domini.Taulell: No hi ha cap peça");
+                throw new IllegalArgumentException("Taulell: No hi ha cap peça");
 
             all_pos = aux.movimientos_posibles(inici);
             ArrayList<Posicion> tmp = new ArrayList<>();
@@ -424,8 +424,8 @@ public class Taulell {
                         if (tipus.equals(define.CAVALL)) tmp.add(act_pos);
                         else if (!descartar_movimiento(inici, act_pos)) {
                             if (tipus.equals(define.REI)) { //descartar mov de mat
-                                Posicion[] peces = getPosColor((color==define.WHITE)?define.BLACK:define.WHITE);
-                                if (!escac(peces,act_pos,inici)) tmp.add(act_pos);
+                                //Posicion[] peces = getPosColor((color== define.WHITE)? define.BLACK: define.WHITE);
+                                if (!escac(act_pos, inici)) tmp.add(act_pos);
                             }
                             else if (tipus.equals(define.PEO)) { //descartar mov peo que no tingui enemic
                                 if (Math.abs(inici.x - act_pos.x) == Math.abs(inici.y - act_pos.y)) {
@@ -494,45 +494,60 @@ public class Taulell {
 
     /**
      *     per un conjunt de peces es determina si aquestes amenacen a la peca indicada pel paràmetre
-     *     ReiIni (pensat pel rei), a més, si domini.Rei != ReiIni es mourà la peça de ReiIni a la posició domini.Rei,
+     *     ReiIni (pensat pel rei), a més, si Rei != ReiIni es mourà la peça de ReiIni a la posició Rei,
      *     sense comprovar cap regla d'integritat, i posteriorment, s'acabarà retornant el taulell al seu estat original
-     *     tot retornant si s'ha trobat alguna peca que amenaces a la peça de la posicio domini.Rei
-     *     domini.Rei: posición donde se debe simular el jaque
+     *     tot retornant si s'ha trobat alguna peca que amenaces a la peça de la posicio Rei
+     *     Rei: posición donde se debe simular el jaque
      *     ReiIni: posición inicial donde se encuentra el rei en el tablero para tenerla
-     *             en cuenta como una casilla vacia (es la que el rei en la simulación abandonaria para desplazarse a la posicio domini.Rei)
+     *             en cuenta como una casilla vacia (es la que el rei en la simulación abandonaria para desplazarse a la posicio Rei)
      *     pre: true
-     *     post--> devuelve true si alguna de las piezas en 'Peces' amenaza la posición domini.Rei
-     * @param Peces
+     *     post--> devuelve true si alguna de las piezas en 'Peces' amenaza la posición Rei
+     *
      * @param Rei
      * @param ReiIni
      * @return
      */
-    public boolean escac(Posicion[] Peces, Posicion Rei, Posicion ReiIni) {
+    public boolean escac(Posicion Rei, Posicion ReiIni) {
         boolean aux;
+//        aux = (Rei.x != ReiIni.x) || (Rei.y != ReiIni.y);
+//        Peca tmp = T[Rei.x][Rei.y];
+//        Peca ini = T[ReiIni.x][ReiIni.y];
+//        if (aux) {
+//            T[Rei.x][Rei.y] = ini;
+//            borra_peca_xy(ReiIni);
+//        }
+        Taulell T2;
         aux = (Rei.x != ReiIni.x) || (Rei.y != ReiIni.y);
-        Peca tmp = T[Rei.x][Rei.y];
-        Peca ini = T[ReiIni.x][ReiIni.y];
+        T2 = new Taulell(this.T,true);
         if (aux) {
-            T[Rei.x][Rei.y] = ini;
-            borra_peca_xy(ReiIni);
+            Peca ini = T2.T[ReiIni.x][ReiIni.y];
+            T2.T[Rei.x][Rei.y] = ini;
+            T2.borra_peca_xy(ReiIni);
         }
-        int color = T[Rei.x][Rei.y].getColor();
-        boolean ret;
-        for (int i = 0; i < Peces.length; ++i) { //hacer modificacion temporal al tablero
-                ret = validar_moviment(Peces[i], Rei, (color == define.WHITE) ? define.BLACK : define.WHITE);
-                if (ret) { //si no se descarta el movimiento significa que hay un posible desplazamiento -> jaque
-                    if (aux) { //restablecer el tablero
-                        T[ReiIni.x][ReiIni.y] = ini;
-                        T[Rei.x][Rei.y] = tmp;
-                    }
-                    return true;
-                }
-        }
-        if (aux) { //restablecer el tablero
-            T[ReiIni.x][ReiIni.y] = ini;
-            T[Rei.x][Rei.y] = tmp;
-        }
-        return false; //no hay camino -> no hi ha amenaça
+        T2.reset_amenaces_tauler();
+        T2.recalcular_amanaca_tauler();
+        if (T2.getPecaPosicio(Rei).getAmenaces().size() > 0) return true;
+        return false;
+
+//        int color = T[Rei.x][Rei.y].getColor();
+//        boolean moved;
+//
+//        for (int i = 0; i < Peces.length; ++i) { //hacer modificacion temporal al tablero
+////                ret = validar_moviment(Peces[i], Rei, (color == define.WHITE) ? define.BLACK : define.WHITE);
+//                if (ret) { //si no se descarta el movimiento significa que hay un posible desplazamiento -> jaque
+//                    if (aux) { //restablecer el tablero
+//                        T[ReiIni.x][ReiIni.y] = ini;
+//                        T[Rei.x][Rei.y] = tmp;
+//                    }
+//                    return true;
+//                }
+
+       // }
+//        if (aux) { //restablecer el tablero
+//            T[ReiIni.x][ReiIni.y] = ini;
+//            T[Rei.x][Rei.y] = tmp;
+//        }
+//        return false; //no hay camino -> no hi ha amenaça
     }
 
     /**
@@ -597,17 +612,17 @@ public class Taulell {
     public int escac_i_mat(int color) {
         //get posició del rei
         Posicion Rei = getReiPos(color);
-        //System.out.println(domini.Rei.x+"-"+domini.Rei.y);
+        //System.out.println(Rei.x+"-"+Rei.y);
         //get peces que ataquen
-        Posicion Peces_atacant[] = getPosColor((color==define.WHITE)?define.BLACK:define.WHITE);
+        //Posicion Peces_atacant[] = getPosColor((color== define.WHITE)? define.BLACK: define.WHITE);
         //TODOS_MOVIMIENTOS RETURNS POS VALIDES REI ON NO ES TROBA EN ESCAC
         Posicion Rei_moves[] = todos_movimientos(Rei);
-        //primeo validar el jaque a la posición inicial del domini.Rei
-        if (escac(Peces_atacant,Rei,Rei)){
+        //primeo validar el jaque a la posición inicial del Rei
+        if (escac(Rei,Rei)){
             //comprovar si es escac i mat
             if (Rei_moves != null) {
                 for (int i = 0; i < Rei_moves.length; ++i) {
-                    if (!escac(Peces_atacant, Rei_moves[i], Rei)) return 0;
+                    if (!escac(Rei_moves[i], Rei)) return 0;
                 }
             }
             if (generar_situacio(color)) return 0;
@@ -643,11 +658,11 @@ public class Taulell {
     public void crear_peca(Posicion pos, int color, String tipus) {
         try {
             if (pos.x < 0 || pos.y < 0 || pos.x > 7 || pos.y > 7)
-                throw new IllegalArgumentException("domini.Taulell: X o Y valores inválidos");
+                throw new IllegalArgumentException("Taulell: X o Y valores inválidos");
             if (color != define.BLACK && color != define.WHITE && color != define.NULL_COLOR)
-                throw new IllegalArgumentException("domini.Taulell: Color inválido");
+                throw new IllegalArgumentException("Taulell: Color inválido");
             if ( (color == define.NULL_COLOR && !(tipus.equals(define.PECA_NULA))) || (tipus.equals(define.PECA_NULA) && color != define.NULL_COLOR) )
-                throw new IllegalArgumentException(("domini.Taulell: Peça NULL invalida"));
+                throw new IllegalArgumentException(("Taulell: Peça NULL invalida"));
 
             crea_peca_xy(pos,color,tipus);
             reset_amenaces_tauler();
@@ -670,10 +685,10 @@ public class Taulell {
     public void destrueix_peca(Posicion pos) {
         try {
             if (pos.x < 0 || pos.y < 0 || pos.x > 7 || pos.y > 7)
-                throw new IllegalArgumentException("domini.Taulell: X o Y valores inválidos");
+                throw new IllegalArgumentException("Taulell: X o Y valores inválidos");
             Peca p = T[pos.x][pos.y];
             if ((p.getTipus()).equals(define.PECA_NULA))
-                throw new ChessException("domini.Taulell: No hay ninguna pieza que destruir en la posición: ["+pos.x+"] ["+pos.y+"]");
+                throw new ChessException("Taulell: No hay ninguna pieza que destruir en la posición: ["+pos.x+"] ["+pos.y+"]");
 
             borra_peca_xy(pos);
             reset_amenaces_tauler();
@@ -707,8 +722,8 @@ public class Taulell {
             ret = true;
             Peca aux = T[inici.x][inici.y];
             if ((aux.getTipus()).equals(define.REI))  { //no pots moure el rei a una posició on es trobi en escac
-                Posicion[] peces = getPosColor((color==define.WHITE)?define.BLACK:define.WHITE);
-                if (escac(peces,fi,inici)) ret = false;
+                //Posicion[] peces = getPosColor((color== define.WHITE)? define.BLACK: define.WHITE);
+                if (escac(fi,inici)) ret = false;
             }
             else { //la peca que volem moure te un moviment valid, pero NO es un rei, mirem si el rei es troba en escac
                 Posicion Rei = getReiPos(color);
@@ -719,7 +734,7 @@ public class Taulell {
                     T2.reset_amenaces_tauler();
                     T2.recalcular_amanaca_tauler();
                     Rei = T2.getReiPos(color);
-                    if (T2.T[Rei.x][Rei.y].getAmenaces().size() != 0) ret = false;
+                    if (T2.T[Rei.x][Rei.y].getAmenaces().size() > 0) ret = false;
                 }
             }
 

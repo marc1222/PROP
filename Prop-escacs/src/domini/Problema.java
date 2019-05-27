@@ -486,7 +486,7 @@ public class Problema {
                     //System.out.println("Atac " + njug);
                     //tau2.printTauler();
                     if (tau2.escac_i_mat(color_cont) == 1) return true;
-                    if (tau2.escac(pec_pos, Reid, Reid)) {
+                    if (tau2.escac(Reid, Reid)) {
                         boolean def = true;
                         if (njug != 1) {
                             Posicion pec_cont[] = tau2.getPosColor(color_cont);

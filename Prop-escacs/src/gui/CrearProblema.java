@@ -2,22 +2,33 @@ package gui;
 
 import domini.*;
 
+import javax.imageio.ImageIO;
+import javax.naming.ldap.Control;
 import javax.swing.*;
 import javax.swing.border.Border;
 import java.awt.*;
 import java.awt.event.*;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
+
+import static gui.define.DARK_COLOR;
+import static gui.define.LIGHT_COLOR;
 
 public class CrearProblema extends JPanel{
     //private JFrame frameVista = new JFrame("Creació del problema");
     //private JMenuBar menuBar = new JMenuBar();
-    private Taulell taulell = new Taulell(tauler_buit());
-    private GUITauler gTauler = new GUITauler(taulell);
+
+    //private Taulell taulell = new Taulell(tauler_buit());
+
     private BarraPeces barraPeces = new BarraPeces();
+    private ControladorDomini cd;
+    private TaulerCrearProblema tauler;
 
     private class BarraPeces extends JPanel implements MouseListener {
-        private AfegirPeca[] peces = new AfegirPeca[12];
+        private AfegirPeca[] peces = new AfegirPeca[13];
 
         public BarraPeces() {
             for (int i = 0; i < 2; ++i) {
@@ -30,6 +41,12 @@ public class CrearProblema extends JPanel{
 
                 }
             }
+            AfegirPeca casella = new AfegirPeca(new Posicion(6, 1));
+            casella.addMouseListener(this);
+            casella.setBackground(Color.white);
+            casella.setBorder(BorderFactory.createEmptyBorder());
+            this.add(casella);
+            peces[12] = casella;
         }
 
         public void mouseClicked(MouseEvent me) {
@@ -60,6 +77,164 @@ public class CrearProblema extends JPanel{
 
     }
 
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+    private class TaulerCrearProblema extends JPanel implements MouseListener {
+        private Casella[][] caselles = new Casella[8][8];
+        private ControladorDomini controladorDomini;
+
+        private class Casella extends JPanel {
+            private Posicion Pos;
+            private String tipusP;
+            private int colorP;
+            private Dimension TILE_SIZE = new Dimension(77, 77);
+
+            Casella (final Posicion id, String tipus, int color) {
+                this.Pos = id;
+                this.tipusP = tipus;
+                this.colorP = color;
+                setPreferredSize(TILE_SIZE);
+                assign_color();
+                assign_icon(cd);
+                validate();
+            }
+
+            private void assign_color() {
+                Color background_color;
+                if (this.Pos.y%2 == 1) { //fila senar
+                    if (this.Pos.x%2 == 0) { //columna parella
+                        background_color = define.LIGHT_COLOR;
+                    }
+                    else{
+                        //columna senar
+                        background_color = define.DARK_COLOR;
+                    }
+
+                } else { //fila parella
+                    if (this.Pos.x%2 == 0) { //columna parella
+                        background_color = define.DARK_COLOR;
+                    } else {
+                        background_color = define.LIGHT_COLOR;
+                    }
+                }
+                setBackground(background_color);
+            }
+
+            private void assign_icon(ControladorDomini cd) {
+                this.removeAll();
+                //String tipus = cd.getPecaTipus(this.Pos.x, this.Pos.y);
+                if (!tipusP.equals(define.PECA_NULA)) {
+                    try {
+                        String file_path = define.icons_route + tipusP + colorP +".gif";
+                        final BufferedImage icon =
+                                ImageIO.read(new File(file_path));
+                        this.add(new JLabel(new ImageIcon(icon)));
+                    } catch (IOException ex) {
+                        ex.printStackTrace();
+                    }
+                }
+            }
+
+            public void pinta_tile(ControladorDomini cd) {
+                assign_color();
+                assign_icon(cd);
+                validate();
+                repaint();
+            }
+
+        }
+
+        //////////////////////////////////////////////////////
+
+        public TaulerCrearProblema(ControladorDomini cd) {
+            super(new GridLayout(8,8));
+            this.controladorDomini = cd;
+            for (int i = 0; i < 8; ++i) {
+                for (int j = 0; j < 8; ++j) {
+                    final Casella c = new Casella(new gui.Posicion(j,7-i), define.PECA_NULA, define.NULL_COLOR);
+                    caselles[j][7-i] = c;
+                    c.addMouseListener(this);
+                    add(c);
+                }
+            }
+            setPreferredSize(new Dimension(600,600));
+            validate();
+        }
+
+        public void mouseClicked(MouseEvent me) {
+            Casella c = (Casella) me.getComponent();
+            String tipus = "cap";
+            int color = -1;
+            for (AfegirPeca peca : barraPeces.peces) {
+                if (peca.getSelected()) {
+                    Posicion p = peca.getPos();
+                    switch (p.x) {
+                        case 0:
+                            tipus = define.PEO;
+                            if (p.y == 0) color = define.WHITE;
+                            else color = define.BLACK;
+                            break;
+                        case 1:
+                            tipus = define.TORRE;
+                            if (p.y == 0) color = define.WHITE;
+                            else color = define.BLACK;
+                            break;
+                        case 2:
+                            tipus = define.CAVALL;
+                            if (p.y == 0) color = define.WHITE;
+                            else color = define.BLACK;
+                            break;
+                        case 3:
+                            tipus = define.ALFIL;
+                            if (p.y == 0) color = define.WHITE;
+                            else color = define.BLACK;
+                            break;
+                        case 4:
+                            tipus = define.REINA;
+                            if (p.y == 0) color = define.WHITE;
+                            else color = define.BLACK;
+                            break;
+                        case 5:
+                            tipus = define.REI;
+                            if (p.y == 0) color = define.WHITE;
+                            else color = define.BLACK;
+                            break;
+                        default:
+                            tipus = define.PECA_NULA;
+                            break;
+                    }
+                }
+            }
+            if (!tipus.equals("cap")) { //?
+                c.tipusP = tipus;
+                c.colorP = color;
+                this.pinta_tauler();
+            }
+        }
+
+        public void mousePressed(MouseEvent me) {}
+
+        public void mouseEntered(MouseEvent me) {}
+
+        public void mouseExited(MouseEvent me) {}
+
+        public void mouseReleased(MouseEvent me) {}
+
+        public void pinta_tauler() {
+            removeAll();
+            for (int i = 0; i < 8; ++i) {
+                for (int j = 0; j < 8; ++j) {
+                    this.caselles[j][7-i].pinta_tile(this.controladorDomini);
+                    add(this.caselles[j][7-i]);
+                }
+            }
+            validate();
+            repaint();
+        }
+    }
+
+    //////////////////////////////////////////////////////////////////////////////////////////////////////////
+
     private Peca[][] tauler_buit() {
         Peca[][] tau = new Peca[8][8];
         for (int i = 0; i<8; ++i) {
@@ -70,7 +245,7 @@ public class CrearProblema extends JPanel{
         return tau;
     }
 
-    public CrearProblema() {
+    public CrearProblema(ControladorDomini cd) {
         //menuBar.add(crea_menu());
         //frameVista.setJMenuBar(menuBar);
         //frameVista.setLayout(new BorderLayout());
@@ -79,7 +254,9 @@ public class CrearProblema extends JPanel{
         this.add(barraPeces, BorderLayout.NORTH); // new?
         //frameVista.setResizable(false);
         //frameVista.add(gTauler, BorderLayout.CENTER);
-        this.add(gTauler, BorderLayout.CENTER);
+        this.cd = cd;
+        tauler = new TaulerCrearProblema(cd);
+        this.add(tauler, BorderLayout.CENTER);
         //frameVista.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         //frameVista.pack();
         //frameVista.setVisible(true);
@@ -130,8 +307,19 @@ public class CrearProblema extends JPanel{
 
     public void mouseReleased(MouseEvent me) {}*/
 
-    private static void iniciar() {
-        CrearProblema vista = new CrearProblema();
+    private static void createAndShowGUI() {
+        //Create and set up the window.
+        JFrame frame = new JFrame("CrearProblema");
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+        //Create and set up the content pane.
+        CrearProblema newContentPane = new CrearProblema(new ControladorDomini());
+        newContentPane.setOpaque(true); //content panes must be opaque
+        frame.setContentPane(newContentPane);
+
+        //Display the window.
+        frame.pack();
+        frame.setVisible(true);
     }
 
     public static void main(String[] args) {
@@ -139,7 +327,7 @@ public class CrearProblema extends JPanel{
         //creating and showing this application's GUI.
         javax.swing.SwingUtilities.invokeLater(new Runnable() {
             public void run() {
-                iniciar();
+                createAndShowGUI();
             }
         });
     }

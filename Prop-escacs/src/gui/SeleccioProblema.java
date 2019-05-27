@@ -18,7 +18,7 @@ public class SeleccioProblema extends JPanel  implements ActionListener  {
     private JComboBox cbBlanc = new JComboBox(sMaquina);
     private JLabel lNegre = new JLabel("Negres", JLabel.CENTER);
     private JComboBox cbNegre = new JComboBox(sMaquina);
-
+    private JugarPartidaView jugarview;
     /**
      * 0 -> jugar
      * 1 -> simulacio
@@ -27,7 +27,7 @@ public class SeleccioProblema extends JPanel  implements ActionListener  {
     private int where;
 
 
-    public SeleccioProblema() {//JugarPartidaView jpv) {
+    public SeleccioProblema(JugarPartidaView jpv, int where) {
         //menuBar.add(crea_menu());
         //frameVista.setJMenuBar(menuBar);
         //frameVista.setLayout(new BorderLayout());
@@ -41,14 +41,38 @@ public class SeleccioProblema extends JPanel  implements ActionListener  {
         bcont.setMaximumSize(new Dimension(Integer.MAX_VALUE, 30));
         bcont.setAlignmentX(CENTER_ALIGNMENT);
         //frameVista.add(bcont, BorderLayout.PAGE_END);
-        this.add(bcont);
-        this.where = 2;
+        this.where = where;
+        this.jugarview = jpv;
 
-
+        if (this.where == define.simulacio) {
+            lMaquina.setPreferredSize(new Dimension(500, 50));
+            lMaquina.setAlignmentX(CENTER_ALIGNMENT);
+            this.add(lMaquina);
+            selMaquina.setLayout(new BoxLayout(selMaquina, BoxLayout.X_AXIS));
+            lBlanc.setMaximumSize(new Dimension(500, 70));
+            selMaquina.add(lBlanc);
+            ((JLabel) cbBlanc.getRenderer()).setHorizontalAlignment(JLabel.CENTER);
+            cbBlanc.setSelectedIndex(0);
+            cbBlanc.setMaximumSize(new Dimension(500, 70));
+            selMaquina.add(cbBlanc);
+            lNegre.setMaximumSize(new Dimension(500, 70));
+            selMaquina.add(lNegre);
+            ((JLabel) cbNegre.getRenderer()).setHorizontalAlignment(JLabel.CENTER);
+            cbNegre.setMaximumSize(new Dimension(500, 700));
+            cbNegre.setSelectedIndex(0);
+            selMaquina.add(cbNegre);
+            this.add(selMaquina);
+            this.where = 1;
+        }
         //frameVista.getRootPane().setDefaultButton(bcont);
         //frameVista.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         //frameVista.pack();
         //frameVista.setVisible(true);
+
+        bcont.setMaximumSize(new Dimension(Integer.MAX_VALUE, 60));
+        bcont.setAlignmentX(CENTER_ALIGNMENT);
+        this.add(bcont);
+
     }
 
     public SeleccioProblema(boolean jugar) {//JugarPartidaView jpv, boolean jugar) {
@@ -84,7 +108,7 @@ public class SeleccioProblema extends JPanel  implements ActionListener  {
 
     public void actionPerformed(ActionEvent e) {
         //bcont.setEnabled(false);
-        if (where == 0 || where == 2) {
+        if (where == define.normal || where == define.estadistica) {
             if (llistaProblemes.getTaula().getSelectedRowCount() == 0) {
             /*JOptionPane.showMessageDialog(frameVista, "Cap problema seleccionat.", "Error de selecció",
                     JOptionPane.ERROR_MESSAGE);*/
@@ -101,9 +125,23 @@ public class SeleccioProblema extends JPanel  implements ActionListener  {
                 int i = llistaProblemes.getTaula().getSelectedRow();
                 String id = (String) llistaProblemes.getTaula().getValueAt(i, 0);
 
+                if (this.where == define.normal) {
+                    SwingUtilities.invokeLater(new Runnable() {
+                        @Override
+                        public void run() {
+                            jugarview.setProblemView(Integer.valueOf(id));
+                        }
+                    });
+                }
+                else {
+                    //this.where == define.estadistica
+                    //TODO CRIDAR a gestor de les vistes d'estadistca perque faci el canvi,
+                    // o directament passan el JFRAME i guardantlo
+                }
             }
         }
         else {
+            //TODO this.where == define.SIMULACIO
             int k = llistaProblemes.getTaula().getSelectedRowCount();
             if (k == 0) {
                 JOptionPane.showMessageDialog(this, "Cap problema seleccionat.", "Error de selecció",
@@ -111,10 +149,13 @@ public class SeleccioProblema extends JPanel  implements ActionListener  {
             }
             else {
                 int rows[] = llistaProblemes.getTaula().getSelectedRows();
-                String ids[] = new String[rows.length];
+                int ids[] = new int[rows.length];
                 for (int i = 0; i < rows.length; ++i) {
-                    ids[i] = (String) llistaProblemes.getTaula().getValueAt(i, 0);
+                    ids[i] = Integer.valueOf(((String) llistaProblemes.getTaula().getValueAt(i, 0)));
                 }
+                int blanc = (cbBlanc.getSelectedItem().toString()=="Naive")?define.NAIVE:define.SMART;
+                int negre = (cbNegre.getSelectedItem().toString()=="Naive")?define.NAIVE:define.SMART;
+                jugarview.startSimulacio(ids, blanc, negre);
             }
 
 
@@ -134,9 +175,9 @@ public class SeleccioProblema extends JPanel  implements ActionListener  {
         return aux;
     }
 
-    private static void iniciar() {
+    /*private static void iniciar() {
         SeleccioProblema vista = new SeleccioProblema();
-    }
+    }*/
 
     private static void createAndShowGUI() {
         //Create and set up the window.
