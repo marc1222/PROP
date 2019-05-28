@@ -3,14 +3,16 @@
   <component name="ChangeListManager">
     <list default="true" id="a9986b48-1538-4a05-b098-ee43f0cbf3cd" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/domini/DriverProblema.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/files/index.txt" beforeDir="false" afterPath="$PROJECT_DIR$/files/index.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/files/problemes.txt" beforeDir="false" afterPath="$PROJECT_DIR$/files/problemes.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Prop-escacs/domini/Problema.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Prop-escacs/domini/Problema.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Prop-escacs/gui/FENProblema$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Prop-escacs/gui/FENProblema$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Prop-escacs/gui/FENProblema$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Prop-escacs/gui/FENProblema$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Prop-escacs/gui/FENProblema$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Prop-escacs/gui/FENProblema$3.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Prop-escacs/gui/FENProblema$4.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Prop-escacs/gui/FENProblema$4.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Prop-escacs/gui/FENProblema.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Prop-escacs/gui/FENProblema.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/domini/Problema.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/domini/Problema.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/gui/CrearProblema.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gui/CrearProblema.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/gui/FENProblema.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gui/FENProblema.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/gui/MenuProblema.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gui/MenuProblema.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/gui/SeleccioProblema.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gui/SeleccioProblema.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/gui/TProblemes.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gui/TProblemes.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/gui/define.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gui/define.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -24,8 +26,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/gui/CrearProblema.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="390">
-              <caret line="356" column="18" lean-forward="true" selection-start-line="356" selection-start-column="18" selection-end-line="356" selection-end-column="18" />
+            <state relative-caret-position="1214">
+              <caret line="350" column="56" lean-forward="true" selection-start-line="350" selection-start-column="56" selection-end-line="350" selection-end-column="56" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#11718#12053#0" expanded="true" />
@@ -39,10 +41,10 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/gui/MenuProblema.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="205">
+            <state relative-caret-position="389">
               <caret line="50" column="43" lean-forward="true" selection-start-line="50" selection-start-column="43" selection-end-line="50" selection-end-column="43" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -63,21 +65,42 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/gui/FENProblema.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="405">
-              <caret line="114" selection-start-line="114" selection-end-line="114" />
+            <state relative-caret-position="402">
+              <caret line="138" column="13" lean-forward="true" selection-start-line="138" selection-start-column="13" selection-end-line="138" selection-end-column="13" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#1825#2160#0" expanded="true" />
                 <element signature="e#2159#2160#0" expanded="true" />
-                <element signature="e#3742#4077#0" expanded="true" />
-                <element signature="e#4076#4077#0" expanded="true" />
-                <element signature="e#5685#5686#0" expanded="true" />
-                <element signature="e#5731#5732#0" expanded="true" />
-                <element signature="e#6564#6565#0" expanded="true" />
-                <element signature="e#6614#6615#0" expanded="true" />
+                <element signature="e#3386#3721#0" expanded="true" />
+                <element signature="e#3720#3721#0" expanded="true" />
+                <element signature="e#5106#5107#0" expanded="true" />
+                <element signature="e#5152#5153#0" expanded="true" />
+                <element signature="e#5985#5986#0" expanded="true" />
+                <element signature="e#6035#6036#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/files/problemes.txt">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="90">
+              <caret line="6" column="59" selection-start-line="6" selection-start-column="59" selection-end-line="6" selection-end-column="59" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/domini/Problema.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="60">
+              <caret line="68" column="21" lean-forward="true" selection-start-line="68" selection-start-column="21" selection-end-line="68" selection-end-column="21" />
+              <folding>
+                <element signature="method#setPrimer#0;class#Problema#0" />
               </folding>
             </state>
           </provider>
@@ -223,18 +246,18 @@
         <option value="$PROJECT_DIR$/src/gui/AfegirPeca.java" />
         <option value="$PROJECT_DIR$/src/domini/define.java" />
         <option value="$PROJECT_DIR$/src/domini/Main.java" />
-        <option value="$PROJECT_DIR$/files/problemes.txt" />
         <option value="$PROJECT_DIR$/src/domini/GestorPersistenciaProblema.java" />
         <option value="$PROJECT_DIR$/src/domini/DriverProblema.java" />
         <option value="$PROJECT_DIR$/src/domini/Peca.java" />
         <option value="$PROJECT_DIR$/src/domini/ControladorDomini.java" />
         <option value="$PROJECT_DIR$/src/gui/TProblemes.java" />
         <option value="$PROJECT_DIR$/src/gui/define.java" />
-        <option value="$PROJECT_DIR$/src/gui/FENProblema.java" />
-        <option value="$PROJECT_DIR$/src/domini/Problema.java" />
         <option value="$PROJECT_DIR$/src/gui/SeleccioProblema.java" />
         <option value="$PROJECT_DIR$/src/gui/CrearProblema.java" />
         <option value="$PROJECT_DIR$/src/gui/MenuProblema.java" />
+        <option value="$PROJECT_DIR$/src/domini/Problema.java" />
+        <option value="$PROJECT_DIR$/files/problemes.txt" />
+        <option value="$PROJECT_DIR$/src/gui/FENProblema.java" />
       </list>
     </option>
   </component>
@@ -276,6 +299,12 @@
               <item name="Prop-escacs" type="b2602c69:ProjectViewProjectNode" />
               <item name="Prop-escacs" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Prop-escacs" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Prop-escacs" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="domini" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="Prop-escacs" type="b2602c69:ProjectViewProjectNode" />
@@ -416,7 +445,7 @@
     <frame x="65" y="-4" width="1301" height="772" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.3258964" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.3258964" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Learn" order="3" weight="0.32988048" />
@@ -708,13 +737,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/files/problemes.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="4" lean-forward="true" selection-start-line="4" selection-end-line="4" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/domini/Main.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="4080">
@@ -802,60 +824,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/gui/TProblemes.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="620">
-          <caret line="82" column="53" selection-start-line="82" selection-start-column="52" selection-end-line="82" selection-end-column="53" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/domini/Problema.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="5247">
-          <caret line="646" selection-start-line="646" selection-end-line="646" />
-          <folding>
-            <element signature="e#3907#4101#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/gui/CrearProblema.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="390">
-          <caret line="356" column="18" lean-forward="true" selection-start-line="356" selection-start-column="18" selection-end-line="356" selection-end-column="18" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#11718#12053#0" expanded="true" />
-            <element signature="e#12052#12053#0" expanded="true" />
-            <element signature="e#17001#17002#0" expanded="true" />
-            <element signature="e#17047#17048#0" expanded="true" />
-            <element signature="e#18849#18850#0" expanded="true" />
-            <element signature="e#18899#18900#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/gui/FENProblema.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="405">
-          <caret line="114" selection-start-line="114" selection-end-line="114" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#1825#2160#0" expanded="true" />
-            <element signature="e#2159#2160#0" expanded="true" />
-            <element signature="e#3742#4077#0" expanded="true" />
-            <element signature="e#4076#4077#0" expanded="true" />
-            <element signature="e#5685#5686#0" expanded="true" />
-            <element signature="e#5731#5732#0" expanded="true" />
-            <element signature="e#6564#6565#0" expanded="true" />
-            <element signature="e#6614#6615#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/gui/SeleccioProblema.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="298">
@@ -872,12 +840,73 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/gui/TProblemes.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="620">
+          <caret line="82" column="53" selection-start-line="82" selection-start-column="52" selection-end-line="82" selection-end-column="53" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/gui/MenuProblema.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="205">
+        <state relative-caret-position="389">
           <caret line="50" column="43" lean-forward="true" selection-start-line="50" selection-start-column="43" selection-end-line="50" selection-end-column="43" />
           <folding>
             <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/gui/CrearProblema.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1214">
+          <caret line="350" column="56" lean-forward="true" selection-start-line="350" selection-start-column="56" selection-end-line="350" selection-end-column="56" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#11718#12053#0" expanded="true" />
+            <element signature="e#12052#12053#0" expanded="true" />
+            <element signature="e#17001#17002#0" expanded="true" />
+            <element signature="e#17047#17048#0" expanded="true" />
+            <element signature="e#18849#18850#0" expanded="true" />
+            <element signature="e#18899#18900#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/files/problemes.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="6" column="59" selection-start-line="6" selection-start-column="59" selection-end-line="6" selection-end-column="59" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/domini/Problema.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="68" column="21" lean-forward="true" selection-start-line="68" selection-start-column="21" selection-end-line="68" selection-end-column="21" />
+          <folding>
+            <element signature="method#setPrimer#0;class#Problema#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/gui/FENProblema.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="402">
+          <caret line="138" column="13" lean-forward="true" selection-start-line="138" selection-start-column="13" selection-end-line="138" selection-end-column="13" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1825#2160#0" expanded="true" />
+            <element signature="e#2159#2160#0" expanded="true" />
+            <element signature="e#3386#3721#0" expanded="true" />
+            <element signature="e#3720#3721#0" expanded="true" />
+            <element signature="e#5106#5107#0" expanded="true" />
+            <element signature="e#5152#5153#0" expanded="true" />
+            <element signature="e#5985#5986#0" expanded="true" />
+            <element signature="e#6035#6036#0" expanded="true" />
           </folding>
         </state>
       </provider>

@@ -1,6 +1,7 @@
 package gui;
 
 import domini.ControladorDomini;
+import domini.Problema;
 import domini.define;
 
 import javax.swing.*;
@@ -129,6 +130,14 @@ public class FENProblema extends JPanel implements ActionListener {
         int color;
         if (rbBlanc.isSelected()) color = define.WHITE;
         else if (rbNegre.isSelected()) color = define.BLACK;
+        final String ffen = fen + " w";
+        /*new Thread(new Runnable() {
+            @Override
+            public void run() {
+                Problema p = new Problema();
+                p.crear_problema(njug, ffen);
+            }
+        }).start();*/
     }
 
     private JMenu crea_menu() {

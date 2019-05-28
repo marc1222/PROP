@@ -63,7 +63,7 @@ public class Problema {
      * Crea un problema amb el següent Id disponible i la resta de camps buits
      * Pre: true
      */
-    Problema () {
+    public Problema () {
         GestorPersistenciaProblema gpp = new GestorPersistenciaProblema();
         id = gpp.getNextId();
         jugades = -1;
