@@ -89,6 +89,39 @@ public class FENProblema extends JPanel implements ActionListener {
         //frameVista.setVisible(true);
     }
 
+    public FENProblema(String fen, int njug, int prim) {
+        this.setLayout(new GridLayout(0,1));
+        tJug.setColumns(5);
+        tJug.setPreferredSize(new Dimension(10, 50));
+        tJug.addKeyListener(new KeyAdapter() {
+            public void keyTyped(KeyEvent e) {
+                char c = e.getKeyChar();
+                if (!((c >= '0') && (c <= '9') || (c == KeyEvent.VK_BACK_SPACE) || (c == KeyEvent.VK_DELETE))) {
+                    getToolkit().beep();
+                    e.consume();
+                }
+            }
+        });
+        rbg.add(rbBlanc);
+        rbg.add(rbNegre);
+        rbPanel.add(rbBlanc);
+        rbPanel.add(rbNegre);
+        bConf.addActionListener(this);
+
+        tJug.setText(String.valueOf(njug));
+        tFen.setText(fen);
+        if (prim == define.WHITE) rbBlanc.setSelected(true);
+        else rbNegre.setSelected(true);
+
+        this.add(lFen);
+        this.add(tFen);
+        this.add(lJug);
+        this.add(tJug);
+        this.add(lPrim);
+        this.add(rbPanel);
+        this.add(bConf);
+    }
+
     public void actionPerformed(ActionEvent e) {
         //bcont.setEnabled(false);
         String fen = tFen.getText();

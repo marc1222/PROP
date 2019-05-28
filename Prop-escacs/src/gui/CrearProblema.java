@@ -24,7 +24,7 @@ public class CrearProblema extends JPanel implements ActionListener {
     //private Taulell taulell = new Taulell(tauler_buit());
 
     private BarraPeces barraPeces = new BarraPeces();
-    private ControladorDomini cd;
+    //private ControladorDomini cd;
     private TaulerCrearProblema tauler;
     private JButton bCont = new JButton("Confirmar i validar problema");
     private JPanel pJug = new JPanel(); // = new JPanel(new BoxLayout(this, BoxLayout.Y_AXIS));
@@ -99,7 +99,8 @@ public class CrearProblema extends JPanel implements ActionListener {
                 this.colorP = color;
                 setPreferredSize(TILE_SIZE);
                 assign_color();
-                assign_icon(cd);
+                //assign_icon(cd);
+                assign_icon();
                 validate();
             }
 
@@ -124,9 +125,9 @@ public class CrearProblema extends JPanel implements ActionListener {
                 setBackground(background_color);
             }
 
-            private void assign_icon(ControladorDomini cd) {
+            //private void assign_icon(ControladorDomini cd) {
+            private void assign_icon() {
                 this.removeAll();
-                //String tipus = cd.getPecaTipus(this.Pos.x, this.Pos.y);
                 if (!tipusP.equals(define.PECA_NULA)) {
                     try {
                         String file_path = define.icons_route + tipusP + colorP +".gif";
@@ -139,9 +140,11 @@ public class CrearProblema extends JPanel implements ActionListener {
                 }
             }
 
-            public void pinta_tile(ControladorDomini cd) {
+            //public void pinta_tile(ControladorDomini cd) {
+            public void pinta_tile() {
                 assign_color();
-                assign_icon(cd);
+                //assign_icon(cd);
+                assign_icon();
                 validate();
                 repaint();
             }
@@ -150,12 +153,28 @@ public class CrearProblema extends JPanel implements ActionListener {
 
         //////////////////////////////////////////////////////
 
-        public TaulerCrearProblema(ControladorDomini cd) {
+        //public TaulerCrearProblema(ControladorDomini cd) {
+        public TaulerCrearProblema() {
             super(new GridLayout(8,8));
-            this.controladorDomini = cd;
+            //this.controladorDomini = cd;
             for (int i = 0; i < 8; ++i) {
                 for (int j = 0; j < 8; ++j) {
                     final Casella c = new Casella(new gui.Posicion(j,7-i), define.PECA_NULA, define.NULL_COLOR);
+                    caselles[j][7-i] = c;
+                    c.addMouseListener(this);
+                    add(c);
+                }
+            }
+            setPreferredSize(new Dimension(600,600));
+            validate();
+        }
+
+        public TaulerCrearProblema(String tipus[][], int colors[][]) {
+            super(new GridLayout(8,8));
+            //this.controladorDomini = cd;
+            for (int i = 0; i < 8; ++i) {
+                for (int j = 0; j < 8; ++j) {
+                    final Casella c = new Casella(new gui.Posicion(j,7-i), tipus[j][7-i], colors[j][7-i]);
                     caselles[j][7-i] = c;
                     c.addMouseListener(this);
                     add(c);
@@ -228,7 +247,8 @@ public class CrearProblema extends JPanel implements ActionListener {
             removeAll();
             for (int i = 0; i < 8; ++i) {
                 for (int j = 0; j < 8; ++j) {
-                    this.caselles[j][7-i].pinta_tile(this.controladorDomini);
+                    //this.caselles[j][7-i].pinta_tile(this.controladorDomini);
+                    this.caselles[j][7-i].pinta_tile();
                     add(this.caselles[j][7-i]);
                 }
             }
@@ -239,7 +259,8 @@ public class CrearProblema extends JPanel implements ActionListener {
 
     //////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-    public CrearProblema(ControladorDomini cd) {
+    //public CrearProblema(ControladorDomini cd) {
+    public CrearProblema() {
         //menuBar.add(crea_menu());
         //frameVista.setJMenuBar(menuBar);
         //frameVista.setLayout(new BorderLayout());
@@ -248,8 +269,10 @@ public class CrearProblema extends JPanel implements ActionListener {
         this.add(barraPeces, BorderLayout.NORTH); // new?
         //frameVista.setResizable(false);
         //frameVista.add(gTauler, BorderLayout.CENTER);
-        this.cd = cd;
-        tauler = new TaulerCrearProblema(cd);
+
+        //this.cd = cd;
+        //tauler = new TaulerCrearProblema(cd);
+        tauler = new TaulerCrearProblema();
         this.add(tauler, BorderLayout.CENTER);
 
         tJug.setMaximumSize(new Dimension(100, 50));
@@ -276,6 +299,37 @@ public class CrearProblema extends JPanel implements ActionListener {
         //frameVista.setVisible(true);
     }
 
+    public CrearProblema(String fen, int njug) {
+        String tipus[][] = new String[8][8];
+        int colors[][] = new int[8][8];
+        FENToGrafic(fen, tipus, colors);
+        this.setLayout(new BorderLayout());
+        this.add(barraPeces, BorderLayout.NORTH); // new?
+        //this.cd = cd;
+        //tauler = new TaulerCrearProblema(cd);
+        tauler = new TaulerCrearProblema(tipus, colors);
+        this.add(tauler, BorderLayout.CENTER);
+        tJug.setMaximumSize(new Dimension(100, 50));
+        tJug.addKeyListener(new KeyAdapter() {
+            public void keyTyped(KeyEvent e) {
+                char c = e.getKeyChar();
+                if (!((c >= '0') && (c <= '9') || (c == KeyEvent.VK_BACK_SPACE) || (c == KeyEvent.VK_DELETE))) {
+                    getToolkit().beep();
+                    e.consume();
+                }
+            }
+        });
+        pJug.setLayout(new BoxLayout(pJug, BoxLayout.Y_AXIS));
+        tJug.setAlignmentX(CENTER_ALIGNMENT);
+        lJug.setAlignmentX(CENTER_ALIGNMENT);
+        tJug.setText(String.valueOf(njug));
+        pJug.add(lJug);
+        pJug.add(tJug);
+        this.add(pJug, BorderLayout.LINE_END);
+        bCont.addActionListener(this);
+        this.add(bCont, BorderLayout.PAGE_END);
+    }
+
     public void actionPerformed(ActionEvent e) {
         //bcont.setEnabled(false);
         String tipusPeces[][] = new String[8][8];
@@ -286,11 +340,91 @@ public class CrearProblema extends JPanel implements ActionListener {
                 colors[i][j] = tauler.caselles[i][j].colorP;
             }
         }
-        Object[] atacant = {"Blanques", "Negres"};
-        int primer = JOptionPane.showOptionDialog(this, "Quin color començarà jugant (atacant)?",
-                "Escull color atacant", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, atacant, atacant[1]);
-        int njug = Integer.parseInt(tJug.getText());
+        if (tJug.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Escriu el número de jugades del problema", "Error jugades",
+                    JOptionPane.ERROR_MESSAGE);
+        }
+        else {
+            Object[] atacant = {"Blanques", "Negres"};
+            int primer = JOptionPane.showOptionDialog(this, "Quin color començarà jugant (atacant)?",
+                    "Escull color atacant", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, atacant, atacant[1]);
+            int njug = Integer.parseInt(tJug.getText());
+        }
 
+    }
+
+    public void FENToGrafic(String fen, String[][] tipus, int[][] colors) {
+        int k = 0;
+        for (int i = 7; i >= 0; --i) {
+            for (int j = 0; j < 8; ++j) {
+                char act = fen.charAt(k);
+                if ((act >= 'a' && act <= 'z') || (act >= 'A' && act <= 'Z')) { //class character method
+                    switch(act) {
+                        case 'r':
+                            tipus[j][i] = define.TORRE;
+                            colors[j][i] = define.BLACK;
+                            break;
+                        case 'n':
+                            tipus[j][i] = define.CAVALL;
+                            colors[j][i] = define.BLACK;
+                            break;
+                        case 'b':
+                            tipus[j][i] = define.ALFIL;
+                            colors[j][i] = define.BLACK;
+                            break;
+                        case 'q':
+                            tipus[j][i] = define.REINA;
+                            colors[j][i] = define.BLACK;
+                            break;
+                        case 'k':
+                            tipus[j][i] = define.REI;
+                            colors[j][i] = define.BLACK;
+                            break;
+                        case 'p':
+                            tipus[j][i] = define.PEO;
+                            colors[j][i] = define.BLACK;
+                            break;
+                        case 'R':
+                            tipus[j][i] = define.TORRE;
+                            colors[j][i] = define.WHITE;
+                            break;
+                        case 'N':
+                            tipus[j][i] = define.CAVALL;
+                            colors[j][i] = define.WHITE;
+                            break;
+                        case 'B':
+                            tipus[j][i] = define.ALFIL;
+                            colors[j][i] = define.WHITE;
+                            break;
+                        case 'Q':
+                            tipus[j][i] = define.REINA;
+                            colors[j][i] = define.WHITE;
+                            break;
+                        case 'K':
+                            tipus[j][i] = define.REI;
+                            colors[j][i] = define.WHITE;
+                            break;
+                        case 'P':
+                            tipus[j][i] = define.PEO;
+                            colors[j][i] = define.WHITE;
+                            break;
+                        default:
+                            //
+                            break;
+                    }
+                }
+                else if (act >= '0' && act <= '8'){                             //class character method
+                    for (int z = 0; z < Character.getNumericValue(act); ++z) {
+                        tipus[j][i] = define.PECA_NULA;
+                        colors[j][i] = define.NULL_COLOR;
+                        ++j;
+                    }
+                    --j;
+                }
+                ++k;
+            }
+            ++k;
+        }
     }
 
     private JMenu crea_menu() {
@@ -344,7 +478,7 @@ public class CrearProblema extends JPanel implements ActionListener {
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         //Create and set up the content pane.
-        CrearProblema newContentPane = new CrearProblema(new ControladorDomini());
+        CrearProblema newContentPane = new CrearProblema();
         newContentPane.setOpaque(true); //content panes must be opaque
         frame.setContentPane(newContentPane);
 

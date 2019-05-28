@@ -37,5 +37,7 @@ public class define {
     public static final int simulacio = 113;
     public static final int normal = 114;
     public static final int estadistica = 115;
-
+    public static final int MOD_FEN = 116;
+    public static final int MOD_GRAFIC = 117;
+    public static final int BORRAR = 118;
 }

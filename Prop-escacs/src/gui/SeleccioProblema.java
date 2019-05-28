@@ -9,6 +9,7 @@ import java.awt.event.KeyEvent;
 public class SeleccioProblema extends JPanel  implements ActionListener  {
   //  private JFrame frameVista = new JFrame("Selecció de problema");
   // private JMenuBar menuBar = new JMenuBar();
+    private JFrame master;
     private TProblemes llistaProblemes = new TProblemes();
     private JButton bcont = new JButton("Continua");
     private JLabel lMaquina = new JLabel("Selecciona quina màquina jugarà cada color", JLabel.CENTER);
@@ -106,26 +107,36 @@ public class SeleccioProblema extends JPanel  implements ActionListener  {
 
     }
 
+    public SeleccioProblema(JFrame master, int where) {
+        this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
+        this.add(llistaProblemes);
+        bcont.setMnemonic(KeyEvent.VK_C); //Alt+C
+        bcont.addActionListener(this);
+        bcont.setMaximumSize(new Dimension(Integer.MAX_VALUE, 30));
+        bcont.setAlignmentX(CENTER_ALIGNMENT);
+        this.where = where;
+        bcont.setMaximumSize(new Dimension(Integer.MAX_VALUE, 60));
+        bcont.setAlignmentX(CENTER_ALIGNMENT);
+        this.add(bcont);
+        this.master = master;
+    }
+
     public void actionPerformed(ActionEvent e) {
-        //bcont.setEnabled(false);
-        if (where == define.normal || where == define.estadistica) {
+        if (where == define.normal || where == define.estadistica || where == define.MOD_FEN
+                || where == define.MOD_GRAFIC || where == define.BORRAR) {
             if (llistaProblemes.getTaula().getSelectedRowCount() == 0) {
-            /*JOptionPane.showMessageDialog(frameVista, "Cap problema seleccionat.", "Error de selecció",
-                    JOptionPane.ERROR_MESSAGE);*/
                 JOptionPane.showMessageDialog(this, "Cap problema seleccionat.", "Error de selecció",
                         JOptionPane.ERROR_MESSAGE);
             }
             else if (llistaProblemes.getTaula().getSelectedRowCount() > 1) {
-            /*JOptionPane.showMessageDialog(frameVista, "Més d'un problema seleccionat.", "Error de selecció",
-                    JOptionPane.ERROR_MESSAGE);*/
                 JOptionPane.showMessageDialog(this, "Més d'un problema seleccionat.", "Error de selecció",
                         JOptionPane.ERROR_MESSAGE);
             }
             else {
                 int i = llistaProblemes.getTaula().getSelectedRow();
-                String id = (String) llistaProblemes.getTaula().getValueAt(i, 0);
 
                 if (this.where == define.normal) {
+                    String id = (String) llistaProblemes.getTaula().getValueAt(i, 0);
                     SwingUtilities.invokeLater(new Runnable() {
                         @Override
                         public void run() {
@@ -133,10 +144,30 @@ public class SeleccioProblema extends JPanel  implements ActionListener  {
                         }
                     });
                 }
-                else {
+                else if (this.where == define.simulacio){
                     //this.where == define.estadistica
                     //TODO CRIDAR a gestor de les vistes d'estadistca perque faci el canvi,
                     // o directament passan el JFRAME i guardantlo
+                }
+                else if (this.where == define.MOD_FEN || this.where == define.MOD_GRAFIC) {
+                    String fen = (String) llistaProblemes.getTaula().getValueAt(i, 3);
+                    int njug = Integer.parseInt((String)llistaProblemes.getTaula().getValueAt(i, 1));
+                    Color c = (Color) llistaProblemes.getTaula().getValueAt(i, 2);
+                    int prim;
+                    if (c.equals(Color.BLACK)) prim = define.BLACK;
+                    else prim = define.WHITE;
+                    if (this.where == define.MOD_FEN) {
+                        FENProblema fp = new FENProblema(fen, njug, prim);
+                        master.setContentPane(fp);
+                        master.pack();
+                        master.setVisible(true);
+                    }
+                    else {
+                        CrearProblema cp = new CrearProblema(fen, njug);
+                        master.setContentPane(cp);
+                        master.pack();
+                        master.setVisible(true);
+                    }
                 }
             }
         }
@@ -157,7 +188,6 @@ public class SeleccioProblema extends JPanel  implements ActionListener  {
                 int negre = (cbNegre.getSelectedItem().toString().equals("Naive"))?define.NAIVE:define.SMART;
                 jugarview.startSimulacio(ids, blanc, negre);
             }
-
 
         }
     }

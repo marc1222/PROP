@@ -8,6 +8,7 @@ import java.awt.event.ActionListener;
 public class MenuProblema extends JPanel implements ActionListener {
     //private JFrame frameVista = new JFrame("Crear Problema FEN");
     //private JMenuBar menuBar = new JMenuBar();
+    private JFrame master;
     private JButton bAFEN = new JButton("Crear problema");
     private JButton bMFEN = new JButton("Modificar problema");
     private JLabel lFEN = new JLabel("Afegir problema FEN", JLabel.CENTER);
@@ -20,7 +21,7 @@ public class MenuProblema extends JPanel implements ActionListener {
     private JPanel mrow = new JPanel(new GridLayout(1,2));
 
 
-    public MenuProblema() {
+    public MenuProblema(JFrame master) {
         //menuBar.add(crea_menu());
         //frameVista.setJMenuBar(menuBar);
 
@@ -31,20 +32,28 @@ public class MenuProblema extends JPanel implements ActionListener {
         //frameVista.add(lrow);
         this.add(lrow);
         bAFEN.addActionListener(this);
+        bAFEN.setActionCommand("crear fen");
         crow.add(bAFEN);
         bAG.addActionListener(this);
+        bAG.setActionCommand("crear grafic");
         crow.add(bAG);
         //frameVista.add(crow);
         this.add(crow);
         bMFEN.addActionListener(this);
+        bMFEN.setActionCommand("modificar fen");
         mrow.add(bMFEN);
+        mAG.setActionCommand("modificar grafic");
         mAG.addActionListener(this);
         mrow.add(mAG);
         //frameVista.add(mrow);
         this.add(mrow);
         //frameVista.add(bBorrar);
+        bBorrar.setActionCommand("borrar");
+        bBorrar.addActionListener(this);
         this.add(bBorrar);
 
+        this.master = master;
+        master.add(this);
         //frameVista.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         //frameVista.pack();
         //frameVista.setVisible(true);
@@ -53,15 +62,49 @@ public class MenuProblema extends JPanel implements ActionListener {
 
     public void actionPerformed(ActionEvent e) {
         //bcont.setEnabled(false);
+        String c = e.getActionCommand();
+        switch(c) {
+            case "crear fen":
+                FENProblema fp = new FENProblema();
+                master.setContentPane(fp);
+                master.pack();
+                master.setVisible(true);
+                break;
+            case "crear grafic":
+                CrearProblema cp = new CrearProblema();
+                master.setContentPane(cp);
+                master.pack();
+                master.setVisible(true);
+                break;
+            case "modificar fen":
+                SeleccioProblema sp = new SeleccioProblema(master, define.MOD_FEN);
+                master.setContentPane(sp);
+                master.pack();
+                master.setVisible(true);
+                break;
+            case "modificar grafic":
+                SeleccioProblema spg = new SeleccioProblema(master, define.MOD_GRAFIC);
+                master.setContentPane(spg);
+                master.pack();
+                master.setVisible(true);
+                break;
+            case "borrar":
+                SeleccioProblema spb = new SeleccioProblema(master, define.BORRAR);
+                master.setContentPane(spb);
+                master.pack();
+                master.setVisible(true);
+                break;
+        }
+
     }
 
     private static void createAndShowGUI() {
         //Create and set up the window.
-        JFrame frame = new JFrame("Menú Problemes");
+        JFrame frame = new JFrame("Escacs");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         //Create and set up the content pane.
-        MenuProblema newContentPane = new MenuProblema();
+        MenuProblema newContentPane = new MenuProblema(frame);
         newContentPane.setOpaque(true); //content panes must be opaque
         frame.setContentPane(newContentPane);
 
