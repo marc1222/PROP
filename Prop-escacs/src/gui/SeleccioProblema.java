@@ -1,5 +1,7 @@
 package gui;
 
+import domini.ControladorDomini;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -21,6 +23,7 @@ public class SeleccioProblema extends JPanel  implements ActionListener  {
     private JugarPartidaView jugarview;
 
     private JFrame master;
+    private VistaMenuPrincipal menuPrincipal;
     /**
      * 0 -> jugar
      * 1 -> simulacio
@@ -126,7 +129,7 @@ public class SeleccioProblema extends JPanel  implements ActionListener  {
 
     }
 
-    public SeleccioProblema(JFrame master, int where) {
+    public SeleccioProblema(JFrame master, VistaMenuPrincipal vmp, int where) {
         this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
         this.add(llistaProblemes);
         bcont.setMnemonic(KeyEvent.VK_C); //Alt+C
@@ -138,6 +141,7 @@ public class SeleccioProblema extends JPanel  implements ActionListener  {
         bcont.setAlignmentX(CENTER_ALIGNMENT);
         this.add(bcont);
         this.master = master;
+        this.menuPrincipal = vmp;
     }
 
     public void actionPerformed(ActionEvent e) {
@@ -176,15 +180,29 @@ public class SeleccioProblema extends JPanel  implements ActionListener  {
                     if (c.equals(Color.BLACK)) prim = define.BLACK;
                     else prim = define.WHITE;
                     if (this.where == define.MOD_FEN) {
-                        FENProblema fp = new FENProblema(fen, njug, prim);
+                        FENProblema fp = new FENProblema(master, menuPrincipal, fen, njug, prim);
                         master.setContentPane(fp);
-                        master.pack();
+                        //master.pack();
                         master.setVisible(true);
                     }
                     else {
-                        CrearProblema cp = new CrearProblema(fen, njug);
+                        CrearProblema cp = new CrearProblema(master, menuPrincipal, fen, njug);
                         master.setContentPane(cp);
-                        master.pack();
+                        //master.pack();
+                        master.setVisible(true);
+                    }
+                }
+                else {
+                    String id = (String) llistaProblemes.getTaula().getValueAt(i, 0);
+                    int res = ControladorPresentacio.borraProblema(Integer.parseInt(id), menuPrincipal.getUsuari());
+                    if (res < 0) JOptionPane.showMessageDialog(this, "No ets el propietari d'aquest problema", "Error de permisos",
+                                JOptionPane.ERROR_MESSAGE);
+                    else {
+                        JOptionPane.showMessageDialog(this, "S'ha esborrat el problema i les seves estadístiques",
+                                "Problema esborrat", JOptionPane.INFORMATION_MESSAGE);
+                        MenuProblema mp = new MenuProblema(master, menuPrincipal);
+                        master.setContentPane(mp);
+                        //master.pack();
                         master.setVisible(true);
                     }
                 }

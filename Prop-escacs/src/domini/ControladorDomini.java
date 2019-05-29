@@ -300,4 +300,26 @@ public class ControladorDomini {
         }
         return nom;
     }
+
+    public static int creaProblema(int njug, String fen, String user) {
+        Problema p = new Problema();
+        p.setIdCreador(user);
+        return p.crear_problema(njug, fen);
+    }
+
+    public static String graficToFEN(String tipus[][], int colors[][], int primer) {
+        return Problema.graficToFEN(tipus, colors, primer);
+    }
+
+    public static int borraProblema(int id, String user) {
+        Problema p = new Problema();
+        int res = Problema.getProblemaId(id, p);
+        if (!user.equals(p.getIdCreador())) {
+            System.out.println("No ets el creador d'aquest problema");
+            return -3;
+        }
+        p.eliminar_problema();
+        Estadistica.eliminarStatsProblema(String.valueOf(id));
+        return 0;
+    }
 }

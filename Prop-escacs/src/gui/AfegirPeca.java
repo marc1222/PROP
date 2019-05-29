@@ -1,7 +1,5 @@
 package gui;
 
-import domini.*;
-
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
@@ -15,12 +13,16 @@ import static gui.define.LIGHT_COLOR;
 public class AfegirPeca extends JPanel {
     private Posicion Pos;
     private boolean selected;
+    private String tipusP;
+    private int colorP;
     private static Dimension TILE_SIZE = new Dimension(77, 77);
 
-    AfegirPeca(final Posicion id) {
+    AfegirPeca(final Posicion id, String tipus, int color) {
         //super(new GridBagLayout());
         this.Pos = id;
         this.selected = false;
+        this.tipusP = tipus;
+        this.colorP = color;
         setPreferredSize(TILE_SIZE);
         assign_color();
         assign_icon();
@@ -53,37 +55,9 @@ public class AfegirPeca extends JPanel {
 
     private void assign_icon() {
         this.removeAll();
-        Peca peca;
-        switch (Pos.x) {
-            case 0:
-                if (Pos.y == 0) peca = new Peo(define.WHITE);
-                else peca = new Peo(define.BLACK);
-                break;
-            case 1:
-                if (Pos.y == 0) peca = new Torre(define.WHITE);
-                else peca = new Torre(define.BLACK);
-                break;
-            case 2:
-                if (Pos.y == 0) peca = new Cavall(define.WHITE);
-                else peca = new Cavall(define.BLACK);
-                break;
-            case 3:
-                if (Pos.y == 0) peca = new Alfil(define.WHITE);
-                else peca = new Alfil(define.BLACK);
-                break;
-            case 4:
-                if (Pos.y == 0) peca = new Reina(define.WHITE);
-                else peca = new Reina(define.BLACK);
-                break;
-            default:
-                if (Pos.y == 0) peca = new Rei(define.WHITE);
-                else peca = new Rei(define.BLACK);
-                break;
-
-        }
         if (Pos.x != 6) {
             try {
-                String file_path = define.icons_route + "miniicons/" + peca.getTipus() + peca.getColor() + ".png";
+                String file_path = define.icons_route + "miniicons/" + this.tipusP + this.colorP + ".png";
 
                 final BufferedImage icon =
                         ImageIO.read(new File(file_path));
@@ -94,7 +68,7 @@ public class AfegirPeca extends JPanel {
         }
         else {
             try {
-                String file_path = define.icons_route + "trash.png";
+                String file_path = define.icons_route + "miniicons/trash.png";
 
                 final BufferedImage icon =
                         ImageIO.read(new File(file_path));

@@ -83,7 +83,7 @@ public abstract class Peca {
     /**
      * Consulta de quin dels 7 tipus és la peça
      * Pre: true
-     * @return el domini.define del tipus de peça del paràmetre implícit
+     * @return el define del tipus de peça del paràmetre implícit
      */
     abstract public String getTipus();
 }

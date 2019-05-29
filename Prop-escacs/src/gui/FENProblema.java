@@ -17,6 +17,8 @@ import java.text.ParseException;
 
 public class FENProblema extends JPanel implements ActionListener {
     private JTextField tFen = new JTextField(35);
+    private JFrame master;
+    private VistaMenuPrincipal menuPrincipal;
     /*NumberFormat nf = NumberFormat.getInstance();
     NumberFormatter nfr = new NumberFormatter(nf);
     private JFormattedTextField tJug;*/
@@ -30,7 +32,9 @@ public class FENProblema extends JPanel implements ActionListener {
     private JLabel lJug = new JLabel("Introdueix el número de jugades del problema", JLabel.CENTER);
     private JLabel lPrim = new JLabel("Selecciona quin color comença", JLabel.CENTER);
 
-    public FENProblema() {
+    public FENProblema(JFrame master, VistaMenuPrincipal vmp) {
+        this.master = master;
+        this.menuPrincipal = vmp;
         //menuBar.add(crea_menu());
         //frameVista.setJMenuBar(menuBar);
         //frameVista.setLayout(new BorderLayout());
@@ -90,7 +94,9 @@ public class FENProblema extends JPanel implements ActionListener {
         //frameVista.setVisible(true);
     }
 
-    public FENProblema(String fen, int njug, int prim) {
+    public FENProblema(JFrame master, VistaMenuPrincipal vmp, String fen, int njug, int prim) {
+        this.master = master;
+        this.menuPrincipal = vmp;
         this.setLayout(new GridLayout(0,1));
         tJug.setColumns(5);
         tJug.setPreferredSize(new Dimension(10, 50));
@@ -126,18 +132,48 @@ public class FENProblema extends JPanel implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         //bcont.setEnabled(false);
         String fen = tFen.getText();
-        int njug = Integer.parseInt(tJug.getText()); // int?
-        int color;
-        if (rbBlanc.isSelected()) color = define.WHITE;
-        else if (rbNegre.isSelected()) color = define.BLACK;
-        final String ffen = fen + " w";
-        /*new Thread(new Runnable() {
-            @Override
-            public void run() {
-                Problema p = new Problema();
-                p.crear_problema(njug, ffen);
+        if (!fen.isEmpty()) {
+            String jug = tJug.getText();
+            if (!jug.isEmpty()) {
+                int njug = Integer.parseInt(jug); // int?
+                int color;
+                final String ffen;
+                if (rbBlanc.isSelected()) ffen = fen + " w";
+                else ffen = fen + " b";
+                /*new Thread(new Runnable() {
+                    @Override
+                    public void run() {
+                        Problema p = new Problema();
+                        p.crear_problema(njug, ffen);
+                    }
+                }).start();*/
+                int res = ControladorPresentacio.creaProblema(njug, ffen, menuPrincipal.getUsuari());
+                if (res < 0) {
+                    if (res == -2) JOptionPane.showMessageDialog(this, "FEN invàlid",
+                            "Error en el FEN", JOptionPane.ERROR_MESSAGE);
+                    else if (res == -3) JOptionPane.showMessageDialog(this, "El problema ja existeix",
+                            "Problema ja creat", JOptionPane.ERROR_MESSAGE);
+                    else JOptionPane.showMessageDialog(this, "Problema sense solució",
+                                "Problema invàlid", JOptionPane.ERROR_MESSAGE);
+                }
+                else {
+                    JOptionPane.showMessageDialog(this, "S'ha validat i creat el problema correctament",
+                            "Problema creat", JOptionPane.INFORMATION_MESSAGE);
+                    MenuProblema mp = new MenuProblema(master, menuPrincipal);
+                    master.setContentPane(mp);
+                    //master.pack();
+                    master.setVisible(true);
+                }
             }
-        }).start();*/
+            else {
+                JOptionPane.showMessageDialog(this, "Escriu el número de jugades del problema",
+                        "Error en el número de jugades", JOptionPane.ERROR_MESSAGE);
+            }
+        }
+        else {
+            JOptionPane.showMessageDialog(this, "Escriu el FEN del problema", "Error en el FEN",
+                    JOptionPane.ERROR_MESSAGE);
+        }
     }
 
     private JMenu crea_menu() {
@@ -159,7 +195,7 @@ public class FENProblema extends JPanel implements ActionListener {
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         //Create and set up the content pane.
-        FENProblema newContentPane = new FENProblema();
+        FENProblema newContentPane = new FENProblema(frame, new VistaMenuPrincipal(new GameFrame(), new ControladorDomini(), "0"));
         newContentPane.setOpaque(true); //content panes must be opaque
         frame.setContentPane(newContentPane);
 

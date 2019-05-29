@@ -59,10 +59,6 @@ public class VistaMenuPrincipal {
      */
 
     private void initComponents() {
-        /*
-        GridBagLayout grid = new GridBagLayout();
-        master.setLayout(grid);
-        */
         master.setTitle("Menu principal");
 
         GridBagConstraints gbc = new GridBagConstraints();
@@ -235,8 +231,8 @@ public class VistaMenuPrincipal {
 
             }
         });
-
     }
+
     private void btnSimularActionPerformed(java.awt.event.ActionEvent evt) {
         // TODO --- SIMULAR PARTIDA ---
         JugarPartidaView partida = new JugarPartidaView(main, true, ctrlDomini,this);
@@ -293,7 +289,8 @@ public class VistaMenuPrincipal {
 
     private void btnGestioProblemesActionPerformed(java.awt.event.ActionEvent evt) {
         // TODO --- GESTIO PROBLEMES ---
-        MenuProblema mp = new MenuProblema(master);
+        // TODO --- GESTIO PROBLEMES ---
+        MenuProblema mp = new MenuProblema(master, this);
         master.setContentPane(mp);
         //master.pack();
         master.setVisible(true);
@@ -308,7 +305,7 @@ public class VistaMenuPrincipal {
     private void btnEstadistiquesActionPerformed(java.awt.event.ActionEvent evt) {
         // TODO --- MIRAR ESTADISTIQUES ---
         VistaEstadistica ve = new VistaEstadistica(master, ctrlDomini, "usr");
-        JOptionPane.showMessageDialog(master,"Mirar estadistiques");
+        //JOptionPane.showMessageDialog(master,"Mirar estadistiques");
     }
 
     private void btnBaixaActionPerformed(java.awt.event.ActionEvent evt) {
@@ -368,5 +365,9 @@ public class VistaMenuPrincipal {
         master.add(this.jPanel1);
         master.repaint();
         master.setVisible(true);
+    }
+
+    public String getUsuari() {
+        return usuari;
     }
 }

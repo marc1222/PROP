@@ -1,5 +1,7 @@
 package gui;
 
+import domini.ControladorDomini;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -9,6 +11,7 @@ public class MenuProblema extends JPanel implements ActionListener {
     //private JFrame frameVista = new JFrame("Crear Problema FEN");
     //private JMenuBar menuBar = new JMenuBar();
     private JFrame master;
+    private VistaMenuPrincipal menuPrincipal;
     private JButton bAFEN = new JButton("Crear problema");
     private JButton bMFEN = new JButton("Modificar problema");
     private JLabel lFEN = new JLabel("Afegir problema FEN", JLabel.CENTER);
@@ -21,12 +24,12 @@ public class MenuProblema extends JPanel implements ActionListener {
     private JPanel mrow = new JPanel(new GridLayout(1,2));
 
 
-    public MenuProblema(JFrame master) {
+    public MenuProblema(JFrame master, VistaMenuPrincipal vmp) {
         //menuBar.add(crea_menu());
         //frameVista.setJMenuBar(menuBar);
-
         //frameVista.setLayout(new GridLayout(4, 1));
         super(new GridLayout(4, 1));
+        this.menuPrincipal = vmp;
         lrow.add(lFEN);
         lrow.add(lG);
         //frameVista.add(lrow);
@@ -65,31 +68,31 @@ public class MenuProblema extends JPanel implements ActionListener {
         String c = e.getActionCommand();
         switch(c) {
             case "crear fen":
-                FENProblema fp = new FENProblema();
+                FENProblema fp = new FENProblema(master, menuPrincipal);
                 master.setContentPane(fp);
                 //master.pack();
                 master.setVisible(true);
                 break;
             case "crear grafic":
-                CrearProblema cp = new CrearProblema();
+                CrearProblema cp = new CrearProblema(master, menuPrincipal);
                 master.setContentPane(cp);
                 //master.pack();
                 master.setVisible(true);
                 break;
             case "modificar fen":
-                SeleccioProblema sp = new SeleccioProblema(master, define.MOD_FEN);
+                SeleccioProblema sp = new SeleccioProblema(master, menuPrincipal, define.MOD_FEN);
                 master.setContentPane(sp);
                 //master.pack();
                 master.setVisible(true);
                 break;
             case "modificar grafic":
-                SeleccioProblema spg = new SeleccioProblema(master, define.MOD_GRAFIC);
+                SeleccioProblema spg = new SeleccioProblema(master, menuPrincipal, define.MOD_GRAFIC);
                 master.setContentPane(spg);
                 //master.pack();
                 master.setVisible(true);
                 break;
             case "borrar":
-                SeleccioProblema spb = new SeleccioProblema(master, define.BORRAR);
+                SeleccioProblema spb = new SeleccioProblema(master, menuPrincipal, define.BORRAR);
                 master.setContentPane(spb);
                 //master.pack();
                 master.setVisible(true);
@@ -104,7 +107,7 @@ public class MenuProblema extends JPanel implements ActionListener {
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         //Create and set up the content pane.
-        MenuProblema newContentPane = new MenuProblema(frame);
+        MenuProblema newContentPane = new MenuProblema(frame, new VistaMenuPrincipal(new GameFrame(), new ControladorDomini(), "0"));
         newContentPane.setOpaque(true); //content panes must be opaque
         frame.setContentPane(newContentPane);
 

@@ -1,6 +1,5 @@
 package domini;
 
-import gestioDades.GestorPersistenciaEstadistica;
 import gestioDades.GestorPersistenciaUsuari;
 
 import java.io.*;

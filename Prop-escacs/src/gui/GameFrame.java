@@ -1,11 +1,15 @@
 package gui;
 
 import domini.*;
+import domini.define;
+import javafx.geometry.Pos;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.lang.reflect.InvocationTargetException;
+import java.util.ArrayList;
 
 public class GameFrame {
 
@@ -38,14 +42,7 @@ public class GameFrame {
         this.gameFrame.setSize(SCREEN_SIZE);
 
         init_domain_controller();
-        //VistaInici2 startview = new VistaInici2(this, DomainController);
-
-
-
         VistaInici startview = new VistaInici(this, DomainController);
-        //VistaRegistrar reg = new VistaRegistrar(this, DomainController);
-        //Pruebas1 startview = new Pruebas1(this, DomainController);
-        //VistaMenuPrincipal startview = new VistaMenuPrincipal(this, DomainController, "usr1");
 
     }
     public JFrame getGameFrame() {

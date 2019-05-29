@@ -24,19 +24,54 @@ public class CrearProblema extends JPanel implements ActionListener {
     //private JMenuBar menuBar = new JMenuBar();
 
     //private Taulell taulell = new Taulell(tauler_buit());
-
+    private JFrame master;
+    private VistaMenuPrincipal menuPrincipal;
     private BarraPeces barraPeces = new BarraPeces();
     //private ControladorDomini cd;
     private TaulerCrearProblema tauler;
-    private JButton bCont = new JButton("Confirmar i validar problema");
+    private JButton bCont = new JButton("Continuar");
 
     private class BarraPeces extends JPanel implements MouseListener {
         private AfegirPeca[] peces = new AfegirPeca[13];
 
         public BarraPeces() {
+            String tipus = "";
+            int color = 0;
             for (int i = 0; i < 2; ++i) {
                 for (int j = 0; j < 6; ++j) {
-                    AfegirPeca casella = new AfegirPeca(new Posicion(j, i));
+                    switch (j) {
+                        case 0:
+                            tipus = define.PEO;
+                            if (i == 0) color = define.WHITE;
+                            else color = define.BLACK;
+                            break;
+                        case 1:
+                            tipus = define.TORRE;
+                            if (i == 0) color = define.WHITE;
+                            else color = define.BLACK;
+                            break;
+                        case 2:
+                            tipus = define.CAVALL;
+                            if (i == 0) color = define.WHITE;
+                            else color = define.BLACK;
+                            break;
+                        case 3:
+                            tipus = define.ALFIL;
+                            if (i == 0) color = define.WHITE;
+                            else color = define.BLACK;
+                            break;
+                        case 4:
+                            tipus = define.REINA;
+                            if (i == 0) color = define.WHITE;
+                            else color = define.BLACK;
+                            break;
+                        default:
+                            tipus = define.REI;
+                            if (i == 0) color = define.WHITE;
+                            else color = define.BLACK;
+                            break;
+                    }
+                    AfegirPeca casella = new AfegirPeca(new Posicion(j, i), tipus, color);
                     casella.addMouseListener(this);
                     casella.setBorder(BorderFactory.createEmptyBorder());
                     casella.setPreferredSize(new Dimension(50,50));
@@ -45,7 +80,7 @@ public class CrearProblema extends JPanel implements ActionListener {
 
                 }
             }
-            AfegirPeca casella = new AfegirPeca(new Posicion(6, 1));
+            AfegirPeca casella = new AfegirPeca(new Posicion(6, 1), tipus, color);
             casella.addMouseListener(this);
             casella.setBackground(Color.white);
             casella.setBorder(BorderFactory.createEmptyBorder());
@@ -261,7 +296,9 @@ public class CrearProblema extends JPanel implements ActionListener {
     //////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     //public CrearProblema(ControladorDomini cd) {
-    public CrearProblema() {
+    public CrearProblema(JFrame master, VistaMenuPrincipal vmp) {
+        this.master = master;
+        this.menuPrincipal = vmp;
         //menuBar.add(crea_menu());
         //frameVista.setJMenuBar(menuBar);
         //frameVista.setLayout(new BorderLayout());
@@ -283,7 +320,9 @@ public class CrearProblema extends JPanel implements ActionListener {
         //frameVista.setVisible(true);
     }
 
-    public CrearProblema(String fen, int njug) {
+    public CrearProblema(JFrame master, VistaMenuPrincipal vmp, String fen, int njug) {
+        this.master = master;
+        this.menuPrincipal = vmp;
         String tipus[][] = new String[8][8];
         int colors[][] = new int[8][8];
         FENToGrafic(fen, tipus, colors);
@@ -316,7 +355,7 @@ public class CrearProblema extends JPanel implements ActionListener {
         cbatac.setSelectedIndex(0);
         aux.add(latac);
         aux.add(cbatac);
-        JLabel ljug = new JLabel("Quin color començarà jugant (atacant)?", JLabel.CENTER);
+        JLabel ljug = new JLabel("Selecciona el número de jugades del problema", JLabel.CENTER);
         String[] opjug = {"1", "2","3","4","5","6","7","8","9"};
         JComboBox cbjug = new JComboBox(opjug);
         cbjug.setSelectedIndex(0);
@@ -324,9 +363,25 @@ public class CrearProblema extends JPanel implements ActionListener {
         aux.add(cbjug);
         Object[] op = {"Valida"};
         int primer = JOptionPane.showOptionDialog(this, aux,
-                "Acaba la validació", JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE, null, op, op[0]);
+                "Atacant i número de jugades", JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE, null, op, op[0]);
         if (primer == 0) {
-
+            String fen = ControladorPresentacio.graficToFEN(tipusPeces, colors, cbatac.getSelectedIndex());
+            int res = ControladorPresentacio.creaProblema(cbjug.getSelectedIndex() + 1, fen, menuPrincipal.getUsuari());
+            if (res < 0) {
+                if (res == -2) JOptionPane.showMessageDialog(this, "FEN invàlid",
+                        "Error en el FEN", JOptionPane.ERROR_MESSAGE);
+                else if (res == -3) JOptionPane.showMessageDialog(this, "El problema ja existeix",
+                        "Problema ja creat", JOptionPane.ERROR_MESSAGE);
+                else JOptionPane.showMessageDialog(this, "Problema sense solució",
+                            "Problema invàlid", JOptionPane.ERROR_MESSAGE);
+            } else {
+                JOptionPane.showMessageDialog(this, "S'ha validat i creat el problema correctament",
+                        "Problema creat", JOptionPane.INFORMATION_MESSAGE);
+                MenuProblema mp = new MenuProblema(master, menuPrincipal);
+                master.setContentPane(mp);
+                //master.pack();
+                master.setVisible(true);
+            }
         }
     }
 
@@ -455,7 +510,7 @@ public class CrearProblema extends JPanel implements ActionListener {
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         //Create and set up the content pane.
-        CrearProblema newContentPane = new CrearProblema();
+        CrearProblema newContentPane = new CrearProblema(frame, new VistaMenuPrincipal(new GameFrame(), new ControladorDomini(), "0"));
         newContentPane.setOpaque(true); //content panes must be opaque
         frame.setContentPane(newContentPane);
 
