@@ -33,7 +33,8 @@ public class Smart extends Maquina {
      * @param tauler Tauler de la partida
      */
     public void setTauler(Taulell tauler) {
-        super.setTaulerMaquina(tauler);
+        Taulell tau = new Taulell(tauler);
+        super.setTaulerMaquina(tau);
     }
 
     /**
@@ -62,7 +63,7 @@ public class Smart extends Maquina {
      */
     public long moviment(Posicion origen, Posicion desti) {
         x = 0;
-        System.out.println("\nCarregant moviment..." + profunditat);
+        System.out.println("\nCarregant moviment...");
         Posicion mejorIni = new Posicion(0, 0);
         Posicion mejorDesti = new Posicion(0, 0);
         int maxF = -9999;
@@ -74,26 +75,9 @@ public class Smart extends Maquina {
             // Tractar peca propia
             Posicion[] tots = super.totsMovimentsPeca(ini);
 
-            List<Posicion> movimentsEscac = new ArrayList<Posicion>();
-            List<Posicion> movimentsNoEscac = new ArrayList<Posicion>();
-            for (Posicion x : tots) {
-                String auxPeca = define.PECA_NULA;
-                if (super.getColorPeca(x) != define.NULL_COLOR) {
-                    auxPeca = super.getTipusPeca(x);
-                }
-                boolean esEscac = false;
-                if (super.mourePeca(ini, x, colorJugador)) {
-                    Posicion posReiContrari = getReiPos(colorContrari);
-                    Posicion[] aux = {x};
-                    esEscac = super.escac(aux, posReiContrari, posReiContrari);
-                    super.desferMoviment(ini, x, auxPeca, colorJugador);
-                }
-                //System.out.println("    " + moviment.x + "-" + moviment.y + " :" + valorMoviment);
-                if(esEscac) movimentsEscac.add(x);
-                else movimentsNoEscac.add(x);
-            }
-            List<Posicion> movimentsOrdenats = movimentsEscac;
-            movimentsOrdenats.addAll(movimentsNoEscac);
+
+            List<Posicion> movimentsOrdenats = avaluarMoviment(tots, ini, colorContrari);
+
 
             //ArrayList<ValorPosicion> movimentsOrdenats = movimentsOrdenats(tots, ini, colorJugador);
             //for (ValorPosicion x : movimentsOrdenats) {
@@ -169,27 +153,7 @@ public class Smart extends Maquina {
                 Posicion[] movimentsPosibles = super.totsMovimentsPeca(ini);
                 // Fer tots els moviments que pot fer la peca
 
-                List<Posicion> movimentsEscac = new ArrayList<Posicion>();
-                List<Posicion> movimentsNoEscac = new ArrayList<Posicion>();
-                for (Posicion x : movimentsPosibles) {
-                    String auxPeca = define.PECA_NULA;
-                    if (super.getColorPeca(x) != define.NULL_COLOR) {
-                        auxPeca = super.getTipusPeca(x);
-                    }
-                    boolean esEscac = false;
-                    if (super.mourePeca(ini, x, colorJugador)) {
-                        Posicion posReiContrari = getReiPos(colorContrari);
-                        Posicion[] aux = {x};
-                        esEscac = super.escac(aux, posReiContrari, posReiContrari);
-                        super.desferMoviment(ini, x, auxPeca, colorJugador);
-                    }
-                    //System.out.println("    " + moviment.x + "-" + moviment.y + " :" + valorMoviment);
-                    if(esEscac) movimentsEscac.add(x);
-                    else movimentsNoEscac.add(x);
-                }
-                List<Posicion> movimentsOrdenats = movimentsEscac;
-                movimentsOrdenats.addAll(movimentsNoEscac);
-
+                List<Posicion> movimentsOrdenats = avaluarMoviment(movimentsPosibles, ini, colorContrari);
                 //ArrayList<ValorPosicion> movimentsOrdenats = movimentsOrdenats(movimentsPosibles, ini, colorJugador);
                // for (ValorPosicion x : movimentsOrdenats) {
                     //Posicion desti = x.getPos();
@@ -224,27 +188,7 @@ public class Smart extends Maquina {
                 Posicion[] movimentsPosibles = super.totsMovimentsPeca(ini);
                 // Fer tots els moviments que pot fer la peca
 
-
-                List<Posicion> movimentsEscac = new ArrayList<Posicion>();
-                List<Posicion> movimentsNoEscac = new ArrayList<Posicion>();
-                for (Posicion x : movimentsPosibles) {
-                    String auxPeca = define.PECA_NULA;
-                    if (super.getColorPeca(x) != define.NULL_COLOR) {
-                        auxPeca = super.getTipusPeca(x);
-                    }
-                    boolean esEscac = false;
-                    if (super.mourePeca(ini, x, colorContrari)) {
-                        Posicion posReiContrari = getReiPos(colorJugador);
-                        Posicion[] aux = {x};
-                        esEscac = super.escac(aux, posReiContrari, posReiContrari);
-                        super.desferMoviment(ini, x, auxPeca, colorContrari);
-                    }
-                    //System.out.println("    " + moviment.x + "-" + moviment.y + " :" + valorMoviment);
-                    if(esEscac) movimentsEscac.add(x);
-                    else movimentsNoEscac.add(x);
-                }
-                List<Posicion> movimentsOrdenats = movimentsEscac;
-                movimentsOrdenats.addAll(movimentsNoEscac);
+                List<Posicion> movimentsOrdenats = avaluarMoviment(movimentsPosibles, ini, colorJugador);
 
 
                 //ArrayList<ValorPosicion> movimentsOrdenats = movimentsOrdenats(movimentsPosibles, ini, colorContrari);
@@ -278,7 +222,58 @@ public class Smart extends Maquina {
         return min;
     }
 
+    private List<Posicion> avaluarMoviment(Posicion[] tots, Posicion ini, int color) {
+        List<Posicion> movimentsEscac = new ArrayList<Posicion>();
+        List<Posicion> movimentsNoEscac = new ArrayList<Posicion>();
 
+        Posicion posRei = getReiPos(color);
+        for (Posicion desti : tots) {
+            /*
+            String auxPeca = define.PECA_NULA;
+            if (super.getColorPeca(x) != define.NULL_COLOR) {
+                auxPeca = super.getTipusPeca(x);
+            }
+            boolean esEscac = false;
+            if (super.mourePeca(ini, x, colorJugador)) {
+                Posicion posReiContrari = getReiPos(colorContrari);
+                Posicion[] aux = {x};
+                esEscac = super.escac(aux, posReiContrari, posReiContrari);
+                super.desferMoviment(ini, x, auxPeca, colorJugador);
+            }
+            */
+            boolean esEscac = false;
+            Posicion[] movePosiblesPeca = super.moviments_posibles_peca(ini, desti);
+            for (Posicion desti2: movePosiblesPeca) {
+                if (posRei.x == desti2.x && posRei.y == desti2.y) {
+                    esEscac = true;
+                    //System.out.println("\n\n" + posRei.x + "-" + posRei.y + " DESTI: " + desti2.x + "-" + desti2.y);
+                    break;
+                }
+            }
+            if(esEscac) movimentsEscac.add(desti);
+            else movimentsNoEscac.add(desti);
+        }
+        List<Posicion> movimentsOrdenats = movimentsEscac;
+        movimentsOrdenats.addAll(movimentsNoEscac);
+
+        /*
+        for (Posicion x : tots) {
+            System.out.println(x.x + "-" + x.y);
+        }
+
+        System.out.println("-------------------------");
+
+        for (Posicion x : movimentsOrdenats) {
+            System.out.println(x.x + "-" + x.y);
+        }
+        System.out.println("************************\n");
+        */
+
+        return  movimentsOrdenats;
+    }
+
+
+    /*
     private ArrayList<ValorPosicion> movimentsOrdenats(Posicion[] tots, Posicion ini, int color) {
         ArrayList<ValorPosicion> movimentsOrdenats = new ArrayList<>();
         for (Posicion moviment : tots) {
@@ -298,7 +293,6 @@ public class Smart extends Maquina {
 
         movimentsOrdenats.sort(Comparator.comparing(ValorPosicion::getValor).reversed());
 
-        /*
         for (Posicion moviment : tots) {
             System.out.println(moviment.x + "-" + moviment.y);
         }
@@ -308,16 +302,12 @@ public class Smart extends Maquina {
             System.out.println(moviment.x + "-" + moviment.y);
         }
         System.out.println("\n\n\n");
-        */
+
         return movimentsOrdenats;
     }
 
 
-    /*
-    private int avaluarMoviment(Posicion origen, Posicion desti) {
-        if()
-    }
-    */
+
 
     private static class ValorPosicion {
         private Posicion pos;
@@ -336,4 +326,5 @@ public class Smart extends Maquina {
             return valor;
         }
     }
+    */
 }

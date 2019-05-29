@@ -240,6 +240,11 @@ public abstract class Maquina extends Jugador {
         return false;
     }
 
+    public Posicion[] moviments_posibles_peca(Posicion ini, Posicion pos) {
+        Peca p = tau.getPecaPosicio(ini);
+        return  p.movimientos_posibles(pos);
+    }
+
     public Posicion getReiPos(int color) {
         return tau.getReiPos(color);
     }

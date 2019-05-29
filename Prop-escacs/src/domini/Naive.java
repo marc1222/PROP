@@ -28,7 +28,8 @@ public class Naive extends Maquina {
      * @param tauler Tauler de la partida
      */
     public void setTauler(Taulell tauler) {
-        super.setTaulerMaquina(tauler);
+        Taulell tau = new Taulell(tauler);
+        super.setTaulerMaquina(tau);
     }
 
     /**
@@ -57,7 +58,7 @@ public class Naive extends Maquina {
      */
     public long moviment(Posicion origen, Posicion desti) {
         x = 0;
-        System.out.println("\nCarregant moviment..." + profunditat);
+        System.out.println("\nCarregant moviment...");
         Posicion mejorIni = new Posicion(0, 0);
         Posicion mejorDesti = new Posicion(0, 0);
         int maxF = -9999;
