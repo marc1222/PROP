@@ -26,7 +26,7 @@ public class MenuProblema extends JPanel implements ActionListener {
         //frameVista.setJMenuBar(menuBar);
 
         //frameVista.setLayout(new GridLayout(4, 1));
-        this.setLayout(new GridLayout(4, 1));
+        super(new GridLayout(4, 1));
         lrow.add(lFEN);
         lrow.add(lG);
         //frameVista.add(lrow);
@@ -67,31 +67,31 @@ public class MenuProblema extends JPanel implements ActionListener {
             case "crear fen":
                 FENProblema fp = new FENProblema();
                 master.setContentPane(fp);
-                master.pack();
+                //master.pack();
                 master.setVisible(true);
                 break;
             case "crear grafic":
                 CrearProblema cp = new CrearProblema();
                 master.setContentPane(cp);
-                master.pack();
+                //master.pack();
                 master.setVisible(true);
                 break;
             case "modificar fen":
                 SeleccioProblema sp = new SeleccioProblema(master, define.MOD_FEN);
                 master.setContentPane(sp);
-                master.pack();
+                //master.pack();
                 master.setVisible(true);
                 break;
             case "modificar grafic":
                 SeleccioProblema spg = new SeleccioProblema(master, define.MOD_GRAFIC);
                 master.setContentPane(spg);
-                master.pack();
+                //master.pack();
                 master.setVisible(true);
                 break;
             case "borrar":
                 SeleccioProblema spb = new SeleccioProblema(master, define.BORRAR);
                 master.setContentPane(spb);
-                master.pack();
+                //master.pack();
                 master.setVisible(true);
                 break;
         }

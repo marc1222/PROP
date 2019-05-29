@@ -423,8 +423,9 @@ public class Taulell {
                         if (tipus.equals(define.CAVALL)) tmp.add(act_pos);
                         else if (!descartar_movimiento(inici, act_pos)) {
                             if (tipus.equals(define.REI)) { //descartar mov de mat
-                                //Posicion[] peces = getPosColor((color== define.WHITE)? define.BLACK: define.WHITE);
-                                if (!escac(act_pos, inici)) tmp.add(act_pos);
+                                Posicion[] peces = getPosColor((color== define.WHITE)? define.BLACK: define.WHITE);
+                                if (!escac(peces,act_pos,inici)) tmp.add(act_pos);
+                                // if (!escac(act_pos, inici)) tmp.add(act_pos);
                             }
                             else if (tipus.equals(define.PEO)) { //descartar mov peo que no tingui enemic
                                 if (Math.abs(inici.x - act_pos.x) == Math.abs(inici.y - act_pos.y)) {
@@ -508,13 +509,6 @@ public class Taulell {
      */
     public boolean escac(Posicion Rei, Posicion ReiIni) {
         boolean aux;
-//        aux = (Rei.x != ReiIni.x) || (Rei.y != ReiIni.y);
-//        Peca tmp = T[Rei.x][Rei.y];
-//        Peca ini = T[ReiIni.x][ReiIni.y];
-//        if (aux) {
-//            T[Rei.x][Rei.y] = ini;
-//            borra_peca_xy(ReiIni);
-//        }
         Taulell T2;
         aux = (Rei.x != ReiIni.x) || (Rei.y != ReiIni.y);
         T2 = new Taulell(this.T,true);
@@ -527,26 +521,33 @@ public class Taulell {
         T2.recalcular_amanaca_tauler();
         if (T2.getPecaPosicio(Rei).getAmenaces().size() > 0) return true;
         return false;
-
-//        int color = T[Rei.x][Rei.y].getColor();
-//        boolean moved;
-//
-//        for (int i = 0; i < Peces.length; ++i) { //hacer modificacion temporal al tablero
-////                ret = validar_moviment(Peces[i], Rei, (color == define.WHITE) ? define.BLACK : define.WHITE);
-//                if (ret) { //si no se descarta el movimiento significa que hay un posible desplazamiento -> jaque
-//                    if (aux) { //restablecer el tablero
-//                        T[ReiIni.x][ReiIni.y] = ini;
-//                        T[Rei.x][Rei.y] = tmp;
-//                    }
-//                    return true;
-//                }
-
-       // }
-//        if (aux) { //restablecer el tablero
-//            T[ReiIni.x][ReiIni.y] = ini;
-//            T[Rei.x][Rei.y] = tmp;
-//        }
-//        return false; //no hay camino -> no hi ha amenaça
+    }
+    public boolean escac(Posicion[] Peces, Posicion Rei, Posicion ReiIni) {
+        boolean aux;
+        aux = (Rei.x != ReiIni.x) || (Rei.y != ReiIni.y);
+        Peca tmp = T[Rei.x][Rei.y];
+        Peca ini = T[ReiIni.x][ReiIni.y];
+        if (aux) {
+            T[Rei.x][Rei.y] = ini;
+            borra_peca_xy(ReiIni);
+        }
+        int color = T[Rei.x][Rei.y].getColor();
+        boolean ret;
+        for (int i = 0; i < Peces.length; ++i) { //hacer modificacion temporal al tablero
+            ret = validar_moviment(Peces[i], Rei, (color == define.WHITE) ? define.BLACK : define.WHITE);
+            if (ret) { //si no se descarta el movimiento significa que hay un posible desplazamiento -> jaque
+                if (aux) { //restablecer el tablero
+                    T[ReiIni.x][ReiIni.y] = ini;
+                    T[Rei.x][Rei.y] = tmp;
+                }
+                return true;
+            }
+        }
+        if (aux) { //restablecer el tablero
+            T[ReiIni.x][ReiIni.y] = ini;
+            T[Rei.x][Rei.y] = tmp;
+        }
+        return false; //no hay camino -> no hi ha amenaça
     }
 
     /**
@@ -613,15 +614,15 @@ public class Taulell {
         Posicion Rei = getReiPos(color);
         //System.out.println(Rei.x+"-"+Rei.y);
         //get peces que ataquen
-        //Posicion Peces_atacant[] = getPosColor((color== define.WHITE)? define.BLACK: define.WHITE);
+        Posicion Peces_atacant[] = getPosColor((color== define.WHITE)? define.BLACK: define.WHITE);
         //TODOS_MOVIMIENTOS RETURNS POS VALIDES REI ON NO ES TROBA EN ESCAC
         Posicion Rei_moves[] = todos_movimientos(Rei);
         //primeo validar el jaque a la posición inicial del Rei
-        if (escac(Rei,Rei)){
+        if (escac(Peces_atacant,Rei,Rei)){ //escac(Rei,Rei)
             //comprovar si es escac i mat
             if (Rei_moves != null) {
                 for (int i = 0; i < Rei_moves.length; ++i) {
-                    if (!escac(Rei_moves[i], Rei)) return 0;
+                    if (!escac(Peces_atacant, Rei_moves[i], Rei)) return 0; //!escac(Rei_moves[i], Rei)
                 }
             }
             if (generar_situacio(color)) return 0;
@@ -721,8 +722,9 @@ public class Taulell {
             ret = true;
             Peca aux = T[inici.x][inici.y];
             if ((aux.getTipus()).equals(define.REI))  { //no pots moure el rei a una posició on es trobi en escac
-                //Posicion[] peces = getPosColor((color== define.WHITE)? define.BLACK: define.WHITE);
-                if (escac(fi,inici)) ret = false;
+                Posicion[] peces = getPosColor((color== define.WHITE)? define.BLACK: define.WHITE);
+                if (escac(peces,fi,inici)) ret = false;
+              //  if (escac(fi,inici)) ret = false;
             }
             else { //la peca que volem moure te un moviment valid, pero NO es un rei, mirem si el rei es troba en escac
                 Posicion Rei = getReiPos(color);

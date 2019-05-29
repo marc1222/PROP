@@ -1,6 +1,8 @@
 package gui;
 
 import domini.ControladorDomini;
+import javafx.scene.control.ComboBox;
+import sun.misc.JavaLangAccess;
 
 import javax.imageio.ImageIO;
 import javax.naming.ldap.Control;
@@ -27,9 +29,6 @@ public class CrearProblema extends JPanel implements ActionListener {
     //private ControladorDomini cd;
     private TaulerCrearProblema tauler;
     private JButton bCont = new JButton("Confirmar i validar problema");
-    private JPanel pJug = new JPanel(); // = new JPanel(new BoxLayout(this, BoxLayout.Y_AXIS));
-    private JTextField tJug = new JTextField();
-    private JLabel lJug = new JLabel("<html>Escriu el número de<br/>jugades del problema</html>");
 
     private class BarraPeces extends JPanel implements MouseListener {
         private AfegirPeca[] peces = new AfegirPeca[13];
@@ -40,6 +39,7 @@ public class CrearProblema extends JPanel implements ActionListener {
                     AfegirPeca casella = new AfegirPeca(new Posicion(j, i));
                     casella.addMouseListener(this);
                     casella.setBorder(BorderFactory.createEmptyBorder());
+                    casella.setPreferredSize(new Dimension(50,50));
                     this.add(casella);
                     peces[i*6 + j] = casella;
 
@@ -49,6 +49,7 @@ public class CrearProblema extends JPanel implements ActionListener {
             casella.addMouseListener(this);
             casella.setBackground(Color.white);
             casella.setBorder(BorderFactory.createEmptyBorder());
+            casella.setPreferredSize(new Dimension(50,50));
             this.add(casella);
             peces[12] = casella;
         }
@@ -130,7 +131,7 @@ public class CrearProblema extends JPanel implements ActionListener {
                 this.removeAll();
                 if (!tipusP.equals(define.PECA_NULA)) {
                     try {
-                        String file_path = define.icons_route + tipusP + colorP +".gif";
+                        String file_path = define.icons_route + tipusP + colorP +".png";
                         final BufferedImage icon =
                                 ImageIO.read(new File(file_path));
                         this.add(new JLabel(new ImageIcon(icon)));
@@ -275,23 +276,6 @@ public class CrearProblema extends JPanel implements ActionListener {
         tauler = new TaulerCrearProblema();
         this.add(tauler, BorderLayout.CENTER);
 
-        tJug.setMaximumSize(new Dimension(100, 50));
-        tJug.addKeyListener(new KeyAdapter() {
-            public void keyTyped(KeyEvent e) {
-                char c = e.getKeyChar();
-                if (!((c >= '0') && (c <= '9') || (c == KeyEvent.VK_BACK_SPACE) || (c == KeyEvent.VK_DELETE))) {
-                    getToolkit().beep();
-                    e.consume();
-                }
-            }
-        });
-        pJug.setLayout(new BoxLayout(pJug, BoxLayout.Y_AXIS));
-        tJug.setAlignmentX(CENTER_ALIGNMENT);
-        lJug.setAlignmentX(CENTER_ALIGNMENT);
-        pJug.add(lJug);
-        pJug.add(tJug);
-        this.add(pJug, BorderLayout.LINE_END);
-
         bCont.addActionListener(this);
         this.add(bCont, BorderLayout.PAGE_END);
         //frameVista.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -309,23 +293,7 @@ public class CrearProblema extends JPanel implements ActionListener {
         //tauler = new TaulerCrearProblema(cd);
         tauler = new TaulerCrearProblema(tipus, colors);
         this.add(tauler, BorderLayout.CENTER);
-        tJug.setMaximumSize(new Dimension(100, 50));
-        tJug.addKeyListener(new KeyAdapter() {
-            public void keyTyped(KeyEvent e) {
-                char c = e.getKeyChar();
-                if (!((c >= '0') && (c <= '9') || (c == KeyEvent.VK_BACK_SPACE) || (c == KeyEvent.VK_DELETE))) {
-                    getToolkit().beep();
-                    e.consume();
-                }
-            }
-        });
-        pJug.setLayout(new BoxLayout(pJug, BoxLayout.Y_AXIS));
-        tJug.setAlignmentX(CENTER_ALIGNMENT);
-        lJug.setAlignmentX(CENTER_ALIGNMENT);
-        tJug.setText(String.valueOf(njug));
-        pJug.add(lJug);
-        pJug.add(tJug);
-        this.add(pJug, BorderLayout.LINE_END);
+
         bCont.addActionListener(this);
         this.add(bCont, BorderLayout.PAGE_END);
     }
@@ -340,17 +308,26 @@ public class CrearProblema extends JPanel implements ActionListener {
                 colors[i][j] = tauler.caselles[i][j].colorP;
             }
         }
-        if (tJug.getText().isEmpty()) {
-            JOptionPane.showMessageDialog(this, "Escriu el número de jugades del problema", "Error jugades",
-                    JOptionPane.ERROR_MESSAGE);
-        }
-        else {
-            Object[] atacant = {"Blanques", "Negres"};
-            int primer = JOptionPane.showOptionDialog(this, "Quin color començarà jugant (atacant)?",
-                    "Escull color atacant", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, atacant, atacant[1]);
-            int njug = Integer.parseInt(tJug.getText());
-        }
 
+        JPanel aux = new JPanel(new GridLayout(0,1));
+        JLabel latac = new JLabel("Quin color començarà jugant (atacant)?", JLabel.CENTER);
+        String[] opatacs = {"Blanques", "Negres"};
+        JComboBox cbatac = new JComboBox(opatacs);
+        cbatac.setSelectedIndex(0);
+        aux.add(latac);
+        aux.add(cbatac);
+        JLabel ljug = new JLabel("Quin color començarà jugant (atacant)?", JLabel.CENTER);
+        String[] opjug = {"1", "2","3","4","5","6","7","8","9"};
+        JComboBox cbjug = new JComboBox(opjug);
+        cbjug.setSelectedIndex(0);
+        aux.add(ljug);
+        aux.add(cbjug);
+        Object[] op = {"Valida"};
+        int primer = JOptionPane.showOptionDialog(this, aux,
+                "Acaba la validació", JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE, null, op, op[0]);
+        if (primer == 0) {
+
+        }
     }
 
     public void FENToGrafic(String fen, String[][] tipus, int[][] colors) {

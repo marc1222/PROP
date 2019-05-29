@@ -30,9 +30,7 @@ public class GameFrame {
 
     final JMenu game_options = new JMenu("Opcions Partida");
     final JMenuItem pausa_partida = new JMenuItem("Pausar partida");
-    final JMenuItem demana_pista = new JMenuItem("Demanar pista");
     final JMenuItem historial = new JMenuItem("Mira historial");
-    final JMenuItem desfer_jugada = new JMenuItem("Desfér jugada");
 
     public GameFrame() {
         this.gameFrame = new JFrame("Escacs");
@@ -44,62 +42,7 @@ public class GameFrame {
         this.gameFrame.setSize(SCREEN_SIZE);
 
         init_domain_controller();
-
-       VistaInici startview = new VistaInici(this, DomainController);
-
-//        JugarPartidaView partida = new JugarPartidaView(this, true, this.DomainController);
-//
-//        pausa_partida.addActionListener(new ActionListener() {
-//            @Override
-//            public void actionPerformed(ActionEvent e) {
-//                partida.getOptionPanel().stop_timer();
-//                Object[] options = {"Continuar partida"};
-//                JLabel msg = new JLabel("Partida pausada", SwingConstants.CENTER);
-//                msg.setHorizontalAlignment(JLabel.CENTER);
-//                msg.setFont (msg.getFont ().deriveFont (15.0f));
-//                int input = JOptionPane.showOptionDialog(gameFrame, msg ,"Pausa", JOptionPane.PLAIN_MESSAGE, JOptionPane.INFORMATION_MESSAGE, null, options, options[0]);
-//                if (input == 0) {
-//                    partida.getOptionPanel().start_timer();
-//                }
-//            }
-//        });
-//        historial.addActionListener(new ActionListener() {
-//            @Override
-//            public void actionPerformed(ActionEvent e) {
-//                SwingUtilities.invokeLater(new Runnable() {
-//                    @Override
-//                    public void run() {
-//                        Object[] options = {"Continuar partida"};
-//
-//                        JPanel aux = new JPanel(new GridLayout(0,1));
-//
-//                        JLabel msg1 = new JLabel("Historial", JLabel.CENTER);
-//                        msg1.setHorizontalAlignment(JLabel.CENTER);
-//                        msg1.setFont (msg1.getFont ().deriveFont (19.0f));
-//                        aux.add(msg1);
-//                        JLabel msg2 = new JLabel("---------------------------------------", JLabel.CENTER);
-//                        aux.add(msg2);
-//                        JLabel msg3 = new JLabel("   #ronda  -  torn  -  Ini  -  Dest    ", JLabel.CENTER);
-//                        msg1.setFont (msg1.getFont ().deriveFont (14.0f));
-//                        aux.add(msg3);
-//                        JLabel msg4 = new JLabel("---------------------------------------", JLabel.CENTER);
-//                        aux.add(msg4);
-//                        History.Movement[] history = partida.getHistory();
-//                        JLabel msgi;
-//                        for (int i = 0; i < history.length; ++i) {
-//                            History.Movement act = history[i];
-//                            msgi = new JLabel("       "+(i+1)+"        "+((act.color==define.WHITE)?"B":"N")+"       "+translate(act.ini)+" -> "+translate(act.fi)+"  ",JLabel.CENTER);
-//                            msgi.setFont (msgi.getFont ().deriveFont (14.0f));
-//                            aux.add(msgi);
-//                        }
-//
-//
-//                        JOptionPane.showOptionDialog(gameFrame, aux,"Historial de la partida", JOptionPane.PLAIN_MESSAGE, JOptionPane.INFORMATION_MESSAGE, null, options, options[0]);
-//                    }
-//                });
-//
-//            }
-//        });
+        VistaInici startview = new VistaInici(this, DomainController);
 
     }
     public JFrame getGameFrame() {
@@ -122,19 +65,7 @@ public class GameFrame {
         aux_menu.add(exit);
 
         abandonar.setEnabled(false);
-        abandonar.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                JLabel msg = new JLabel("<html>Estàs segur que vols tornar al menú?<br/>(No es guardarà el progrés actual)</html>");
-                Object[] options = {"Sí", "No"};
-                int input = JOptionPane.showOptionDialog(gameFrame, msg,
-                        "Tornar al menú",
-                        JOptionPane.DEFAULT_OPTION, JOptionPane.ERROR_MESSAGE, null, options, options[1]);
-                if (input == 0) {
-                    //TODO TORNAR AL MENU -> SET MENU VIEW
-                }
-            }
-        });
+
         aux_menu.add(abandonar);
         this.MenuBar.add(aux_menu);
 
@@ -145,8 +76,6 @@ public class GameFrame {
         game_options.setEnabled(false);
 
         game_options.add(pausa_partida);
-        game_options.add(demana_pista);
-        game_options.add(desfer_jugada);
         game_options.add(historial);
 
         return game_options;
@@ -159,49 +88,21 @@ public class GameFrame {
         abandonar.setEnabled(false);
         game_options.setEnabled(false);
     }
-    public void setMenuPartidaSimulacio() {
-        demana_pista.setEnabled(false);
-        desfer_jugada.setEnabled(false);
-    }
-    public void setMenuPartidaNormal() {
-        demana_pista.setEnabled(true);
-        desfer_jugada.setEnabled(true);
-    }
 
 
     private void init_domain_controller() {
         this.DomainController = new ControladorDomini();
     }
-    private String translate(Posicion p) {
-        char X = '0';
-        switch (p.x) {
-            case 0:
-                X = 'a';
-                break;
-            case 1:
-                X = 'b';
-                break;
-            case 2:
-                X = 'c';
-                break;
-            case 3:
-                X = 'd';
-                break;
-            case 4:
-                X = 'e';
-                break;
-            case 5:
-                X = 'f';
-                break;
-            case 6:
-                X = 'g';
-                break;
-            case 7:
-                X = 'h';
-                break;
-        }
-        return (X+String.valueOf(p.y));
 
+    public JMenuItem getPausa_partida() {
+        return pausa_partida;
+    }
+    public JMenuItem getHistory_partida() {
+        return historial;
+    }
+
+    public JMenuItem getAbandonar() {
+        return abandonar;
     }
 }
 

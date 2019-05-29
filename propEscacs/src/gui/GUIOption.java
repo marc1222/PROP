@@ -30,13 +30,15 @@ public class GUIOption extends JPanel {
     private JLabel white_player = new JLabel("B: ", JLabel.LEFT);
     private JLabel black_player = new JLabel("N: ", JLabel.LEFT);
 
-    public void resetSim() {
+    public void resetSim(int actual) {
         crono_ences = false;
         num_ronda = 0;
+        this.actual = actual;
     }
-    GUIOption(boolean simulacio) {
+    GUIOption(boolean simulacio, int actual) {
         super(new GridLayout(1, 3));
         this.simulacio = simulacio;
+        this.actual = actual;
         margin = new Contorn(20,50, 0, 50, define.BoardBorderColor);
         setBorder(margin.getBorder());
         //this.setLayout(new BoxLayout(this, BoxLayout.X_AXIS));
@@ -108,10 +110,10 @@ public class GUIOption extends JPanel {
 
     public void start_timer() {
         if (!this.simulacio && this.num_ronda<=this.prob_max_jug) {
-            timer = new Timer(500, new ActionListener() {
+            timer = new Timer(200, new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
-                    time_count += 0.5;
+                    time_count += 0.2;
                     if (time_count < 200000) {
                         info_timer.setText("Temps: " + Float.toString(time_count) + " s");
                     } else {

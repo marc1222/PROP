@@ -29,14 +29,13 @@ public class SeleccioProblema extends JPanel  implements ActionListener  {
     private int where;
 
 
-    public SeleccioProblema(JugarPartidaView jpv, int where, JFrame frame) {
+    public SeleccioProblema(JugarPartidaView jpv, int where) {
         //menuBar.add(crea_menu());
         //frameVista.setJMenuBar(menuBar);
         //frameVista.setLayout(new BorderLayout());
         // //frameVista.setResizable(false);
         //frameVista.add(llistaProbSeleccioProblemalemes, BorderLayout.CENTER);
         this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
-        this.master = frame;
         this.add(llistaProblemes);
         bcont.setMnemonic(KeyEvent.VK_C); //Alt+C
         bcont.addActionListener(this);
@@ -90,9 +89,9 @@ public class SeleccioProblema extends JPanel  implements ActionListener  {
 
         this.add(bcont);
         
-        master.setContentPane(this);
-        master.pack();
-        master.setVisible(true);
+//        master.setContentPane(this);
+//        master.pack();
+//        master.setVisible(true);
 
     }
 

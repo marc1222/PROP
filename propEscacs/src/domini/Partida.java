@@ -204,6 +204,13 @@ public class Partida  {
         return Prob.getNumJugades();
     }
 
+    public Jugador getWhite() {
+        return this.W;
+    }
+    public Jugador getBlack() {
+        return this.B;
+    }
+
     /**
      *     encarregada de jugar una partida al complet (mitjançant la funció jugar_torn)
      *     i cridar a estadística per guardar-ne les estadísitques, si s'ha de guardar

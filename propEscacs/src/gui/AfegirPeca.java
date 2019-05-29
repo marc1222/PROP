@@ -83,7 +83,7 @@ public class AfegirPeca extends JPanel {
         }
         if (Pos.x != 6) {
             try {
-                String file_path = define.icons_route + peca.getTipus() + peca.getColor() + ".gif";
+                String file_path = define.icons_route + "miniicons/" + peca.getTipus() + peca.getColor() + ".png";
 
                 final BufferedImage icon =
                         ImageIO.read(new File(file_path));
@@ -94,7 +94,7 @@ public class AfegirPeca extends JPanel {
         }
         else {
             try {
-                String file_path = define.icons_route + "trash.gif";
+                String file_path = define.icons_route + "trash.png";
 
                 final BufferedImage icon =
                         ImageIO.read(new File(file_path));

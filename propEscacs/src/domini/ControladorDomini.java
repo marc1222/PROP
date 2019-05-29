@@ -72,12 +72,12 @@ public class ControladorDomini {
         } else if (user_ataca && user_oponent == define.SMART) {
             //atacar   &&    //smart
             //TODO CANVIAR NAIVE A SMART
-            this.SecondUser  = new Naive((p.getPrimer() == define.WHITE) ? define.BLACK : define.WHITE);
+            this.SecondUser  = new Smart((p.getPrimer() == define.WHITE) ? define.BLACK : define.WHITE);
             (this.User).setColor(p.getPrimer());
         } else {//if (!user_ataca && user_oponent == define.SMART) {
             //defender      &&  //smart
             //TODO CANVIAR NAIVE A SMART
-            this.SecondUser  = new Naive(p.getPrimer());
+            this.SecondUser  = new Smart(p.getPrimer());
             (this.User).setColor((p.getPrimer() == define.WHITE) ? define.BLACK : define.WHITE);
         }
         this.partida = new Partida(p, (User.getColor() == define.WHITE) ? User : SecondUser, (User.getColor() == define.WHITE) ? SecondUser : User, user_ataca);
@@ -109,17 +109,14 @@ public class ControladorDomini {
             AuxUser = new Naive(define.BLACK);
         } else if (white == define.NAIVE && black == define.SMART) {
             SecondUser = new Naive(define.WHITE);
-            //TODO NEW SMART AUXUSER
-            AuxUser = new Naive(define.BLACK);
+            AuxUser = new Smart(define.BLACK);
         } else if (white == define.SMART && black == define.NAIVE) {
-            //TODO NEW SMART SECONDUSER
-            SecondUser = new Naive(define.WHITE);
+            SecondUser = new Smart(define.WHITE);
             AuxUser = new Naive(define.BLACK);
         } else {
             // BOTH SMARTS
-            //TODO NEW BOTH SMARTS: AUXUSER & SECONDUSER
-            SecondUser = new Naive(define.WHITE);
-            AuxUser = new Naive(define.BLACK);
+            SecondUser = new Smart(define.WHITE);
+            AuxUser = new Smart(define.BLACK);
         }
 
         this.partida = new Partida(p, SecondUser, AuxUser, true);
@@ -283,5 +280,24 @@ public class ControladorDomini {
 
     public void eliminarStatsProblema(String problema) {
         Estadistica.eliminarStatsProblema(problema);
+    }
+
+    public String getMainUserName() {
+        String nom = "Convidat";
+        Jugador white = partida.getWhite();
+        if (white.getTipus() == define.USER) {
+            Usuari w = (Usuari)white;
+            nom = w.getNom();
+
+        }
+        if (!nom.equals("Convidat")) return nom;
+        else {
+            Jugador black = partida.getBlack();
+            if (black.getTipus() == define.USER) {
+                Usuari b = (Usuari)black;
+                nom = b.getNom();
+            }
+        }
+        return nom;
     }
 }

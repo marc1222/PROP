@@ -105,7 +105,15 @@ public class TProblemes extends JPanel {
         }
 
         public Class getColumnClass(int c) {
-            return getValueAt(0, c).getClass();
+            Class ret = null;
+            try {
+                ret = getValueAt(0, c).getClass();
+            } catch (Exception e) {
+                ret = null;
+            }
+            finally {
+                return ret;
+            }
         }
 
         public boolean isCellEditable(int row, int col) {

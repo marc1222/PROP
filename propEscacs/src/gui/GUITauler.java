@@ -143,7 +143,7 @@ public class GUITauler extends JPanel {
             String tipus = DC.getPecaTipus(this.Pos.x, this.Pos.y);
             if (!tipus.equals(define.PECA_NULA)) {
                 try {
-                    String file_path = define.icons_route + tipus + DC.getPecaColor(this.Pos.x, this.Pos.y) +".gif";
+                    String file_path = define.icons_route + tipus + DC.getPecaColor(this.Pos.x, this.Pos.y) +".png";
                     final BufferedImage icon =
                             ImageIO.read(new File(file_path));
                     this.add(new JLabel(new ImageIcon(icon)));
@@ -353,7 +353,8 @@ public class GUITauler extends JPanel {
                                     int input = JOptionPane.showOptionDialog(GUITauler.this, aux ,"Final de la partida", JOptionPane.PLAIN_MESSAGE, JOptionPane.INFORMATION_MESSAGE, null, options, options[0]);
                                     if (input == 0) {
                                         //SEGUNET CLICK TRIGGERED
-                                        //TODO: SHOW MENU
+                                        parent.tornaMenu();
+
                                     }
                                 }
                             } while(ret == -2);
@@ -386,7 +387,7 @@ public class GUITauler extends JPanel {
                         int input = JOptionPane.showOptionDialog(GUITauler.this, aux ,"Final de la partida", JOptionPane.PLAIN_MESSAGE, JOptionPane.INFORMATION_MESSAGE, null, options, options[0]);
                         if (input == 0) {
                             //SEGUNET CLICK TRIGGERED
-                            //TODO: SHOW MENU
+                            parent.tornaMenu();
                         }
                     }
                 });
@@ -460,8 +461,7 @@ public class GUITauler extends JPanel {
 
                         int input = JOptionPane.showOptionDialog(GUITauler.this, aux ,"Final de la partida", JOptionPane.PLAIN_MESSAGE, JOptionPane.INFORMATION_MESSAGE, null, options, options[0]);
                         if (input == 0) {
-                            //SEGUNET CLICK TRIGGERED
-                            //TODO: SHOW MENU
+                            parent.tornaMenu();
                         }
                     }
                 } while(ret == -2);
