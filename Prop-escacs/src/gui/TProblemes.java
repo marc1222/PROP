@@ -66,13 +66,14 @@ public class TProblemes extends JPanel {
                                         "Num. de Jugades",
                                         "Color que comença",
                                         "Posició inicial FEN",
-                                        "Dificultat (0-10)"};
+                                        "Dificultat (0-10)",
+                                        "ID Usuari Creador"};
 
         private Object[][] dades = getDades();
 
         private Object[][] getDades() {
             String[][] problemes = Problema.consultarProblemes();
-            Object[][] res = new Object[problemes.length][5];
+            Object[][] res = new Object[problemes.length][6];
 
             for (int i = 0; i < problemes.length; ++i) {
                 for (int j = 0; j < problemes[0].length; ++j) {
@@ -104,7 +105,15 @@ public class TProblemes extends JPanel {
         }
 
         public Class getColumnClass(int c) {
-            return getValueAt(0, c).getClass();
+            Class ret = null;
+            try {
+                ret = getValueAt(0, c).getClass();
+            } catch (Exception e) {
+                ret = null;
+            }
+            finally {
+                return ret;
+            }
         }
 
         public boolean isCellEditable(int row, int col) {

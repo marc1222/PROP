@@ -33,8 +33,7 @@ public class Smart extends Maquina {
      * @param tauler Tauler de la partida
      */
     public void setTauler(Taulell tauler) {
-        Taulell tau = new Taulell(tauler);
-        super.setTaulerMaquina(tau);
+        super.setTaulerMaquina(tauler);
     }
 
     /**
@@ -63,7 +62,7 @@ public class Smart extends Maquina {
      */
     public long moviment(Posicion origen, Posicion desti) {
         x = 0;
-        System.out.println("\nCarregant moviment...");
+        System.out.println("\nCarregant moviment..." + profunditat);
         Posicion mejorIni = new Posicion(0, 0);
         Posicion mejorDesti = new Posicion(0, 0);
         int maxF = -9999;
@@ -76,26 +75,30 @@ public class Smart extends Maquina {
             Posicion[] tots = super.totsMovimentsPeca(ini);
 
 
-            List<Posicion> movimentsOrdenats = avaluarMoviment(tots, ini, colorContrari);
+            List<Posicion> movimentsOrdenats = avaluarMoviment(tots, ini, colorContrari, super.getTau());
 
 
             //ArrayList<ValorPosicion> movimentsOrdenats = movimentsOrdenats(tots, ini, colorJugador);
             //for (ValorPosicion x : movimentsOrdenats) {
                 //Posicion moviment = x.getPos();
+
             for (Posicion moviment : movimentsOrdenats) {
                 // Fer tots els moviments que pot fer la peca
                 //for (Posicion moviment : tots) {
                 // Si el moviment es a una casella amb una peca de
                 // l'oponent, es guarda el tipus de la peca
+                /*
                 String auxPeca = define.PECA_NULA;
                 if (super.getColorPeca(moviment) != define.NULL_COLOR) {
                     auxPeca = super.getTipusPeca(moviment);
                 }
-                if (super.mourePeca(ini, moviment, colorJugador)) {
+                */
+                Taulell auxTau = new Taulell(super.getTau().getTauler(), true);
+                if (super.mourePeca(ini, moviment, colorJugador, auxTau)) {
                     // Si s'ha fet el moviment correctament,
                     // cridar al algortime minimax
-                    int aux = minimax(profunditat, false, -99999, 99999);
-                    super.desferMoviment(ini, moviment, auxPeca, colorJugador);
+                    int aux = alphaBeta(profunditat, false, -99999, 99999, auxTau);
+                    //super.desferMoviment(ini, moviment, auxPeca, colorJugador);
                     // Si el valor que s'obte de l'algoritme es major
                     // del que es te del millor moviment, agafar
                     // aquest com a millor
@@ -127,7 +130,7 @@ public class Smart extends Maquina {
      * @param maximitzar Bolea que determina si es vol maximitzar valor dels nodes
      * @return Retorna el valor seleccionat pel algoritme
      */
-    private int minimax(int depth, boolean maximitzar, int alpha, int beta) {
+    private int alphaBeta(int depth, boolean maximitzar, int alpha, int beta, Taulell tau) {
         //System.out.println("---" + x);
         ++x;
         int estatPropi = super.estatMat(colorContrari);
@@ -139,7 +142,7 @@ public class Smart extends Maquina {
         if (depth == 0 ||
                 (estatPropi == 1) || (estatOponent == 1) ||
                 (estatPropi == 2 && !maximitzar) || (estatOponent == 2 && maximitzar)) {
-            return super.evaluar(colorJugador);
+            return super.evaluar(colorJugador, tau);
         }
         int min, max;
         max = -9999;
@@ -148,25 +151,31 @@ public class Smart extends Maquina {
 
         // Cas en que es vol maximitzar i la peca es del jugador
         if (maximitzar) {
-            Posicion[] peces = super.getPosColor(colorJugador);
+            //Posicion[] peces = super.getPosColor(colorJugador);
+            Posicion[] peces = tau.getPosColor(colorJugador);
             for (Posicion ini : peces) {
-                Posicion[] movimentsPosibles = super.totsMovimentsPeca(ini);
+                //Posicion[] movimentsPosibles = super.totsMovimentsPeca(ini);
+                Posicion[] movimentsPosibles = tau.todos_movimientos(ini);
                 // Fer tots els moviments que pot fer la peca
 
-                List<Posicion> movimentsOrdenats = avaluarMoviment(movimentsPosibles, ini, colorContrari);
+                List<Posicion> movimentsOrdenats = avaluarMoviment(movimentsPosibles, ini, colorContrari, tau);
                 //ArrayList<ValorPosicion> movimentsOrdenats = movimentsOrdenats(movimentsPosibles, ini, colorJugador);
                // for (ValorPosicion x : movimentsOrdenats) {
                     //Posicion desti = x.getPos();
                     // Fer tots els moviments que pot fer la peca
                     //for (Posicion desti : movimentsPosibles) {
                 for (Posicion desti : movimentsOrdenats) {
+                    /*
                     String auxPeca = define.PECA_NULA;
                     if (super.getColorPeca(desti) != define.NULL_COLOR) {
                         auxPeca = super.getTipusPeca(desti);
                     }
-                    if (super.mourePeca(ini, desti, colorJugador)) {
-                        int aux = minimax(depth - 1, false, alpha, beta);
-                        super.desferMoviment(ini, desti, auxPeca, colorJugador);
+                    */
+                    Taulell auxTau = new Taulell(tau.getTauler(), true);
+                    //if (super.mourePeca(ini, desti, colorJugador)) {
+                    if (super.mourePeca(ini, desti, colorJugador, auxTau)) {
+                        int aux = alphaBeta(depth - 1, false, alpha, beta, auxTau);
+                        //super.desferMoviment(ini, desti, auxPeca, colorJugador);
                         //alpha = Math.max(alpha, aux);
                         if (alpha < aux) {
                             alpha = aux;
@@ -183,12 +192,14 @@ public class Smart extends Maquina {
         }
         // Cas en que es vol minimitzar i la peca es del oponent
         else if (!maximitzar) {
-            Posicion[] peces = super.getPosColor(colorContrari);
+            //Posicion[] peces = super.getPosColor(colorContrari);
+            Posicion[] peces = tau.getPosColor(colorContrari);
             for (Posicion ini : peces) {
-                Posicion[] movimentsPosibles = super.totsMovimentsPeca(ini);
+                //Posicion[] movimentsPosibles = super.totsMovimentsPeca(ini);
+                Posicion[] movimentsPosibles = tau.todos_movimientos(ini);
                 // Fer tots els moviments que pot fer la peca
 
-                List<Posicion> movimentsOrdenats = avaluarMoviment(movimentsPosibles, ini, colorJugador);
+                List<Posicion> movimentsOrdenats = avaluarMoviment(movimentsPosibles, ini, colorJugador, tau);
 
 
                 //ArrayList<ValorPosicion> movimentsOrdenats = movimentsOrdenats(movimentsPosibles, ini, colorContrari);
@@ -197,14 +208,18 @@ public class Smart extends Maquina {
                 for (Posicion desti : movimentsOrdenats) {
                     // Fer tots els moviments que pot fer la peca
                     //for (Posicion desti : movimentsPosibles) {
+                    /*
                     String auxPeca = define.PECA_NULA;
+                    /*
                     if (super.getColorPeca(desti) != define.NULL_COLOR) {
                         auxPeca = super.getTipusPeca(desti);
                     }
-
-                    if (super.mourePeca(ini, desti, colorContrari)) {
-                        int aux = minimax(depth - 1, true, alpha, beta);
-                        desferMoviment(ini, desti, auxPeca, colorContrari);
+                    */
+                    Taulell auxTau = new Taulell(tau.getTauler(), true);
+                    //if (super.mourePeca(ini, desti, colorContrari)) {
+                    if (super.mourePeca(ini, desti, colorContrari, auxTau)) {
+                        int aux = alphaBeta(depth - 1, true, alpha, beta, auxTau);
+                        //desferMoviment(ini, desti, auxPeca, colorContrari);
                         if (beta > aux) {
                             beta = aux;
                         }
@@ -222,11 +237,11 @@ public class Smart extends Maquina {
         return min;
     }
 
-    private List<Posicion> avaluarMoviment(Posicion[] tots, Posicion ini, int color) {
+    private List<Posicion> avaluarMoviment(Posicion[] tots, Posicion ini, int color, Taulell tau) {
         List<Posicion> movimentsEscac = new ArrayList<Posicion>();
         List<Posicion> movimentsNoEscac = new ArrayList<Posicion>();
 
-        Posicion posRei = getReiPos(color);
+        Posicion posRei = tau.getReiPos(color);
         for (Posicion desti : tots) {
             /*
             String auxPeca = define.PECA_NULA;
@@ -242,7 +257,8 @@ public class Smart extends Maquina {
             }
             */
             boolean esEscac = false;
-            Posicion[] movePosiblesPeca = super.moviments_posibles_peca(ini, desti);
+            Peca p = tau.getPecaPosicio(ini);
+            Posicion[] movePosiblesPeca = p.movimientos_posibles(desti);
             for (Posicion desti2: movePosiblesPeca) {
                 if (posRei.x == desti2.x && posRei.y == desti2.y) {
                     esEscac = true;

@@ -1,11 +1,14 @@
 package domini;
+
+import java.util.ArrayList;
+
 /**
  * Classe Maquina
  * @author Marian Dumitru Danci
  */
 public abstract class Maquina extends Jugador {
-    private Taulell tau;
-    private Peca pecesTau[][];
+    private Taulell tauX;
+    private Peca pecesTauX[][];
 
     /**
      *
@@ -13,6 +16,10 @@ public abstract class Maquina extends Jugador {
      */
     public int getTipus() {
         return define.MAQUINA;
+    }
+
+    public Taulell getTau() {
+        return tauX;
     }
 
     /**
@@ -68,8 +75,8 @@ public abstract class Maquina extends Jugador {
      * @param tauler Tauler de la partida
      */
     public void setTaulerMaquina(Taulell tauler) {
-        this.tau = tauler;
-        pecesTau = tau.getTauler();
+        this.tauX = tauler;
+        pecesTauX = tauX.getTauler();
     }
 
     /**
@@ -78,7 +85,7 @@ public abstract class Maquina extends Jugador {
      * @return Color de le peca que es troba en la posicio donada
      */
     public int getColorPeca(Posicion pos) {
-        return pecesTau[pos.x][pos.y].getColor();
+        return pecesTauX[pos.x][pos.y].getColor();
     }
 
     /**
@@ -87,7 +94,7 @@ public abstract class Maquina extends Jugador {
      * @return Tipus de peca que es troba a la posicio donada
      */
     public String getTipusPeca(Posicion pos) {
-        return pecesTau[pos.x][pos.y].getTipus();
+        return pecesTauX[pos.x][pos.y].getTipus();
     }
 
     /**
@@ -96,7 +103,7 @@ public abstract class Maquina extends Jugador {
      * @return Tots els moviments que pot fer aquella peca
      */
     public Posicion[] totsMovimentsPeca(Posicion pos) {
-        return tau.todos_movimientos(pos);
+        return tauX.todos_movimientos(pos);
     }
 
     /**
@@ -106,7 +113,8 @@ public abstract class Maquina extends Jugador {
      * @param color Color de la peca que es vol moure
      * @return Retorna cert si s'ha fet el moviment
      */
-    public boolean mourePeca(Posicion origen, Posicion desti, int color) {
+    public boolean mourePeca(Posicion origen, Posicion desti, int color, Taulell tau) {
+        Peca pecesTau[][] = tau.getTauler();
         if(pecesTau[desti.x][desti.y].getTipus() == define.REI) {
             return false;
         }
@@ -121,12 +129,14 @@ public abstract class Maquina extends Jugador {
      * @param colorJugador Color del jugador que es vol puntuar
      * @return Puntuacio del tauler
      */
-    public int evaluar(int colorJugador) {
+    public int evaluar(int colorJugador, Taulell tauFinal) {
+        Peca pecesTau[][] = tauFinal.getTauler();
+
         int colorContrari = colorJugador ^ 1;
         int total = 0;
 
         // Estat del rei de l'adversari
-        int escac_mat1 = tau.escac_i_mat(colorContrari);
+        int escac_mat1 = tauFinal.escac_i_mat(colorContrari);
         // Mat
         if (escac_mat1 == 1) {
             total += 5000;
@@ -141,7 +151,7 @@ public abstract class Maquina extends Jugador {
         }
 
         // Estat del propi rei
-        int escac_mat2 = tau.escac_i_mat(colorJugador);
+        int escac_mat2 = tauFinal.escac_i_mat(colorJugador);
         // Mat
         if (escac_mat2 == 1) {
             total -= 5000;
@@ -155,6 +165,26 @@ public abstract class Maquina extends Jugador {
             total += 1000;
         }
 
+        Posicion[] peces = tauFinal.getPosColor(colorJugador);
+
+
+        for (Posicion ini : peces) {
+            // Suma valor segons tipus de peca
+            total += puntuacioPeca(pecesTau[ini.x][ini.y].getTipus());
+
+            ArrayList<Posicion> amenacades = tauFinal.getPecaPosicio(ini).getAmenacades();
+            total = total + 2*amenacades.size();
+        }
+
+        Posicion[] pecesContrari = tauFinal.getPosColor(colorJugador);
+        for (Posicion ini : pecesContrari) {
+            total -= puntuacioPeca(pecesTau[ini.x][ini.y].getTipus());
+
+            ArrayList<Posicion> amenacades = tauFinal.getPecaPosicio(ini).getAmenacades();
+            total = total - 2*amenacades.size();
+        }
+
+        /*
         for (int i = 0; i < pecesTau.length; i++) {
             for (int j = 0; j < pecesTau[0].length; j++) {
                 if (pecesTau[i][j].getColor() == colorJugador) {
@@ -163,7 +193,7 @@ public abstract class Maquina extends Jugador {
                     // Suma valor segons tipus de peca
                     total += puntuacioPeca(pecesTau[i][j].getTipus());
 
-                    Posicion[] movimentsPosibles = tau.todos_movimientos(ini);
+                    Posicion[] movimentsPosibles = tauFinal.todos_movimientos(ini);
                     // Suma la mobilitat de la peca
                     total += movimentsPosibles.length;
 
@@ -180,7 +210,7 @@ public abstract class Maquina extends Jugador {
                     // Resta valor segons el tipus de peca
                     total -= puntuacioPeca(pecesTau[i][j].getTipus());
 
-                    Posicion[] movimentsPosibles = tau.todos_movimientos(ini);
+                    Posicion[] movimentsPosibles = tauFinal.todos_movimientos(ini);
                     // Resta la mobilitat de la peca
                     total -= movimentsPosibles.length;
 
@@ -193,6 +223,7 @@ public abstract class Maquina extends Jugador {
                 }
             }
         }
+        */
         return total;
     }
 
@@ -207,7 +238,7 @@ public abstract class Maquina extends Jugador {
      *
      */
     public int estatMat(int color) {
-        return tau.escac_i_mat(color);
+        return tauX.escac_i_mat(color);
     }
 
     /**
@@ -218,21 +249,21 @@ public abstract class Maquina extends Jugador {
      * @return Retorna cert si el moviment s'ha desfet
      */
     public void desferMoviment(Posicion origen, Posicion desti, String peca, int color) {
-        Peca aux = pecesTau[desti.x][desti.y];
+        Peca aux = pecesTauX[desti.x][desti.y];
 
-        tau.destrueix_peca(desti);
+        tauX.destrueix_peca(desti);
 
-        tau.crear_peca(origen, color, aux.getTipus());
+        tauX.crear_peca(origen, color, aux.getTipus());
 
         // Si el moviment que s'ha fet no ha sigut sobre una peca nula es crea
         // la peca eliminada de l'oponent
         if(!peca.equals(define.PECA_NULA)) {
-            tau.crear_peca(desti, color ^ 1, peca);
+            tauX.crear_peca(desti, color ^ 1, peca);
         }
     }
 
     public Posicion[] getPosColor(int color) {
-        return tau.getPosColor(color);
+        return tauX.getPosColor(color);
     }
 
     public boolean escac(Posicion[] peces, Posicion rei, Posicion reiIni) {
@@ -241,11 +272,12 @@ public abstract class Maquina extends Jugador {
     }
 
     public Posicion[] moviments_posibles_peca(Posicion ini, Posicion pos) {
-        Peca p = tau.getPecaPosicio(ini);
+        Peca p = tauX.getPecaPosicio(ini);
         return  p.movimientos_posibles(pos);
     }
 
     public Posicion getReiPos(int color) {
-        return tau.getReiPos(color);
+        return tauX.getReiPos(color);
     }
+
 }

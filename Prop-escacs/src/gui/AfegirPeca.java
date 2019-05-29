@@ -36,6 +36,9 @@ public class AfegirPeca extends JPanel {
         selected = s;
     }
 
+    public Posicion getPos() {
+        return Pos;
+    }
     private void assign_color() {
         Color background_color;
         if (this.Pos.x%2 == 0) { //columna parella
@@ -78,14 +81,27 @@ public class AfegirPeca extends JPanel {
                 break;
 
         }
-        try {
-            String file_path = define.icons_route + peca.getTipus() + peca.getColor()+".gif";
+        if (Pos.x != 6) {
+            try {
+                String file_path = define.icons_route + "miniicons/" + peca.getTipus() + peca.getColor() + ".png";
 
-            final BufferedImage icon =
-                    ImageIO.read(new File(file_path));
-            this.add(new JLabel(new ImageIcon(icon)));
-        } catch (IOException ex) {
-            ex.printStackTrace();
+                final BufferedImage icon =
+                        ImageIO.read(new File(file_path));
+                this.add(new JLabel(new ImageIcon(icon)));
+            } catch (IOException ex) {
+                ex.printStackTrace();
+            }
+        }
+        else {
+            try {
+                String file_path = define.icons_route + "trash.png";
+
+                final BufferedImage icon =
+                        ImageIO.read(new File(file_path));
+                this.add(new JLabel(new ImageIcon(icon)));
+            } catch (IOException ex) {
+                ex.printStackTrace();
+            }
         }
     }
 

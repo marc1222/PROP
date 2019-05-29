@@ -115,7 +115,13 @@ public class Partida  {
     public int getRonda() {
         return ronda;
     }
-
+    public int getMaxRondes() {
+        return max_rondes;
+    }
+    public int tipusJugActual() {
+        if (this.torn == define.WHITE) return W.getTipus();
+        else return B.getTipus();
+    }
     /**
      *juga una ronda, tot indicant si aquesta serà la ultima de la partida i en cas que ho sigui el jugador guanyador
      *pre: true
@@ -131,6 +137,11 @@ public class Partida  {
         this.ronda++;
         long aux;
         if (this.ronda <= this.max_rondes) {
+
+            if (this.torn == define.WHITE && W.getTipus() == define.MAQUINA)
+                W.moviment(inici,fi);
+            else if (this.torn == define.BLACK && B.getTipus() == define.MAQUINA)
+                B.moviment(inici, fi);
             boolean jugada = Tauler.mover_pieza(inici, fi, this.torn);
             if (jugada) {
                 aux = Tauler.escac_i_mat((this.torn == define.WHITE) ? define.BLACK : define.WHITE);
@@ -191,6 +202,13 @@ public class Partida  {
      */
     public int getMat() {
         return Prob.getNumJugades();
+    }
+
+    public Jugador getWhite() {
+        return this.W;
+    }
+    public Jugador getBlack() {
+        return this.B;
     }
 
     /**

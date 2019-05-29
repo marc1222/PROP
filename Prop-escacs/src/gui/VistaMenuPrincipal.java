@@ -9,28 +9,47 @@ import domini.ControladorDomini;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 /**
  *
  * @author MDD
  */
 public class VistaMenuPrincipal {
+    private GameFrame main;
     private JFrame master;
     private ControladorDomini ctrlDomini;
     private String usuari;
+
+
+    // Variables declaration - do not modify//GEN-BEGIN:variables
+    private JButton btnSimular;
+    private JButton btnJugar;
+    private JButton btnGestioProblemes;
+    private JButton btnEstadistiques;
+    private JButton btnBaixa;
+    private JButton btnTancarSessio;
+    private JLabel jLabel1;
+    private JPanel jPanel1;
+    private JPanel jPanel7;
+    private JSeparator jSeparator2;
+    // End of variables declaration//GEN-END:variables
+
     /**
      * Creates new form VistaMenuPrincipal
      */
-    public VistaMenuPrincipal(JFrame master, ControladorDomini ctrlDomini, String usuari) {
-        this.master = master;
+    public VistaMenuPrincipal(GameFrame mainGame, ControladorDomini ctrlDomini, String usuari) {
+        this.main = mainGame;
+        this.master = mainGame.getGameFrame();
         this.ctrlDomini = ctrlDomini;
         this.usuari = usuari;
         initComponents();
 
-        this.master.getContentPane().removeAll();
-        this.master.add(jPanel1);
-        this.master.repaint();
-        this.master.setVisible(true);
+//        this.master.getContentPane().removeAll();
+//        this.master.add(jPanel1);
+//        this.master.repaint();
+//        this.master.setVisible(true);
     }
 
     /**
@@ -40,200 +59,314 @@ public class VistaMenuPrincipal {
      */
 
     private void initComponents() {
-        jPanel1 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
-        jSeparator2 = new javax.swing.JSeparator();
-        jPanel7 = new javax.swing.JPanel();
-        jButton21 = new javax.swing.JButton();
-        jButton22 = new javax.swing.JButton();
-        jButton23 = new javax.swing.JButton();
-        jButton24 = new javax.swing.JButton();
-        jButton25 = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
+        /*
+        GridBagLayout grid = new GridBagLayout();
+        master.setLayout(grid);
+        */
+        master.setTitle("Menu principal");
 
-        //setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        GridBagConstraints gbc = new GridBagConstraints();
+        jPanel1 = new JPanel(new GridBagLayout());
 
+        //jPanel1 = new JPanel(new GridLayout(0, 1));
+        jLabel1 = new JLabel();
+        jSeparator2 = new JSeparator();
+        jPanel7 = new JPanel();
+        btnJugar = new JButton();
+        btnGestioProblemes = new JButton();
+        btnEstadistiques = new JButton();
+        btnBaixa = new JButton();
+        btnTancarSessio = new JButton();
+        btnSimular = new JButton();
+
+
+        (main.getAbandonar()).addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                JLabel msg = new JLabel("<html>Estàs segur que vols tornar al menú?<br/>(No es guardarà el progrés actual)</html>");
+                Object[] options = {"Sí", "No"};
+                int input = JOptionPane.showOptionDialog(master, msg,
+                        "Tornar al menú",
+                        JOptionPane.DEFAULT_OPTION, JOptionPane.ERROR_MESSAGE, null, options, options[1]);
+                if (input == 0) {
+                    setMenu();
+                }
+            }
+        });
         jLabel1.setFont(new java.awt.Font("Liberation Serif", 1, 36)); // NOI18N
-        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel1.setHorizontalAlignment(SwingConstants.CENTER);
         jLabel1.setText("Escacs");
 
-        jButton21.setText("Jugar partida");
-        jButton21.addActionListener(new java.awt.event.ActionListener() {
+        btnJugar.setText("Jugar partida");
+        btnJugar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton21ActionPerformed(evt);
+                btnJugarActionPerformed(evt);
             }
         });
 
-        jButton22.setText("Gestió problemes");
-        jButton22.addActionListener(new java.awt.event.ActionListener() {
+        btnGestioProblemes.setText("Gestió problemes");
+        btnGestioProblemes.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton22ActionPerformed(evt);
+                btnGestioProblemesActionPerformed(evt);
             }
         });
 
-        jButton23.setText("Mirar estadístiques");
-        jButton23.addActionListener(new java.awt.event.ActionListener() {
+        btnEstadistiques.setText("Mirar estadístiques");
+        btnEstadistiques.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton23ActionPerformed(evt);
+                btnEstadistiquesActionPerformed(evt);
             }
         });
 
-        jButton24.setText("Donar-se de baixa");
-        jButton24.addActionListener(new java.awt.event.ActionListener() {
+        btnBaixa.setText("Donar-se de baixa");
+        btnBaixa.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton24ActionPerformed(evt);
+                btnBaixaActionPerformed(evt);
             }
         });
 
-        jButton25.setText("Tancar sessió");
-        jButton25.addActionListener(new java.awt.event.ActionListener() {
+        btnTancarSessio.setText("Tancar sessió");
+        btnTancarSessio.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton25ActionPerformed(evt);
+                btnTancarSessioActionPerformed(evt);
             }
         });
 
-        jButton1.setText("Simular partides");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btnSimular.setText("Simular partides");
+        btnSimular.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btnSimularActionPerformed(evt);
             }
         });
-        //jButton1.setToolTipText("FGRS");
+        //btnSimular.setToolTipText("FGRS");
 
-        javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
-        jPanel7.setLayout(jPanel7Layout);
-        jPanel7Layout.setHorizontalGroup(
-            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel7Layout.createSequentialGroup()
-                .addGap(30, 30, 30)
-                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jButton21, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton25, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton24, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton23, javax.swing.GroupLayout.DEFAULT_SIZE, 250, Short.MAX_VALUE)
-                    .addComponent(jButton22, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(30, Short.MAX_VALUE))
-        );
-        jPanel7Layout.setVerticalGroup(
-            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel7Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jButton21, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButton22, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButton23, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButton24, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButton25, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(25, Short.MAX_VALUE))
-        );
+        master.getContentPane().removeAll();
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGap(0, 114, Short.MAX_VALUE)
-                .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 475, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(121, 121, 121))
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(232, 232, 232)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(200, 200, 200)
-                        .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
-        );
+        gbc.fill = GridBagConstraints.HORIZONTAL;
+        gbc.gridy = 0;
+        gbc.insets = new Insets(0,0,50,0);
+        jPanel1.add(jLabel1, gbc);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(master.getContentPane());
-        master.getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
-        );
+        JSeparator sep = new JSeparator();
+        gbc.gridy = 1;
+        //gbc.ipadx = 500;
+        //gbc.gridwidth = 2;
+        jPanel1.add(sep, gbc);
 
-        master.pack();
+
+        gbc.insets = new Insets(0,0,20,0);
+        gbc.ipady = 40;      //altura
+        gbc.ipadx = 150;      //anchura
+        gbc.gridy = 2;
+        jPanel1.add(btnJugar, gbc);
+
+        gbc.gridy = 3;
+        jPanel1.add(btnSimular, gbc);
+
+        gbc.gridy = 4;
+        jPanel1.add(btnGestioProblemes, gbc);
+
+        gbc.gridy = 5;
+        jPanel1.add(btnEstadistiques, gbc);
+
+        gbc.gridy = 6;
+        jPanel1.add(btnBaixa, gbc);
+
+        gbc.gridy = 7;
+        jPanel1.add(btnTancarSessio, gbc);
+
+
+        master.add(jPanel1);
+        master.repaint();
+        master.setVisible(true);
     }
 
-    private void jButton21ActionPerformed(java.awt.event.ActionEvent evt) {
+    private void btnJugarActionPerformed(java.awt.event.ActionEvent evt) {
         // TODO --- JUGAR PARTIDA ---
-        JOptionPane.showMessageDialog(master,"Jugar partida");
+        JugarPartidaView partida = new JugarPartidaView(main, false, ctrlDomini, this);
+        (main.getPausa_partida()).addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                partida.getOptionPanel().stop_timer();
+                Object[] options = {"Continuar partida"};
+                JLabel msg = new JLabel("Partida pausada", SwingConstants.CENTER);
+                msg.setHorizontalAlignment(JLabel.CENTER);
+                msg.setFont (msg.getFont ().deriveFont (15.0f));
+                int input = JOptionPane.showOptionDialog(master, msg ,"Pausa", JOptionPane.PLAIN_MESSAGE, JOptionPane.INFORMATION_MESSAGE, null, options, options[0]);
+                if (input == 0) {
+                    partida.getOptionPanel().start_timer();
+                }
+            }
+        });
+        (main.getHistory_partida()).addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                SwingUtilities.invokeLater(new Runnable() {
+                    @Override
+                    public void run() {
+                        Object[] options = {"Continuar partida"};
+
+                        JPanel aux = new JPanel(new GridLayout(0,1));
+
+                        JLabel msg1 = new JLabel("Historial", JLabel.CENTER);
+                        msg1.setHorizontalAlignment(JLabel.CENTER);
+                        msg1.setFont (msg1.getFont ().deriveFont (19.0f));
+                        aux.add(msg1);
+                        JLabel msg2 = new JLabel("---------------------------------------", JLabel.CENTER);
+                        aux.add(msg2);
+                        JLabel msg3 = new JLabel("   #ronda  -  torn  -  Ini  -  Dest    ", JLabel.CENTER);
+                        msg1.setFont (msg1.getFont ().deriveFont (14.0f));
+                        aux.add(msg3);
+                        JLabel msg4 = new JLabel("---------------------------------------", JLabel.CENTER);
+                        aux.add(msg4);
+                        History.Movement[] history = partida.getHistory();
+                        JLabel msgi;
+                        for (int i = 0; i < history.length; ++i) {
+                            History.Movement act = history[i];
+                            msgi = new JLabel("       "+(i+1)+"        "+((act.color==define.WHITE)?"B":"N")+"       "+translate(act.ini)+" -> "+translate(act.fi)+"  ",JLabel.CENTER);
+                            msgi.setFont (msgi.getFont ().deriveFont (14.0f));
+                            aux.add(msgi);
+                        }
+
+
+                        JOptionPane.showOptionDialog(master, aux,"Historial de la partida", JOptionPane.PLAIN_MESSAGE, JOptionPane.INFORMATION_MESSAGE, null, options, options[0]);
+                    }
+                });
+
+            }
+        });
+
     }
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {
+    private void btnSimularActionPerformed(java.awt.event.ActionEvent evt) {
         // TODO --- SIMULAR PARTIDA ---
-        JOptionPane.showMessageDialog(master,"Simular partidas");
+        JugarPartidaView partida = new JugarPartidaView(main, true, ctrlDomini,this);
+        main.getPausa_partida().addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Object[] options = {"Continuar partida"};
+                JLabel msg = new JLabel("Partida pausada", SwingConstants.CENTER);
+                msg.setHorizontalAlignment(JLabel.CENTER);
+                msg.setFont (msg.getFont ().deriveFont (15.0f));
+                int input = JOptionPane.showOptionDialog(master, msg ,"Pausa", JOptionPane.PLAIN_MESSAGE, JOptionPane.INFORMATION_MESSAGE, null, options, options[0]);
+                if (input == 0) {
+                }
+            }
+        });
+        main.getHistory_partida().addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                SwingUtilities.invokeLater(new Runnable() {
+                    @Override
+                    public void run() {
+                        Object[] options = {"Continuar partida"};
+
+                        JPanel aux = new JPanel(new GridLayout(0,1));
+
+                        JLabel msg1 = new JLabel("Historial", JLabel.CENTER);
+                        msg1.setHorizontalAlignment(JLabel.CENTER);
+                        msg1.setFont (msg1.getFont ().deriveFont (19.0f));
+                        aux.add(msg1);
+                        JLabel msg2 = new JLabel("---------------------------------------", JLabel.CENTER);
+                        aux.add(msg2);
+                        JLabel msg3 = new JLabel("   #ronda  -  torn  -  Ini  -  Dest    ", JLabel.CENTER);
+                        msg1.setFont (msg1.getFont ().deriveFont (14.0f));
+                        aux.add(msg3);
+                        JLabel msg4 = new JLabel("---------------------------------------", JLabel.CENTER);
+                        aux.add(msg4);
+                        History.Movement[] history = partida.getHistory();
+                        JLabel msgi;
+                        for (int i = 0; i < history.length; ++i) {
+                            History.Movement act = history[i];
+                            msgi = new JLabel("       "+(i+1)+"        "+((act.color==define.WHITE)?"B":"N")+"       "+translate(act.ini)+" -> "+translate(act.fi)+"  ",JLabel.CENTER);
+                            msgi.setFont (msgi.getFont ().deriveFont (14.0f));
+                            aux.add(msgi);
+                        }
+
+
+                        JOptionPane.showOptionDialog(master, aux,"Historial de la partida", JOptionPane.PLAIN_MESSAGE, JOptionPane.INFORMATION_MESSAGE, null, options, options[0]);
+                    }
+                });
+
+            }
+        });
     }
 
-    private void jButton22ActionPerformed(java.awt.event.ActionEvent evt) {
+    private void btnGestioProblemesActionPerformed(java.awt.event.ActionEvent evt) {
         // TODO --- GESTIO PROBLEMES ---
-        JOptionPane.showMessageDialog(master,"Gestio problemes");
+        MenuProblema mp = new MenuProblema(master);
+        master.setContentPane(mp);
+        //master.pack();
+        master.setVisible(true);
+//        SwingUtilities.invokeLater(new Runnable() {
+//            @Override
+//            public void run() {
+//                MenuProblema mp = new MenuProblema(master);
+//            }
+//        });
     }
 
-    private void jButton23ActionPerformed(java.awt.event.ActionEvent evt) {
+    private void btnEstadistiquesActionPerformed(java.awt.event.ActionEvent evt) {
         // TODO --- MIRAR ESTADISTIQUES ---
+        VistaEstadistica ve = new VistaEstadistica(master, ctrlDomini, "usr");
         JOptionPane.showMessageDialog(master,"Mirar estadistiques");
     }
 
-    private void jButton24ActionPerformed(java.awt.event.ActionEvent evt) {
+    private void btnBaixaActionPerformed(java.awt.event.ActionEvent evt) {
         // TODO --- DONAR-SE DE BAIXA ---
-        JOptionPane.showMessageDialog(master,"Donar-se de baixa");
+        //JOptionPane.showMessageDialog(master,"Donar-se de baixa");
 
-        /*
         int a= JOptionPane.showConfirmDialog(master,"Estàs segur de que vols donar-te de baixa?",
                 "Question", JOptionPane.YES_NO_OPTION );
         if(a == JOptionPane.YES_OPTION){
             ctrlDomini.eliminarUsuari(usuari);
             ctrlDomini.eliminarStatsUsuari(usuari);
+            VistaInici startview = new VistaInici(main, ctrlDomini);
         }
-        */
+
     }
 
-    private void jButton25ActionPerformed(java.awt.event.ActionEvent evt) {
+    private void btnTancarSessioActionPerformed(java.awt.event.ActionEvent evt) {
         // TODO --- TANCAR SESSIO ---
-        JOptionPane.showMessageDialog(master,"Tancar sessio");
+        //JOptionPane.showMessageDialog(master,"Tancar sessio");
+        VistaInici startview = new VistaInici(main, ctrlDomini);
     }
 
+    private String translate(Posicion p) {
+        char X = '0';
+        switch (p.x) {
+            case 0:
+                X = 'a';
+                break;
+            case 1:
+                X = 'b';
+                break;
+            case 2:
+                X = 'c';
+                break;
+            case 3:
+                X = 'd';
+                break;
+            case 4:
+                X = 'e';
+                break;
+            case 5:
+                X = 'f';
+                break;
+            case 6:
+                X = 'g';
+                break;
+            case 7:
+                X = 'h';
+                break;
+        }
+        return (X+String.valueOf(p.y));
 
-
-
-    // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton21;
-    private javax.swing.JButton jButton22;
-    private javax.swing.JButton jButton23;
-    private javax.swing.JButton jButton24;
-    private javax.swing.JButton jButton25;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel7;
-    private javax.swing.JSeparator jSeparator2;
-    // End of variables declaration//GEN-END:variables
+    }
+    public void setMenu() {
+        main.getAbandonar().setEnabled(false);
+        master.getContentPane().removeAll();
+        master.add(this.jPanel1);
+        master.repaint();
+        master.setVisible(true);
+    }
 }

@@ -1,14 +1,11 @@
 package gui;
 
 import domini.*;
-import domini.define;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.lang.reflect.InvocationTargetException;
-import java.util.ArrayList;
 
 public class GameFrame {
 
@@ -23,6 +20,13 @@ public class GameFrame {
 //    private ControladorDominiEstadistica StatController;
 //    private ControladorDominiProblema ProblemController;
 
+    final JMenu aux_menu = new JMenu("Options");
+    final JMenuItem exit = new JMenuItem("Exit app");
+    final JMenuItem abandonar = new JMenuItem("Tornar al menú");
+
+    final JMenu game_options = new JMenu("Opcions Partida");
+    final JMenuItem pausa_partida = new JMenuItem("Pausar partida");
+    final JMenuItem historial = new JMenuItem("Mira historial");
 
     public GameFrame() {
         this.gameFrame = new JFrame("Escacs");
@@ -30,90 +34,78 @@ public class GameFrame {
         this.gameFrame.setLayout(new BorderLayout());
         this.gameFrame.setResizable(false);
         fill_menu_bar();
-        ((JFrame) this.gameFrame).setJMenuBar(this.MenuBar);
+        (this.gameFrame).setJMenuBar(this.MenuBar);
         this.gameFrame.setSize(SCREEN_SIZE);
 
         init_domain_controller();
-
-        JugarPartidaView partida = new JugarPartidaView(this.gameFrame, false, this.DomainController);
-//        Taulell T = new Taulell(init_test());
-//        this.master_tauler = T;
+        //VistaInici2 startview = new VistaInici2(this, DomainController);
 
 
 
+        VistaInici startview = new VistaInici(this, DomainController);
+        //VistaRegistrar reg = new VistaRegistrar(this, DomainController);
+        //Pruebas1 startview = new Pruebas1(this, DomainController);
+        //VistaMenuPrincipal startview = new VistaMenuPrincipal(this, DomainController, "usr1");
 
-        //VistaInici vi = new VistaInici(this.gameFrame, this.DomainController);
-        //VistaMenuPrincipal vmp = new VistaMenuPrincipal(this.gameFrame, this.DomainController, "usr123");
-        //VistaEstadistica ve = new VistaEstadistica(this.gameFrame, this.DomainController, "usr1");
+    }
+    public JFrame getGameFrame() {
+        return this.gameFrame;
     }
 
     private void fill_menu_bar() {
         this.MenuBar = new JMenuBar();
-        this.MenuBar.add(createMenu());
-    }
-    private JMenu createMenu() {
-        final JMenu aux_menu = new JMenu("Options");
-        final JMenuItem exit = new JMenuItem("Exit app");
         exit.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                System.exit(0);
+                JLabel msg = new JLabel("<html>Estàs segur que vols sortir?<br/>(No es guardarà el progrés actual)</html>");
+                Object[] options = {"Sí", "No"};
+                int input = JOptionPane.showOptionDialog(gameFrame, msg,
+                        "Tancar app",
+                        JOptionPane.DEFAULT_OPTION, JOptionPane.ERROR_MESSAGE, null, options, options[1]);
+                if (input == 0) System.exit(0);
             }
         });
         aux_menu.add(exit);
-        return aux_menu;
-    }
-    private Peca[][] init_test() {
-        Peca[][] Prova = new Peca[8][8];
-        for (int i = 0; i<8; ++i) {
-            for (int j = 0; j < 8; ++j) {
-                String name = "";
-                switch (j % 7) {
-                    case 0:
-                        name = "Alfil";
-                        break;
-                    case 1:
-                        name = "Peo";
-                        break;
-                    case 2:
-                        name = "Rei";
-                        break;
-                    case 3:
-                        name = "Reina";
-                        break;
-                    case 4:
-                        name = "Torre";
-                        break;
-                    case 5:
-                        name = "Cavall";
-                        break;
-                    case 6:
-                        name = "Peca_Nula";
-                        break;
-                }
 
-                try {
-                    Prova[i][j] = (Peca) Class.forName("domini." + name).getConstructor(int.class, ArrayList.class, ArrayList.class).newInstance(define.WHITE, null, null);
-                } catch (InstantiationException e) {
-                    e.printStackTrace();
-                } catch (IllegalAccessException e) {
-                    e.printStackTrace();
-                } catch (InvocationTargetException e) {
-                    e.printStackTrace();
-                } catch (NoSuchMethodException e) {
-                    e.printStackTrace();
-                } catch (ClassNotFoundException e) {
-                    e.printStackTrace();
-                }
+        abandonar.setEnabled(false);
 
-            }
-        }
-        return Prova;
+        aux_menu.add(abandonar);
+        this.MenuBar.add(aux_menu);
+
+        this.MenuBar.add(createMenuPartida());
     }
+    private JMenu createMenuPartida() {
+
+        game_options.setEnabled(false);
+
+        game_options.add(pausa_partida);
+        game_options.add(historial);
+
+        return game_options;
+    }
+    public void enterGame() {
+        abandonar.setEnabled(true);
+        game_options.setEnabled(true);
+    }
+    public void exitGame() {
+        abandonar.setEnabled(false);
+        game_options.setEnabled(false);
+    }
+
 
     private void init_domain_controller() {
         this.DomainController = new ControladorDomini();
     }
 
+    public JMenuItem getPausa_partida() {
+        return pausa_partida;
+    }
+    public JMenuItem getHistory_partida() {
+        return historial;
+    }
+
+    public JMenuItem getAbandonar() {
+        return abandonar;
+    }
 }
 

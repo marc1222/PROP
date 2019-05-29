@@ -31,7 +31,7 @@ public class ControladorDomini {
     private Problema problema;
 
     //ESTADISTICA
-    //private Estadistica stats;
+    private Estadistica stats;
 
     //CREADORES
     public ControladorDomini() {
@@ -61,21 +61,23 @@ public class ControladorDomini {
             (this.User).setColor((p.getPrimer() == define.WHITE) ? define.BLACK : define.WHITE);
         } else if (user_ataca && user_oponent == define.NAIVE) {
             //atacar   &&    //naive
+            System.out.println("Naive defensa");
             this.SecondUser  = new Naive((p.getPrimer() == define.WHITE) ? define.BLACK : define.WHITE);
             (this.User).setColor(p.getPrimer());
         } else if (!user_ataca && user_oponent == define.NAIVE) {
             //defender      &&  //naive
+            System.out.println("Naive ataca");
             this.SecondUser  = new Naive(p.getPrimer());
             (this.User).setColor((p.getPrimer() == define.WHITE) ? define.BLACK : define.WHITE);
         } else if (user_ataca && user_oponent == define.SMART) {
             //atacar   &&    //smart
             //TODO CANVIAR NAIVE A SMART
-            this.SecondUser  = new Naive((p.getPrimer() == define.WHITE) ? define.BLACK : define.WHITE);
+            this.SecondUser  = new Smart((p.getPrimer() == define.WHITE) ? define.BLACK : define.WHITE);
             (this.User).setColor(p.getPrimer());
         } else {//if (!user_ataca && user_oponent == define.SMART) {
             //defender      &&  //smart
             //TODO CANVIAR NAIVE A SMART
-            this.SecondUser  = new Naive(p.getPrimer());
+            this.SecondUser  = new Smart(p.getPrimer());
             (this.User).setColor((p.getPrimer() == define.WHITE) ? define.BLACK : define.WHITE);
         }
         this.partida = new Partida(p, (User.getColor() == define.WHITE) ? User : SecondUser, (User.getColor() == define.WHITE) ? SecondUser : User, user_ataca);
@@ -107,17 +109,14 @@ public class ControladorDomini {
             AuxUser = new Naive(define.BLACK);
         } else if (white == define.NAIVE && black == define.SMART) {
             SecondUser = new Naive(define.WHITE);
-            //TODO NEW SMART AUXUSER
-            AuxUser = new Naive(define.BLACK);
+            AuxUser = new Smart(define.BLACK);
         } else if (white == define.SMART && black == define.NAIVE) {
-            //TODO NEW SMART SECONDUSER
-            SecondUser = new Naive(define.WHITE);
+            SecondUser = new Smart(define.WHITE);
             AuxUser = new Naive(define.BLACK);
         } else {
             // BOTH SMARTS
-            //TODO NEW BOTH SMARTS: AUXUSER & SECONDUSER
-            SecondUser = new Naive(define.WHITE);
-            AuxUser = new Naive(define.BLACK);
+            SecondUser = new Smart(define.WHITE);
+            AuxUser = new Smart(define.BLACK);
         }
 
         this.partida = new Partida(p, SecondUser, AuxUser, true);
@@ -130,6 +129,9 @@ public class ControladorDomini {
         m2.setTauler((this.partida).getTauler());
         m2.setProfunditat((this.partida).getMat());
 
+    }
+    public int getMaxRondes() {
+        return partida.getMaxRondes();
     }
     public void juga_simulacio(int problemaID) {
 
@@ -147,6 +149,10 @@ public class ControladorDomini {
         m2.setTauler((this.partida).getTauler());
         m2.setProfunditat((this.partida).getMat());
 
+    }
+
+    public int tipusJugadorActual() {
+        return partida.tipusJugActual();
     }
 
 //    public ControladorDomini() {
@@ -200,6 +206,18 @@ public class ControladorDomini {
         return partida.jugar_tornGUI(new Posicion(x0,y0), new Posicion(x,y));
     }
 
+    public int[] juga_tornMaquina(int x0, int y0, int x, int y) {
+        Posicion ini = new Posicion(x0,y0);
+        Posicion fi = new Posicion(x,y);
+        int ret[] = new int[5];
+        ret[0] = partida.jugar_tornGUI(ini, fi);
+        ret[1] = ini.x;
+        ret[2] = ini.y;
+        ret[3] = fi.x;
+        ret[4] = fi.y;
+        return ret;
+    }
+
     public int getRondaPartida() {
         return partida.getRonda();
     }
@@ -226,7 +244,6 @@ public class ControladorDomini {
 
     /**
      * pre: color == define.WHITE || color == define.BALCK
-     * @param color - color del jugador
      * @return tipus del jugador en concret
      */
 //    int getJugadorTipus(int color) {
@@ -237,8 +254,6 @@ public class ControladorDomini {
 //            return this.Black.getTipus();
 //        }
 //    }
-
-// ******************* MARIAN ***************************
     public boolean eliminarUsuari(String usuari) {
         return User.eliminarUsuari(usuari);
     }
@@ -265,5 +280,24 @@ public class ControladorDomini {
 
     public void eliminarStatsProblema(String problema) {
         Estadistica.eliminarStatsProblema(problema);
+    }
+
+    public String getMainUserName() {
+        String nom = "Convidat";
+        Jugador white = partida.getWhite();
+        if (white.getTipus() == define.USER) {
+            Usuari w = (Usuari)white;
+            nom = w.getNom();
+
+        }
+        if (!nom.equals("Convidat")) return nom;
+        else {
+            Jugador black = partida.getBlack();
+            if (black.getTipus() == define.USER) {
+                Usuari b = (Usuari)black;
+                nom = b.getNom();
+            }
+        }
+        return nom;
     }
 }
