@@ -5,7 +5,7 @@ import java.awt.*;
 public class define {
     public static final Color LIGHT_COLOR = new Color(214,177,139);
     public static final Color DARK_COLOR = new Color(165,122,96);
-    public static final Color BoardBorderColor = new Color(187, 192,196);
+    public static final Color BoardBorderColor = new Color(107,60,33);
     public static final Color TileSelectedColor = new Color(119,119,119);
 
     public static final String icons_route = "./asset/pieces/";
@@ -31,11 +31,14 @@ public class define {
 
 
     //id de les vistes de jugar una partida
-    public static final int id_partidaproblemsel = 111;
-    public static final int id_partidasel = 112;
 
     public static final int simulacio = 113;
     public static final int normal = 114;
     public static final int estadistica = 115;
+
+    public static final int MOD_FEN = 116;
+    public static final int MOD_GRAFIC = 117;
+    public static final int BORRAR = 118;
+
 
 }

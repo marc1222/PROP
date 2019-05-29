@@ -16,15 +16,19 @@ public class SeleccioJugarPartida extends JPanel {
         ataca = false;
         oponent = 0;
         //JPanel left = new JPanel(new GridLayout(0));
-        JLabel label1 = new JLabel("Selecciona rol", JLabel.CENTER);
+        JLabel label1 = new JLabel("Selecciona un rol", JLabel.CENTER);
         label1.setBorder(BorderFactory.createLineBorder(Color.BLACK, 5));
+        label1.setFont (label1.getFont ().deriveFont (23.0f));
         add(label1);
         JRadioButton atacaButton = new JRadioButton("Atacar");
         atacaButton.setHorizontalAlignment(SwingConstants.CENTER);
+        atacaButton.setFont (atacaButton.getFont ().deriveFont (15.0f));
+
         atacaButton.setSelected(true);
 
         JRadioButton defensaButton = new JRadioButton("Defensar");
         defensaButton.setHorizontalAlignment(SwingConstants.CENTER);
+        defensaButton.setFont (defensaButton.getFont ().deriveFont (15.0f));
 
         ButtonGroup groupleft = new ButtonGroup();
         groupleft.add(atacaButton);
@@ -36,17 +40,24 @@ public class SeleccioJugarPartida extends JPanel {
         //add(left);
 
        // JPanel right = new JPanel(new GridLayout(0,1));
-        JLabel label2 = new JLabel("Selecciona oponent", JLabel.CENTER);
+        JLabel label2 = new JLabel("Selecciona un oponent", JLabel.CENTER);
         label2.setBorder(BorderFactory.createLineBorder(Color.BLACK, 5));
+        label2.setFont (label2.getFont ().deriveFont (23.0f));
 
-        JRadioButton userButton = new JRadioButton("Usuari");
+        JRadioButton userButton = new JRadioButton("Usuari 2");
         userButton.setHorizontalAlignment(SwingConstants.CENTER);
+        userButton.setFont (userButton.getFont ().deriveFont (15.0f));
+
         userButton.setSelected(true);
 
-        JRadioButton naiveButton = new JRadioButton("Maquina (Naive)");
+        JRadioButton naiveButton = new JRadioButton("Naive (Maquina)");
         naiveButton.setHorizontalAlignment(SwingConstants.CENTER);
-        JRadioButton smartButton = new JRadioButton("Maquina (Smart)");
+        naiveButton.setFont (naiveButton.getFont ().deriveFont (15.0f));
+
+        JRadioButton smartButton = new JRadioButton("Smart (Maquina)");
         smartButton.setHorizontalAlignment(SwingConstants.CENTER);
+        smartButton.setFont (smartButton.getFont ().deriveFont (15.0f));
+
 
         ButtonGroup groupright = new ButtonGroup();
         groupright.add(userButton);
@@ -58,8 +69,10 @@ public class SeleccioJugarPartida extends JPanel {
         add(naiveButton);
         add(smartButton);
 
-        JButton continuar = new JButton("Continuar");
+        JButton continuar = new JButton("Continua");
         continuar.setHorizontalTextPosition(AbstractButton.CENTER);
+        continuar.setFont (continuar.getFont ().deriveFont (30.0f));
+
         continuar.setEnabled(true);
         continuar.addActionListener(new ActionListener() {
             @Override

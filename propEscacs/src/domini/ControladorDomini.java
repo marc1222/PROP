@@ -3,6 +3,8 @@ package domini;
 import gui.JugarPartidaView;
 import javafx.geometry.Pos;
 
+import java.util.ArrayList;
+
 /**
  * @authors Marc Guinovart, Narcís Rodas
  *
@@ -59,10 +61,12 @@ public class ControladorDomini {
             (this.User).setColor((p.getPrimer() == define.WHITE) ? define.BLACK : define.WHITE);
         } else if (user_ataca && user_oponent == define.NAIVE) {
             //atacar   &&    //naive
+            System.out.println("Naive defensa");
             this.SecondUser  = new Naive((p.getPrimer() == define.WHITE) ? define.BLACK : define.WHITE);
             (this.User).setColor(p.getPrimer());
         } else if (!user_ataca && user_oponent == define.NAIVE) {
             //defender      &&  //naive
+            System.out.println("Naive ataca");
             this.SecondUser  = new Naive(p.getPrimer());
             (this.User).setColor((p.getPrimer() == define.WHITE) ? define.BLACK : define.WHITE);
         } else if (user_ataca && user_oponent == define.SMART) {
@@ -129,6 +133,9 @@ public class ControladorDomini {
         m2.setProfunditat((this.partida).getMat());
 
     }
+    public int getMaxRondes() {
+        return partida.getMaxRondes();
+    }
     public void juga_simulacio(int problemaID) {
 
         Problema p = new Problema();
@@ -145,6 +152,10 @@ public class ControladorDomini {
         m2.setTauler((this.partida).getTauler());
         m2.setProfunditat((this.partida).getMat());
 
+    }
+
+    public int tipusJugadorActual() {
+        return partida.tipusJugActual();
     }
 
 //    public ControladorDomini() {
@@ -198,6 +209,18 @@ public class ControladorDomini {
         return partida.jugar_tornGUI(new Posicion(x0,y0), new Posicion(x,y));
     }
 
+    public int[] juga_tornMaquina(int x0, int y0, int x, int y) {
+        Posicion ini = new Posicion(x0,y0);
+        Posicion fi = new Posicion(x,y);
+        int ret[] = new int[5];
+        ret[0] = partida.jugar_tornGUI(ini, fi);
+        ret[1] = ini.x;
+        ret[2] = ini.y;
+        ret[3] = fi.x;
+        ret[4] = fi.y;
+        return ret;
+    }
+
     public int getRondaPartida() {
         return partida.getRonda();
     }
@@ -224,7 +247,6 @@ public class ControladorDomini {
 
     /**
      * pre: color == define.WHITE || color == define.BALCK
-     * @param color - color del jugador
      * @return tipus del jugador en concret
      */
 //    int getJugadorTipus(int color) {
@@ -235,4 +257,31 @@ public class ControladorDomini {
 //            return this.Black.getTipus();
 //        }
 //    }
+    public boolean eliminarUsuari(String usuari) {
+        return User.eliminarUsuari(usuari);
+    }
+
+    public boolean iniciarSessio(String nomUsuari, String contrasenya) {
+        return User.iniciarSessio(nomUsuari, contrasenya);
+    }
+
+    public boolean registrar(String nomUsuari, String contrasenya1, String contrasenya2) {
+        return User.registrar(nomUsuari, contrasenya1, contrasenya2);
+    }
+
+    public ArrayList<String> estadistiquesProblema(String problema) {
+        return Estadistica.estadistiquesProblema(problema);
+    }
+
+    public ArrayList<String> estadistiquesUsuari(String usuari) {
+        return Estadistica.estadistiquesUsuari(usuari);
+    }
+
+    public void eliminarStatsUsuari(String usuari) {
+        Estadistica.eliminarStatsUsuari(usuari);
+    }
+
+    public void eliminarStatsProblema(String problema) {
+        Estadistica.eliminarStatsProblema(problema);
+    }
 }
