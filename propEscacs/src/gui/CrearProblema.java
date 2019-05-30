@@ -140,7 +140,6 @@ public class CrearProblema extends JPanel implements ActionListener {
                     }
                 }
             }
-
             //public void pinta_tile(ControladorDomini cd) {
             public void pinta_tile() {
                 assign_color();

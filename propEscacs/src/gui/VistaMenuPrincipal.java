@@ -20,6 +20,7 @@ public class VistaMenuPrincipal {
     private GameFrame main;
     private JFrame master;
     private ControladorDomini ctrlDomini;
+    private JugarPartidaView jugarPartidaView = null;
     private String usuari;
     /**
      * Creates new form VistaMenuPrincipal
@@ -66,6 +67,9 @@ public class VistaMenuPrincipal {
                         JOptionPane.DEFAULT_OPTION, JOptionPane.ERROR_MESSAGE, null, options, options[1]);
                 if (input == 0) {
                     setMenu();
+                    if (jugarPartidaView != null) {
+                        jugarPartidaView.getBoardView().compute_thread.interrupt();
+                    }
                 }
             }
         });
@@ -269,6 +273,8 @@ public class VistaMenuPrincipal {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {
         // TODO --- SIMULAR PARTIDA ---
         JugarPartidaView partida = new JugarPartidaView(main, true, ctrlDomini,this);
+        this.jugarPartidaView = partida;
+
         main.getPausa_partida().addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -406,10 +412,10 @@ public class VistaMenuPrincipal {
 
     }
     public void setMenu() {
-        main.getAbandonar().setEnabled(false);
         master.getContentPane().removeAll();
         master.add(this.jPanel1);
         master.repaint();
         master.setVisible(true);
+        main.exitGame();
     }
 }

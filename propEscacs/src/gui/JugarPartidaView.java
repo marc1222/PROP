@@ -88,13 +88,14 @@ public class JugarPartidaView {
             this.Master.setVisible(true);
 
             parent.enterGame();
+            BoardView.finish_sim = false;
 
             this.BoardView.jugaSimulacio();
 
     }
     public void juga_simulacio() {
         id_sim++;
-        if (id_sim < sim_prob.length) {
+        if (id_sim < sim_prob.length && !BoardView.finish_sim) {
             this.problemaID = sim_prob[id_sim];
             (this.DomainController).juga_simulacio(problemaID);
             this.OptionBarView.resetSim(DomainController.colorJugadorActual());
@@ -107,7 +108,9 @@ public class JugarPartidaView {
             this.Master.repaint();
             this.Master.setVisible(true);
             this.BoardView.jugaSimulacio();
-        } else menuPrincipal.setMenu();
+        } else if (!BoardView.finish_sim) {
+            returnmenu();
+        }
     }
 
 
@@ -117,6 +120,15 @@ public class JugarPartidaView {
 
     public void tornaMenu() {
         this.menuPrincipal.setMenu();
+    }
+    public void returnmenu() {
+        parent.exitGame();
+        menuPrincipal.setMenu();
+        BoardView.compute_thread.interrupt();
+    }
+
+    public GUITauler getBoardView() {
+        return this.BoardView;
     }
 
 }

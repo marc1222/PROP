@@ -5,6 +5,8 @@ import domini.*;
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.image.BufferedImage;
@@ -209,6 +211,8 @@ public class GUITauler extends JPanel {
     private History historial;
     private boolean simulacio;
     private JugarPartidaView parent;
+    public Thread compute_thread = null;
+    public boolean finish_sim = false;
 
 
     GUITauler(ControladorDomini CDP, GUIOption option, boolean sim, JugarPartidaView parent) {
@@ -306,7 +310,7 @@ public class GUITauler extends JPanel {
                     //      2 - activem la simulacio, que desactivarem quan es faci el moviment
                     ;
 
-                    new Thread(new Runnable() {
+                    compute_thread = new Thread(new Runnable() {
                         @Override
                         public void run() {
                             int ret;
@@ -353,13 +357,14 @@ public class GUITauler extends JPanel {
                                     int input = JOptionPane.showOptionDialog(GUITauler.this, aux ,"Final de la partida", JOptionPane.PLAIN_MESSAGE, JOptionPane.INFORMATION_MESSAGE, null, options, options[0]);
                                     if (input == 0) {
                                         //SEGUNET CLICK TRIGGERED
-                                        parent.tornaMenu();
+                                        parent.returnmenu();
 
                                     }
                                 }
                             } while(ret == -2);
                         }
-                    }).start();
+                    });
+                    compute_thread.start();
                 }
 
 
@@ -387,7 +392,7 @@ public class GUITauler extends JPanel {
                         int input = JOptionPane.showOptionDialog(GUITauler.this, aux ,"Final de la partida", JOptionPane.PLAIN_MESSAGE, JOptionPane.INFORMATION_MESSAGE, null, options, options[0]);
                         if (input == 0) {
                             //SEGUNET CLICK TRIGGERED
-                            parent.tornaMenu();
+                            parent.returnmenu();
                         }
                     }
                 });
@@ -415,7 +420,7 @@ public class GUITauler extends JPanel {
 
     public void make_moveMaquina() {
         simulacio = true;
-        new Thread(new Runnable() {
+        compute_thread = new Thread(new Runnable() {
             @Override
             public void run() {
                 int ret;
@@ -461,28 +466,37 @@ public class GUITauler extends JPanel {
 
                         int input = JOptionPane.showOptionDialog(GUITauler.this, aux ,"Final de la partida", JOptionPane.PLAIN_MESSAGE, JOptionPane.INFORMATION_MESSAGE, null, options, options[0]);
                         if (input == 0) {
-                            parent.tornaMenu();
+
+                            parent.returnmenu();
                         }
                     }
                 } while(ret == -2);
             }
-        }).start();
+        });
+        compute_thread.start();
     }
 
     /**
      *
      */
     public void jugaSimulacio() {
-        new Thread(new Runnable() {
+        compute_thread = new Thread(new Runnable() {
+
             @Override
             public void run() {
-                int ret;
+                    //Do your work
+
                 boolean finish = false;
-                while (!finish) {
+                int ret;
+                while (!finish_sim && !finish) {
                     do {
                         //fer cosesupda
-                        int x0=0,y0=0, x=0,y=0;
+                        int x0 = 0, y0 = 0, x = 0, y = 0;
                         int res[] = DomainController.juga_tornMaquina(x0, y0, x, y);
+                        if (compute_thread.isInterrupted()) {
+                            finish_sim = true;
+                            compute_thread = new Thread();
+                        }
                         ret = res[0];
                         System.out.println("FROM: [" + res[1] + "," + res[2] + "] -> TO: [" + res[3] + "," + res[4] + "] --> RESULT: " + ret);
 
@@ -492,7 +506,7 @@ public class GUITauler extends JPanel {
                         if (ret == -1) {
                             //ENCENEM / ATUREM EL CRONO SI SOM EL JUGADOR QUE TIRA
                             option_panel.update_stats();
-                            historial.add(DomainController.colorJugadorNoActual(), new Posicion(res[1],res[2]), new Posicion(res[3],res[4]));
+                            historial.add(DomainController.colorJugadorNoActual(), new Posicion(res[1], res[2]), new Posicion(res[3], res[4]));
 
                             SwingUtilities.invokeLater(new Runnable() {
                                 @Override
@@ -505,26 +519,28 @@ public class GUITauler extends JPanel {
                             //juga torn ha retornat un guanyador
                             pinta_tauler();
                             Object[] options = {"Continua"};
-                            JLabel msg1 = new JLabel("Han guanyat les "+((ret==define.WHITE)?"Blanques":"Negres"),JLabel.CENTER);
-                            msg1.setFont (msg1.getFont ().deriveFont (12.0f));
+                            JLabel msg1 = new JLabel("Han guanyat les " + ((ret == define.WHITE) ? "Blanques" : "Negres"), JLabel.CENTER);
+                            msg1.setFont(msg1.getFont().deriveFont(12.0f));
 
-                            JLabel msg2 = new JLabel("\nHas "+(ret==DomainController.getMasterColor()?":D Guanyat :D":"D: Perdut D:"), JLabel.CENTER);
-                            msg2.setFont (msg2.getFont ().deriveFont (16.0f));
+                            JLabel msg2 = new JLabel("\nHas " + (ret == DomainController.getMasterColor() ? ":D Guanyat :D" : "D: Perdut D:"), JLabel.CENTER);
+                            msg2.setFont(msg2.getFont().deriveFont(16.0f));
 
-                            JPanel aux = new JPanel(new GridLayout(0,1));
+                            JPanel aux = new JPanel(new GridLayout(0, 1));
                             aux.add(msg1);
                             aux.add(msg2);
                             aux.setPreferredSize(new Dimension(90, 60));
 
-                            int input = JOptionPane.showOptionDialog(GUITauler.this, aux ,"Final de la partida", JOptionPane.PLAIN_MESSAGE, JOptionPane.INFORMATION_MESSAGE, null, options, options[0]);
+                            int input = JOptionPane.showOptionDialog(GUITauler.this, aux, "Final de la partida", JOptionPane.PLAIN_MESSAGE, JOptionPane.INFORMATION_MESSAGE, null, options, options[0]);
                             if (input == 0) {
                                 finish = true;
                                 parent.juga_simulacio();
                             }
                         }
-                    } while(ret == -2);
+                    } while (ret == -2);
                 }
             }
-        }).start();
+        });
+        compute_thread.currentThread().setPriority(Thread.MAX_PRIORITY);
+        compute_thread.start();
     }
 }
