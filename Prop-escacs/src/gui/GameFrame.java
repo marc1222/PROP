@@ -42,7 +42,10 @@ public class GameFrame {
         this.gameFrame.setSize(SCREEN_SIZE);
 
         init_domain_controller();
-        VistaInici startview = new VistaInici(this, DomainController);
+        //VistaInici startview = new VistaInici(this, DomainController);
+
+
+        VistaEstadistica ve = new VistaEstadistica(this, DomainController, "usr1");
 
     }
     public JFrame getGameFrame() {

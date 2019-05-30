@@ -304,7 +304,7 @@ public class VistaMenuPrincipal {
 
     private void btnEstadistiquesActionPerformed(java.awt.event.ActionEvent evt) {
         // TODO --- MIRAR ESTADISTIQUES ---
-        VistaEstadistica ve = new VistaEstadistica(master, ctrlDomini, "usr");
+        VistaEstadistica ve = new VistaEstadistica(main, ctrlDomini, "usr");
         //JOptionPane.showMessageDialog(master,"Mirar estadistiques");
     }
 
