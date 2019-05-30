@@ -3,18 +3,23 @@
   <component name="ChangeListManager">
     <list default="true" id="516eb750-89ac-4e39-ac71-d9c31a183669" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/files/index.txt" beforeDir="false" afterPath="$PROJECT_DIR$/files/index.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/files/usuaris.txt" beforeDir="false" afterPath="$PROJECT_DIR$/files/usuaris.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Prop-escacs/gui/GameFrame.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Prop-escacs/gui/GameFrame.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/gui/CrearProblema.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gui/CrearProblema.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/gui/FENProblema.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gui/FENProblema.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/gui/GameFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gui/GameFrame.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/gui/MenuProblema.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gui/MenuProblema.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Prop-escacs/gui/VistaEstadistica.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Prop-escacs/gui/VistaEstadistica.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Prop-escacs/gui/VistaMenuPrincipal$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Prop-escacs/gui/VistaMenuPrincipal$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Prop-escacs/gui/VistaMenuPrincipal$10.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Prop-escacs/gui/VistaMenuPrincipal$10.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Prop-escacs/gui/VistaMenuPrincipal$11$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Prop-escacs/gui/VistaMenuPrincipal$11$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Prop-escacs/gui/VistaMenuPrincipal$11.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Prop-escacs/gui/VistaMenuPrincipal$11.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Prop-escacs/gui/VistaMenuPrincipal$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Prop-escacs/gui/VistaMenuPrincipal$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Prop-escacs/gui/VistaMenuPrincipal$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Prop-escacs/gui/VistaMenuPrincipal$3.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Prop-escacs/gui/VistaMenuPrincipal$4.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Prop-escacs/gui/VistaMenuPrincipal$4.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Prop-escacs/gui/VistaMenuPrincipal$5.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Prop-escacs/gui/VistaMenuPrincipal$5.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Prop-escacs/gui/VistaMenuPrincipal$6.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Prop-escacs/gui/VistaMenuPrincipal$6.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Prop-escacs/gui/VistaMenuPrincipal$7.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Prop-escacs/gui/VistaMenuPrincipal$7.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Prop-escacs/gui/VistaMenuPrincipal$8.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Prop-escacs/gui/VistaMenuPrincipal$8.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Prop-escacs/gui/VistaMenuPrincipal$9$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Prop-escacs/gui/VistaMenuPrincipal$9$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Prop-escacs/gui/VistaMenuPrincipal$9.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Prop-escacs/gui/VistaMenuPrincipal$9.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Prop-escacs/gui/VistaMenuPrincipal.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Prop-escacs/gui/VistaMenuPrincipal.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/gui/VistaEstadistica.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gui/VistaEstadistica.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/gui/VistaInici.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gui/VistaInici.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/gui/VistaInici2.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gui/VistaInici2.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/gui/VistaMenuPrincipal.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gui/VistaMenuPrincipal.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/gui/VistaRegistrar.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gui/VistaRegistrar.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -26,7 +31,7 @@
   <component name="ExportTestResults" outputFolder="$PROJECT_DIR$" userTempatePath="" />
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/gui/GameFrame.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="443">
@@ -34,55 +39,10 @@
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="method#GameFrame#0;class#GameFrame#0" />
-                <element signature="e#1809#1810#0" expanded="true" />
-                <element signature="e#1829#1830#0" expanded="true" />
-                <element signature="e#1879#1880#0" expanded="true" />
-                <element signature="e#1908#1909#0" expanded="true" />
                 <element signature="method#fill_menu_bar#0;class#GameFrame#0" />
                 <element signature="method#createMenuPartida#0;class#GameFrame#0" />
                 <element signature="method#enterGame#0;class#GameFrame#0" />
                 <element signature="method#exitGame#0;class#GameFrame#0" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/gui/VistaInici.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1029">
-              <caret line="23" column="78" selection-start-line="23" selection-start-column="78" selection-end-line="23" selection-end-column="78" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#3537#3538#0" expanded="true" />
-                <element signature="e#3593#3594#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/gui/VistaRegistrar.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1850">
-              <caret line="156" column="47" selection-start-line="156" selection-start-column="47" selection-end-line="156" selection-end-column="47" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#2881#2882#0" expanded="true" />
-                <element signature="e#2930#2931#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/gui/VistaEstadistica2.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="146">
-              <caret line="114" column="12" lean-forward="true" selection-start-line="114" selection-start-column="12" selection-end-line="116" selection-end-column="13" />
-              <folding>
-                <element signature="e#4170#4171#0" expanded="true" />
-                <element signature="e#4230#4231#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -100,9 +60,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>master.</find>
-      <find>iniciar</find>
-      <find>javax.swing.</find>
       <find>jButton1</find>
       <find>jButton21</find>
       <find>jButton22</find>
@@ -130,6 +87,9 @@
       <find>font</find>
       <find>labelError</find>
       <find>jButton1ActionPerformed</find>
+      <find>jSeparator2</find>
+      <find>jPanel7</find>
+      <find>jLabel1</find>
     </findStrings>
     <dirStrings>
       <dir>$PROJECT_DIR$/src</dir>
@@ -184,14 +144,14 @@
         <option value="$PROJECT_DIR$/src/gestioDades/input_output.java" />
         <option value="$PROJECT_DIR$/src/gui/VistaEstadistica2.java" />
         <option value="$PROJECT_DIR$/src/gui/GameFrame.java" />
-        <option value="$PROJECT_DIR$/src/gui/VistaEstadistica.java" />
         <option value="$PROJECT_DIR$/src/gui/VistaInici2.java" />
         <option value="$PROJECT_DIR$/src/gui/FENProblema.java" />
         <option value="$PROJECT_DIR$/src/gui/MenuProblema.java" />
         <option value="$PROJECT_DIR$/src/gui/CrearProblema.java" />
-        <option value="$PROJECT_DIR$/src/gui/VistaMenuPrincipal.java" />
-        <option value="$PROJECT_DIR$/src/gui/VistaRegistrar.java" />
         <option value="$PROJECT_DIR$/src/gui/VistaInici.java" />
+        <option value="$PROJECT_DIR$/src/gui/VistaRegistrar.java" />
+        <option value="$PROJECT_DIR$/src/gui/VistaEstadistica.java" />
+        <option value="$PROJECT_DIR$/src/gui/VistaMenuPrincipal.java" />
       </list>
     </option>
   </component>
@@ -212,8 +172,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
       <pane id="Scope" />
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -422,9 +382,8 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="754" extended-state="6" />
-    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.48741418" visible="true" weight="0.25567323" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.48741418" visible="true" weight="0.25945538" />
       <window_info id="Structure" order="1" sideWeight="0.51369864" side_tool="true" weight="0.33055976" />
       <window_info id="Designer" order="2" />
       <window_info id="Learn" order="3" />
@@ -434,7 +393,7 @@
       <window_info id="Capture Tool" order="7" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.5024155" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.069243155" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.069243155" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.39774558" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -901,16 +860,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/gui/VistaEstadistica.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="296">
-          <caret line="30" column="38" selection-start-line="30" selection-start-column="38" selection-end-line="30" selection-end-column="38" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/gui/MenuProblema.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="111">
@@ -932,29 +881,71 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/gui/VistaMenuPrincipal.java">
+    <entry file="file://$PROJECT_DIR$/src/gui/VistaInici2.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="359">
-          <caret line="368" column="5" lean-forward="true" selection-start-line="368" selection-start-column="5" selection-end-line="368" selection-end-column="5" />
+        <state relative-caret-position="-1212">
+          <caret line="141" column="89" selection-start-line="141" selection-start-column="89" selection-end-line="141" selection-end-column="89" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#3299#3300#0" expanded="true" />
-            <element signature="e#3359#3360#0" expanded="true" />
-            <element signature="e#3585#3586#0" expanded="true" />
-            <element signature="e#3655#3656#0" expanded="true" />
-            <element signature="e#3880#3881#0" expanded="true" />
-            <element signature="e#3948#3949#0" expanded="true" />
-            <element signature="e#4155#4156#0" expanded="true" />
-            <element signature="e#4215#4216#0" expanded="true" />
-            <element signature="e#4432#4433#0" expanded="true" />
-            <element signature="e#4499#4500#0" expanded="true" />
-            <element signature="e#4709#4710#0" expanded="true" />
-            <element signature="e#4771#4772#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/gui/VistaEstadistica2.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="398">
+          <caret line="114" column="12" lean-forward="true" selection-start-line="114" selection-start-column="12" selection-end-line="116" selection-end-column="13" />
+          <folding>
+            <element signature="e#4170#4171#0" expanded="true" />
+            <element signature="e#4230#4231#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/gui/VistaRegistrar.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="758">
+          <caret line="69" column="22" lean-forward="true" selection-start-line="69" selection-start-column="22" selection-end-line="69" selection-end-column="22" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#2881#2882#0" expanded="true" />
+            <element signature="e#2930#2931#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/gui/VistaInici.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="252">
+          <caret line="170" column="30" lean-forward="true" selection-start-line="170" selection-start-column="30" selection-end-line="170" selection-end-column="30" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/gui/VistaMenuPrincipal.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="177">
+          <caret line="362" column="67" selection-start-line="362" selection-start-column="67" selection-end-line="362" selection-end-column="67" />
+          <folding>
+            <element signature="imports" expanded="true" />
             <element signature="method#btnJugarActionPerformed#0;class#VistaMenuPrincipal#0" />
             <element signature="method#btnSimularActionPerformed#0;class#VistaMenuPrincipal#0" />
+            <element signature="method#btnGestioProblemesActionPerformed#0;class#VistaMenuPrincipal#0" />
+            <element signature="method#btnBaixaActionPerformed#0;class#VistaMenuPrincipal#0" />
+            <element signature="method#btnTancarSessioActionPerformed#0;class#VistaMenuPrincipal#0" />
             <element signature="method#translate#0;class#VistaMenuPrincipal#0" />
-            <element signature="e#14156#14157#0" expanded="true" />
-            <element signature="e#14185#14186#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/gui/VistaEstadistica.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="429">
+          <caret line="141" column="64" selection-start-line="141" selection-start-column="64" selection-end-line="141" selection-end-column="64" />
+          <folding>
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -974,51 +965,6 @@
             <element signature="method#createMenuPartida#0;class#GameFrame#0" />
             <element signature="method#enterGame#0;class#GameFrame#0" />
             <element signature="method#exitGame#0;class#GameFrame#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/gui/VistaInici2.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1212">
-          <caret line="141" column="89" selection-start-line="141" selection-start-column="89" selection-end-line="141" selection-end-column="89" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/gui/VistaEstadistica2.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="146">
-          <caret line="114" column="12" lean-forward="true" selection-start-line="114" selection-start-column="12" selection-end-line="116" selection-end-column="13" />
-          <folding>
-            <element signature="e#4170#4171#0" expanded="true" />
-            <element signature="e#4230#4231#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/gui/VistaRegistrar.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1850">
-          <caret line="156" column="47" selection-start-line="156" selection-start-column="47" selection-end-line="156" selection-end-column="47" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#2881#2882#0" expanded="true" />
-            <element signature="e#2930#2931#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/gui/VistaInici.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1029">
-          <caret line="23" column="78" selection-start-line="23" selection-start-column="78" selection-end-line="23" selection-end-column="78" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#3537#3538#0" expanded="true" />
-            <element signature="e#3593#3594#0" expanded="true" />
           </folding>
         </state>
       </provider>

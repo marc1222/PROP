@@ -63,7 +63,7 @@ public class VistaEstadistica {
         fillTaulaProblema();
         tp.add("Usuari",panelUsuari);
         tp.add("Problema",panelProblema);
-
+        setFont();
     }
 
     private void fillTaulaUser() {
@@ -135,5 +135,10 @@ public class VistaEstadistica {
                 master.setVisible(true);
             }
         });
+    }
+
+    private void setFont() {
+        Font original = tp.getFont();
+        tp.setFont( new Font( original.getName(), Font.PLAIN, 17 ) );
     }
 }
