@@ -50,7 +50,8 @@ public class ControladorDomini {
         Problema p = new Problema();
         int res = Problema.getProblemaId(problemaID, p);
         if (res != 0) System.out.println("¡¡¡¡¡¡¡¡ERRROROROROROROR PROBLEMA INCORRECTEEE!!!!!!!");
-
+        problema = p;
+        System.out.print("haha"+problema.getPrimer());
         if (user_ataca && user_oponent == define.USER) {
             //atacar  && //invitado
             this.SecondUser = new Usuari((p.getPrimer() == define.WHITE) ? define.BLACK : define.WHITE);
@@ -103,6 +104,7 @@ public class ControladorDomini {
         Problema p = new Problema();
         int res = Problema.getProblemaId(problemaID, p);
         if (res != 0) System.out.println("¡¡¡¡¡¡¡¡ERRROROROROROROR PROBLEMA INCORRECTEEE!!!!!!!");
+        problema = p;
 
         if (white == define.NAIVE && black == define.NAIVE) {
             SecondUser = new Naive(define.WHITE);
@@ -138,7 +140,7 @@ public class ControladorDomini {
         Problema p = new Problema();
         int res = Problema.getProblemaId(problemaID, p);
         if (res != 0) System.out.println("¡¡¡¡¡¡¡¡ERRROROROROROROR PROBLEMA INCORRECTEEE!!!!!!!");
-
+        problema = p;
         this.partida = new Partida(p, SecondUser, AuxUser, true);
 
         Maquina m1 = (Maquina) SecondUser;
@@ -226,7 +228,7 @@ public class ControladorDomini {
         return partida.getRonda();
     }
     //PROBLEMA
-    int getPrimer() {
+    public int getPrimer() {
         return this.problema.getPrimer();
     }
 
@@ -325,5 +327,8 @@ public class ControladorDomini {
         p.eliminar_problema();
         Estadistica.eliminarStatsProblema(String.valueOf(id));
         return 0;
+    }
+    public void save_stats(int winner, int time) {
+        partida.save_stats(winner,time);
     }
 }

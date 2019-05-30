@@ -36,3 +36,9 @@ p1 u1 2 55311
 p1 u1 3 8511
 1 Convidat 2 18518
 1 Convidat 2 11241
+2 Pepito 2 8
+2 Pepito 2 7
+2 Pepito 2 5
+2 Pepito 2 7
+2 Pepito 2 10
+2 Pepito 2 8

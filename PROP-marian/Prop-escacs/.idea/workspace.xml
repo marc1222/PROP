@@ -1,7 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="516eb750-89ac-4e39-ac71-d9c31a183669" name="Default Changelist" comment="" />
+    <list default="true" id="516eb750-89ac-4e39-ac71-d9c31a183669" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Prop-escacs/domini/ControladorDomini.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Prop-escacs/domini/ControladorDomini.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Prop-escacs/domini/Partida.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Prop-escacs/domini/Partida.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Prop-escacs/gui/GUIOption$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Prop-escacs/gui/GUIOption$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Prop-escacs/gui/GUIOption.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Prop-escacs/gui/GUIOption.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Prop-escacs/gui/GUITauler$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Prop-escacs/gui/GUITauler$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Prop-escacs/gui/GUITauler$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Prop-escacs/gui/GUITauler$3.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Prop-escacs/gui/GUITauler$4$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Prop-escacs/gui/GUITauler$4$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Prop-escacs/gui/GUITauler$4.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Prop-escacs/gui/GUITauler$4.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Prop-escacs/gui/GUITauler$5$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Prop-escacs/gui/GUITauler$5$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Prop-escacs/gui/GUITauler$5.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Prop-escacs/gui/GUITauler$5.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Prop-escacs/gui/GUITauler.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Prop-escacs/gui/GUITauler.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Prop-escacs/gui/JugarPartidaView.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Prop-escacs/gui/JugarPartidaView.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/domini/Partida.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/domini/Partida.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/gui/GUITauler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gui/GUITauler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/gui/JugarPartidaView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gui/JugarPartidaView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../propEscacs/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../propEscacs/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../propEscacs/files/index.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../../propEscacs/files/index.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../propEscacs/out/production/propEscacs/META-INF/propEscacs.kotlin_module" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../propEscacs/out/production/propEscacs/gui/GUIOption.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../propEscacs/out/production/propEscacs/gui/GUIOption.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../propEscacs/src/gui/GUIOption.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../propEscacs/src/gui/GUIOption.java" afterDir="false" />
+    </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -15,14 +38,12 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/gui/GameFrame.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="134">
+            <state relative-caret-position="1140">
               <caret line="121" column="17" selection-start-line="121" selection-start-column="17" selection-end-line="121" selection-end-column="17" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="method#fill_menu_bar#0;class#GameFrame#0" />
                 <element signature="method#createMenuPartida#0;class#GameFrame#0" />
-                <element signature="e#3377#3378#0" expanded="true" />
-                <element signature="e#3411#3412#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -31,15 +52,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/gui/GUITauler.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="89">
-              <caret line="504" column="42" selection-start-line="504" selection-start-column="32" selection-end-line="504" selection-end-column="42" />
-              <folding>
-                <element signature="e#11033#11034#0" expanded="true" />
-                <element signature="e#11095#11096#0" expanded="true" />
-                <element signature="e#11912#14949#1" />
-                <element signature="e#23014#23015#0" expanded="true" />
-                <element signature="e#23116#23117#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="59">
+              <caret line="362" column="65" selection-start-line="362" selection-start-column="61" selection-end-line="362" selection-end-column="65" />
             </state>
           </provider>
         </entry>
@@ -47,32 +61,25 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/gui/GUIOption.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="149">
-              <caret line="42" column="31" selection-start-line="42" selection-start-column="31" selection-end-line="42" selection-end-column="31" />
+            <state relative-caret-position="74">
+              <caret line="39" column="26" selection-start-line="39" selection-start-column="26" selection-end-line="39" selection-end-column="26" />
+              <folding>
+                <element signature="e#1251#1252#0" expanded="true" />
+                <element signature="e#1302#1303#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/gui/VistaMenuPrincipal.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="209">
               <caret line="142" column="75" selection-start-line="142" selection-start-column="75" selection-end-line="142" selection-end-column="75" />
               <folding>
                 <element signature="imports" expanded="true" />
+                <element signature="e#4826#4827#0" expanded="true" />
                 <element signature="e#4855#4856#0" expanded="true" />
-                <element signature="e#6304#6305#0" expanded="true" />
-                <element signature="e#6364#6365#0" expanded="true" />
-                <element signature="e#6560#6561#0" expanded="true" />
-                <element signature="e#6630#6631#0" expanded="true" />
-                <element signature="e#6825#6826#0" expanded="true" />
-                <element signature="e#6893#6894#0" expanded="true" />
-                <element signature="e#7070#7071#0" expanded="true" />
-                <element signature="e#7130#7131#0" expanded="true" />
-                <element signature="e#7317#7318#0" expanded="true" />
-                <element signature="e#7384#7385#0" expanded="true" />
-                <element signature="e#7564#7565#0" expanded="true" />
-                <element signature="e#7626#7627#0" expanded="true" />
                 <element signature="method#btnGestioProblemesActionPerformed#0;class#VistaMenuPrincipal#0" />
                 <element signature="method#btnBaixaActionPerformed#0;class#VistaMenuPrincipal#0" />
                 <element signature="method#btnTancarSessioActionPerformed#0;class#VistaMenuPrincipal#0" />
@@ -85,19 +92,22 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/gui/JugarPartidaView.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="120">
-              <caret line="123" column="5" lean-forward="true" selection-start-line="123" selection-start-column="5" selection-end-line="123" selection-end-column="5" />
+            <state relative-caret-position="-184">
+              <caret line="62" column="87" selection-start-line="62" selection-start-column="87" selection-end-line="62" selection-end-column="87" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#1517#1518#0" expanded="true" />
                 <element signature="e#1549#1550#0" expanded="true" />
-                <element signature="e#1725#1726#0" expanded="true" />
-                <element signature="e#1766#1767#0" expanded="true" />
-                <element signature="e#4852#4853#0" expanded="true" />
-                <element signature="e#4902#4903#0" expanded="true" />
-                <element signature="e#4933#4934#0" expanded="true" />
-                <element signature="e#4977#4978#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/domini/Problema.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="449">
+              <caret line="115" column="24" selection-start-line="115" selection-start-column="15" selection-end-line="115" selection-end-column="24" />
             </state>
           </provider>
         </entry>
@@ -105,23 +115,34 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/domini/ControladorDomini.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-226">
-              <caret line="93" column="44" selection-start-line="93" selection-start-column="39" selection-end-line="93" selection-end-column="44" />
+            <state relative-caret-position="74">
+              <caret line="331" column="26" selection-start-line="331" selection-start-column="16" selection-end-line="331" selection-end-column="26" />
               <folding>
                 <element signature="imports" expanded="true" />
+                <element signature="e#11661#11662#0" expanded="true" />
+                <element signature="e#11708#11709#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/files/problemes.txt">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="15">
+              <caret line="1" column="1" selection-start-line="1" selection-start-column="1" selection-end-line="1" selection-end-column="1" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/domini/Partida.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="225">
-              <caret line="114" column="20" selection-start-line="114" selection-start-column="20" selection-end-line="114" selection-end-column="20" />
+            <state relative-caret-position="141">
+              <caret line="249" column="26" selection-start-line="249" selection-start-column="16" selection-end-line="249" selection-end-column="26" />
               <folding>
                 <element signature="e#4139#4140#0" expanded="true" />
-                <element signature="e#4165#4166#0" expanded="true" />
+                <element signature="e#4166#4167#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -139,15 +160,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>aband</find>
-      <find>selec</find>
-      <find>ferVisible</find>
-      <find>border</find>
-      <find>SeleccioProblema</find>
-      <find>panelProblema</find>
-      <find>font</find>
-      <find>labelError</find>
-      <find>jButton1ActionPerformed</find>
       <find>jSeparator2</find>
       <find>jPanel7</find>
       <find>jLabel1</find>
@@ -166,21 +178,29 @@
       <find>game_opt</find>
       <find>colorJugadorActual</find>
       <find>smart</find>
-      <find>actual</find>
       <find>finish</find>
       <find>finish_sim</find>
+      <find>continua</find>
+      <find>actual</find>
+      <find>option</find>
+      <find>optionBar</find>
+      <find>getPrimer</find>
+      <find>primer</find>
+      <find>save</find>
+      <find>getcl</find>
+      <find>save_stat</find>
+      <find>save_stats</find>
     </findStrings>
     <dirStrings>
       <dir>$PROJECT_DIR$/src</dir>
     </dirStrings>
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$USER_HOME$" />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/presentacio/MenuPrincipal.java" />
         <option value="$PROJECT_DIR$/src/presentacio/myForm.java" />
         <option value="$PROJECT_DIR$/src/presentacio/VistaPrincipal.java" />
         <option value="$PROJECT_DIR$/src/presentacio/VistaInici2.java" />
@@ -225,12 +245,13 @@
         <option value="$PROJECT_DIR$/src/gui/VistaRegistrar.java" />
         <option value="$PROJECT_DIR$/src/gui/VistaEstadistica.java" />
         <option value="$PROJECT_DIR$/src/gui/GameFrame.java" />
-        <option value="$PROJECT_DIR$/src/gui/GUIOption.java" />
-        <option value="$PROJECT_DIR$/src/domini/Partida.java" />
-        <option value="$PROJECT_DIR$/src/domini/ControladorDomini.java" />
-        <option value="$PROJECT_DIR$/src/gui/GUITauler.java" />
-        <option value="$PROJECT_DIR$/src/gui/JugarPartidaView.java" />
         <option value="$PROJECT_DIR$/src/gui/VistaMenuPrincipal.java" />
+        <option value="$PROJECT_DIR$/src/gui/GUITauler.java" />
+        <option value="$PROJECT_DIR$/src/domini/Partida.java" />
+        <option value="$PROJECT_DIR$/src/gui/JugarPartidaView.java" />
+        <option value="$PROJECT_DIR$/src/domini/ControladorDomini.java" />
+        <option value="$PROJECT_DIR$/files/problemes.txt" />
+        <option value="$PROJECT_DIR$/src/gui/GUIOption.java" />
       </list>
     </option>
   </component>
@@ -289,8 +310,8 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
       <pane id="PackagesPane" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -302,7 +323,7 @@
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit4" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit4" value="" />
     <property name="create.test.in.the.same.root" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../propEscacs" />
   </component>
   <component name="RecentsManager">
     <key name="CreateTestDialog.RecentsKey">
@@ -470,7 +491,7 @@
     <frame x="67" y="25" width="1299" height="743" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.48741418" visible="true" weight="0.264166" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.48741418" visible="true" weight="0.26895452" />
       <window_info id="Structure" order="1" sideWeight="0.51369864" side_tool="true" weight="0.33055976" />
       <window_info id="Designer" order="2" />
       <window_info id="Learn" order="3" />
@@ -480,8 +501,8 @@
       <window_info id="Capture Tool" order="7" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.5024155" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.42508143" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.39774558" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.57166123" />
+      <window_info active="true" anchor="bottom" id="Debug" order="3" visible="true" weight="0.39739415" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32850242" />
@@ -548,6 +569,18 @@
           <line>156</line>
           <properties />
           <option name="timeStamp" value="3" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/domini/Partida.java</url>
+          <line>261</line>
+          <properties />
+          <option name="timeStamp" value="4" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/domini/Partida.java</url>
+          <line>245</line>
+          <properties />
+          <option name="timeStamp" value="5" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
@@ -805,13 +838,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/domini/Problema.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="21">
-          <caret line="1" column="46" selection-start-line="1" selection-start-column="46" selection-end-line="1" selection-end-column="46" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/gui/SeleccioJugarPartida.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="125">
@@ -948,78 +974,27 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/gui/GameFrame.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="134">
+        <state relative-caret-position="1140">
           <caret line="121" column="17" selection-start-line="121" selection-start-column="17" selection-end-line="121" selection-end-column="17" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="method#fill_menu_bar#0;class#GameFrame#0" />
             <element signature="method#createMenuPartida#0;class#GameFrame#0" />
-            <element signature="e#3377#3378#0" expanded="true" />
-            <element signature="e#3411#3412#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/domini/Partida.java">
+    <entry file="file://$PROJECT_DIR$/src/domini/Problema.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="114" column="20" selection-start-line="114" selection-start-column="20" selection-end-line="114" selection-end-column="20" />
-          <folding>
-            <element signature="e#4139#4140#0" expanded="true" />
-            <element signature="e#4165#4166#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="449">
+          <caret line="115" column="24" selection-start-line="115" selection-start-column="15" selection-end-line="115" selection-end-column="24" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/files/problemes.txt">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/domini/ControladorDomini.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-226">
-          <caret line="93" column="44" selection-start-line="93" selection-start-column="39" selection-end-line="93" selection-end-column="44" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/gui/GUIOption.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="149">
-          <caret line="42" column="31" selection-start-line="42" selection-start-column="31" selection-end-line="42" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/gui/JugarPartidaView.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="123" column="5" lean-forward="true" selection-start-line="123" selection-start-column="5" selection-end-line="123" selection-end-column="5" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#1517#1518#0" expanded="true" />
-            <element signature="e#1549#1550#0" expanded="true" />
-            <element signature="e#1725#1726#0" expanded="true" />
-            <element signature="e#1766#1767#0" expanded="true" />
-            <element signature="e#4852#4853#0" expanded="true" />
-            <element signature="e#4902#4903#0" expanded="true" />
-            <element signature="e#4933#4934#0" expanded="true" />
-            <element signature="e#4977#4978#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/gui/GUITauler.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="89">
-          <caret line="504" column="42" selection-start-line="504" selection-start-column="32" selection-end-line="504" selection-end-column="42" />
-          <folding>
-            <element signature="e#11033#11034#0" expanded="true" />
-            <element signature="e#11095#11096#0" expanded="true" />
-            <element signature="e#11912#14949#1" />
-            <element signature="e#23014#23015#0" expanded="true" />
-            <element signature="e#23116#23117#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="15">
+          <caret line="1" column="1" selection-start-line="1" selection-start-column="1" selection-end-line="1" selection-end-column="1" />
         </state>
       </provider>
     </entry>
@@ -1029,23 +1004,65 @@
           <caret line="142" column="75" selection-start-line="142" selection-start-column="75" selection-end-line="142" selection-end-column="75" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#4826#4827#0" expanded="true" />
             <element signature="e#4855#4856#0" expanded="true" />
-            <element signature="e#6304#6305#0" expanded="true" />
-            <element signature="e#6364#6365#0" expanded="true" />
-            <element signature="e#6560#6561#0" expanded="true" />
-            <element signature="e#6630#6631#0" expanded="true" />
-            <element signature="e#6825#6826#0" expanded="true" />
-            <element signature="e#6893#6894#0" expanded="true" />
-            <element signature="e#7070#7071#0" expanded="true" />
-            <element signature="e#7130#7131#0" expanded="true" />
-            <element signature="e#7317#7318#0" expanded="true" />
-            <element signature="e#7384#7385#0" expanded="true" />
-            <element signature="e#7564#7565#0" expanded="true" />
-            <element signature="e#7626#7627#0" expanded="true" />
             <element signature="method#btnGestioProblemesActionPerformed#0;class#VistaMenuPrincipal#0" />
             <element signature="method#btnBaixaActionPerformed#0;class#VistaMenuPrincipal#0" />
             <element signature="method#btnTancarSessioActionPerformed#0;class#VistaMenuPrincipal#0" />
             <element signature="method#translate#0;class#VistaMenuPrincipal#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/gui/GUITauler.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="59">
+          <caret line="362" column="65" selection-start-line="362" selection-start-column="61" selection-end-line="362" selection-end-column="65" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/gui/GUIOption.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="74">
+          <caret line="39" column="26" selection-start-line="39" selection-start-column="26" selection-end-line="39" selection-end-column="26" />
+          <folding>
+            <element signature="e#1251#1252#0" expanded="true" />
+            <element signature="e#1302#1303#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/gui/JugarPartidaView.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-184">
+          <caret line="62" column="87" selection-start-line="62" selection-start-column="87" selection-end-line="62" selection-end-column="87" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1517#1518#0" expanded="true" />
+            <element signature="e#1549#1550#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/domini/ControladorDomini.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="74">
+          <caret line="331" column="26" selection-start-line="331" selection-start-column="16" selection-end-line="331" selection-end-column="26" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#11661#11662#0" expanded="true" />
+            <element signature="e#11708#11709#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/domini/Partida.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="141">
+          <caret line="249" column="26" selection-start-line="249" selection-start-column="16" selection-end-line="249" selection-end-column="26" />
+          <folding>
+            <element signature="e#4139#4140#0" expanded="true" />
+            <element signature="e#4166#4167#0" expanded="true" />
           </folding>
         </state>
       </provider>

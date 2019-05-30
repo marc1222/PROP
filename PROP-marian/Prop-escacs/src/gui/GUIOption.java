@@ -36,6 +36,10 @@ public class GUIOption extends JPanel {
         num_ronda = 0;
         this.actual = actual;
     }
+    public int getclock() {
+        return Math.round(this.time_count);
+    }
+
     GUIOption(boolean simulacio, int actual) {
         super(new GridLayout(1, 3));
         this.simulacio = simulacio;

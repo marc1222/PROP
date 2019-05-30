@@ -360,6 +360,8 @@ public class GUITauler extends JPanel {
                                         int input = JOptionPane.showOptionDialog(GUITauler.this, aux ,"Final de la partida", JOptionPane.PLAIN_MESSAGE, JOptionPane.INFORMATION_MESSAGE, null, options, options[0]);
                                         if (input == 0) {
                                             //SEGUNET CLICK TRIGGERED
+                                            DomainController.save_stats(ret, option_panel.getclock());
+
                                             parent.tornaMenu();
 
                                         }
@@ -398,6 +400,7 @@ public class GUITauler extends JPanel {
                         int input = JOptionPane.showOptionDialog(GUITauler.this, aux ,"Final de la partida", JOptionPane.PLAIN_MESSAGE, JOptionPane.INFORMATION_MESSAGE, null, options, options[0]);
                         if (input == 0) {
                             //SEGUNET CLICK TRIGGERED
+                            DomainController.save_stats(ret, option_panel.getclock());
                             parent.tornaMenu();
                         }
                     }
@@ -479,6 +482,7 @@ public class GUITauler extends JPanel {
 
                             int input = JOptionPane.showOptionDialog(GUITauler.this, aux ,"Final de la partida", JOptionPane.PLAIN_MESSAGE, JOptionPane.INFORMATION_MESSAGE, null, options, options[0]);
                             if (input == 0) {
+                                DomainController.save_stats(ret, option_panel.getclock());
                                 parent.tornaMenu();
                             }
                         }

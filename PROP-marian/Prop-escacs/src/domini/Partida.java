@@ -247,5 +247,22 @@ public class Partida  {
             System.out.println("Se han guardado las estadísticas");
         }
     }
+    public void save_stats(int winner, int time) {
+        if (this.save_stat && winner==Prob.getPrimer()) {
+            //guardar stat
+            Usuari Wu,Bu;
+            String name = "";
+            if (W.getTipus() == define.USER && Prob.getPrimer()== define.WHITE) {
+                Wu = (Usuari) W;
+                name = Wu.getNom();
+            }
+            else if (B.getTipus() == define.USER && Prob.getPrimer()== define.BLACK) {
+                Bu = (Usuari) B;
+                name = Bu.getNom();
+            }
+            Estadistica.guardarTemps(String.valueOf(Prob.getId()), name, String.valueOf(this.ronda/2 + 1),String.valueOf(time));
+            System.out.println("Se han guardado las estadísticas");
+        }
+    }
 
    }

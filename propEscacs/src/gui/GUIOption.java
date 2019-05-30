@@ -87,7 +87,7 @@ public class GUIOption extends JPanel {
      */
     public void setInfo(String white, String black, int idprob, int max_rondes) {
         if (!white.equals("null")) white_player.setText("B: "+white);
-        if (!black.equals("null"))black_player.setText("N: "+black);
+        if (!black.equals("null")) black_player.setText("N: "+black);
         info_prob.setText("Problema: "+idprob);
         this.prob_max_jug = max_rondes;
         info_ronda.setText("Ronda: 1/"+max_rondes);
@@ -105,7 +105,7 @@ public class GUIOption extends JPanel {
         } else {
             info_act.setText("Torn: Negres");
         }
-        this.actual = this.actual==define.WHITE?define.BLACK:define.WHITE;
+        this.actual = color==define.WHITE?define.BLACK:define.WHITE;
     }
 
     public void start_timer() {
