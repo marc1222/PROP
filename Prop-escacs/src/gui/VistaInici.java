@@ -4,10 +4,7 @@ import domini.ControladorDomini;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
+import java.awt.event.*;
 
 public class VistaInici {
     private GameFrame main;
@@ -16,16 +13,15 @@ public class VistaInici {
 
 
     private JPanel panelInici = new JPanel();
-    //private JPanel jPanel2 = new JPanel();
     private JPanel panelContent = new JPanel();
-    private JLabel lbUsuariIS = new JLabel("Usuari:");
-    private JTextField UsuariIS = new JTextField();
-    private JLabel lbContraIS = new JLabel("Contrasenya:");
-    private JPasswordField ContraIS = new JPasswordField();
+
+    private JLabel labelUsuari = new JLabel("Usuari:");
+    private JTextField fieldUsuari = new JTextField();
+    private JLabel labelContra = new JLabel("Contrasenya:");
+    private JPasswordField fieldContra = new JPasswordField();
     private JButton btnEntrar = new JButton("Entrar");
-    private JLabel lbMssg = new JLabel();
+
     private JLabel labelRegistrar = new JLabel("Clica aquí per registrar-te");
-    private JLabel jLabel1 = new JLabel();
 
     public VistaInici(GameFrame mainGame, ControladorDomini ctrlDomini) {
         this.master = mainGame.getGameFrame();
@@ -51,7 +47,6 @@ public class VistaInici {
         //lbUsuariIS.setFont(new Font(lbUsuariIS.getFont().getName(), lbUsuariIS.getFont().getStyle(), 20));
         //btnEntrar.setPreferredSize(new Dimension(70, 50));
 
-
         //panelContent = new JPanel(new GridBagLayout());
         panelContent = new JPanel(new GridBagLayout());
 
@@ -63,34 +58,35 @@ public class VistaInici {
         gbc.insets = new Insets(0,0,50,0);
         jPanel1.add(jLabel1, gbc);
         */
-        gbc.insets = new Insets(0,50,10,50);
-        gbc.ipady = 40;      //altura
+        gbc.insets = new Insets(20,50,0,50);
+        gbc.ipady = 30;      //altura
         gbc.ipadx = 50;      //anchura
 
         //gbc.gridx = 0;
         gbc.gridy = 1;
-        lbUsuariIS.setFont(new Font("Tahoma", 0, 18));
-        panelContent.add(lbUsuariIS, gbc);
+        panelContent.add(labelUsuari, gbc);
+
+        gbc.insets = new Insets(0,50,0,50);
         //gbc.gridx = 1;
         gbc.gridy = 2;
-        panelContent.add(UsuariIS, gbc);
+        panelContent.add(fieldUsuari, gbc);
 
         //gbc.gridx = 0;
         gbc.gridy = 3;
-        panelContent.add(lbContraIS, gbc);
+        panelContent.add(labelContra, gbc);
         //gbc.gridx = 1;
         gbc.gridy = 4;
-        panelContent.add(ContraIS, gbc);
+        panelContent.add(fieldContra, gbc);
 
         //gbc.gridx = 0;
+        gbc.insets = new Insets(30,50,0,50);
         gbc.gridy = 5;
         panelContent.add(btnEntrar, gbc);
 
+
+        gbc.insets = new Insets(0,90,20,50);
         gbc.gridy = 6;
         panelContent.add(labelRegistrar, gbc);
-
-        gbc.gridy = 7;
-        panelContent.add(lbMssg, gbc);
 
 
         panelContent.setBackground(new java.awt.Color(255, 255, 255));
@@ -100,7 +96,7 @@ public class VistaInici {
 
         panelInici.setLayout(new GridBagLayout());
         panelInici.add(panelContent, new GridBagConstraints());
-
+        setFont();
     }
 
     public void ferVisible() {
@@ -115,48 +111,69 @@ public class VistaInici {
     private void asignar_listenersComponentes() {
         btnEntrar.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                String usuari, contra;
-                usuari = UsuariIS.getText();
-                contra = new String(ContraIS.getPassword());
-
-                if(ctrlDomini.iniciarSessio(usuari, contra)) {
-                    //String data = "Usuari CORRECTE";
-                    //lbMssg.setText(data);
-                    //master.dispose();
-                    //VistaMenuPrincipal3 vmp = new VistaMenuPrincipal3(usuari);
-                    //vmp.setVisible(true);
-
-                    String data = "SESSIO INICIADA";
-                    lbMssg.setText(data);
-                    //JugarPartidaView partida = new JugarPartidaView(main, true, ctrlDomini);
-                    VistaMenuPrincipal mainview = new VistaMenuPrincipal(main, ctrlDomini, usuari);
-                }
-                else {
-                    UsuariIS.setText("");
-                    ContraIS.setText("");
-                    String data = "Usuari incorrecte";
-                    lbMssg.setText(data);
-                }
-
-                /*
-                String data = "Usuari " + usuari +
-                        ", Contrasenya: " + contra;
-                lbMssg.setText(data);
-                if(!usuari.equals("usr")) {
-                    String error = "Usuari incorrecte ('usr')";
-                    JOptionPane.showMessageDialog(frameVista,error,"Alerta",JOptionPane.WARNING_MESSAGE);
-                }
-                */
+                actionIniciarSessio();
             }
         });
 
         labelRegistrar.addMouseListener(new MouseAdapter() {
             public void mouseClicked(MouseEvent e) {
-                //JOptionPane.showMessageDialog(master,"afdadfadf","Alerta",JOptionPane.WARNING_MESSAGE);
                 VistaRegistrar reg = new VistaRegistrar(main, ctrlDomini);
+            }
+        });
+
+
+
+        btnEntrar.addKeyListener(new KeyListener(){
+            @Override
+            public void keyTyped(KeyEvent e) {
+            }
+
+            @Override
+            public void keyPressed(KeyEvent e) {
+            }
+
+            @Override
+            public void keyReleased(KeyEvent e) {
+                if(e.getKeyCode() == KeyEvent.VK_ENTER) {
+                    /*
+                    int key = e.getKeyCode();
+                    String btn = "IF: " + key;
+                    JOptionPane.showMessageDialog(master,btn,"Boton",JOptionPane.INFORMATION_MESSAGE);
+                    */
+                    actionIniciarSessio();
+                }
             }
         });
     }
 
+    private void actionIniciarSessio() {
+        String usuari, contra;
+        usuari = fieldUsuari.getText();
+        contra = new String(fieldContra.getPassword());
 
+        if(ctrlDomini.iniciarSessio(usuari, contra)) {
+            main.setUsuari(usuari);
+            VistaMenuPrincipal mainview = new VistaMenuPrincipal(main, ctrlDomini);
+        }
+        else {
+            fieldUsuari.setText("");
+            fieldContra.setText("");
+            String error = "Usuari incorrecte";
+            JOptionPane.showMessageDialog(master,error,"Alerta",JOptionPane.WARNING_MESSAGE);
+            btnEntrar.setFocusable(false);
+        }
+        btnEntrar.setFocusable(true);
+    }
+
+    private void setFont() {
+        Font fntLabel = labelUsuari.getFont();
+        Font fntBold = new Font(fntLabel.getName(), Font.BOLD, 20);
+        Font fntPlain = new Font(fntLabel.getName(), Font.PLAIN, 18);
+
+        labelUsuari.setFont(fntBold);
+        labelContra.setFont(fntBold);
+        fieldUsuari.setFont(fntPlain);
+        fieldContra.setFont(fntPlain);
+        labelRegistrar.setFont(new Font(fntLabel.getName(), Font.PLAIN, 15));
+    }
 }

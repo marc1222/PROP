@@ -510,7 +510,7 @@ public class CrearProblema extends JPanel implements ActionListener {
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         //Create and set up the content pane.
-        CrearProblema newContentPane = new CrearProblema(frame, new VistaMenuPrincipal(new GameFrame(), new ControladorDomini(), "0"));
+        CrearProblema newContentPane = new CrearProblema(frame, new VistaMenuPrincipal(new GameFrame(), new ControladorDomini()));
         newContentPane.setOpaque(true); //content panes must be opaque
         frame.setContentPane(newContentPane);
 

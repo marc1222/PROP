@@ -24,11 +24,11 @@ public class VistaEstadistica {
     JPanel panelUsuari = new JPanel();
     JButton btnSelectProblema = new JButton("Seleccionar problema");
 
-    public VistaEstadistica(GameFrame mainGame, ControladorDomini ctrlDomini, String usuari) {
+    public VistaEstadistica(GameFrame mainGame, ControladorDomini ctrlDomini) {
         this.master = mainGame.getGameFrame();
         this.main = mainGame;
         this.ctrlDomini = ctrlDomini;
-        this.usuari = usuari;
+        this.usuari = main.getUsuari();
 
         initComponents();
         asignar_listenersComponentes();

@@ -16,6 +16,7 @@ public class GameFrame {
     private JFrame gameFrame;
     private static Dimension SCREEN_SIZE = new Dimension(730,730);
     private ControladorDomini DomainController;
+    String usuari;
 
     private JMenuBar MenuBar;
 
@@ -41,15 +42,26 @@ public class GameFrame {
         (this.gameFrame).setJMenuBar(this.MenuBar);
         this.gameFrame.setSize(SCREEN_SIZE);
 
+        usuari = "Convidat";
+
         init_domain_controller();
-        //VistaInici startview = new VistaInici(this, DomainController);
+        VistaInici startview = new VistaInici(this, DomainController);
 
 
-        VistaEstadistica ve = new VistaEstadistica(this, DomainController, "usr1");
+        //VistaEstadistica ve = new VistaEstadistica(this, DomainController, "usr1");
 
     }
+
     public JFrame getGameFrame() {
         return this.gameFrame;
+    }
+
+    public void setUsuari(String usr) {
+        this.usuari = usr;
+    }
+
+    public String getUsuari() {
+        return usuari;
     }
 
     private void fill_menu_bar() {
@@ -74,6 +86,7 @@ public class GameFrame {
 
         this.MenuBar.add(createMenuPartida());
     }
+
     private JMenu createMenuPartida() {
 
         game_options.setEnabled(false);
@@ -83,15 +96,16 @@ public class GameFrame {
 
         return game_options;
     }
+
     public void enterGame() {
         abandonar.setEnabled(true);
         game_options.setEnabled(true);
     }
+
     public void exitGame() {
         abandonar.setEnabled(false);
         game_options.setEnabled(false);
     }
-
 
     private void init_domain_controller() {
         this.DomainController = new ControladorDomini();
@@ -100,6 +114,7 @@ public class GameFrame {
     public JMenuItem getPausa_partida() {
         return pausa_partida;
     }
+
     public JMenuItem getHistory_partida() {
         return historial;
     }

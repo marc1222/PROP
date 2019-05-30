@@ -39,11 +39,11 @@ public class VistaMenuPrincipal {
     /**
      * Creates new form VistaMenuPrincipal
      */
-    public VistaMenuPrincipal(GameFrame mainGame, ControladorDomini ctrlDomini, String usuari) {
+    public VistaMenuPrincipal(GameFrame mainGame, ControladorDomini ctrlDomini) {
         this.main = mainGame;
         this.master = mainGame.getGameFrame();
         this.ctrlDomini = ctrlDomini;
-        this.usuari = usuari;
+        this.usuari = main.getUsuari();
         initComponents();
 
 //        this.master.getContentPane().removeAll();
@@ -303,17 +303,12 @@ public class VistaMenuPrincipal {
     }
 
     private void btnEstadistiquesActionPerformed(java.awt.event.ActionEvent evt) {
-        // TODO --- MIRAR ESTADISTIQUES ---
-        VistaEstadistica ve = new VistaEstadistica(main, ctrlDomini, "usr");
-        //JOptionPane.showMessageDialog(master,"Mirar estadistiques");
+        VistaEstadistica ve = new VistaEstadistica(main, ctrlDomini);
     }
 
     private void btnBaixaActionPerformed(java.awt.event.ActionEvent evt) {
-        // TODO --- DONAR-SE DE BAIXA ---
-        //JOptionPane.showMessageDialog(master,"Donar-se de baixa");
-
-        int a= JOptionPane.showConfirmDialog(master,"Estàs segur de que vols donar-te de baixa?",
-                "Question", JOptionPane.YES_NO_OPTION );
+        int a = JOptionPane.showConfirmDialog(master,"Estàs segur de que vols donar-te de baixa?",
+                "Donar-se de baixa", JOptionPane.YES_NO_OPTION );
         if(a == JOptionPane.YES_OPTION){
             ctrlDomini.eliminarUsuari(usuari);
             ctrlDomini.eliminarStatsUsuari(usuari);
@@ -323,9 +318,11 @@ public class VistaMenuPrincipal {
     }
 
     private void btnTancarSessioActionPerformed(java.awt.event.ActionEvent evt) {
-        // TODO --- TANCAR SESSIO ---
-        //JOptionPane.showMessageDialog(master,"Tancar sessio");
-        VistaInici startview = new VistaInici(main, ctrlDomini);
+        int a = JOptionPane.showConfirmDialog(master,"Estàs segur de que vols tancar sessió?",
+                "Tancar sessió", JOptionPane.YES_NO_OPTION );
+        if(a == JOptionPane.YES_OPTION){
+            VistaInici startview = new VistaInici(main, ctrlDomini);
+        }
     }
 
     private String translate(Posicion p) {

@@ -195,7 +195,7 @@ public class FENProblema extends JPanel implements ActionListener {
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         //Create and set up the content pane.
-        FENProblema newContentPane = new FENProblema(frame, new VistaMenuPrincipal(new GameFrame(), new ControladorDomini(), "0"));
+        FENProblema newContentPane = new FENProblema(frame, new VistaMenuPrincipal(new GameFrame(), new ControladorDomini()));
         newContentPane.setOpaque(true); //content panes must be opaque
         frame.setContentPane(newContentPane);
 

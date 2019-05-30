@@ -139,7 +139,7 @@ public class VistaInici2 {
                     String data = "SESSIO INICIADA";
                     lbMssg.setText(data);
                     //JugarPartidaView partida = new JugarPartidaView(main, true, ctrlDomini);
-                    VistaMenuPrincipal mainview = new VistaMenuPrincipal(main, ctrlDomini, usuari);
+                    VistaMenuPrincipal mainview = new VistaMenuPrincipal(main, ctrlDomini);
                 }
                 else {
                     UsuariIS.setText("");
