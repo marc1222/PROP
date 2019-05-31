@@ -64,7 +64,26 @@ public class JugarPartidaView {
         OptionBarView.initCrono(ataca);
         OptionBarView.update_stats();
         String op_name = (oponent==define.USER)?"Usuari 2":(oponent==define.NAIVE)?"Naive (M)":"Smart (M)";
-        OptionBarView.setInfo(ataca?DomainController.getMainUserName():op_name, (!ataca)?DomainController.getMainUserName():op_name, problemaID, DomainController.getMaxRondes());
+        String white;
+        String black;
+
+        if (DomainController.getPrimer() == define.WHITE && ataca) {
+            white = DomainController.getMainUserName();
+            black = op_name;
+        }
+        else if (DomainController.getPrimer() == define.WHITE && !ataca) {
+            black = DomainController.getMainUserName();
+            white = op_name;
+        }
+        else if (DomainController.getPrimer() == define.BLACK && ataca) {
+            black = DomainController.getMainUserName();
+            white = op_name;
+        }
+        else {
+            white = DomainController.getMainUserName();
+            black = op_name;
+        }
+        OptionBarView.setInfo(white, black, problemaID, DomainController.getMaxRondes());
         this.BoardView = new GUITauler(this.DomainController, this.OptionBarView, this.simulacio, this);
         this.Master.getContentPane().removeAll();
         this.Master.add(this.OptionBarView, BorderLayout.NORTH);

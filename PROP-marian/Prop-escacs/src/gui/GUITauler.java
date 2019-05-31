@@ -509,7 +509,7 @@ public class GUITauler extends JPanel {
                         while (!finish_sim && !finish) {
                             do {
                                 //fer cosesupda
-                                compute_thread.sleep(500);
+                                compute_thread.sleep(1000);
                                 int x0=0,y0=0, x=0,y=0;
                                 int res[] = DomainController.juga_tornMaquina(x0, y0, x, y);
                                 if (parent.pause) {

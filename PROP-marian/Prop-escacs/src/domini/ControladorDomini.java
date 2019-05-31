@@ -51,7 +51,6 @@ public class ControladorDomini {
         int res = Problema.getProblemaId(problemaID, p);
         if (res != 0) System.out.println("¡¡¡¡¡¡¡¡ERRROROROROROROR PROBLEMA INCORRECTEEE!!!!!!!");
         problema = p;
-        System.out.print("haha"+problema.getPrimer());
         if (user_ataca && user_oponent == define.USER) {
             //atacar  && //invitado
             this.SecondUser = new Usuari((p.getPrimer() == define.WHITE) ? define.BLACK : define.WHITE);
