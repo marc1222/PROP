@@ -14,21 +14,39 @@
   <component name="ExportTestResults" outputFolder="$PROJECT_DIR$" userTempatePath="" />
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/gui/GameFrame.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1140">
-              <caret line="121" column="17" selection-start-line="121" selection-start-column="17" selection-end-line="121" selection-end-column="17" />
+            <state relative-caret-position="180">
+              <caret line="55" column="41" selection-start-line="55" selection-start-column="41" selection-end-line="55" selection-end-column="41" />
               <folding>
                 <element signature="imports" expanded="true" />
+                <element signature="e#1745#2399#0" expanded="true" />
+                <element signature="e#2398#2399#0" expanded="true" />
+                <element signature="e#3204#3205#0" expanded="true" />
+                <element signature="e#3241#3242#0" expanded="true" />
+                <element signature="e#3282#3283#0" expanded="true" />
+                <element signature="e#3315#3316#0" expanded="true" />
+                <element signature="e#3348#3349#0" expanded="true" />
+                <element signature="e#3377#3378#0" expanded="true" />
                 <element signature="method#fill_menu_bar#0;class#GameFrame#0" />
                 <element signature="method#createMenuPartida#0;class#GameFrame#0" />
+                <element signature="e#4484#4485#0" expanded="true" />
+                <element signature="e#4547#4548#0" expanded="true" />
+                <element signature="e#4590#4591#0" expanded="true" />
+                <element signature="e#4626#4627#0" expanded="true" />
+                <element signature="e#4671#4672#0" expanded="true" />
+                <element signature="e#4703#4704#0" expanded="true" />
+                <element signature="e#4742#4743#0" expanded="true" />
+                <element signature="e#4774#4775#0" expanded="true" />
+                <element signature="e#4814#4815#0" expanded="true" />
+                <element signature="e#4849#4850#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/gui/GUITauler.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="123">
@@ -53,8 +71,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/gui/VistaMenuPrincipal.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="369">
-              <caret line="142" column="75" selection-start-line="142" selection-start-column="75" selection-end-line="142" selection-end-column="75" />
+            <state relative-caret-position="123">
+              <caret line="131" selection-start-line="131" selection-end-line="146" selection-end-column="11" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#4826#4827#0" expanded="true" />
@@ -137,7 +155,6 @@
       <find>simulacio</find>
       <find>update_stats</find>
       <find>start</find>
-      <find>abandon</find>
       <find>set_torn</find>
       <find>game_opt</find>
       <find>colorJugadorActual</find>
@@ -158,6 +175,7 @@
       <find>haha</find>
       <find>setInfo</find>
       <find>sleep</find>
+      <find>abandon</find>
     </findStrings>
     <dirStrings>
       <dir>$PROJECT_DIR$/src</dir>
@@ -212,7 +230,6 @@
         <option value="$PROJECT_DIR$/src/gui/VistaInici.java" />
         <option value="$PROJECT_DIR$/src/gui/VistaRegistrar.java" />
         <option value="$PROJECT_DIR$/src/gui/VistaEstadistica.java" />
-        <option value="$PROJECT_DIR$/src/gui/GameFrame.java" />
         <option value="$PROJECT_DIR$/src/gui/VistaMenuPrincipal.java" />
         <option value="$PROJECT_DIR$/src/domini/Partida.java" />
         <option value="$PROJECT_DIR$/files/problemes.txt" />
@@ -220,6 +237,7 @@
         <option value="$PROJECT_DIR$/src/domini/ControladorDomini.java" />
         <option value="$PROJECT_DIR$/src/gui/JugarPartidaView.java" />
         <option value="$PROJECT_DIR$/src/gui/GUITauler.java" />
+        <option value="$PROJECT_DIR$/src/gui/GameFrame.java" />
       </list>
     </option>
   </component>
@@ -264,12 +282,6 @@
               <item name="Prop-escacs" type="b2602c69:ProjectViewProjectNode" />
               <item name="Prop-escacs" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="domini" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Prop-escacs" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Prop-escacs" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="gui" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -287,7 +299,7 @@
     <property name="Repository.Attach.Annotations" value="false" />
     <property name="Repository.Attach.JavaDocs" value="false" />
     <property name="Repository.Attach.Sources" value="false" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1559300593199" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1559302627149" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit4" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit4" value="" />
     <property name="create.test.in.the.same.root" value="true" />
@@ -457,6 +469,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="67" y="25" width="1299" height="743" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" sideWeight="0.48741418" visible="true" weight="0.27853152" />
       <window_info id="Structure" order="1" sideWeight="0.51369864" side_tool="true" weight="0.33055976" />
@@ -934,18 +947,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/gui/GameFrame.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1140">
-          <caret line="121" column="17" selection-start-line="121" selection-start-column="17" selection-end-line="121" selection-end-column="17" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="method#fill_menu_bar#0;class#GameFrame#0" />
-            <element signature="method#createMenuPartida#0;class#GameFrame#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/domini/Partida.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="3630">
@@ -953,22 +954,6 @@
           <folding>
             <element signature="e#4139#4140#0" expanded="true" />
             <element signature="e#4166#4167#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/gui/VistaMenuPrincipal.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="369">
-          <caret line="142" column="75" selection-start-line="142" selection-start-column="75" selection-end-line="142" selection-end-column="75" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#4826#4827#0" expanded="true" />
-            <element signature="e#4855#4856#0" expanded="true" />
-            <element signature="method#btnGestioProblemesActionPerformed#0;class#VistaMenuPrincipal#0" />
-            <element signature="method#btnBaixaActionPerformed#0;class#VistaMenuPrincipal#0" />
-            <element signature="method#btnTancarSessioActionPerformed#0;class#VistaMenuPrincipal#0" />
-            <element signature="method#translate#0;class#VistaMenuPrincipal#0" />
           </folding>
         </state>
       </provider>
@@ -1017,6 +1002,52 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="123">
           <caret line="438" column="44" selection-start-line="438" selection-start-column="39" selection-end-line="438" selection-end-column="44" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/gui/VistaMenuPrincipal.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="123">
+          <caret line="131" selection-start-line="131" selection-end-line="146" selection-end-column="11" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#4826#4827#0" expanded="true" />
+            <element signature="e#4855#4856#0" expanded="true" />
+            <element signature="method#btnGestioProblemesActionPerformed#0;class#VistaMenuPrincipal#0" />
+            <element signature="method#btnBaixaActionPerformed#0;class#VistaMenuPrincipal#0" />
+            <element signature="method#btnTancarSessioActionPerformed#0;class#VistaMenuPrincipal#0" />
+            <element signature="method#translate#0;class#VistaMenuPrincipal#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/gui/GameFrame.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="55" column="41" selection-start-line="55" selection-start-column="41" selection-end-line="55" selection-end-column="41" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1745#2399#0" expanded="true" />
+            <element signature="e#2398#2399#0" expanded="true" />
+            <element signature="e#3204#3205#0" expanded="true" />
+            <element signature="e#3241#3242#0" expanded="true" />
+            <element signature="e#3282#3283#0" expanded="true" />
+            <element signature="e#3315#3316#0" expanded="true" />
+            <element signature="e#3348#3349#0" expanded="true" />
+            <element signature="e#3377#3378#0" expanded="true" />
+            <element signature="method#fill_menu_bar#0;class#GameFrame#0" />
+            <element signature="method#createMenuPartida#0;class#GameFrame#0" />
+            <element signature="e#4484#4485#0" expanded="true" />
+            <element signature="e#4547#4548#0" expanded="true" />
+            <element signature="e#4590#4591#0" expanded="true" />
+            <element signature="e#4626#4627#0" expanded="true" />
+            <element signature="e#4671#4672#0" expanded="true" />
+            <element signature="e#4703#4704#0" expanded="true" />
+            <element signature="e#4742#4743#0" expanded="true" />
+            <element signature="e#4774#4775#0" expanded="true" />
+            <element signature="e#4814#4815#0" expanded="true" />
+            <element signature="e#4849#4850#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
