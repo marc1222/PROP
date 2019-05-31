@@ -37,7 +37,7 @@ public class GUIOption extends JPanel {
         this.actual = actual;
     }
     public int getclock() {
-        return Math.round(this.time_count);
+        return (int)(this.time_count*1000);
     }
 
     GUIOption(boolean simulacio, int actual) {

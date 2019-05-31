@@ -35,6 +35,15 @@ public class FENProblema extends JPanel implements ActionListener {
     public FENProblema(JFrame master, VistaMenuPrincipal vmp) {
         this.master = master;
         this.menuPrincipal = vmp;
+        rbBlanc.setFont (rbBlanc.getFont ().deriveFont (14.0f));
+        rbNegre.setFont (rbNegre.getFont ().deriveFont (14.0f));
+        lFen.setFont (lFen.getFont ().deriveFont (16.0f));
+        lJug.setFont (lJug.getFont ().deriveFont (16.0f));
+        lPrim.setFont (lPrim.getFont ().deriveFont (16.0f));
+        bConf.setFont (bConf.getFont ().deriveFont (25.0f));
+        rbBlanc.setHorizontalAlignment(SwingConstants.CENTER);
+        rbNegre.setHorizontalAlignment(SwingConstants.CENTER);
+
         //menuBar.add(crea_menu());
         //frameVista.setJMenuBar(menuBar);
         //frameVista.setLayout(new BorderLayout());
@@ -97,6 +106,14 @@ public class FENProblema extends JPanel implements ActionListener {
     public FENProblema(JFrame master, VistaMenuPrincipal vmp, String fen, int njug, int prim) {
         this.master = master;
         this.menuPrincipal = vmp;
+        rbBlanc.setFont (rbBlanc.getFont ().deriveFont (14.0f));
+        rbNegre.setFont (rbNegre.getFont ().deriveFont (14.0f));
+        lFen.setFont (lFen.getFont ().deriveFont (16.0f));
+        lJug.setFont (lJug.getFont ().deriveFont (16.0f));
+        lPrim.setFont (lPrim.getFont ().deriveFont (16.0f));
+        bConf.setFont (bConf.getFont ().deriveFont (25.0f));
+        rbBlanc.setHorizontalAlignment(SwingConstants.CENTER);
+        rbNegre.setHorizontalAlignment(SwingConstants.CENTER);
         this.setLayout(new GridLayout(0,1));
         tJug.setColumns(5);
         tJug.setPreferredSize(new Dimension(10, 50));

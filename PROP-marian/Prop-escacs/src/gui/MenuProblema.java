@@ -17,7 +17,7 @@ public class MenuProblema extends JPanel implements ActionListener {
     private JLabel lFEN = new JLabel("Afegir problema FEN", JLabel.CENTER);
     private JButton bAG = new JButton("Crear problema");
     private JButton mAG = new JButton("Modificar problema");
-    private JLabel lG = new JLabel("Afegir problema gràficament", JLabel.CENTER);
+    private JLabel lG = new JLabel("<html>Afegir problema <br/> gràficament</html>", JLabel.CENTER);
     private JButton bBorrar = new JButton("Borrar problema");
     private JPanel lrow = new JPanel(new GridLayout(1,2));
     private JPanel crow = new JPanel(new GridLayout(1,2));
@@ -28,7 +28,17 @@ public class MenuProblema extends JPanel implements ActionListener {
         //menuBar.add(crea_menu());
         //frameVista.setJMenuBar(menuBar);
         //frameVista.setLayout(new GridLayout(4, 1));
+
         super(new GridLayout(4, 1));
+
+        bAFEN.setFont (bAFEN.getFont ().deriveFont (20.0f));
+        bMFEN.setFont (bMFEN.getFont ().deriveFont (20.0f));
+        bAG.setFont (bAG.getFont ().deriveFont (20.0f));
+        mAG.setFont (mAG.getFont ().deriveFont (20.0f));
+        bBorrar.setFont (bBorrar.getFont ().deriveFont (20.0f));
+        lG.setFont (lG.getFont ().deriveFont (25.0f));
+        lFEN.setFont (lFEN.getFont ().deriveFont (25.0f));
+
         this.menuPrincipal = vmp;
         lrow.add(lFEN);
         lrow.add(lG);

@@ -184,46 +184,6 @@ public abstract class Maquina extends Jugador {
             total = total - 2*amenacades.size();
         }
 
-        /*
-        for (int i = 0; i < pecesTau.length; i++) {
-            for (int j = 0; j < pecesTau[0].length; j++) {
-                if (pecesTau[i][j].getColor() == colorJugador) {
-                    Posicion ini = new Posicion(i, j);
-
-                    // Suma valor segons tipus de peca
-                    total += puntuacioPeca(pecesTau[i][j].getTipus());
-
-                    Posicion[] movimentsPosibles = tauFinal.todos_movimientos(ini);
-                    // Suma la mobilitat de la peca
-                    total += movimentsPosibles.length;
-
-                    // Suma les peces que esta amenacant
-                    for (Posicion desti : movimentsPosibles) {
-                        if (pecesTau[desti.x][desti.y].getColor() != colorJugador) {
-                            total += 2;
-                        }
-                    }
-                }
-                else if (pecesTau[i][j].getColor() == colorContrari) {
-                    Posicion ini = new Posicion(i, j);
-
-                    // Resta valor segons el tipus de peca
-                    total -= puntuacioPeca(pecesTau[i][j].getTipus());
-
-                    Posicion[] movimentsPosibles = tauFinal.todos_movimientos(ini);
-                    // Resta la mobilitat de la peca
-                    total -= movimentsPosibles.length;
-
-                    // Resta les peces que esta amenacant
-                    for (Posicion desti : movimentsPosibles) {
-                        if (pecesTau[desti.x][desti.y].getColor() == colorJugador) {
-                            total -= 2;
-                        }
-                    }
-                }
-            }
-        }
-        */
         return total;
     }
 
@@ -279,5 +239,4 @@ public abstract class Maquina extends Jugador {
     public Posicion getReiPos(int color) {
         return tauX.getReiPos(color);
     }
-
 }

@@ -115,7 +115,6 @@ public class VistaMenuPrincipal {
     }
 
     private void initComponents() {
-        master.setTitle("Menu principal");
 
         GridBagConstraints gbc = new GridBagConstraints();
         panelMenu = new JPanel(new GridBagLayout());
@@ -157,6 +156,8 @@ public class VistaMenuPrincipal {
         btnGestioProblemes.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent evt) {
                 btnGestioProblemesActionPerformed(evt);
+                main.getAbandonar().setEnabled(true);
+
             }
         });
 

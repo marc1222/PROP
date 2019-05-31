@@ -312,6 +312,9 @@ public class CrearProblema extends JPanel implements ActionListener {
         //tauler = new TaulerCrearProblema(cd);
         tauler = new TaulerCrearProblema();
         this.add(tauler, BorderLayout.CENTER);
+        bCont.setMinimumSize(new Dimension(500, 70));
+
+        bCont.setFont (bCont.getFont ().deriveFont (25.0f));
 
         bCont.addActionListener(this);
         this.add(bCont, BorderLayout.PAGE_END);
@@ -323,6 +326,7 @@ public class CrearProblema extends JPanel implements ActionListener {
     public CrearProblema(JFrame master, VistaMenuPrincipal vmp, String fen, int njug) {
         this.master = master;
         this.menuPrincipal = vmp;
+
         String tipus[][] = new String[8][8];
         int colors[][] = new int[8][8];
         FENToGrafic(fen, tipus, colors);

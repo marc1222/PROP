@@ -39,6 +39,7 @@ public class define {
     public static final int MOD_FEN = 116;
     public static final int MOD_GRAFIC = 117;
     public static final int BORRAR = 118;
+    public static final int ESTAD = 119;
 
 
 }
