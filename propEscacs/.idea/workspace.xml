@@ -2,33 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3d0b746e-f133-42ab-9bc2-1a0f9454a805" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../PROP-marian/Prop-escacs/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../PROP-marian/Prop-escacs/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../PROP-marian/Prop-escacs/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../PROP-marian/Prop-escacs/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../PROP-marian/Prop-escacs/files/estadistiques.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../PROP-marian/Prop-escacs/files/estadistiques.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../PROP-marian/Prop-escacs/files/index.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../PROP-marian/Prop-escacs/files/index.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../PROP-marian/Prop-escacs/files/problemes.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../PROP-marian/Prop-escacs/files/problemes.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../PROP-marian/Prop-escacs/out/production/Prop-escacs/domini/ControladorDomini.class" beforeDir="false" afterPath="$PROJECT_DIR$/../PROP-marian/Prop-escacs/out/production/Prop-escacs/domini/ControladorDomini.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../PROP-marian/Prop-escacs/out/production/Prop-escacs/domini/Partida.class" beforeDir="false" afterPath="$PROJECT_DIR$/../PROP-marian/Prop-escacs/out/production/Prop-escacs/domini/Partida.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../PROP-marian/Prop-escacs/out/production/Prop-escacs/gui/GUIOption$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/../PROP-marian/Prop-escacs/out/production/Prop-escacs/gui/GUIOption$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../PROP-marian/Prop-escacs/out/production/Prop-escacs/gui/GUIOption.class" beforeDir="false" afterPath="$PROJECT_DIR$/../PROP-marian/Prop-escacs/out/production/Prop-escacs/gui/GUIOption.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../PROP-marian/Prop-escacs/out/production/Prop-escacs/gui/GUITauler$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/../PROP-marian/Prop-escacs/out/production/Prop-escacs/gui/GUITauler$2.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../PROP-marian/Prop-escacs/out/production/Prop-escacs/gui/GUITauler$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/../PROP-marian/Prop-escacs/out/production/Prop-escacs/gui/GUITauler$3.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../PROP-marian/Prop-escacs/out/production/Prop-escacs/gui/GUITauler$4$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/../PROP-marian/Prop-escacs/out/production/Prop-escacs/gui/GUITauler$4$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../PROP-marian/Prop-escacs/out/production/Prop-escacs/gui/GUITauler$4.class" beforeDir="false" afterPath="$PROJECT_DIR$/../PROP-marian/Prop-escacs/out/production/Prop-escacs/gui/GUITauler$4.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../PROP-marian/Prop-escacs/out/production/Prop-escacs/gui/GUITauler$5$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/../PROP-marian/Prop-escacs/out/production/Prop-escacs/gui/GUITauler$5$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../PROP-marian/Prop-escacs/out/production/Prop-escacs/gui/GUITauler$5.class" beforeDir="false" afterPath="$PROJECT_DIR$/../PROP-marian/Prop-escacs/out/production/Prop-escacs/gui/GUITauler$5.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../PROP-marian/Prop-escacs/out/production/Prop-escacs/gui/GUITauler.class" beforeDir="false" afterPath="$PROJECT_DIR$/../PROP-marian/Prop-escacs/out/production/Prop-escacs/gui/GUITauler.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../PROP-marian/Prop-escacs/out/production/Prop-escacs/gui/JugarPartidaView.class" beforeDir="false" afterPath="$PROJECT_DIR$/../PROP-marian/Prop-escacs/out/production/Prop-escacs/gui/JugarPartidaView.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../PROP-marian/Prop-escacs/src/domini/ControladorDomini.java" beforeDir="false" afterPath="$PROJECT_DIR$/../PROP-marian/Prop-escacs/src/domini/ControladorDomini.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../PROP-marian/Prop-escacs/src/domini/Partida.java" beforeDir="false" afterPath="$PROJECT_DIR$/../PROP-marian/Prop-escacs/src/domini/Partida.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../PROP-marian/Prop-escacs/src/gui/GUIOption.java" beforeDir="false" afterPath="$PROJECT_DIR$/../PROP-marian/Prop-escacs/src/gui/GUIOption.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../PROP-marian/Prop-escacs/src/gui/GUITauler.java" beforeDir="false" afterPath="$PROJECT_DIR$/../PROP-marian/Prop-escacs/src/gui/GUITauler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../PROP-marian/Prop-escacs/src/gui/JugarPartidaView.java" beforeDir="false" afterPath="$PROJECT_DIR$/../PROP-marian/Prop-escacs/src/gui/JugarPartidaView.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/files/index.txt" beforeDir="false" afterPath="$PROJECT_DIR$/files/index.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/propEscacs/META-INF/propEscacs.kotlin_module" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/propEscacs/gui/GUIOption.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/propEscacs/gui/GUIOption.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/gui/GUIOption.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gui/GUIOption.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -70,7 +45,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/gui/VistaMenuPrincipal.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="165">
+            <state relative-caret-position="900">
               <caret line="69" selection-start-line="69" selection-end-line="71" selection-end-column="21" />
             </state>
           </provider>
@@ -91,7 +66,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/gui/GUITauler.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="176">
+            <state relative-caret-position="2910">
               <caret line="209" column="32" selection-start-line="209" selection-start-column="22" selection-end-line="209" selection-end-column="32" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -105,7 +80,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/gui/GUIOption.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="176">
+            <state relative-caret-position="1530">
               <caret line="107" column="16" selection-start-line="107" selection-start-column="8" selection-end-line="107" selection-end-column="16" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -241,7 +216,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -274,12 +248,13 @@
           <select />
         </subPane>
       </pane>
+      <pane id="PackagesPane" />
       <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1559147583517" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../PROP-marian/Prop-escacs" />
     <property name="project.structure.last.edited" value="SDKs" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.0" />
@@ -350,9 +325,8 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="67" y="25" width="1299" height="743" extended-state="6" />
-    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.23942538" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2434158" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -361,7 +335,7 @@
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32899022" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.4964086" visible="true" weight="0.2019544" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.4964086" weight="0.2019544" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.29641694" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -739,6 +713,13 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/gui/VistaMenuPrincipal.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="900">
+          <caret line="69" selection-start-line="69" selection-end-line="71" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/gui/GameFrame.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="840">
@@ -749,16 +730,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/gui/VistaMenuPrincipal.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="69" selection-start-line="69" selection-end-line="71" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/gui/GUITauler.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="176">
+        <state relative-caret-position="2910">
           <caret line="209" column="32" selection-start-line="209" selection-start-column="22" selection-end-line="209" selection-end-column="32" />
           <folding>
             <element signature="imports" expanded="true" />
@@ -770,7 +744,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/gui/GUIOption.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="176">
+        <state relative-caret-position="1530">
           <caret line="107" column="16" selection-start-line="107" selection-start-column="8" selection-end-line="107" selection-end-column="16" />
           <folding>
             <element signature="imports" expanded="true" />

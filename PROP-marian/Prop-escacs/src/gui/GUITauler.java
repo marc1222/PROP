@@ -545,15 +545,11 @@ public class GUITauler extends JPanel {
                                     pinta_tauler();
                                     Object[] options = {"Continua"};
                                     JLabel msg1 = new JLabel("Han guanyat les "+((ret==define.WHITE)?"Blanques":"Negres"),JLabel.CENTER);
-                                    msg1.setFont (msg1.getFont ().deriveFont (12.0f));
-
-                                    JLabel msg2 = new JLabel("\nHas "+(ret==DomainController.getMasterColor()?":D Guanyat :D":"D: Perdut D:"), JLabel.CENTER);
-                                    msg2.setFont (msg2.getFont ().deriveFont (16.0f));
+                                    msg1.setFont (msg1.getFont ().deriveFont (14.0f));
 
                                     JPanel aux = new JPanel(new GridLayout(0,1));
                                     aux.add(msg1);
-                                    aux.add(msg2);
-                                    aux.setPreferredSize(new Dimension(90, 60));
+                                    aux.setMinimumSize(new Dimension(110, 40));
 
                                     int input = JOptionPane.showOptionDialog(GUITauler.this, aux ,"Final de la partida", JOptionPane.PLAIN_MESSAGE, JOptionPane.INFORMATION_MESSAGE, null, options, options[0]);
                                     if (input == 0) {
