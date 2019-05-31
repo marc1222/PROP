@@ -10,7 +10,6 @@ public class Naive extends Maquina {
     private int mat;
     private int colorJugador;
     private int colorContrari;
-    private int x = 0;
 
     public Naive(int color) {
         colorJugador = color;
@@ -56,35 +55,19 @@ public class Naive extends Maquina {
      * @return Retorna 0
      */
     public long moviment(Posicion origen, Posicion desti) {
-        x = 0;
-        System.out.println("\nCarregant moviment..." + profunditat);
+        System.out.println("\nCarregant moviment...");
         Posicion mejorIni = new Posicion(0, 0);
         Posicion mejorDesti = new Posicion(0, 0);
         int maxF = -9999;
 
-        // Recorre el tauler
-        Posicion[] peces = super.getPosColor(colorJugador);
 
+        Posicion[] peces = super.getPosColor(colorJugador);
         for (Posicion ini : peces) {
-            // Tractar pecces propies
             Posicion[] tots = super.totsMovimentsPeca(ini);
-            // Fer tots els moviments que pot fer la peca
             for (Posicion moviment : tots) {
-                // Si el moviment es a una casella amb una peca de
-                // l'oponent, es guarda el tipus de la peca
-                /*
-                String auxPeca = define.PECA_NULA;
-                if (super.getColorPeca(moviment) != 2) {
-                    auxPeca = super.getTipusPeca(moviment);
-                }
-                */
                 Taulell auxTau = new Taulell(super.getTau().getTauler(), true);
-                //if (super.mourePeca(ini, moviment, colorJugador)) {
                 if (super.mourePeca(ini, moviment, colorJugador, auxTau)) {
-                    // Si s'ha fet el moviment correctament,
-                    // cridar al algortime minimax
                     int aux = minimax(profunditat, false, auxTau);
-                    //super.desferMoviment(ini, moviment, auxPeca, colorJugador);
                     // Si el valor que s'obte de l'algoritme es major
                     // del que es te del millor moviment, agafar
                     // aquest com a millor
@@ -107,7 +90,6 @@ public class Naive extends Maquina {
 
         mat -= 2;
         actualitzarProfunditat();
-        System.out.println("*****" + x + "*****");
         return 0;
     }
 
@@ -117,10 +99,6 @@ public class Naive extends Maquina {
      * @return Retorna el valor seleccionat pel algoritme
      */
     private int minimax(int depth, boolean maximitzar, Taulell tau) {
-        ++x;
-        //int estatPropi = super.estatMat(colorContrari);
-        //int estatOponent = super.estatMat(colorJugador);
-
         int estatPropi = tau.escac_i_mat(colorContrari);
         int estatOponent = tau.escac_i_mat(colorJugador);
 
@@ -138,19 +116,11 @@ public class Naive extends Maquina {
 
         // Cas en que es vol maximitzar i la peca es del jugador
         if (maximitzar) {
-            //Posicion[] peces = super.getPosColor(colorJugador);
             Posicion[] peces = tau.getPosColor(colorJugador);
             for (Posicion ini : peces) {
-                //Posicion[] movimentsPosibles = super.totsMovimentsPeca(ini);
                 Posicion[] movimentsPosibles = tau.todos_movimientos(ini);
                 // Fer tots els moviments que pot fer la peca
                 for (Posicion desti : movimentsPosibles) {
-                    /*
-                    String auxPeca = define.PECA_NULA;
-                    if (super.getColorPeca(desti) != 2) {
-                        auxPeca = super.getTipusPeca(desti);
-                    }
-                    */
                     Taulell auxTau = new Taulell(tau.getTauler(), true);
                     //if (super.mourePeca(ini, desti, colorJugador)) {
                     if (super.mourePeca(ini, desti, colorJugador, auxTau)) {
@@ -158,34 +128,22 @@ public class Naive extends Maquina {
                         if (aux > max) {
                             max = aux;
                         }
-                        //super.desferMoviment(ini, desti, auxPeca, colorJugador);
                     }
                 }
             }
         }
         // Cas en que es vol minimitzar i la peca es del oponent
         else if (!maximitzar) {
-            //Posicion[] peces = super.getPosColor(colorContrari);
             Posicion[] peces = tau.getPosColor(colorContrari);
             for (Posicion ini : peces) {
-                //Posicion[] movimentsPosibles = super.totsMovimentsPeca(ini);
                 Posicion[] movimentsPosibles = tau.todos_movimientos(ini);
-                // Fer tots els moviments que pot fer la peca
                 for (Posicion desti : movimentsPosibles) {
-                    /*String auxPeca = define.PECA_NULA;
-                    if (super.getColorPeca(desti) != 2) {
-                        auxPeca = super.getTipusPeca(desti);
-                    }
-                    */
-
                     Taulell auxTau = new Taulell(tau.getTauler(), true);
-                    //if (super.mourePeca(ini, desti, colorContrari)) {
                     if(super.mourePeca(ini, desti, colorContrari, auxTau)) {
                         int aux = minimax(depth - 1, true, auxTau);
                         if (aux < min) {
                             min = aux;
                         }
-                        //desferMoviment(ini, desti, auxPeca, colorContrari);
                     }
                 }
             }

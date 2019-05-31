@@ -6,8 +6,7 @@ import javafx.geometry.Pos;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import java.awt.event.*;
 import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 
@@ -47,9 +46,21 @@ public class GameFrame {
         init_domain_controller();
         VistaInici startview = new VistaInici(this, DomainController);
 
-
         //VistaEstadistica ve = new VistaEstadistica(this, DomainController, "usr1");
-
+        gameFrame.addWindowListener(new java.awt.event.WindowAdapter() {
+            @Override
+            public void windowClosing(java.awt.event.WindowEvent windowEvent) {
+                JLabel msg = new JLabel("<html>Estàs segur que vols sortir?<br/>(No es guardarà el progrés actual)</html>");
+                Object[] options = {"Sí", "No"};
+                int input = JOptionPane.showOptionDialog(gameFrame, msg,
+                        "Sortir de la app",
+                        JOptionPane.DEFAULT_OPTION, JOptionPane.ERROR_MESSAGE, null, options, options[1]);
+                if (input == 0) {
+                    System.exit(0);
+                }
+            }
+        });
+        gameFrame.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
     }
 
     public JFrame getGameFrame() {
@@ -97,15 +108,6 @@ public class GameFrame {
         return game_options;
     }
 
-    public void enterGame() {
-        abandonar.setEnabled(true);
-        game_options.setEnabled(true);
-    }
-
-    public void exitGame() {
-        abandonar.setEnabled(false);
-        game_options.setEnabled(false);
-    }
 
     private void init_domain_controller() {
         this.DomainController = new ControladorDomini();
@@ -121,6 +123,19 @@ public class GameFrame {
 
     public JMenuItem getAbandonar() {
         return abandonar;
+    }
+
+    public JMenu getpartidaoptions() {
+        return game_options;
+    }
+    public void enterGame() {
+        abandonar.setEnabled(true);
+        game_options.setEnabled(true);
+    }
+
+    public void exitGame() {
+        abandonar.setEnabled(false);
+        game_options.setEnabled(false);
     }
 }
 

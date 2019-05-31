@@ -24,6 +24,7 @@ public class SeleccioProblema extends JPanel  implements ActionListener  {
 
     private JFrame master;
     private VistaMenuPrincipal menuPrincipal;
+    private VistaEstadistica vistaStats;
     /**
      * 0 -> jugar
      * 1 -> simulacio
@@ -144,9 +145,23 @@ public class SeleccioProblema extends JPanel  implements ActionListener  {
         this.menuPrincipal = vmp;
     }
 
+    public SeleccioProblema(VistaEstadistica ve, int where) {
+        this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
+        this.add(llistaProblemes);
+        bcont.setMnemonic(KeyEvent.VK_C); //Alt+C
+        bcont.addActionListener(this);
+        bcont.setMaximumSize(new Dimension(Integer.MAX_VALUE, 30));
+        bcont.setAlignmentX(CENTER_ALIGNMENT);
+        this.where = where;
+        bcont.setMaximumSize(new Dimension(Integer.MAX_VALUE, 60));
+        bcont.setAlignmentX(CENTER_ALIGNMENT);
+        this.add(bcont);
+        this.vistaStats = ve;
+    }
+
     public void actionPerformed(ActionEvent e) {
         if (where == define.normal || where == define.estadistica || where == define.MOD_FEN
-                || where == define.MOD_GRAFIC || where == define.BORRAR) {
+                || where == define.MOD_GRAFIC || where == define.BORRAR || where == define.ESTAD) {
             if (llistaProblemes.getTaula().getSelectedRowCount() == 0) {
                 JOptionPane.showMessageDialog(this, "Cap problema seleccionat.", "Error de selecció",
                         JOptionPane.ERROR_MESSAGE);
@@ -191,6 +206,10 @@ public class SeleccioProblema extends JPanel  implements ActionListener  {
                         //master.pack();
                         master.setVisible(true);
                     }
+                }
+                else if (this.where == define.ESTAD) {
+                    String id = (String) llistaProblemes.getTaula().getValueAt(i, 0);
+                    VistaEstadistica ve = new VistaEstadistica(this.vistaStats.getMain(), this.vistaStats.getCtrlDomini(), id);
                 }
                 else {
                     String id = (String) llistaProblemes.getTaula().getValueAt(i, 0);

@@ -11,6 +11,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
 
 /**
  *
@@ -22,6 +23,7 @@ public class VistaMenuPrincipal {
     private ControladorDomini ctrlDomini;
     private String usuari;
 
+    private JugarPartidaView partida = null;
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private JButton btnSimular;
@@ -48,6 +50,64 @@ public class VistaMenuPrincipal {
 //        this.master.add(jPanel1);
 //        this.master.repaint();
 //        this.master.setVisible(true);
+        (main.getPausa_partida()).addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                    partida.pause = true;
+                    if (!partida.getOptionPanel().simulacio) partida.getOptionPanel().stop_timer();
+                    Object[] options = {"Continuar partida"};
+                    JLabel msg = new JLabel("Partida pausada", SwingConstants.CENTER);
+                    msg.setHorizontalAlignment(JLabel.CENTER);
+                    msg.setFont(msg.getFont().deriveFont(15.0f));
+                    int input = JOptionPane.showOptionDialog(master, msg, "Pausa", JOptionPane.PLAIN_MESSAGE, JOptionPane.INFORMATION_MESSAGE, null, options, options[0]);
+                    if (input == 0) {
+                        partida.pause = false;
+                        if (!partida.getOptionPanel().simulacio) partida.getOptionPanel().start_timer();
+                        if (partida.getBoardView().compute_thread != null) {
+                            synchronized (partida.getBoardView().compute_thread) {
+                                partida.getBoardView().compute_thread.notify();
+                            }
+                        }
+                    }
+            }
+        });
+        (main.getHistory_partida()).addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                SwingUtilities.invokeLater(new Runnable() {
+                    @Override
+                    public void run() {
+                        Object[] options = {"Continuar partida"};
+
+                        JPanel aux = new JPanel(new GridLayout(0,1));
+
+                        JLabel msg1 = new JLabel("Historial", JLabel.CENTER);
+                        msg1.setHorizontalAlignment(JLabel.CENTER);
+                        msg1.setFont (msg1.getFont ().deriveFont (19.0f));
+                        aux.add(msg1);
+                        JLabel msg2 = new JLabel("---------------------------------------", JLabel.CENTER);
+                        aux.add(msg2);
+                        JLabel msg3 = new JLabel("   #ronda  -  torn  -  Ini  -  Dest    ", JLabel.CENTER);
+                        msg1.setFont (msg1.getFont ().deriveFont (14.0f));
+                        aux.add(msg3);
+                        JLabel msg4 = new JLabel("---------------------------------------", JLabel.CENTER);
+                        aux.add(msg4);
+                        History.Movement[] history = partida.getHistory();
+                        JLabel msgi;
+                        for (int i = 0; i < history.length; ++i) {
+                            History.Movement act = history[i];
+                            msgi = new JLabel("       "+(i+1)+"        "+((act.color==define.WHITE)?"B":"N")+"       "+translate(act.ini)+" -> "+translate(act.fi)+"  ",JLabel.CENTER);
+                            msgi.setFont (msgi.getFont ().deriveFont (14.0f));
+                            aux.add(msgi);
+                        }
+
+
+                        JOptionPane.showOptionDialog(master, aux,"Historial de la partida", JOptionPane.PLAIN_MESSAGE, JOptionPane.INFORMATION_MESSAGE, null, options, options[0]);
+                    }
+                });
+
+            }
+        });
     }
 
     public String getUsuari() {
@@ -55,7 +115,6 @@ public class VistaMenuPrincipal {
     }
 
     private void initComponents() {
-        master.setTitle("Menu principal");
 
         GridBagConstraints gbc = new GridBagConstraints();
         panelMenu = new JPanel(new GridBagLayout());
@@ -79,6 +138,9 @@ public class VistaMenuPrincipal {
                         JOptionPane.DEFAULT_OPTION, JOptionPane.ERROR_MESSAGE, null, options, options[1]);
                 if (input == 0) {
                     setMenu();
+                    if (partida != null) {
+                        if (partida.getBoardView().compute_thread != null) partida.getBoardView().compute_thread.interrupt();
+                    }
                 }
             }
         });
@@ -172,111 +234,13 @@ public class VistaMenuPrincipal {
     private void btnJugarActionPerformed(ActionEvent evt) {
         // TODO --- JUGAR PARTIDA ---
         JugarPartidaView partida = new JugarPartidaView(main, false, ctrlDomini, this);
-        (main.getPausa_partida()).addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                partida.getOptionPanel().stop_timer();
-                Object[] options = {"Continuar partida"};
-                JLabel msg = new JLabel("Partida pausada", SwingConstants.CENTER);
-                msg.setHorizontalAlignment(JLabel.CENTER);
-                msg.setFont (msg.getFont ().deriveFont (15.0f));
-                int input = JOptionPane.showOptionDialog(master, msg ,"Pausa", JOptionPane.PLAIN_MESSAGE, JOptionPane.INFORMATION_MESSAGE, null, options, options[0]);
-                if (input == 0) {
-                    partida.getOptionPanel().start_timer();
-                }
-            }
-        });
-        (main.getHistory_partida()).addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                SwingUtilities.invokeLater(new Runnable() {
-                    @Override
-                    public void run() {
-                        Object[] options = {"Continuar partida"};
-
-                        JPanel aux = new JPanel(new GridLayout(0,1));
-
-                        JLabel msg1 = new JLabel("Historial", JLabel.CENTER);
-                        msg1.setHorizontalAlignment(JLabel.CENTER);
-                        msg1.setFont (msg1.getFont ().deriveFont (19.0f));
-                        aux.add(msg1);
-                        JLabel msg2 = new JLabel("---------------------------------------", JLabel.CENTER);
-                        aux.add(msg2);
-                        JLabel msg3 = new JLabel("   #ronda  -  torn  -  Ini  -  Dest    ", JLabel.CENTER);
-                        msg1.setFont (msg1.getFont ().deriveFont (14.0f));
-                        aux.add(msg3);
-                        JLabel msg4 = new JLabel("---------------------------------------", JLabel.CENTER);
-                        aux.add(msg4);
-                        History.Movement[] history = partida.getHistory();
-                        JLabel msgi;
-                        for (int i = 0; i < history.length; ++i) {
-                            History.Movement act = history[i];
-                            msgi = new JLabel("       "+(i+1)+"        "+((act.color==define.WHITE)?"B":"N")+"       "+translate(act.ini)+" -> "+translate(act.fi)+"  ",JLabel.CENTER);
-                            msgi.setFont (msgi.getFont ().deriveFont (14.0f));
-                            aux.add(msgi);
-                        }
-
-
-                        JOptionPane.showOptionDialog(master, aux,"Historial de la partida", JOptionPane.PLAIN_MESSAGE, JOptionPane.INFORMATION_MESSAGE, null, options, options[0]);
-                    }
-                });
-
-            }
-        });
+        this.partida = partida;
     }
 
     private void btnSimularActionPerformed(ActionEvent evt) {
         // TODO --- SIMULAR PARTIDA ---
         JugarPartidaView partida = new JugarPartidaView(main, true, ctrlDomini,this);
-        main.getPausa_partida().addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                Object[] options = {"Continuar partida"};
-                JLabel msg = new JLabel("Partida pausada", SwingConstants.CENTER);
-                msg.setHorizontalAlignment(JLabel.CENTER);
-                msg.setFont (msg.getFont ().deriveFont (15.0f));
-                int input = JOptionPane.showOptionDialog(master, msg ,"Pausa", JOptionPane.PLAIN_MESSAGE, JOptionPane.INFORMATION_MESSAGE, null, options, options[0]);
-                if (input == 0) {
-                }
-            }
-        });
-        main.getHistory_partida().addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                SwingUtilities.invokeLater(new Runnable() {
-                    @Override
-                    public void run() {
-                        Object[] options = {"Continuar partida"};
-
-                        JPanel aux = new JPanel(new GridLayout(0,1));
-
-                        JLabel msg1 = new JLabel("Historial", JLabel.CENTER);
-                        msg1.setHorizontalAlignment(JLabel.CENTER);
-                        msg1.setFont (msg1.getFont ().deriveFont (19.0f));
-                        aux.add(msg1);
-                        JLabel msg2 = new JLabel("---------------------------------------", JLabel.CENTER);
-                        aux.add(msg2);
-                        JLabel msg3 = new JLabel("   #ronda  -  torn  -  Ini  -  Dest    ", JLabel.CENTER);
-                        msg1.setFont (msg1.getFont ().deriveFont (14.0f));
-                        aux.add(msg3);
-                        JLabel msg4 = new JLabel("---------------------------------------", JLabel.CENTER);
-                        aux.add(msg4);
-                        History.Movement[] history = partida.getHistory();
-                        JLabel msgi;
-                        for (int i = 0; i < history.length; ++i) {
-                            History.Movement act = history[i];
-                            msgi = new JLabel("       "+(i+1)+"        "+((act.color==define.WHITE)?"B":"N")+"       "+translate(act.ini)+" -> "+translate(act.fi)+"  ",JLabel.CENTER);
-                            msgi.setFont (msgi.getFont ().deriveFont (14.0f));
-                            aux.add(msgi);
-                        }
-
-
-                        JOptionPane.showOptionDialog(master, aux,"Historial de la partida", JOptionPane.PLAIN_MESSAGE, JOptionPane.INFORMATION_MESSAGE, null, options, options[0]);
-                    }
-                });
-
-            }
-        });
+        this.partida = partida;
     }
 
     private void btnGestioProblemesActionPerformed(ActionEvent evt) {
@@ -350,11 +314,11 @@ public class VistaMenuPrincipal {
     }
 
     public void setMenu() {
-        main.getAbandonar().setEnabled(false);
         master.getContentPane().removeAll();
         master.add(this.panelMenu);
         master.repaint();
         master.setVisible(true);
+        main.exitGame();
     }
 
     private void setFont() {
@@ -372,4 +336,5 @@ public class VistaMenuPrincipal {
         btnBaixa.setFont(fntPlain);
         btnTancarSessio.setFont(fntPlain);
     }
+
 }

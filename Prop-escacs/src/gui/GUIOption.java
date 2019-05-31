@@ -15,7 +15,8 @@ public class GUIOption extends JPanel {
     private int num_ronda = 0;
     private int prob_max_jug;
     private Contorn margin;
-    private boolean simulacio;
+    public boolean simulacio;
+    private boolean timer_stat;
 
     private JLabel info_timer = new JLabel("Temps: 0 s", JLabel.CENTER);
     private JLabel info_act = new JLabel("Torn: ", JLabel.CENTER);
@@ -35,10 +36,15 @@ public class GUIOption extends JPanel {
         num_ronda = 0;
         this.actual = actual;
     }
+    public int getclock() {
+        return (int)(this.time_count*1000);
+    }
+
     GUIOption(boolean simulacio, int actual) {
         super(new GridLayout(1, 3));
         this.simulacio = simulacio;
         this.actual = actual;
+        System.out.print(actual);
         margin = new Contorn(20,50, 0, 50, define.BoardBorderColor);
         setBorder(margin.getBorder());
         //this.setLayout(new BoxLayout(this, BoxLayout.X_AXIS));
@@ -96,6 +102,7 @@ public class GUIOption extends JPanel {
     }
 
     public void initCrono(boolean ataca) {
+        this.timer_stat = ataca;
         this.crono_ences = ataca;
     }
 
@@ -109,13 +116,13 @@ public class GUIOption extends JPanel {
     }
 
     public void start_timer() {
-        if (!this.simulacio && this.num_ronda<=this.prob_max_jug) {
+        if (this.num_ronda<=this.prob_max_jug && timer_stat && !this.simulacio) {
             timer = new Timer(200, new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
                     time_count += 0.2;
                     if (time_count < 200000) {
-                        info_timer.setText("Temps: " + Float.toString(time_count) + " s");
+                        info_timer.setText("Temps: " + String.format("%.2f", time_count) + " s");
                     } else {
                         ((Timer) (e.getSource())).stop();
                     }
@@ -134,10 +141,12 @@ public class GUIOption extends JPanel {
         //update crono
         if (crono_ences){
             //CRONO PARAT, per a ser ences
+            timer_stat = true;
             start_timer();
             crono_ences = false;
         } else {
            //CRONO ENCES, per ser parat
+            timer_stat = false;
             stop_timer();
             crono_ences = true;
         }

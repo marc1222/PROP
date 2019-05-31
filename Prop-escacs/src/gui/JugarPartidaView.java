@@ -20,9 +20,11 @@ public class JugarPartidaView {
     int problemaID;
     int sim_prob[];
     int id_sim;
+    public boolean pause;
     private VistaMenuPrincipal menuPrincipal;
 
     JugarPartidaView(GameFrame master, boolean sim, ControladorDomini DC, VistaMenuPrincipal menuview) {
+        this.pause = false;
         this.parent = master;
         this.menuPrincipal = menuview;
         this.DomainController = DC;
@@ -42,6 +44,9 @@ public class JugarPartidaView {
         this.Master.setVisible(true);
 
     }
+    public GUITauler getBoardView() {
+        return BoardView;
+    }
 
     public void setProblemView(int problemaID) {
         this.problemaID = problemaID;
@@ -55,11 +60,30 @@ public class JugarPartidaView {
     }
     public void change_to_play_view(boolean ataca, int oponent) {
         (this.DomainController).init_partida(ataca, oponent, problemaID);//
-        this.OptionBarView = new GUIOption(this.simulacio, DomainController.colorJugadorActual());
+        this.OptionBarView = new GUIOption(this.simulacio, DomainController.getPrimer());
         OptionBarView.initCrono(ataca);
         OptionBarView.update_stats();
         String op_name = (oponent==define.USER)?"Usuari 2":(oponent==define.NAIVE)?"Naive (M)":"Smart (M)";
-        OptionBarView.setInfo(ataca?DomainController.getMainUserName():op_name, (!ataca)?DomainController.getMainUserName():op_name, problemaID, DomainController.getMaxRondes());
+        String white;
+        String black;
+
+        if (DomainController.getPrimer() == define.WHITE && ataca) {
+            white = DomainController.getMainUserName();
+            black = op_name;
+        }
+        else if (DomainController.getPrimer() == define.WHITE && !ataca) {
+            black = DomainController.getMainUserName();
+            white = op_name;
+        }
+        else if (DomainController.getPrimer() == define.BLACK && ataca) {
+            black = DomainController.getMainUserName();
+            white = op_name;
+        }
+        else {
+            white = DomainController.getMainUserName();
+            black = op_name;
+        }
+        OptionBarView.setInfo(white, black, problemaID, DomainController.getMaxRondes());
         this.BoardView = new GUITauler(this.DomainController, this.OptionBarView, this.simulacio, this);
         this.Master.getContentPane().removeAll();
         this.Master.add(this.OptionBarView, BorderLayout.NORTH);
@@ -77,7 +101,7 @@ public class JugarPartidaView {
 
             this.problemaID = probIDS[id_sim];
             (this.DomainController).init_partida(white, black, problemaID);
-            this.OptionBarView = new GUIOption(this.simulacio, DomainController.colorJugadorActual());
+            this.OptionBarView = new GUIOption(this.simulacio, DomainController.getPrimer());
             this.OptionBarView.update_stats();
             this.OptionBarView.setInfo((white==define.NAIVE?"Naive":"Smart")+" (M)", (black==define.NAIVE?"Naive":"Smart")+" (M)" , problemaID, DomainController.getMaxRondes());
             this.BoardView = new GUITauler(this.DomainController, this.OptionBarView, this.simulacio, this);
@@ -88,16 +112,17 @@ public class JugarPartidaView {
             this.Master.setVisible(true);
 
             parent.enterGame();
+            BoardView.finish_sim = false;
 
             this.BoardView.jugaSimulacio();
 
     }
     public void juga_simulacio() {
         id_sim++;
-        if (id_sim < sim_prob.length) {
+        if (id_sim < sim_prob.length && !BoardView.finish_sim) {
             this.problemaID = sim_prob[id_sim];
             (this.DomainController).juga_simulacio(problemaID);
-            this.OptionBarView.resetSim(DomainController.colorJugadorActual());
+            this.OptionBarView.resetSim(DomainController.getPrimer());
             this.OptionBarView.update_stats();
             this.OptionBarView.setInfo("null", "null" , problemaID, DomainController.getMaxRondes());
             this.BoardView = new GUITauler(this.DomainController, this.OptionBarView, this.simulacio, this);
@@ -107,7 +132,9 @@ public class JugarPartidaView {
             this.Master.repaint();
             this.Master.setVisible(true);
             this.BoardView.jugaSimulacio();
-        } else menuPrincipal.setMenu();
+        } else if (!BoardView.finish_sim) {
+            returnmenu();
+        }
     }
 
 
@@ -117,6 +144,11 @@ public class JugarPartidaView {
 
     public void tornaMenu() {
         this.menuPrincipal.setMenu();
+    }
+    public void returnmenu() {
+        parent.exitGame();
+        menuPrincipal.setMenu();
+        BoardView.compute_thread.interrupt();
     }
 
 }

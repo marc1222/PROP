@@ -158,7 +158,7 @@ public class VistaInici {
         else {
             fieldUsuari.setText("");
             fieldContra.setText("");
-            String error = "Usuari incorrecte";
+            String error = "Dades incorrectes";
             JOptionPane.showMessageDialog(master,error,"Alerta",JOptionPane.WARNING_MESSAGE);
             btnEntrar.setFocusable(false);
         }

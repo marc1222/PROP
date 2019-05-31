@@ -13,6 +13,7 @@ public class VistaEstadistica {
     private JFrame master;
     private ControladorDomini ctrlDomini;
     private String usuari;
+    private String idProblema;
 
     JPanel panelStats = new JPanel();
     JTabbedPane tp = new JTabbedPane();
@@ -29,10 +30,31 @@ public class VistaEstadistica {
         this.main = mainGame;
         this.ctrlDomini = ctrlDomini;
         this.usuari = main.getUsuari();
+        idProblema = "-99";
 
         initComponents();
         asignar_listenersComponentes();
         ferVisible();
+    }
+
+    public VistaEstadistica(GameFrame mainGame, ControladorDomini ctrlDomini, String id) {
+        this.master = mainGame.getGameFrame();
+        this.main = mainGame;
+        this.ctrlDomini = ctrlDomini;
+        this.usuari = main.getUsuari();
+        this.idProblema = id;
+
+        initComponents();
+        asignar_listenersComponentes();
+        ferVisible();
+    }
+
+    public GameFrame getMain() {
+        return this.main;
+    }
+
+    public ControladorDomini getCtrlDomini() {
+        return this.ctrlDomini;
     }
 
     public void ferVisible() {
@@ -47,7 +69,6 @@ public class VistaEstadistica {
     }
 
     private void initComponents() {
-        master.setTitle("Menu principal");
         BorderLayout bl = new BorderLayout();
         bl.setVgap(10);
         panelProblema.setLayout(bl);
@@ -61,8 +82,8 @@ public class VistaEstadistica {
 
         fillTaulaUser();
         fillTaulaProblema();
-        tp.add("Usuari",panelUsuari);
         tp.add("Problema",panelProblema);
+        tp.add("Usuari",panelUsuari);
         setFont();
     }
 
@@ -99,7 +120,7 @@ public class VistaEstadistica {
     private void fillTaulaProblema() {
         String column[]={"Usuari","Mat", "Temps"};
 
-        ArrayList<String> listProblemes = ctrlDomini.estadistiquesProblema("p1");
+        ArrayList<String> listProblemes = ctrlDomini.estadistiquesProblema(idProblema);
         int listSizeProblemes = listProblemes.size();
         String[][] dataProblemes = new String[listSizeProblemes][3] ;
         //System.out.println(listSizeProblemes);
@@ -127,7 +148,7 @@ public class VistaEstadistica {
     private void asignar_listenersComponentes() {
         btnSelectProblema.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                SeleccioProblema sp = new SeleccioProblema(false);
+                SeleccioProblema sp = new SeleccioProblema(VistaEstadistica.this, define.ESTAD);
 
                 master.getContentPane().removeAll();
                 master.add(sp);

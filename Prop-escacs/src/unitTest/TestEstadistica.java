@@ -3,17 +3,21 @@ import static org.junit.Assert.*;
 import org.junit.*;
 import java.util.ArrayList;
 
-public class TestingEstadistica {
-
+public class TestEstadistica {
     @BeforeClass
     public static void setUp() throws Exception {
-        Estadistica.setFitxerStats("./files/testingEstadistiques.txt");
+        Estadistica.setFitxerStats("./src/unitTest/testingEstadistiques.txt");
     }
 
     @AfterClass
     public static void tearDown() throws Exception {
-        Estadistica.setFitxerStats("./files/testingEstadistiques.txt");
+        ArrayList<String> tots =  Estadistica.mostrarFitxerStats();
+        for (String aux : tots) {
+            String[] dades = aux.split("\\s+");
+            Estadistica.eliminarStatsProblema(dades[0]);
+        }
     }
+
 
     @Test
     public void guardarTemps() {
@@ -94,10 +98,21 @@ public class TestingEstadistica {
         assertTrue("Estadistiques de l'usuari no eliminades", statsUsuari.isEmpty());
     }
 
-    /*
+
     @Test
     public void eliminarStatsProblema() {
+        String marca1 = "ProbEliminat Usr 3 5511";
+        String marca2 = "ProbEliminat Usr 2 55311";
 
+        String[] partsGuarda1 = marca1.split("\\s+");
+        Estadistica.guardarTemps(partsGuarda1[0], partsGuarda1[1], partsGuarda1[2], partsGuarda1[3]);
+
+        String[] partsGuarda2 = marca2.split("\\s+");
+        Estadistica.guardarTemps(partsGuarda2[0], partsGuarda2[1], partsGuarda2[2], partsGuarda2[3]);
+
+        Estadistica.eliminarStatsProblema("ProbEliminat");
+        ArrayList<String> statsProblema = Estadistica.estadistiquesProblema("ProbEliminat");
+
+        assertTrue("Estadistiques de l'usuari no eliminades", statsProblema.isEmpty());
     }
-    */
 } 
