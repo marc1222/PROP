@@ -247,31 +247,4 @@ public class SeleccioProblema extends JPanel  implements ActionListener  {
 
         }
     }
-
-//    private JMenu crea_menu() {
-//        final JMenu aux = new JMenu("Options");
-//        final JMenuItem exit = new JMenuItem("Exit app");
-//        exit.addActionListener(new ActionListener() {
-//            @Override
-//            public void actionPerformed(ActionEvent e) {
-//                System.exit(0);
-//            }
-//        });
-//        aux.add(exit);
-//        return aux;
-//    }
-
-//    private static void iniciar() {
-//        SeleccioProblema vista = new SeleccioProblema();
-//    }
-
-//    public static void main(String[] args) {
-//        //Schedule a job for the event-dispatching thread:
-//        //creating and showing this application's GUI.
-//        javax.swing.SwingUtilities.invokeLater(new Runnable() {
-//            public void run() {
-//                iniciar();
-//            }
-//        });
-//    }
 }

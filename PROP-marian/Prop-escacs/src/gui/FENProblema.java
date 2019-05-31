@@ -192,42 +192,4 @@ public class FENProblema extends JPanel implements ActionListener {
                     JOptionPane.ERROR_MESSAGE);
         }
     }
-
-    private JMenu crea_menu() {
-        final JMenu aux = new JMenu("Options");
-        final JMenuItem exit = new JMenuItem("Exit app");
-        exit.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                System.exit(0);
-            }
-        });
-        aux.add(exit);
-        return aux;
-    }
-
-    private static void createAndShowGUI() {
-        //Create and set up the window.
-        JFrame frame = new JFrame("Crear Problema FEN");
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
-        //Create and set up the content pane.
-        FENProblema newContentPane = new FENProblema(frame, new VistaMenuPrincipal(new GameFrame(), new ControladorDomini()));
-        newContentPane.setOpaque(true); //content panes must be opaque
-        frame.setContentPane(newContentPane);
-
-        //Display the window.
-        frame.pack();
-        frame.setVisible(true);
-    }
-
-    public static void main(String[] args) {
-        //Schedule a job for the event-dispatching thread:
-        //creating and showing this application's GUI.
-        javax.swing.SwingUtilities.invokeLater(new Runnable() {
-            public void run() {
-                createAndShowGUI();
-            }
-        });
-    }
 }

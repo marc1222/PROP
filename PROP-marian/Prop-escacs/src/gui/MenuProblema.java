@@ -19,9 +19,9 @@ public class MenuProblema extends JPanel implements ActionListener {
     private JButton mAG = new JButton("Modificar problema");
     private JLabel lG = new JLabel("<html>Afegir problema <br/> gràficament</html>", JLabel.CENTER);
     private JButton bBorrar = new JButton("Borrar problema");
-    private JPanel lrow = new JPanel(new GridLayout(1,2));
-    private JPanel crow = new JPanel(new GridLayout(1,2));
-    private JPanel mrow = new JPanel(new GridLayout(1,2));
+    private JPanel lrow = new JPanel(new GridLayout(1, 2));
+    private JPanel crow = new JPanel(new GridLayout(1, 2));
+    private JPanel mrow = new JPanel(new GridLayout(1, 2));
 
 
     public MenuProblema(JFrame master, VistaMenuPrincipal vmp) {
@@ -31,13 +31,13 @@ public class MenuProblema extends JPanel implements ActionListener {
 
         super(new GridLayout(4, 1));
 
-        bAFEN.setFont (bAFEN.getFont ().deriveFont (20.0f));
-        bMFEN.setFont (bMFEN.getFont ().deriveFont (20.0f));
-        bAG.setFont (bAG.getFont ().deriveFont (20.0f));
-        mAG.setFont (mAG.getFont ().deriveFont (20.0f));
-        bBorrar.setFont (bBorrar.getFont ().deriveFont (20.0f));
-        lG.setFont (lG.getFont ().deriveFont (25.0f));
-        lFEN.setFont (lFEN.getFont ().deriveFont (25.0f));
+        bAFEN.setFont(bAFEN.getFont().deriveFont(20.0f));
+        bMFEN.setFont(bMFEN.getFont().deriveFont(20.0f));
+        bAG.setFont(bAG.getFont().deriveFont(20.0f));
+        mAG.setFont(mAG.getFont().deriveFont(20.0f));
+        bBorrar.setFont(bBorrar.getFont().deriveFont(20.0f));
+        lG.setFont(lG.getFont().deriveFont(25.0f));
+        lFEN.setFont(lFEN.getFont().deriveFont(25.0f));
 
         this.menuPrincipal = vmp;
         lrow.add(lFEN);
@@ -76,7 +76,7 @@ public class MenuProblema extends JPanel implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         //bcont.setEnabled(false);
         String c = e.getActionCommand();
-        switch(c) {
+        switch (c) {
             case "crear fen":
                 FENProblema fp = new FENProblema(master, menuPrincipal);
                 master.setContentPane(fp);
@@ -108,31 +108,5 @@ public class MenuProblema extends JPanel implements ActionListener {
                 master.setVisible(true);
                 break;
         }
-
-    }
-
-    private static void createAndShowGUI() {
-        //Create and set up the window.
-        JFrame frame = new JFrame("Escacs");
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
-        //Create and set up the content pane.
-        MenuProblema newContentPane = new MenuProblema(frame, new VistaMenuPrincipal(new GameFrame(), new ControladorDomini()));
-        newContentPane.setOpaque(true); //content panes must be opaque
-        frame.setContentPane(newContentPane);
-
-        //Display the window.
-        frame.pack();
-        frame.setVisible(true);
-    }
-
-    public static void main(String[] args) {
-        //Schedule a job for the event-dispatching thread:
-        //creating and showing this application's GUI.
-        javax.swing.SwingUtilities.invokeLater(new Runnable() {
-            public void run() {
-                createAndShowGUI();
-            }
-        });
     }
 }

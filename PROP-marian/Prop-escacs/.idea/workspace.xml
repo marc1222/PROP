@@ -1,246 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="516eb750-89ac-4e39-ac71-d9c31a183669" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/asset/fondo.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/files/estadistiques.txt" beforeDir="false" afterPath="$PROJECT_DIR$/files/estadistiques.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/files/index.txt" beforeDir="false" afterPath="$PROJECT_DIR$/files/index.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/files/problemes.txt" beforeDir="false" afterPath="$PROJECT_DIR$/files/problemes.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Prop-escacs/domini/Maquina.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Prop-escacs/domini/Maquina.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Prop-escacs/domini/Naive.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Prop-escacs/domini/Naive.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Prop-escacs/domini/Smart.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Prop-escacs/domini/Smart.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Prop-escacs/gui/GUIOption.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Prop-escacs/gui/GUIOption.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Prop-escacs/gui/GameFrame$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Prop-escacs/gui/GameFrame$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Prop-escacs/gui/GameFrame$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Prop-escacs/gui/GameFrame$2.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Prop-escacs/gui/GameFrame.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Prop-escacs/gui/GameFrame.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Prop-escacs/gui/MenuProblema$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Prop-escacs/gui/MenuProblema$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Prop-escacs/gui/MenuProblema.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Prop-escacs/gui/MenuProblema.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Prop-escacs/gui/SeleccioProblema$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Prop-escacs/gui/SeleccioProblema$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Prop-escacs/gui/SeleccioProblema.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Prop-escacs/gui/SeleccioProblema.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Prop-escacs/gui/VistaEstadistica$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Prop-escacs/gui/VistaEstadistica$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Prop-escacs/gui/VistaEstadistica.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Prop-escacs/gui/VistaEstadistica.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Prop-escacs/gui/VistaEstadistica2$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Prop-escacs/gui/VistaEstadistica2.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Prop-escacs/gui/VistaInici.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Prop-escacs/gui/VistaInici.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Prop-escacs/gui/VistaInici2$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Prop-escacs/gui/VistaInici2$2.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Prop-escacs/gui/VistaInici2$3.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Prop-escacs/gui/VistaInici2$4.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Prop-escacs/gui/VistaInici2.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Prop-escacs/gui/VistaMenuPrincipal$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Prop-escacs/gui/VistaMenuPrincipal$3.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Prop-escacs/gui/VistaMenuPrincipal$4.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Prop-escacs/gui/VistaMenuPrincipal$4.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Prop-escacs/gui/VistaMenuPrincipal$5.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Prop-escacs/gui/VistaMenuPrincipal$5.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Prop-escacs/gui/VistaMenuPrincipal$6.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Prop-escacs/gui/VistaMenuPrincipal$6.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Prop-escacs/gui/VistaMenuPrincipal$7.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Prop-escacs/gui/VistaMenuPrincipal$7.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Prop-escacs/gui/VistaMenuPrincipal$8.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Prop-escacs/gui/VistaMenuPrincipal$8.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Prop-escacs/gui/VistaMenuPrincipal$9.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Prop-escacs/gui/VistaMenuPrincipal$9.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Prop-escacs/gui/VistaMenuPrincipal.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Prop-escacs/gui/VistaMenuPrincipal.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Prop-escacs/gui/define.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Prop-escacs/gui/define.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Prop-escacs/unitTest/Estadistica$Marca.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Prop-escacs/unitTest/Estadistica$Marca.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Prop-escacs/unitTest/Estadistica.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Prop-escacs/unitTest/Estadistica.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Prop-escacs/unitTest/TestingEstadistica.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Prop-escacs/unitTest/lib/hamcrest-core-1.3.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Prop-escacs/unitTest/lib/junit-4.12.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/domini/Maquina.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/domini/Maquina.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/domini/Naive.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/domini/Naive.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/domini/Smart.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/domini/Smart.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/gui/FENProblema.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gui/FENProblema.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/gui/GUIOption.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gui/GUIOption.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/gui/MenuProblema.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gui/MenuProblema.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/gui/SeleccioProblema.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gui/SeleccioProblema.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/gui/VistaEstadistica.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gui/VistaEstadistica.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/gui/VistaEstadistica2.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/gui/VistaInici.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gui/VistaInici.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/gui/VistaInici2.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/gui/VistaMenuPrincipal.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gui/VistaMenuPrincipal.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/gui/define.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/gui/define.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/unitTest/Estadistica.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/unitTest/Estadistica.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/unitTest/TestingEstadistica.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/unitTest/lib/hamcrest-core-1.3.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/unitTest/lib/junit-4.12.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../propEscacs/.idea/encodings.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../propEscacs/.idea/misc.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../propEscacs/.idea/modules.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../propEscacs/.idea/uiDesigner.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../propEscacs/.idea/vcs.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../propEscacs/.idea/workspace.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../propEscacs/asset/pieces/Alfil0.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../propEscacs/asset/pieces/Alfil1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../propEscacs/asset/pieces/Cavall0.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../propEscacs/asset/pieces/Cavall1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../propEscacs/asset/pieces/Peo0.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../propEscacs/asset/pieces/Peo1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../propEscacs/asset/pieces/Rei0.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../propEscacs/asset/pieces/Rei1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../propEscacs/asset/pieces/Reina0.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../propEscacs/asset/pieces/Reina1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../propEscacs/asset/pieces/Torre0.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../propEscacs/asset/pieces/Torre1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../propEscacs/asset/pieces/miniicons/Alfil0.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../propEscacs/asset/pieces/miniicons/Alfil1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../propEscacs/asset/pieces/miniicons/Cavall0.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../propEscacs/asset/pieces/miniicons/Cavall1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../propEscacs/asset/pieces/miniicons/Peo0.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../propEscacs/asset/pieces/miniicons/Peo1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../propEscacs/asset/pieces/miniicons/Rei0.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../propEscacs/asset/pieces/miniicons/Rei1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../propEscacs/asset/pieces/miniicons/Reina0.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../propEscacs/asset/pieces/miniicons/Reina1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../propEscacs/asset/pieces/miniicons/Torre0.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../propEscacs/asset/pieces/miniicons/Torre1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../propEscacs/asset/pieces/miniicons/trash.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../propEscacs/files/estadistiques.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../propEscacs/files/index.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../propEscacs/files/problemes.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../propEscacs/files/problemes_noperm.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../propEscacs/files/usuaris.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../propEscacs/hs_err_pid10485.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../propEscacs/hs_err_pid11763.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../propEscacs/hs_err_pid14125.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../propEscacs/hs_err_pid15573.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../propEscacs/hs_err_pid16576.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../propEscacs/out/production/propEscacs/Joc.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../propEscacs/out/production/propEscacs/domini/Alfil.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../propEscacs/out/production/propEscacs/domini/Cavall.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../propEscacs/out/production/propEscacs/domini/ChessException.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../propEscacs/out/production/propEscacs/domini/ControladorDomini.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../propEscacs/out/production/propEscacs/domini/Estadistica$Marca.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../propEscacs/out/production/propEscacs/domini/Estadistica.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../propEscacs/out/production/propEscacs/domini/GestorPersistenciaProblema.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../propEscacs/out/production/propEscacs/domini/Jugador.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../propEscacs/out/production/propEscacs/domini/Maquina.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../propEscacs/out/production/propEscacs/domini/Naive.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../propEscacs/out/production/propEscacs/domini/Partida.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../propEscacs/out/production/propEscacs/domini/Peca.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../propEscacs/out/production/propEscacs/domini/Peca_Nula.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../propEscacs/out/production/propEscacs/domini/Peo.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../propEscacs/out/production/propEscacs/domini/Posicion.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../propEscacs/out/production/propEscacs/domini/Problema.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../propEscacs/out/production/propEscacs/domini/Rei.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../propEscacs/out/production/propEscacs/domini/Reina.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../propEscacs/out/production/propEscacs/domini/Smart.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../propEscacs/out/production/propEscacs/domini/Taulell.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../propEscacs/out/production/propEscacs/domini/Torre.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../propEscacs/out/production/propEscacs/domini/Usuari.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../propEscacs/out/production/propEscacs/domini/define.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../propEscacs/out/production/propEscacs/domini/input_output.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../propEscacs/out/production/propEscacs/gestioDades/GestorPersistenciaEstadistica.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../propEscacs/out/production/propEscacs/gestioDades/GestorPersistenciaUsuari.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../propEscacs/out/production/propEscacs/gui/AfegirPeca.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../propEscacs/out/production/propEscacs/gui/Contorn.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../propEscacs/out/production/propEscacs/gui/ControladorPresentacio.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../propEscacs/out/production/propEscacs/gui/CrearProblema$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../propEscacs/out/production/propEscacs/gui/CrearProblema$2.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../propEscacs/out/production/propEscacs/gui/CrearProblema$BarraPeces.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../propEscacs/out/production/propEscacs/gui/CrearProblema$TaulerCrearProblema$Casella.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../propEscacs/out/production/propEscacs/gui/CrearProblema$TaulerCrearProblema.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../propEscacs/out/production/propEscacs/gui/CrearProblema.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../propEscacs/out/production/propEscacs/gui/FENProblema$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../propEscacs/out/production/propEscacs/gui/FENProblema$2.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../propEscacs/out/production/propEscacs/gui/FENProblema$3.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../propEscacs/out/production/propEscacs/gui/FENProblema$4.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../propEscacs/out/production/propEscacs/gui/FENProblema.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../propEscacs/out/production/propEscacs/gui/GUIOption$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../propEscacs/out/production/propEscacs/gui/GUIOption.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../propEscacs/out/production/propEscacs/gui/GUITauler$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../propEscacs/out/production/propEscacs/gui/GUITauler$2$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../propEscacs/out/production/propEscacs/gui/GUITauler$2.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../propEscacs/out/production/propEscacs/gui/GUITauler$3.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../propEscacs/out/production/propEscacs/gui/GUITauler$4$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../propEscacs/out/production/propEscacs/gui/GUITauler$4.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../propEscacs/out/production/propEscacs/gui/GUITauler$5$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../propEscacs/out/production/propEscacs/gui/GUITauler$5.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../propEscacs/out/production/propEscacs/gui/GUITauler$Tile$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../propEscacs/out/production/propEscacs/gui/GUITauler$Tile.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../propEscacs/out/production/propEscacs/gui/GUITauler.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../propEscacs/out/production/propEscacs/gui/GameFrame$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../propEscacs/out/production/propEscacs/gui/GameFrame.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../propEscacs/out/production/propEscacs/gui/History$Movement.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../propEscacs/out/production/propEscacs/gui/History.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../propEscacs/out/production/propEscacs/gui/JugarPartidaView.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../propEscacs/out/production/propEscacs/gui/MenuProblema$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../propEscacs/out/production/propEscacs/gui/MenuProblema.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../propEscacs/out/production/propEscacs/gui/Posicion.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../propEscacs/out/production/propEscacs/gui/RenderColor.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../propEscacs/out/production/propEscacs/gui/SeleccioJugarPartida$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../propEscacs/out/production/propEscacs/gui/SeleccioJugarPartida.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../propEscacs/out/production/propEscacs/gui/SeleccioProblema$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../propEscacs/out/production/propEscacs/gui/SeleccioProblema.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../propEscacs/out/production/propEscacs/gui/TProblemes$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../propEscacs/out/production/propEscacs/gui/TProblemes$myTaula.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../propEscacs/out/production/propEscacs/gui/TProblemes.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../propEscacs/out/production/propEscacs/gui/VistaEstadistica$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../propEscacs/out/production/propEscacs/gui/VistaEstadistica.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../propEscacs/out/production/propEscacs/gui/VistaInici$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../propEscacs/out/production/propEscacs/gui/VistaInici$2.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../propEscacs/out/production/propEscacs/gui/VistaInici$3.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../propEscacs/out/production/propEscacs/gui/VistaInici$4.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../propEscacs/out/production/propEscacs/gui/VistaInici.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../propEscacs/out/production/propEscacs/gui/VistaMenuPrincipal$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../propEscacs/out/production/propEscacs/gui/VistaMenuPrincipal$10.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../propEscacs/out/production/propEscacs/gui/VistaMenuPrincipal$11$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../propEscacs/out/production/propEscacs/gui/VistaMenuPrincipal$11.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../propEscacs/out/production/propEscacs/gui/VistaMenuPrincipal$2.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../propEscacs/out/production/propEscacs/gui/VistaMenuPrincipal$3.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../propEscacs/out/production/propEscacs/gui/VistaMenuPrincipal$4.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../propEscacs/out/production/propEscacs/gui/VistaMenuPrincipal$5.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../propEscacs/out/production/propEscacs/gui/VistaMenuPrincipal$6.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../propEscacs/out/production/propEscacs/gui/VistaMenuPrincipal$7.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../propEscacs/out/production/propEscacs/gui/VistaMenuPrincipal$8.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../propEscacs/out/production/propEscacs/gui/VistaMenuPrincipal$9$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../propEscacs/out/production/propEscacs/gui/VistaMenuPrincipal$9.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../propEscacs/out/production/propEscacs/gui/VistaMenuPrincipal.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../propEscacs/out/production/propEscacs/gui/define.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../propEscacs/propEscacs.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../propEscacs/src/Joc.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../propEscacs/src/domini/Alfil.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../propEscacs/src/domini/Cavall.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../propEscacs/src/domini/ChessException.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../propEscacs/src/domini/ControladorDomini.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../propEscacs/src/domini/Estadistica.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../propEscacs/src/domini/GestorPersistenciaEstadistica.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../propEscacs/src/domini/GestorPersistenciaProblema.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../propEscacs/src/domini/GestorPersistenciaUsuari.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../propEscacs/src/domini/Jugador.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../propEscacs/src/domini/Main.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../propEscacs/src/domini/Maquina.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../propEscacs/src/domini/Naive.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../propEscacs/src/domini/Partida.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../propEscacs/src/domini/Peca.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../propEscacs/src/domini/Peca_Nula.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../propEscacs/src/domini/Peo.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../propEscacs/src/domini/Posicion.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../propEscacs/src/domini/Problema.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../propEscacs/src/domini/Rei.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../propEscacs/src/domini/Reina.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../propEscacs/src/domini/Smart.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../propEscacs/src/domini/Taulell.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../propEscacs/src/domini/Torre.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../propEscacs/src/domini/Usuari.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../propEscacs/src/domini/define.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../propEscacs/src/domini/input_output.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../propEscacs/src/gui/AfegirPeca.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../propEscacs/src/gui/Contorn.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../propEscacs/src/gui/ControladorPresentacio.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../propEscacs/src/gui/CrearProblema.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../propEscacs/src/gui/FENProblema.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../propEscacs/src/gui/GUIOption.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../propEscacs/src/gui/GUITauler.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../propEscacs/src/gui/GameFrame.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../propEscacs/src/gui/History.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../propEscacs/src/gui/JugarPartidaView.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../propEscacs/src/gui/MenuProblema.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../propEscacs/src/gui/Posicion.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../propEscacs/src/gui/RenderColor.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../propEscacs/src/gui/SeleccioJugarPartida.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../propEscacs/src/gui/SeleccioProblema.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../propEscacs/src/gui/TProblemes.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../propEscacs/src/gui/VistaEstadistica.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../propEscacs/src/gui/VistaInici.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../propEscacs/src/gui/VistaMenuPrincipal.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../propEscacs/src/gui/define.java" beforeDir="false" />
-    </list>
+    <list default="true" id="516eb750-89ac-4e39-ac71-d9c31a183669" name="Default Changelist" comment="" />
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -263,11 +24,10 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/gui/SeleccioProblema.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="342">
-              <caret line="141" column="18" selection-start-line="141" selection-end-line="142" />
+            <state relative-caret-position="93">
+              <caret line="213" column="22" selection-start-line="213" selection-start-column="22" selection-end-line="213" selection-end-column="22" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="method#SeleccioProblema#0;class#SeleccioProblema#0" />
               </folding>
             </state>
           </provider>
@@ -276,17 +36,33 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/gui/FENProblema.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="225">
+            <state relative-caret-position="360">
               <caret line="37" column="33" selection-start-line="37" selection-end-line="38" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/gui/CrearProblema.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="291">
+            <state relative-caret-position="-1509">
               <caret line="314" column="49" selection-start-line="314" selection-start-column="49" selection-end-line="314" selection-end-column="49" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/gui/VistaEstadistica.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="393">
+              <caret line="164" column="1" selection-start-line="164" selection-start-column="1" selection-end-line="164" selection-end-column="1" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#1469#1470#0" expanded="true" />
+                <element signature="e#1501#1502#0" expanded="true" />
+                <element signature="e#1549#1550#0" expanded="true" />
+                <element signature="e#1587#1588#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -294,7 +70,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/gui/GUIOption.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="153">
+            <state relative-caret-position="720">
               <caret line="53" column="26" selection-start-line="53" selection-end-line="54" />
               <folding>
                 <element signature="e#1251#1252#0" expanded="true" />
@@ -316,9 +92,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>io</find>
-      <find>read</find>
-      <find>jPanel1</find>
       <find>tornar</find>
       <find>abando</find>
       <find>aba</find>
@@ -346,6 +119,9 @@
       <find>panelProblema</find>
       <find>CrearProblema</find>
       <find>aban</find>
+      <find>bcont</find>
+      <find>initComponents</find>
+      <find>tp</find>
     </findStrings>
     <dirStrings>
       <dir>$PROJECT_DIR$/src</dir>
@@ -404,10 +180,10 @@
         <option value="$PROJECT_DIR$/src/gui/GUIOption.java" />
         <option value="$PROJECT_DIR$/files/estadistiques.txt" />
         <option value="$PROJECT_DIR$/src/gui/VistaMenuPrincipal.java" />
-        <option value="$PROJECT_DIR$/src/gui/VistaEstadistica.java" />
         <option value="$PROJECT_DIR$/src/gui/MenuProblema.java" />
         <option value="$PROJECT_DIR$/src/gui/FENProblema.java" />
         <option value="$PROJECT_DIR$/src/gui/CrearProblema.java" />
+        <option value="$PROJECT_DIR$/src/gui/VistaEstadistica.java" />
       </list>
     </option>
   </component>
@@ -429,6 +205,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -461,7 +238,6 @@
         </subPane>
       </pane>
       <pane id="PackagesPane" />
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -469,7 +245,7 @@
     <property name="Repository.Attach.Annotations" value="false" />
     <property name="Repository.Attach.JavaDocs" value="false" />
     <property name="Repository.Attach.Sources" value="false" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1559308366850" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1559312025323" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit4" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit4" value="" />
     <property name="create.test.in.the.same.root" value="true" />
@@ -649,7 +425,7 @@
     <frame x="67" y="25" width="1299" height="743" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.48741418" visible="true" weight="0.28332004" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.48741418" visible="true" weight="0.28810853" />
       <window_info id="Structure" order="1" sideWeight="0.51369864" side_tool="true" weight="0.33055976" />
       <window_info id="Designer" order="2" />
       <window_info id="Learn" order="3" />
@@ -659,7 +435,7 @@
       <window_info id="Capture Tool" order="7" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.5024155" />
-      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.1742671" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.1742671" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.39774558" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -1056,20 +832,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/gui/VistaEstadistica.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="315">
-          <caret line="84" column="41" selection-start-line="84" selection-start-column="41" selection-end-line="84" selection-end-column="41" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#1380#1381#0" expanded="true" />
-            <element signature="e#1412#1413#0" expanded="true" />
-            <element signature="e#1460#1461#0" expanded="true" />
-            <element signature="e#1498#1499#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/gui/GameFrame.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="180">
@@ -1145,9 +907,23 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/gui/MenuProblema.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="19" column="42" selection-start-line="19" selection-start-column="42" selection-end-line="19" selection-end-column="42" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/gui/FENProblema.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="360">
+          <caret line="37" column="33" selection-start-line="37" selection-end-line="38" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/gui/GUIOption.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
+        <state relative-caret-position="720">
           <caret line="53" column="26" selection-start-line="53" selection-end-line="54" />
           <folding>
             <element signature="e#1251#1252#0" expanded="true" />
@@ -1156,35 +932,34 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/gui/MenuProblema.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="19" column="42" selection-start-line="19" selection-start-column="42" selection-end-line="19" selection-end-column="42" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/gui/SeleccioProblema.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="342">
-          <caret line="141" column="18" selection-start-line="141" selection-end-line="142" />
+        <state relative-caret-position="93">
+          <caret line="213" column="22" selection-start-line="213" selection-start-column="22" selection-end-line="213" selection-end-column="22" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="method#SeleccioProblema#0;class#SeleccioProblema#0" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/gui/FENProblema.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="37" column="33" selection-start-line="37" selection-end-line="38" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/gui/CrearProblema.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="291">
+        <state relative-caret-position="-1509">
           <caret line="314" column="49" selection-start-line="314" selection-start-column="49" selection-end-line="314" selection-end-column="49" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/gui/VistaEstadistica.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="393">
+          <caret line="164" column="1" selection-start-line="164" selection-start-column="1" selection-end-line="164" selection-end-column="1" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1469#1470#0" expanded="true" />
+            <element signature="e#1501#1502#0" expanded="true" />
+            <element signature="e#1549#1550#0" expanded="true" />
+            <element signature="e#1587#1588#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
